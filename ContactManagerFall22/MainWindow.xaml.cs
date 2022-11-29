@@ -20,6 +20,7 @@ namespace ContactManagerFall22
     /// </summary>
     public partial class MainWindow : Window
     {
+        // Shows the window.
         public MainWindow()
         {
             InitializeComponent();
