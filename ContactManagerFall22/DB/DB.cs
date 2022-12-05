@@ -1,32 +1,51 @@
 ﻿using ContactManagerFall22.DB.Entities;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 
 namespace ContactManagerFall22.DB
 {
-    internal class DB
+    internal class DBManager
     {
         //GetContacts
         //GetContact
         //GetAddresses
         //GetAddress
 
-        SqlConnection s;
+        SqlConnection connect;
 
-        public DB()
+        public DBManager()
         {
-            s = new SqlConnection();
+            string ConString = ConfigurationManager.ConnectionStrings["ContactConnection"].ConnectionString;
+            connect = new SqlConnection(ConString);
         }
         public List<Contact> GetContacts()
         {
-            return null;
+            List<Contact> contacts = new List<Contact>();
+            using (connect)
+            {
+                connect.Open();
+                SqlCommand cm = new SqlCommand("SELECT * FROM Contact", connect);
+
+
+
+
+                SqlDataReader sdr = cm.ExecuteReader();
+                while (sdr.Read())
+                {
+                    Contact tempCon = new Contact(Convert.ToInt32(sdr["Id"]), sdr["FirstName"].ToString(), sdr["LastName"].ToString());
+                    contacts.Add(tempCon);
+                }
+                sdr.Close();
+                return contacts;
+            }
         }
 
         public Contact GetContact(int id)
         {
+
             return null;
         }
-
-
     }
 }
