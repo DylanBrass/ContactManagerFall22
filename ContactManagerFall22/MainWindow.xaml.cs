@@ -23,13 +23,12 @@ namespace ContactManagerFall22
         {
             List<Contact> Contacts = new List<Contact>();
             List<Address> Addresses = new List<Address>();
-            Addresses = db.GetAdresses();
-            ListContacts.ItemsSource = Addresses;
+            Contacts = db.GetContacts();
+            ListContacts.ItemsSource = Contacts;
 
 
             //this.ListContacts.Items.Add(db.GetContact(12));
         }
 
-        private void 
     }
 }
