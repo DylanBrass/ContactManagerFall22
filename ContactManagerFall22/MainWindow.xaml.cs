@@ -1,17 +1,7 @@
-﻿using System;
+﻿using ContactManagerFall22.DB;
+using ContactManagerFall22.DB.Entities;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ContactManagerFall22
 {
@@ -20,10 +10,24 @@ namespace ContactManagerFall22
     /// </summary>
     public partial class MainWindow : Window
     {
+        DBManager db = new DBManager();
+
         // Shows the window.
         public MainWindow()
         {
             InitializeComponent();
+            Window_Loaded();
+        }
+
+        private void Window_Loaded()
+        {
+            List<Contact> Contacts = new List<Contact>();
+            List<Address> Addresses = new List<Address>();
+            Addresses = db.GetAdresses();
+            ListContacts.ItemsSource = Addresses;
+
+
+            //this.ListContacts.Items.Add(db.GetContact(12));
         }
 
         private void 
