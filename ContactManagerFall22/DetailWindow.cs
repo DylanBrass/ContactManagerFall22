@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace ContactManagerFall22
 {
-    internal class DetailWindow
+    internal partial class DetailWindow : MainWindow
     {
+        DB db;
+
+        public DetailWindow(int id) 
+        { 
+            InitializeComponent();
+
+        }
+
     }
 }
