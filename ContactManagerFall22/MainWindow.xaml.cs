@@ -22,9 +22,9 @@ namespace ContactManagerFall22
         private void Window_Loaded()
         {
             List<Contact> Contacts = new List<Contact>();
-
-            Contacts = db.GetContacts();
-            ListContacts.ItemsSource = Contacts;
+            List<Address> Addresses = new List<Address>();
+            Addresses = db.GetAdresses();
+            ListContacts.ItemsSource = Addresses;
 
 
             //this.ListContacts.Items.Add(db.GetContact(12));

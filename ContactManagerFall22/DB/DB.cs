@@ -65,7 +65,24 @@ namespace ContactManagerFall22.DB
 
         public List<Address> GetAdresses()
         {
-            return null;
+            using (connect)
+            {
+                List<Address> addresses = new List<Address>();
+                connect.Open();
+                SqlCommand cm = new SqlCommand("SELECT * FROM Address", connect);
+
+
+
+
+                SqlDataReader sdr = cm.ExecuteReader();
+                while (sdr.Read())
+                {
+                    Address tempAdd = new Address(Convert.ToInt32(sdr["Id"]), sdr["Street"].ToString(), sdr["Province"].ToString(), sdr["Country"].ToString());
+                    addresses.Add(tempAdd);
+                }
+                sdr.Close();
+                return addresses;
+            }
         }
 
         public Address GetAddress(int Contact_Id)
