@@ -87,6 +87,9 @@
     <Compile Include="DB\Entities\Address.cs" />
     <Compile Include="DB\Entities\Contact.cs" />
     <Content Include="DB\SQL\database_create.sql" />
+    <Compile Include="DetailsPage.xaml.cs">
+      <DependentUpon>DetailsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

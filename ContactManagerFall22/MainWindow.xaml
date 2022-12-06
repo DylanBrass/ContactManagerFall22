@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactManagerFall22"
         mc:Ignorable="d"
- Title="MainWindow" Height="450" Width="640" Loaded="Window_Loaded">
+ Title="MainWindow" Height="450" Width="640" >
 
     <Grid Margin="15,15,15,15">
         <Grid.RowDefinitions>
@@ -22,16 +22,16 @@
                         <GridViewColumn Header="First Name" Width="120">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding firstName}" Foreground="Blue"/>
+                                    <TextBlock Text="{Binding Id}" Foreground="Blue"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
 
 
                         </GridViewColumn>
 
-                        <GridViewColumn Header="Last Name" Width="50" DisplayMemberBinding="{Binding lastName}" />
+                        <GridViewColumn Header="Last Name" Width="50" DisplayMemberBinding="{Binding LastName}" />
 
-                        <GridViewColumn Header="E-Mail" Width="150" DisplayMemberBinding="{Binding email}" />
+                        <GridViewColumn Header="E-Mail" Width="150" DisplayMemberBinding="{Binding FirstName}" />
 
                     </GridView>
 
