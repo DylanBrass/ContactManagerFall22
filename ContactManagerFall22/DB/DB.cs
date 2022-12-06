@@ -62,5 +62,7 @@ namespace ContactManagerFall22.DB
                 return contact;
             }
         }
+
+        public
     }
 }
