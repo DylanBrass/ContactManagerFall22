@@ -1,4 +1,10 @@
-﻿namespace ContactManagerFall22
+﻿using ContactManagerFall22.DB;
+using ContactManagerFall22.DB.Entities;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Input;
+
+namespace ContactManagerFall22
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -17,9 +23,8 @@
         private void Window_Loaded()
         {
             List<Contact> Contacts = new List<Contact>();
-            List<Address> Addresses = new List<Address>();
             Contacts = db.GetContacts();
-            ListContacts.ItemsSource = Contacts;
+            ContactsListItems.ItemsSource = Contacts;
 
 
             //this.ListContacts.Items.Add(db.GetContact(12));
@@ -27,7 +32,7 @@
 
         private void ContactsListItems_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Contact selectedContact = (Contact)ListContacts.SelectedItem;
+            Contact selectedContact = (Contact)ContactsListItems.SelectedItem;
 
             if (selectedContact != null)
             {
@@ -36,5 +41,29 @@
             }
         }
 
+        private void Add_Contact_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Edit_Contact_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Del_Contact_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Imp_Contact_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Ex_Contact_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
