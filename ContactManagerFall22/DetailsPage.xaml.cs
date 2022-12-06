@@ -20,19 +20,15 @@ namespace ContactManagerFall22
         private void Window_Loaded(int id)
         {
             Contact contact = new Contact();
-
-            TextBox Fname = new TextBox();
-            TextBox Lname = new TextBox();
-            TextBox email = new TextBox();
-            TextBox active = new TextBox();
-
-            Fname.Text = "First Name: " + contact.FirstName;
-            Lname.Text = "First Name: " + contact.LastName;
-            email.Text = "Email: " + contact.Email;
-            active.Text = "First Name: " + contact.Active;
-
-
             contact = dbManager.GetContact(id);
+
+
+            FName.Text = "First Name: " + contact.FirstName;
+            LName.Text = "First Name: " + contact.LastName;
+            Email.Text = "Email: " + contact.Email;
+            Nickname.Text = "First Name: " + contact.Nickname;
+
+
 
 
         }
