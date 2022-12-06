@@ -63,6 +63,14 @@ namespace ContactManagerFall22.DB
             }
         }
 
-        public
+        public List<Address> GetAdresses()
+        {
+            return null;
+        }
+
+        public Address GetAddress(int Contact_Id)
+        {
+            return null;
+        }
     }
 }

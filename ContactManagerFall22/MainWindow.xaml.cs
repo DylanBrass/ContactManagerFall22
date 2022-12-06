@@ -24,11 +24,8 @@ namespace ContactManagerFall22
             List<Contact> Contacts = new List<Contact>();
 
             Contacts = db.GetContacts();
+            ListContacts.ItemsSource = Contacts;
 
-            foreach (Contact tempCon in Contacts)
-            {
-                this.ListContacts.Items.Add(new Contact { Id = tempCon.Id, FirstName = tempCon.FirstName, LastName = tempCon.LastName });
-            }
 
             //this.ListContacts.Items.Add(db.GetContact(12));
         }

@@ -80,6 +80,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DB\DB.cs" />
+    <Compile Include="DB\Entities\Address.cs" />
     <Compile Include="DB\Entities\Contact.cs" />
     <Content Include="DB\SQL\database_create.sql" />
     <Compile Include="MainWindow.xaml.cs">
