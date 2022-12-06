@@ -48,7 +48,7 @@ namespace ContactManagerFall22.DB
             {
                 Contact contact = new Contact();
                 connect.Open();
-                SqlCommand cm = new SqlCommand("SELECT * FROM Contact WHERE Id = @Id;", connect);
+                SqlCommand cm = new SqlCommand("SELECT * FROM Contact WHERE Id = @Id AND ACTIVE = 1;", connect);
 
                 cm.Parameters.AddWithValue("@Id", id);
 
@@ -56,7 +56,18 @@ namespace ContactManagerFall22.DB
                 SqlDataReader sdr = cm.ExecuteReader();
                 while (sdr.Read())
                 {
-                    contact = new Contact(Convert.ToInt32(sdr["Id"]), sdr["FirstName"].ToString(), sdr["LastName"].ToString());
+                    contact = new Contact(Convert.ToInt32(sdr["Id"]),
+                        sdr["FirstName"].ToString(),
+                        sdr["LastName"].ToString(),
+                        sdr["DateAdded"].ToString(),
+                        sdr["LastUpdated"].ToString(),
+                        sdr["Email"].ToString(),
+                        (bool)sdr["Favourite"],
+                        (bool)sdr["Active"],
+                        sdr["Salutation"].ToString(),
+                        sdr["Nickname"].ToString(),
+                        sdr["Birthday"].ToString(),
+                        sdr["Note"].ToString());
                 }
                 sdr.Close();
                 return contact;

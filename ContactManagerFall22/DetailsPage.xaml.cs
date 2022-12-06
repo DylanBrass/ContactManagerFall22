@@ -20,10 +20,7 @@ namespace ContactManagerFall22
         {
             Contact contact = new Contact();
             contact = dbManager.GetContact(id);
-            ContactsListItems.Items.Add(contact);
 
-
-            //this.ListContacts.Items.Add(db.GetContact(12));
         }
 
     }
