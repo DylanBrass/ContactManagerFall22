@@ -44,8 +44,23 @@ namespace ContactManagerFall22.DB
 
         public Contact GetContact(int id)
         {
+            using (connect)
+            {
+                Contact contact = new Contact();
+                connect.Open();
+                SqlCommand cm = new SqlCommand("SELECT * FROM Contact WHERE Id = @Id;", connect);
 
-            return null;
+                cm.Parameters.AddWithValue("@Id", id);
+
+
+                SqlDataReader sdr = cm.ExecuteReader();
+                while (sdr.Read())
+                {
+                    contact = new Contact(Convert.ToInt32(sdr["Id"]), sdr["FirstName"].ToString(), sdr["LastName"].ToString());
+                }
+                sdr.Close();
+                return contact;
+            }
         }
     }
 }
