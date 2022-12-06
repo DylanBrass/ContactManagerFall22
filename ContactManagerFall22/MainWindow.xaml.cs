@@ -29,7 +29,5 @@ namespace ContactManagerFall22
 
             //this.ListContacts.Items.Add(db.GetContact(12));
         }
-
-        private void 
     }
 }
