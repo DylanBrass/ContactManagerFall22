@@ -2,6 +2,7 @@
 using ContactManagerFall22.DB.Entities;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace ContactManagerFall22
@@ -19,7 +20,11 @@ namespace ContactManagerFall22
         private void Window_Loaded(int id)
         {
             Contact contact = new Contact();
+
+            Label lb = new Label();
+            lb.Content = contact
             contact = dbManager.GetContact(id);
+           
             ContactsListItems.Items.Add(contact);
 
 
