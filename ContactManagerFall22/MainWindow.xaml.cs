@@ -1,10 +1,4 @@
-﻿using ContactManagerFall22.DB;
-using ContactManagerFall22.DB.Entities;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Input;
-
-namespace ContactManagerFall22
+﻿namespace ContactManagerFall22
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
