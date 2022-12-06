@@ -77,7 +77,7 @@ namespace ContactManagerFall22.DB
                 SqlDataReader sdr = cm.ExecuteReader();
                 while (sdr.Read())
                 {
-                    Address tempAdd = new Address(Convert.ToInt32(sdr["Id"]), sdr["Street"].ToString(), sdr["Province"].ToString(), sdr["Country"].ToString());
+                    Address tempAdd = new Address(Convert.ToInt32(sdr["Id"]), sdr["AreaCode"].ToString(), sdr["Street"].ToString(), sdr["Country"].ToString());
                     addresses.Add(tempAdd);
                 }
                 sdr.Close();
