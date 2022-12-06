@@ -1,9 +1,4 @@
-﻿using ContactManagerFall22.DB;
-using ContactManagerFall22.DB.Entities;
-using System.Collections.Generic;
-using System.Windows;
-
-namespace ContactManagerFall22
+﻿namespace ContactManagerFall22
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -29,5 +24,17 @@ namespace ContactManagerFall22
 
             //this.ListContacts.Items.Add(db.GetContact(12));
         }
+
+        private void ContactsListItems_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Contact selectedContact = (Contact)ListContacts.SelectedItem;
+
+            if (selectedContact != null)
+            {
+                DetailsPage newWindow = new DetailsPage(selectedContact.Id);
+                newWindow.ShowDialog();
+            }
+        }
+
     }
 }
