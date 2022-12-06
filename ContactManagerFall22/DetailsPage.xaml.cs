@@ -24,11 +24,9 @@ namespace ContactManagerFall22
             Label lb = new Label();
             lb.Content = contact
             contact = dbManager.GetContact(id);
-           
             ContactsListItems.Items.Add(contact);
 
 
-            //this.ListContacts.Items.Add(db.GetContact(12));
         }
 
     }
