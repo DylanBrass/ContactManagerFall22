@@ -21,8 +21,17 @@ namespace ContactManagerFall22
         {
             Contact contact = new Contact();
 
-            Label lb = new Label();
-            lb.Content = contact;
+            TextBox Fname = new TextBox();
+            TextBox Lname = new TextBox();
+            TextBox email = new TextBox();
+            TextBox active = new TextBox();
+
+            Fname.Text = "First Name: " + contact.FirstName;
+            Lname.Text = "First Name: " + contact.LastName;
+            email.Text = "Email: " + contact.Email;
+            active.Text = "First Name: " + contact.Active;
+
+
             contact = dbManager.GetContact(id);
 
 
