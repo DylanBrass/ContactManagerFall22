@@ -2,19 +2,52 @@
 {
     internal class Address
     {
+        public Address()
+        {
 
-        public Address(int id, string street, string country, string province)
+        }
+
+        public Address(int id,
+            string city,
+            string country,
+            string areaCode,
+            string street,
+            int addressNumber,
+            int apartementNum,
+            string dateCreated,
+            string lastUpdated,
+            char type)
         {
             Id = id;
-            Street = street;
+            City = city;
             Country = country;
-            Province = province;
+            AreaCode = areaCode;
+            Street = street;
+            AddressNumber = addressNumber;
+            ApartementNum = apartementNum;
+            DateCreated = dateCreated;
+            LastUpdated = lastUpdated;
+            this.type = type;
         }
 
         public int Id { get; set; }
-        public string Street { get; set; }
+
+        public string City { get; set; }
         public string Country { get; set; }
 
-        public string Province { get; set; }
+        public string AreaCode { get; set; }
+
+        public string Street { get; set; }
+
+        public int AddressNumber { get; set; }
+
+        public int ApartementNum { get; set; }
+
+        public string DateCreated { get; set; }
+
+        public string LastUpdated { get; set; }
+
+        public char type { get; set; }
+
     }
 }

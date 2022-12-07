@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Net;
 
 namespace ContactManagerFall22.DB
 {
@@ -88,7 +89,16 @@ namespace ContactManagerFall22.DB
                 SqlDataReader sdr = cm.ExecuteReader();
                 while (sdr.Read())
                 {
-                    Address tempAdd = new Address(Convert.ToInt32(sdr["Id"]), sdr["AreaCode"].ToString(), sdr["Street"].ToString(), sdr["Country"].ToString());
+                    Address tempAdd = new Address(Convert.ToInt32(sdr["Id"]),
+                        sdr["City"].ToString(),
+                        sdr["Country"].ToString(),
+                        sdr["AreaCode"].ToString(),
+                        sdr["Street"].ToString(),
+                        Convert.ToInt32(sdr["AddressNumber"]),
+                        Convert.ToInt32(sdr["ApartementNum"]),
+                        sdr["DateCreated"].ToString(),
+                        sdr["LastUpdated"].ToString(),
+                        (char)sdr["Type_Code"]);
                     addresses.Add(tempAdd);
                 }
                 sdr.Close();
@@ -98,7 +108,53 @@ namespace ContactManagerFall22.DB
 
         public Address GetAddress(int Contact_Id)
         {
-            return null;
+            using (connect)
+            {
+                Address address = new Address();
+                connect.Open();
+                SqlCommand cm = new SqlCommand("SELECT * FROM Address WHERE Contact_Id = @Contact_Id AND ACTIVE = 1;", connect);
+
+                cm.Parameters.AddWithValue("@Contact_Id", Contact_Id);
+
+
+                SqlDataReader sdr = cm.ExecuteReader();
+                while (sdr.Read())
+                {
+                    address = new Address(Convert.ToInt32(sdr["Id"]),
+                        sdr["City"].ToString(),
+                        sdr["Country"].ToString(),
+                        sdr["AreaCode"].ToString(),
+                        sdr["Street"].ToString(),
+                        Convert.ToInt32(sdr["AddressNumber"]),
+                        Convert.ToInt32(sdr["ApartementNum"]),
+                        sdr["DateCreated"].ToString(),
+                        sdr["LastUpdated"].ToString(),
+                        (char)sdr["Type_Code"]);
+                }
+                sdr.Close();
+                return address;
+            }
+        }
+
+        public TypeOf GetType(char code)
+        {
+            using (connect)
+            {
+                TypeOf type = new TypeOf();
+                connect.Open();
+                SqlCommand cm = new SqlCommand("SELECT * FROM Type WHERE Code = @Code;", connect);
+                cm.Parameters.AddWithValue("@Code", code);
+
+                SqlDataReader sdr = cm.ExecuteReader();
+                while (sdr.Read())
+                {
+                    type = new TypeOf((char)sdr["Code"], sdr["Description"].ToString());
+                }
+                sdr.Close();
+                return type;
+
+            }
+
         }
     }
 }
