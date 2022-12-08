@@ -15,10 +15,12 @@
 
         <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
 
-            <ListView Name="ContactsListItems" MouseDoubleClick="ContactsListItems_MouseDoubleClick">
+            <ListView Name="ContactsListItems" MouseDoubleClick="ContactsListItems_MouseDoubleClick" SelectionChanged="ContactsListItems_SelectionChanged">
 
                 <ListView.View>
                     <GridView>
+                        <GridViewColumn x:Name="Favorite" Header="Favorite" Width="150" DisplayMemberBinding="{Binding FirstName}" />
+
                         <GridViewColumn Header="First Name" Width="120">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
@@ -26,12 +28,10 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
 
-
                         </GridViewColumn>
 
                         <GridViewColumn Header="Last Name" Width="50" DisplayMemberBinding="{Binding LastName}" />
 
-                        <GridViewColumn x:Name="email" Header="E-Mail" Width="150" DisplayMemberBinding="{Binding FirstName}" />
 
                     </GridView>
 

@@ -65,5 +65,10 @@ namespace ContactManagerFall22
         {
 
         }
+
+        private void ContactsListItems_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
