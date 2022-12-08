@@ -26,7 +26,7 @@ namespace ContactManagerFall22
             FName.Text = "First Name: " + contact.FirstName;
             LName.Text = "First Name: " + contact.LastName;
             Email.Text = "Email: " + contact.Email;
-            Nickname.Text = "First Name: " + contact.Nickname;
+            Nickname.Text = "Nickname: " + contact.Nickname;
 
 
 
