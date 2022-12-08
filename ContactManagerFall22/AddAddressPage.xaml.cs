@@ -35,8 +35,7 @@ namespace ContactManagerFall22
             db.GetAdresses(8);
 
         }
-
-        private void AddressListItems_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        public void AddressListItems_SelectionChanged()
         {
 
         }
@@ -57,6 +56,11 @@ namespace ContactManagerFall22
         }
 
         private void Done(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddressListItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
