@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Net;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Windows.Controls.Primitives;
 
 namespace ContactManagerFall22.DB
 {
@@ -35,7 +38,9 @@ namespace ContactManagerFall22.DB
                 SqlDataReader sdr = cm.ExecuteReader();
                 while (sdr.Read())
                 {
-                    Contact tempCon = new Contact(Convert.ToInt32(sdr["Id"]), sdr["FirstName"].ToString(), sdr["LastName"].ToString());
+                    Contact tempCon = new Contact(Convert.ToInt32(sdr["Id"]),
+                        sdr["FirstName"].ToString(),
+                        sdr["LastName"].ToString());
                     contacts.Add(tempCon);
                 }
                 sdr.Close();
@@ -81,7 +86,7 @@ namespace ContactManagerFall22.DB
             {
                 List<Address> addresses = new List<Address>();
                 connect.Open();
-                SqlCommand cm = new SqlCommand("SELECT * FROM Address", connect);
+                SqlCommand cm = new SqlCommand("SELECT * FROM Address a INNER JOIN TYPE t ON a.Type_Code = t.Code", connect);
 
 
 
@@ -98,7 +103,8 @@ namespace ContactManagerFall22.DB
                         Convert.ToInt32(sdr["ApartementNum"]),
                         sdr["DateCreated"].ToString(),
                         sdr["LastUpdated"].ToString(),
-                        (char)sdr["Type_Code"]);
+                        (char)sdr["Code"],
+                        sdr["Description"].ToString());
                     addresses.Add(tempAdd);
                 }
                 sdr.Close();
@@ -112,7 +118,7 @@ namespace ContactManagerFall22.DB
             {
                 Address address = new Address();
                 connect.Open();
-                SqlCommand cm = new SqlCommand("SELECT * FROM Address WHERE Contact_Id = @Contact_Id AND ACTIVE = 1;", connect);
+                SqlCommand cm = new SqlCommand("SELECT * FROM Address a INNER JOIN TYPE t ON a.Type_Code = t.Code WHERE Contact_Id = @Contact_Id AND ACTIVE = 1;", connect);
 
                 cm.Parameters.AddWithValue("@Contact_Id", Contact_Id);
 
@@ -129,7 +135,8 @@ namespace ContactManagerFall22.DB
                         Convert.ToInt32(sdr["ApartementNum"]),
                         sdr["DateCreated"].ToString(),
                         sdr["LastUpdated"].ToString(),
-                        (char)sdr["Type_Code"]);
+                        (char)sdr["Type_Code"],
+                        sdr["Description"].ToString());
                 }
                 sdr.Close();
                 return address;

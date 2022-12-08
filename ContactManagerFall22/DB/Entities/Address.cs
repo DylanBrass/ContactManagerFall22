@@ -16,7 +16,8 @@
             int apartementNum,
             string dateCreated,
             string lastUpdated,
-            char type)
+            char type,
+            string desc)
         {
             Id = id;
             City = city;
@@ -28,6 +29,7 @@
             DateCreated = dateCreated;
             LastUpdated = lastUpdated;
             this.type = type;
+            this.Description = desc;
         }
 
         public int Id { get; set; }
@@ -48,6 +50,8 @@
         public string LastUpdated { get; set; }
 
         public char type { get; set; }
+
+        public string Description { set; get; }
 
     }
 }
