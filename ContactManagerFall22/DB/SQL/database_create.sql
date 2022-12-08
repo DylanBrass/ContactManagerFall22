@@ -1,13 +1,13 @@
 ﻿USE [FinalProjectDB]
 GO
-/****** Object:  User [ProjectUser]    Script Date: 2022-11-29 1:22:59 PM ******/
+/****** Object:  User [ProjectUser]    Script Date: 2022-12-08 10:11:11 AM ******/
 CREATE USER [ProjectUser] FOR LOGIN [ProjectUser] WITH DEFAULT_SCHEMA=[dbo]
 GO
 ALTER ROLE [db_datareader] ADD MEMBER [ProjectUser]
 GO
 ALTER ROLE [db_datawriter] ADD MEMBER [ProjectUser]
 GO
-/****** Object:  Table [dbo].[Address]    Script Date: 2022-11-29 1:22:59 PM ******/
+/****** Object:  Table [dbo].[Address]    Script Date: 2022-12-08 10:11:11 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -31,7 +31,7 @@ CREATE TABLE [dbo].[Address](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Contact]    Script Date: 2022-11-29 1:23:00 PM ******/
+/****** Object:  Table [dbo].[Contact]    Script Date: 2022-12-08 10:11:11 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -56,7 +56,7 @@ CREATE TABLE [dbo].[Contact](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Email]    Script Date: 2022-11-29 1:23:00 PM ******/
+/****** Object:  Table [dbo].[Email]    Script Date: 2022-12-08 10:11:11 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -75,21 +75,21 @@ CREATE TABLE [dbo].[Email](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Image]    Script Date: 2022-11-29 1:23:00 PM ******/
+/****** Object:  Table [dbo].[Image]    Script Date: 2022-12-08 10:11:11 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Image](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Image] [varbinary](max) NULL,
+	[Image] [varbinary](max) NOT NULL,
  CONSTRAINT [PK_Image] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Phone]    Script Date: 2022-11-29 1:23:00 PM ******/
+/****** Object:  Table [dbo].[Phone]    Script Date: 2022-12-08 10:11:11 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -108,7 +108,7 @@ CREATE TABLE [dbo].[Phone](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Type]    Script Date: 2022-11-29 1:23:00 PM ******/
+/****** Object:  Table [dbo].[Type]    Script Date: 2022-12-08 10:11:11 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -122,6 +122,26 @@ CREATE TABLE [dbo].[Type](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+SET IDENTITY_INSERT [dbo].[Address] ON 
+GO
+INSERT [dbo].[Address] ([Id], [Contact_Id], [City], [Country], [AreaCode], [Street], [AddressNumber], [ApartementNum], [DateCreated], [LastUpdated], [Active], [Type_Code]) VALUES (4, 8, N'La Prairie', N'Canada', N'JJJ 7J8', N'Rose', 45, NULL, CAST(N'2022-10-10' AS Date), CAST(N'2022-10-10' AS Date), 1, N'H')
+GO
+SET IDENTITY_INSERT [dbo].[Address] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Contact] ON 
+GO
+INSERT [dbo].[Contact] ([Id], [Img_Id], [FirstName], [LastName], [DateAdded], [LastUpdated], [Email], [Favourite], [Active], [Salutation], [Nickname], [Birthday], [Note]) VALUES (8, NULL, N'Dylan', N'Brassard', CAST(N'2022-10-10' AS Date), CAST(N'2022-10-10' AS Date), N'dylan.brassard@outlook.com', 1, 1, N'M', N'DB', CAST(N'2004-05-06' AS Date), N'He sucks')
+GO
+INSERT [dbo].[Contact] ([Id], [Img_Id], [FirstName], [LastName], [DateAdded], [LastUpdated], [Email], [Favourite], [Active], [Salutation], [Nickname], [Birthday], [Note]) VALUES (12, NULL, N'Karina', N'Evangelista', CAST(N'2022-10-10' AS Date), CAST(N'2022-10-10' AS Date), N'karina@hotmail.com', 1, 1, N'Miss', N'KE', CAST(N'2004-01-01' AS Date), N'She is good at making stuff pretty but not herself')
+GO
+SET IDENTITY_INSERT [dbo].[Contact] OFF
+GO
+INSERT [dbo].[Type] ([Code], [Description]) VALUES (N'B', N'Business')
+GO
+INSERT [dbo].[Type] ([Code], [Description]) VALUES (N'H', N'Home')
+GO
+INSERT [dbo].[Type] ([Code], [Description]) VALUES (N'O', N'Other')
+GO
 ALTER TABLE [dbo].[Address]  WITH CHECK ADD  CONSTRAINT [FK_Address_Contact] FOREIGN KEY([Contact_Id])
 REFERENCES [dbo].[Contact] ([Id])
 GO
@@ -131,11 +151,6 @@ ALTER TABLE [dbo].[Address]  WITH CHECK ADD  CONSTRAINT [FK_Address_Type] FOREIG
 REFERENCES [dbo].[Type] ([Code])
 GO
 ALTER TABLE [dbo].[Address] CHECK CONSTRAINT [FK_Address_Type]
-GO
-ALTER TABLE [dbo].[Contact]  WITH CHECK ADD  CONSTRAINT [FK_Contact_Image] FOREIGN KEY([Id])
-REFERENCES [dbo].[Image] ([Id])
-GO
-ALTER TABLE [dbo].[Contact] CHECK CONSTRAINT [FK_Contact_Image]
 GO
 ALTER TABLE [dbo].[Email]  WITH CHECK ADD  CONSTRAINT [FK_Email_Contact] FOREIGN KEY([Contact_Id])
 REFERENCES [dbo].[Contact] ([Id])
