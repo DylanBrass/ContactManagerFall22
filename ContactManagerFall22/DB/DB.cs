@@ -146,14 +146,7 @@ namespace ContactManagerFall22.DB
             }
         }
 
-        public void CreateContact(string firstName,
-            string lastName,
-            string email,
-            bool favourite,
-            string salutation,
-            string nickname,
-            string birthday,
-            string note)
+        public void CreateContact(Contact con)
         {
             using (connect)
             {
@@ -161,15 +154,15 @@ namespace ContactManagerFall22.DB
                 SqlCommand cm = new SqlCommand("INSERT INTO Contact (FirstName,LastName,Email,Favourite,Active,Salutation,Nickname,Birthday,Note) VALUES (@FirstName,@LastName,@Email,@Favourite,@Active,@Salutation,@Nickname,@Birthday,@Note);", connect);
 
 
-                cm.Parameters.AddWithValue("@FirstName", firstName);
-                cm.Parameters.AddWithValue("@LastName", lastName);
-                cm.Parameters.AddWithValue("@Email", email);
-                cm.Parameters.AddWithValue("@Favourite", favourite);
+                cm.Parameters.AddWithValue("@FirstName", con.FirstName);
+                cm.Parameters.AddWithValue("@LastName", con.LastName);
+                cm.Parameters.AddWithValue("@Email", con.Email);
+                cm.Parameters.AddWithValue("@Favourite", con.Favourite);
                 cm.Parameters.AddWithValue("@Active", true);
-                cm.Parameters.AddWithValue("@Salutation", salutation);
-                cm.Parameters.AddWithValue("@Nickname", nickname);
-                cm.Parameters.AddWithValue("@Birthday", birthday);
-                cm.Parameters.AddWithValue("@Note", note);
+                cm.Parameters.AddWithValue("@Salutation", con.Salutation);
+                cm.Parameters.AddWithValue("@Nickname", con.Nickname);
+                cm.Parameters.AddWithValue("@Birthday", con.Birthday);
+                cm.Parameters.AddWithValue("@Note", con.Note);
                 cm.ExecuteNonQuery();
 
             }
