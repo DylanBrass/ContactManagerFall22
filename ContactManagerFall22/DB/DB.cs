@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Net;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Windows.Controls.Primitives;
 
 namespace ContactManagerFall22.DB
 {
@@ -15,10 +18,10 @@ namespace ContactManagerFall22.DB
         //GetAddress
 
         SqlConnection connect;
+        string ConString = ConfigurationManager.ConnectionStrings["ContactConnection"].ConnectionString;
 
         public DBManager()
         {
-            string ConString = ConfigurationManager.ConnectionStrings["ContactConnection"].ConnectionString;
             connect = new SqlConnection(ConString);
         }
         public List<Contact> GetContacts()
@@ -35,7 +38,9 @@ namespace ContactManagerFall22.DB
                 SqlDataReader sdr = cm.ExecuteReader();
                 while (sdr.Read())
                 {
-                    Contact tempCon = new Contact(Convert.ToInt32(sdr["Id"]), sdr["FirstName"].ToString(), sdr["LastName"].ToString());
+                    Contact tempCon = new Contact(Convert.ToInt32(sdr["Id"]),
+                        sdr["FirstName"].ToString(),
+                        sdr["LastName"].ToString());
                     contacts.Add(tempCon);
                 }
                 sdr.Close();
@@ -75,21 +80,24 @@ namespace ContactManagerFall22.DB
             }
         }
 
-        public List<Address> GetAdresses()
+        public List<Address> GetAdresses(int Contact_Id)
         {
+
             using (connect)
             {
                 List<Address> addresses = new List<Address>();
+
                 connect.Open();
-                SqlCommand cm = new SqlCommand("SELECT * FROM Address", connect);
+                SqlCommand cm = new SqlCommand("SELECT * FROM Address a INNER JOIN TYPE t ON a.Type_Code = t.Code WHERE Contact_Id = @Contact_Id AND ACTIVE = 1;", connect);
 
-
+                cm.Parameters.AddWithValue("@Contact_Id", Contact_Id);
 
 
                 SqlDataReader sdr = cm.ExecuteReader();
                 while (sdr.Read())
                 {
-                    Address tempAdd = new Address(Convert.ToInt32(sdr["Id"]),
+                    Address address = new Address();
+                    address = new Address(Convert.ToInt32(sdr["Id"]),
                         sdr["City"].ToString(),
                         sdr["Country"].ToString(),
                         sdr["AreaCode"].ToString(),
@@ -98,23 +106,24 @@ namespace ContactManagerFall22.DB
                         Convert.ToInt32(sdr["ApartementNum"]),
                         sdr["DateCreated"].ToString(),
                         sdr["LastUpdated"].ToString(),
-                        (char)sdr["Type_Code"]);
-                    addresses.Add(tempAdd);
+                        (char)sdr["Type_Code"],
+                        sdr["Description"].ToString());
+                    addresses.Add(address);
                 }
                 sdr.Close();
                 return addresses;
             }
         }
 
-        public Address GetAddress(int Contact_Id)
+        public Address GetAddress(int Address_Id)
         {
             using (connect)
             {
                 Address address = new Address();
                 connect.Open();
-                SqlCommand cm = new SqlCommand("SELECT * FROM Address WHERE Contact_Id = @Contact_Id AND ACTIVE = 1;", connect);
+                SqlCommand cm = new SqlCommand("SELECT * FROM Address a INNER JOIN TYPE t ON a.Type_Code = t.Code WHERE Id = @Address_Id AND ACTIVE = 1;", connect);
 
-                cm.Parameters.AddWithValue("@Contact_Id", Contact_Id);
+                cm.Parameters.AddWithValue("@Address_Id", Address_Id);
 
 
                 SqlDataReader sdr = cm.ExecuteReader();
@@ -129,32 +138,65 @@ namespace ContactManagerFall22.DB
                         Convert.ToInt32(sdr["ApartementNum"]),
                         sdr["DateCreated"].ToString(),
                         sdr["LastUpdated"].ToString(),
-                        (char)sdr["Type_Code"]);
+                        (char)sdr["Type_Code"],
+                        sdr["Description"].ToString());
                 }
                 sdr.Close();
                 return address;
             }
         }
 
-        public TypeOf GetType(char code)
+        public void CreateContact(string firstName,
+            string lastName,
+            string email,
+            bool favourite,
+            string salutation,
+            string nickname,
+            string birthday,
+            string note)
         {
             using (connect)
             {
-                TypeOf type = new TypeOf();
                 connect.Open();
-                SqlCommand cm = new SqlCommand("SELECT * FROM Type WHERE Code = @Code;", connect);
-                cm.Parameters.AddWithValue("@Code", code);
+                SqlCommand cm = new SqlCommand("INSERT INTO Contact (FirstName,LastName,Email,Favourite,Active,Salutation,Nickname,Birthday,Note) VALUES (@FirstName,@LastName,@Email,@Favourite,@Active,@Salutation,@Nickname,@Birthday,@Note);", connect);
 
-                SqlDataReader sdr = cm.ExecuteReader();
-                while (sdr.Read())
-                {
-                    type = new TypeOf((char)sdr["Code"], sdr["Description"].ToString());
-                }
-                sdr.Close();
-                return type;
+
+                cm.Parameters.AddWithValue("@FirstName", firstName);
+                cm.Parameters.AddWithValue("@LastName", lastName);
+                cm.Parameters.AddWithValue("@Email", email);
+                cm.Parameters.AddWithValue("@Favourite", favourite);
+                cm.Parameters.AddWithValue("@Active", true);
+                cm.Parameters.AddWithValue("@Salutation", salutation);
+                cm.Parameters.AddWithValue("@Nickname", nickname);
+                cm.Parameters.AddWithValue("@Birthday", birthday);
+                cm.Parameters.AddWithValue("@Note", note);
+                cm.ExecuteNonQuery();
 
             }
+
 
         }
     }
 }
+/*
+     * public TypeOf GetType(char code)
+    {
+        using (connect)
+        {
+            TypeOf type = new TypeOf();
+            connect.Open();
+            SqlCommand cm = new SqlCommand("SELECT * FROM Type WHERE Code = @Code;", connect);
+            cm.Parameters.AddWithValue("@Code", code);
+
+            SqlDataReader sdr = cm.ExecuteReader();
+            while (sdr.Read())
+            {
+                type = new TypeOf((char)sdr["Code"], sdr["Description"].ToString());
+            }
+            sdr.Close();
+            return type;
+
+        }
+
+    }
+    */
