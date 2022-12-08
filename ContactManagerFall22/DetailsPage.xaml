@@ -8,7 +8,6 @@
         Title="DetailsPage" Height="450" Width="800">
     <Grid Margin="15,15,15,15">
         <TextBox x:Name="LName" HorizontalAlignment="Left" Margin="337,277,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-
         <TextBox x:Name="FName" HorizontalAlignment="Left" Margin="337,223,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="Email" HorizontalAlignment="Left" Margin="337,170,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="Nickname" HorizontalAlignment="Left" Margin="337,122,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
