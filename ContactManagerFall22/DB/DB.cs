@@ -91,10 +91,10 @@ namespace ContactManagerFall22.DB
 
         public List<Address> GetAdresses(int Contact_Id)
         {
+                List<Address> addresses = new List<Address>();
 
             using (connect)
             {
-                List<Address> addresses = new List<Address>();
 
                 connect.Open();
                 SqlCommand cm = new SqlCommand("SELECT * FROM Address a INNER JOIN TYPE t ON a.Type_Code = t.Code WHERE Contact_Id = @Contact_Id AND ACTIVE = 1;", connect);
