@@ -18,7 +18,16 @@
         <Label x:Name="DateUpdated" Content="DateUpdated" HorizontalAlignment="Left" Margin="9,220,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Note" Content="Note" HorizontalAlignment="Left" Margin="11,246,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Favourite" Content="Favourite" HorizontalAlignment="Left" Margin="12,272,0,0" VerticalAlignment="Top"/>
-        
+        <ScrollViewer  VerticalScrollBarVisibility="Auto" Margin="349,0,0,0">
+            <ListView Name="ContactsListItems" MouseDoubleClick="ContactsListItems_MouseDoubleClick" SelectionChanged="ContactsListItems_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Favourite" Width="150" DisplayMemberBinding="{Binding Favourite}" />
+                        <GridViewColumn Header="First Name" Width="150" DisplayMemberBinding="{Binding FirstName}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </ScrollViewer>
     </Grid>
 
 </Window>
