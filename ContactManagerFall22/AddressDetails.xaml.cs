@@ -1,6 +1,4 @@
-﻿using ContactManagerFall22.DB.Entities;
-using ContactManagerFall22.DB;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,8 +15,13 @@ using System.Windows.Shapes;
 namespace ContactManagerFall22
 {
     /// <summary>
-    /// Interaction logic for AddContactPage.xaml
+    /// Interaction logic for AddressDetails.xaml
     /// </summary>
-
- 
+    public partial class AddressDetails : Window
+    {
+        public AddressDetails()
+        {
+            InitializeComponent();
+        }
+    }
 }
