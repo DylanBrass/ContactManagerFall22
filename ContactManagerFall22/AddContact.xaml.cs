@@ -23,6 +23,9 @@ namespace ContactManagerFall22
         {
             InitializeComponent();
         }
+        public void AddressListItems_SelectionChanged()
+        {
 
+        }
     }
 }

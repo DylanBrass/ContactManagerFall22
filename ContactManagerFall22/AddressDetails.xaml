@@ -20,7 +20,7 @@
 
         <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.ColumnSpan="2">
 
-            <ListView Name="AddressesListItems" SelectionChanged="AddressListItems_SelectionChanged">
+            <ListView Name="AddressesListItems" >
 
                 <ListView.View>
                     <GridView>
@@ -49,13 +49,13 @@
             </ListView>
         </ScrollViewer>
 
-        <Button Name="Add_Address_btn" Grid.Row="1" Margin="10,10,13,10" Content="Add Address" Click="Add_Address_btn_Click" />
+        <Button Name="Add_Address_btn" Grid.Row="1" Margin="10,10,13,10" Content="Add Address"  />
 
-        <Button Name="Edit_Address_btn" Grid.Row="1" Margin="130,10,370,10" Content="Edit Address..." Click="Edit_Address_btn_Click" Grid.ColumnSpan="2"/>
+        <Button Name="Edit_Address_btn" Grid.Row="1" Margin="130,10,370,10" Content="Edit Address..." Grid.ColumnSpan="2"/>
 
-        <Button Name="Del_Address_btn" Grid.Row="1" Margin="118,10,249,10" Content="Delete Address... " Click="Del_Address_btn_Click" Grid.Column="1"/>
+        <Button Name="Del_Address_btn" Grid.Row="1" Margin="118,10,249,10" Content="Delete Address... " Grid.Column="1"/>
 
-        <Button Name="Adress_Done" Grid.Row="1" Margin="357,10,10,10" Content="Done" Click="Done" Grid.Column="1"/>
+        <Button Name="Adress_Done" Grid.Row="1" Margin="357,10,10,10" Content="Done"  Grid.Column="1"/>
 
         <Label Content="Persons Name" HorizontalAlignment="Left" Margin="0,-31,0,0" VerticalAlignment="Top" Width="133"/>
 
