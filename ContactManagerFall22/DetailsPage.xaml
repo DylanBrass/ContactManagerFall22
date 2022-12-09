@@ -18,9 +18,9 @@
         <Label x:Name="DateUpdated" Content="DateUpdated" HorizontalAlignment="Left" Margin="9,220,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Note" Content="Note" HorizontalAlignment="Left" Margin="11,246,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Favourite" Content="Favourite" HorizontalAlignment="Left" Margin="12,272,0,0" VerticalAlignment="Top"/>
-        <Button Content="Address" HorizontalAlignment="Left" Margin="452,6,0,0" VerticalAlignment="Top"/>
+        <Button Content="Address" HorizontalAlignment="Left" Margin="360,3,0,0" VerticalAlignment="Top"/>
 
-        <ListView Name="AddressQuickView" Margin="452,31,10,275">
+        <ListView Name="AddressQuickView" Margin="360,31,10,275">
             <ListView.View>
                 <GridView>
                     <GridViewColumn x:Name="StreetNumber" Header="Street Number" Width="100" DisplayMemberBinding="{Binding AddressNumber}" />
@@ -30,6 +30,25 @@
             </ListView.View>
         </ListView>
 
+        <Button Content="Phone" HorizontalAlignment="Left" Margin="360,134,0,0" VerticalAlignment="Top"/>
+
+        <ListView Name="PhoneQuickView" Margin="360,161,10,145">
+            <ListView.View>
+                <GridView>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button Content="Email" HorizontalAlignment="Left" Margin="365,270,0,0" VerticalAlignment="Top"/>
+
+        <ListView Name="EmailQuickView" Margin="360,296,10,10">
+            <ListView.View>
+                <GridView>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
 
 
     </Grid>
