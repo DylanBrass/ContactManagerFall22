@@ -7,10 +7,11 @@
         mc:Ignorable="d"
         Title="DetailsPage" Height="450" Width="800">
     <Grid Margin="15,15,15,15">
-        <TextBox x:Name="FName" HorizontalAlignment="Left" Margin="337,135,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="LName" HorizontalAlignment="Left" Margin="337,184,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="Nickname" HorizontalAlignment="Left" Margin="337,282,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="Email" HorizontalAlignment="Left" Margin="337,236,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+        <Label x:Name="FName" Content="Label" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LName" Content="Label" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Nickname" Content="Label" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Email" Content="Label" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 
