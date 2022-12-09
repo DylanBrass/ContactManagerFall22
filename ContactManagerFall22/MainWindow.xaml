@@ -19,16 +19,10 @@
 
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn x:Name="Favorite" Header="Favorite" Width="150" DisplayMemberBinding="{Binding FirstName}" />
 
-                        <GridViewColumn Header="First Name" Width="120">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Id}" Foreground="Blue"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
+                            <GridViewColumn Header="Favourite" Width="150" DisplayMemberBinding="{Binding Favourite}" />
 
-                        </GridViewColumn>
+                            <GridViewColumn Header="First Name" Width="150" DisplayMemberBinding="{Binding FirstName}" />
 
                         <GridViewColumn Header="Last Name" Width="50" DisplayMemberBinding="{Binding LastName}" />
 
