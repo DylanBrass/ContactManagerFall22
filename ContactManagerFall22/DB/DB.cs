@@ -159,6 +159,7 @@ namespace ContactManagerFall22.DB
         {
             using (connect)
             {
+                AddContact addContact = new AddContact();
                 connect.Open();
                 SqlCommand cm = new SqlCommand("INSERT INTO Contact (FirstName,LastName,Email,Favourite,Active,Salutation,Nickname,Birthday,Note) VALUES (@FirstName,@LastName,@Email,@Favourite,@Active,@Salutation,@Nickname,@Birthday,@Note);", connect);
 
@@ -173,6 +174,7 @@ namespace ContactManagerFall22.DB
                 cm.Parameters.AddWithValue("@Birthday", con.Birthday);
                 cm.Parameters.AddWithValue("@Note", con.Note);
                 cm.ExecuteNonQuery();
+
 
             }
 

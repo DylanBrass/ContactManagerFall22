@@ -23,5 +23,6 @@ namespace ContactManagerFall22
         {
             InitializeComponent();
         }
+
     }
 }
