@@ -23,7 +23,6 @@ namespace ContactManagerFall22
             contact = dbManager.GetContact(id);
 
             Nickname.Content = "Nickname: " + contact.Nickname;
-            Email.Content = "Email: " + contact.Email;
             LName.Content = "Last Name: " + contact.LastName;
             FName.Content = "First Name: " + contact.FirstName;
             Birthday.Content = "Birthday: " + contact.Birthday;
