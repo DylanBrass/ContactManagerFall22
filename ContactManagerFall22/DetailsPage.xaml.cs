@@ -34,5 +34,19 @@ namespace ContactManagerFall22
             Favourite.Content = "Favourite: " + contact.Favourite;
         }
 
+        private void AddressListItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Address_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Address_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -23,5 +23,25 @@ namespace ContactManagerFall22
         {
             InitializeComponent();
         }
+
+        private void Add_Address_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Edit_Address_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Del_Address_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Done(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
