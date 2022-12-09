@@ -38,9 +38,18 @@ namespace ContactManagerFall22.DB
                 SqlDataReader sdr = cm.ExecuteReader();
                 while (sdr.Read())
                 {
-                    Contact tempCon = new Contact(Convert.ToInt32(sdr["Id"]),
+                    Contact tempCon = Changednew Contact(Convert.ToInt32(sdr["Id"]),
                         sdr["FirstName"].ToString(),
-                        sdr["LastName"].ToString());
+                        sdr["LastName"].ToString(),
+                        sdr["DateAdded"].ToString(),
+                        sdr["LastUpdated"].ToString(),
+                        sdr["Email"].ToString(),
+                        (bool)sdr["Favourite"],
+                        (bool)sdr["Active"],
+                        sdr["Salutation"].ToString(),
+                        sdr["Nickname"].ToString(),
+                        sdr["Birthday"].ToString(),
+                        sdr["Note"].ToString());
                     contacts.Add(tempCon);
                 }
                 sdr.Close();
