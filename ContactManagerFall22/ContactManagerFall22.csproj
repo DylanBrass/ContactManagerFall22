@@ -75,6 +75,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AddressDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DetailsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -85,6 +89,9 @@
     </Page>
     <Compile Include="AddEmailPage.xaml.cs">
       <DependentUpon>AddEmailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddressDetails.xaml.cs">
+      <DependentUpon>AddressDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
