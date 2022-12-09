@@ -7,7 +7,7 @@
 
         }
 
-        public Address(int id,
+        public Address(int contact_id,
             string city,
             string country,
             string areaCode,
@@ -19,7 +19,7 @@
             char type,
             string desc)
         {
-            Id = id;
+            Contact_Id = contact_id;
             City = city;
             Country = country;
             AreaCode = areaCode;
@@ -32,7 +32,7 @@
             this.Description = desc;
         }
 
-        public int Id { get; set; }
+        public int Contact_Id { get; set; }
 
         public string City { get; set; }
         public string Country { get; set; }

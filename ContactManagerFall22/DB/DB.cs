@@ -186,9 +186,27 @@ namespace ContactManagerFall22.DB
 
         }
 
-        public void CreateAddress()
+        public void CreateAddress(Address add)
         {
+            using (connect)
+            {
+                connect.Open();
+                SqlCommand cm = new SqlCommand("INSERT INTO Address (Contact_Id,City,Country,AreaCode,Street,AddressNumber,ApartementNum,Type_Code) " +
+                    "VALUES (@Contact_Id,@City,@Country,@AreaCode,@Street,@AddressNumber,@ApartementNum,@Active,@Type_Code);", connect);
 
+
+                cm.Parameters.AddWithValue("@Contact_Id", add.Contact_Id);
+                cm.Parameters.AddWithValue("@City", add.City);
+                cm.Parameters.AddWithValue("@Country", add.Country);
+                cm.Parameters.AddWithValue("@AreaCode", add.AreaCode);
+                cm.Parameters.AddWithValue("@Street", add.Street);
+                cm.Parameters.AddWithValue("@AddressNumber", add.AddressNumber);
+                cm.Parameters.AddWithValue("@ApartementNum", add.ApartementNum);
+                cm.Parameters.AddWithValue("@Active", true);
+                cm.Parameters.AddWithValue("@Type_Code", add.type);
+                cm.ExecuteNonQuery();
+
+            }
         }
 
         public void CreatePhone()
