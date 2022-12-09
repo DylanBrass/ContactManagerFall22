@@ -20,12 +20,9 @@
                 <ListView.View>
                     <GridView>
 
-                            <GridViewColumn Header="Favourite" Width="150" DisplayMemberBinding="{Binding Favourite}" />
-
-                            <GridViewColumn Header="First Name" Width="150" DisplayMemberBinding="{Binding FirstName}" />
-
-                        <GridViewColumn Header="Last Name" Width="50" DisplayMemberBinding="{Binding LastName}" />
-
+                        <GridViewColumn Header="Favourite" Width="150" DisplayMemberBinding="{Binding Favourite}" />
+                        <GridViewColumn Header="First Name" Width="150" DisplayMemberBinding="{Binding FirstName}" />
+                        <GridViewColumn Header="Last Name" Width="150" DisplayMemberBinding="{Binding LastName}" />
 
                     </GridView>
 
