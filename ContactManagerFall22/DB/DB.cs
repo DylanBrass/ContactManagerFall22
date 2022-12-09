@@ -41,8 +41,8 @@ namespace ContactManagerFall22.DB
                     Contact tempCon = new Contact(Convert.ToInt32(sdr["Id"]),
                         sdr["FirstName"].ToString(),
                         sdr["LastName"].ToString(),
-                        sdr["DateAdded"].ToString(),
-                        sdr["LastUpdated"].ToString(),
+                        (DateTime)sdr["DateAdded"],
+                        (DateTime)sdr["LastUpdated"],
                         sdr["Email"].ToString(),
                         (bool)sdr["Favourite"],
                         (bool)sdr["Active"],
@@ -74,8 +74,8 @@ namespace ContactManagerFall22.DB
                     contact = new Contact(Convert.ToInt32(sdr["Id"]),
                         sdr["FirstName"].ToString(),
                         sdr["LastName"].ToString(),
-                        sdr["DateAdded"].ToString(),
-                        sdr["LastUpdated"].ToString(),
+                        (DateTime)sdr["DateAdded"],
+                        (DateTime)sdr["LastUpdated"],
                         sdr["Email"].ToString(),
                         (bool)sdr["Favourite"],
                         (bool)sdr["Active"],
@@ -107,14 +107,15 @@ namespace ContactManagerFall22.DB
                 {
                     Address address = new Address();
                     address = new Address(Convert.ToInt32(sdr["Id"]),
+                        Convert.ToInt32(sdr["Contact_Id"]),
                         sdr["City"].ToString(),
                         sdr["Country"].ToString(),
                         sdr["AreaCode"].ToString(),
                         sdr["Street"].ToString(),
                         Convert.ToInt32(sdr["AddressNumber"]),
                         Convert.ToInt32(sdr["ApartementNum"]),
-                        sdr["DateCreated"].ToString(),
-                        sdr["LastUpdated"].ToString(),
+                        (DateTime)sdr["DateCreated"],
+                        (DateTime)sdr["LastUpdated"],
                         (char)sdr["Type_Code"],
                         sdr["Description"].ToString());
                     addresses.Add(address);
@@ -138,15 +139,15 @@ namespace ContactManagerFall22.DB
                 SqlDataReader sdr = cm.ExecuteReader();
                 while (sdr.Read())
                 {
-                    address = new Address(Convert.ToInt32(sdr["Id"]),
+                    address = new Address(Convert.ToInt32(sdr["Id"]), Convert.ToInt32(sdr["Contact_Id"]),
                         sdr["City"].ToString(),
                         sdr["Country"].ToString(),
                         sdr["AreaCode"].ToString(),
                         sdr["Street"].ToString(),
                         Convert.ToInt32(sdr["AddressNumber"]),
                         Convert.ToInt32(sdr["ApartementNum"]),
-                        sdr["DateCreated"].ToString(),
-                        sdr["LastUpdated"].ToString(),
+                        (DateTime)sdr["DateCreated"],
+                        (DateTime)sdr["LastUpdated"],
                         (char)sdr["Type_Code"],
                         sdr["Description"].ToString());
                 }
@@ -205,7 +206,7 @@ namespace ContactManagerFall22.DB
                 cm.Parameters.AddWithValue("@AddressNumber", add.AddressNumber);
                 cm.Parameters.AddWithValue("@ApartementNum", add.ApartementNum);
                 cm.Parameters.AddWithValue("@Active", true);
-                cm.Parameters.AddWithValue("@Type_Code", add.type);
+                cm.Parameters.AddWithValue("@Type_Code", add.Type);
                 cm.ExecuteNonQuery();
 
             }

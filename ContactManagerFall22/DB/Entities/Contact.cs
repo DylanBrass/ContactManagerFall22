@@ -1,4 +1,6 @@
-﻿namespace ContactManagerFall22.DB.Entities
+﻿using System;
+
+namespace ContactManagerFall22.DB.Entities
 {
     internal class Contact
     {
@@ -16,8 +18,8 @@
         public Contact(int id,
             string firstName,
             string lastName,
-            string dateAdded,
-            string dateUpdated,
+            DateTime dateAdded,
+            DateTime dateUpdated,
             string email,
             bool favourite,
             bool active,
@@ -41,9 +43,9 @@
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public string DateAdded { get; set; }
+        public DateTime DateAdded { get; set; }
 
-        public string DateUpdated { get; set; }
+        public DateTime DateUpdated { get; set; }
 
         public string Email { get; set; }
 
