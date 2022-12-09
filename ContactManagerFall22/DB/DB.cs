@@ -169,6 +169,27 @@ namespace ContactManagerFall22.DB
 
 
         }
+
+        public void DeleteContact()
+        {
+
+        }
+
+        public void CreateAddress()
+        {
+
+        }
+
+        public void CreatePhone()
+        {
+
+        }
+
+        public void getPhone()
+        {
+
+        }
+
     }
 }
 /*
