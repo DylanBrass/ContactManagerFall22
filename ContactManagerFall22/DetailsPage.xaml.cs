@@ -32,10 +32,6 @@ namespace ContactManagerFall22
             DateUpdated.Content = "DateUpdated: " + contact.DateUpdated;
             Note.Content = "Note: " + contact.Note;
             Favourite.Content = "Favourite: " + contact.Favourite;
-
-
-
-
         }
 
     }
