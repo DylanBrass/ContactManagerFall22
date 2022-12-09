@@ -1,6 +1,7 @@
 ﻿using ContactManagerFall22.DB;
 using ContactManagerFall22.DB.Entities;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 
@@ -40,7 +41,8 @@ namespace ContactManagerFall22
 
         private void Add_Contact_btn_Click(object sender, RoutedEventArgs e)
         {
-
+            //Contact addContact = (Contact)ContactsListItems.SelectedItem;
+            //AddContactPage addContactWindow = new AddContactPage(addContact.Id);
         }
 
         private void Edit_Contact_btn_Click(object sender, RoutedEventArgs e)
