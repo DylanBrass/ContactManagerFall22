@@ -25,9 +25,6 @@ namespace ContactManagerFall22
             List<Contact> Contacts = new List<Contact>();
             Contacts = db.GetContacts();
             ContactsListItems.ItemsSource = Contacts;
-
-
-            //this.ListContacts.Items.Add(db.GetContact(12));
         }
 
         private void ContactsListItems_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -63,6 +60,11 @@ namespace ContactManagerFall22
         }
 
         private void Ex_Contact_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ContactsListItems_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
 
         }
