@@ -38,5 +38,19 @@ namespace ContactManagerFall22
 
         }
 
+        private void AddressListItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Address_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Address_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

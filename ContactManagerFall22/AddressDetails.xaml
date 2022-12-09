@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactManagerFall22"
         mc:Ignorable="d"
-        Title="AddressDetails"  Height="450" Width="640">
+        Title="AddressDetails" Height="450" Width="800">
 
     <Grid Margin="15,40,15,15">
         <Grid.ColumnDefinitions>
@@ -20,7 +20,7 @@
 
         <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.ColumnSpan="2">
 
-            <ListView Name="AddressesListItems" SelectionChanged="AddressListItems_SelectionChanged">
+            <ListView Name="AddressesListItems">
 
                 <ListView.View>
                     <GridView>
