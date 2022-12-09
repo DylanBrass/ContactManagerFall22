@@ -26,6 +26,12 @@ namespace ContactManagerFall22
             Email.Content = "Email: " + contact.Email;
             LName.Content = "Last Name: " + contact.LastName;
             FName.Content = "First Name: " + contact.FirstName;
+            Birthday.Content = "Birthday: " + contact.Birthday;
+            Salutation.Content = "Salutation: " + contact.Salutation;
+            DateAdded.Content = "DateAdded: " + contact.DateAdded;
+            DateUpdated.Content = "DateUpdated: " + contact.DateUpdated;
+            Note.Content = "Note: " + contact.Note;
+            Favourite.Content = "Favourite: " + contact.Favourite;
 
 
 
