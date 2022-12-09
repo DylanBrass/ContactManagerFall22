@@ -11,7 +11,7 @@
         <Label x:Name="FName" Content="First Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Label x:Name="LName" Content="Last Name" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Nickname" Content="NickName" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Email" Content="Email" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" MouseDoubleClick="Email_MouseDoubleClick"/>
+        <Label x:Name="Email" Content="Email" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" />
         <Label x:Name="Birthday" Content="Birthday" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Salutation" Content="Salutation" HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top"/>
         <Label x:Name="DateAdded" Content="DateAdded" HorizontalAlignment="Left" Margin="9,0,0,0" VerticalAlignment="Center"/>
