@@ -1,12 +1,62 @@
-﻿<Window x:Class="ContactManagerFall22.AddContact"
+﻿<Window x:Class="ContactManagerFall22.AddContactPage"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactManagerFall22"
         mc:Ignorable="d"
-        Title="AddContact" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="AddContactPage" Height="450" Width="800">
+	<Grid >
+		<Grid.Resources>
+			<!-- StarButton Template -->
+			<ControlTemplate x:Key="StarButton" TargetType="{x:Type RadioButton}">
+				<Canvas
+                    Width="9"
+                    Height="30" RenderTransformOrigin="0.936,1.268">
+					<Label Content="Favourite" Canvas.Bottom="-48" Margin="30,0,0,55"/>
+					<Path
+                        x:Name="Button"
+                        Width="13"
+                        Height="14"
+                        Canvas.Left="8"
+                        Canvas.Top="3"
+                          Data="F1 M 27.416,32.25L 32.910,32.25L 38,18L 43.089,32.25L 58.583,32.25L 45.679,41.494L 51.458,56L 38,48.083L 26.125,56L 30.597,41.710L 17.416,32.25 Z "
+                        Fill="Transparent"
+                        Stroke="Pink"
+                        StrokeThickness="1"
+                        Stretch="Uniform"
+                        />
+
+				</Canvas>
+
+				<ControlTemplate.Triggers>
+					<Trigger Property="IsChecked" Value="true">
+						<Setter TargetName="Button" Property="Fill" Value="Pink"/>
+					</Trigger>
+				</ControlTemplate.Triggers>
+			</ControlTemplate>
+		</Grid.Resources>
+
+		<Grid>
+
+			<Ellipse HorizontalAlignment="Center" Height="100" Margin="0,38,0,0" Stroke="Black" VerticalAlignment="Top" Width="100">
+				<Ellipse.Fill>
+					<ImageBrush ImageSource="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png"/>
+				</Ellipse.Fill>
+			</Ellipse>
+			<TextBox  x:Name="FName" HorizontalAlignment="Left" Margin="337,163,0,0" TextWrapping="Wrap" Text="First Name" VerticalAlignment="Top" Width="120"/>
+			<TextBox x:Name="LName" HorizontalAlignment="Left" Margin="337,271,0,0" TextWrapping="Wrap" Text="Last Name" VerticalAlignment="Top" Width="120"/>
+			<TextBox x:Name="email" HorizontalAlignment="Left" Margin="337,199,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="120"/>
+			<TextBox x:Name="Nickname" HorizontalAlignment="Left" Margin="337,237,0,0" TextWrapping="Wrap" Text="Nickname" VerticalAlignment="Top" Width="120"/>
+			<TextBox x:Name="Salutation" HorizontalAlignment="Left" Margin="337,237,0,0" TextWrapping="Wrap" Text="Salutation" VerticalAlignment="Top" Width="120"/>
+			<TextBox x:Name="Birthday" HorizontalAlignment="Left" Margin="337,237,0,0" TextWrapping="Wrap" Text="Birthday" VerticalAlignment="Top" Width="120"/>
+			<TextBox x:Name="PhoneNumber" HorizontalAlignment="Left" Margin="337,305,0,0" TextWrapping="Wrap" Text="Phone Number" VerticalAlignment="Top" Width="120"/>
+			<RadioButton Template="{DynamicResource StarButton}" x:Name="favourite" Content="Favourites" HorizontalAlignment="Left" Height="40" Margin="264,339,0,0" VerticalAlignment="Top" Width="146" RenderTransformOrigin="0.494,0.56"/>
+
+
+
+		</Grid>
+	</Grid>
+
+
 </Window>
