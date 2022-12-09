@@ -175,6 +175,8 @@ namespace ContactManagerFall22.DB
                 cm.Parameters.AddWithValue("@Note", con.Note);
                 cm.ExecuteNonQuery();
 
+                //public void CreateContact(Contact con)
+                //return addContact;
 
             }
 
