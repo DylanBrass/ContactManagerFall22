@@ -43,5 +43,10 @@ namespace ContactManagerFall22
         {
 
         }
+
+        private void Address_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

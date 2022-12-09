@@ -14,9 +14,19 @@ namespace ContactManagerFall22
         DBManager dbManager = new DBManager();
         public DetailsPage(int id)
         {
+            dbManager = new DBManager();
             InitializeComponent();
             Window_Loaded(id);
+            Address_Window_Loaded(id);
         }
+
+        private void Address_Window_Loaded(int id)
+        {
+            List<Address> Addresses = new List<Address>();
+            Addresses = dbManager.GetAdresses(id);
+            AddressQuickView.ItemsSource = Addresses;
+        }
+
         private void Window_Loaded(int id)
         {
             Contact contact = new Contact();
@@ -35,17 +45,13 @@ namespace ContactManagerFall22
 
         private void AddressListItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-        }
-
-        private void Address_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-
+            
         }
 
         private void Address_Click(object sender, RoutedEventArgs e)
         {
-
+            AddressDetails newWindow = new AddressDetails();
+            newWindow.ShowDialog();
         }
     }
 }
