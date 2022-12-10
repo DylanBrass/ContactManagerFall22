@@ -14,7 +14,6 @@ namespace ContactManagerFall22
         DBManager dbManager = new DBManager();
         public DetailsPage(int id)
         {
-            dbManager = new DBManager();
             InitializeComponent();
             Window_Loaded(id);
             Address_Window_Loaded(id);
@@ -45,7 +44,7 @@ namespace ContactManagerFall22
 
         private void AddressListItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+
         }
 
         private void Address_Click(object sender, RoutedEventArgs e)

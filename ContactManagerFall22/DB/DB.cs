@@ -18,7 +18,7 @@ namespace ContactManagerFall22.DB
         //GetAddress
 
         SqlConnection connect;
-        string ConString = ConfigurationManager.ConnectionStrings["ContactConnection"].ConnectionString;
+        readonly string ConString = ConfigurationManager.ConnectionStrings["ContactConnection"].ConnectionString;
 
         public DBManager()
         {
@@ -59,8 +59,10 @@ namespace ContactManagerFall22.DB
 
         public Contact GetContact(int id)
         {
+
             using (connect)
             {
+
                 Contact contact = new Contact();
                 connect.Open();
                 SqlCommand cm = new SqlCommand("SELECT * FROM Contact WHERE Id = @Id AND ACTIVE = 1;", connect);
@@ -91,10 +93,12 @@ namespace ContactManagerFall22.DB
 
         public List<Address> GetAdresses(int Contact_Id)
         {
-                List<Address> addresses = new List<Address>();
+            List<Address> addresses = new List<Address>();
 
             using (connect)
             {
+                connect = new SqlConnection(ConString);
+
 
                 connect.Open();
                 SqlCommand cm = new SqlCommand("SELECT * FROM Address a INNER JOIN TYPE t ON a.Type_Code = t.Code WHERE Contact_Id = @Contact_Id AND ACTIVE = 1;", connect);

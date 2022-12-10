@@ -45,9 +45,9 @@ namespace ContactManagerFall22.DB.Entities
 
         public string Street { get; set; }
 
-        public int AddressNumber { get; set; }
+        public int? AddressNumber { get; set; }
 
-        public int ApartementNum { get; set; }
+        public int? ApartementNum { get; set; }
 
         public DateTime DateCreated { get; set; }
 
