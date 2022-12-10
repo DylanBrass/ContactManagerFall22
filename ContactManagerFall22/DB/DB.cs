@@ -3,10 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Net;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Windows.Controls.Primitives;
 
 namespace ContactManagerFall22.DB
 {
@@ -41,14 +37,14 @@ namespace ContactManagerFall22.DB
                     Contact tempCon = new Contact(Convert.ToInt32(sdr["Id"]),
                         sdr["FirstName"].ToString(),
                         sdr["LastName"].ToString(),
-                        sdr["DateAdded"].ToString(),
-                        sdr["LastUpdated"].ToString(),
+                        (DateTime)sdr["DateAdded"],
+                        (DateTime)sdr["LastUpdated"],
                         sdr["Email"].ToString(),
                         (bool)sdr["Favourite"],
                         (bool)sdr["Active"],
                         sdr["Salutation"].ToString(),
                         sdr["Nickname"].ToString(),
-                        sdr["Birthday"].ToString(),
+                       (DateTime)sdr["Birthday"],
                         sdr["Note"].ToString());
 
                     contacts.Add(tempCon);
@@ -77,14 +73,14 @@ namespace ContactManagerFall22.DB
                     contact = new Contact(Convert.ToInt32(sdr["Id"]),
                         sdr["FirstName"].ToString(),
                         sdr["LastName"].ToString(),
-                        sdr["DateAdded"].ToString(),
-                        sdr["LastUpdated"].ToString(),
+                        (DateTime)sdr["DateAdded"],
+                        (DateTime)sdr["LastUpdated"],
                         sdr["Email"].ToString(),
                         (bool)sdr["Favourite"],
                         (bool)sdr["Active"],
                         sdr["Salutation"].ToString(),
                         sdr["Nickname"].ToString(),
-                        sdr["Birthday"].ToString(),
+                        (DateTime)sdr["Birthday"],
                         sdr["Note"].ToString());
                 }
                 sdr.Close();

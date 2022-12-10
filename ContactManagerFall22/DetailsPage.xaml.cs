@@ -34,10 +34,10 @@ namespace ContactManagerFall22
             Nickname.Content = "Nickname: " + contact.Nickname;
             LName.Content = "Last Name: " + contact.LastName;
             FName.Content = "First Name: " + contact.FirstName;
-            Birthday.Content = "Birthday: " + contact.Birthday;
+            Birthday.Content = "Birthday: " + contact.Birthday.ToShortDateString();
             Salutation.Content = "Salutation: " + contact.Salutation;
-            DateAdded.Content = "DateAdded: " + contact.DateAdded;
-            DateUpdated.Content = "DateUpdated: " + contact.DateUpdated;
+            DateAdded.Content = "DateAdded: " + contact.DateAdded.ToShortDateString();
+            DateUpdated.Content = "DateUpdated: " + contact.DateUpdated.ToShortDateString();
             Note.Content = "Note: " + contact.Note;
             Favourite.Content = "Favourite: " + contact.Favourite;
         }
