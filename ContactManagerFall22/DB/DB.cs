@@ -117,6 +117,7 @@ namespace ContactManagerFall22.DB
                         sdr["AreaCode"].ToString(),
                         sdr["Street"].ToString(),
                         int.Parse(sdr["AddressNumber"].ToString()),
+                        //To avoid DBNull Thanks Brendan !
                         sdr["ApartementNum"] == DBNull.Value ? default(int) : int.Parse(sdr["ApartementNum"].ToString()),
                         (DateTime)sdr["DateCreated"],
                         (DateTime)sdr["LastUpdated"],
