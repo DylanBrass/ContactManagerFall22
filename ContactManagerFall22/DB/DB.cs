@@ -116,11 +116,11 @@ namespace ContactManagerFall22.DB
                         sdr["Country"].ToString(),
                         sdr["AreaCode"].ToString(),
                         sdr["Street"].ToString(),
-                        Convert.ToInt32(sdr["AddressNumber"]),
-                        Convert.ToInt32(sdr["ApartementNum"]),
+                        int.Parse(sdr["AddressNumber"].ToString()),
+                        sdr["ApartementNum"] == DBNull.Value ? default(int) : int.Parse(sdr["ApartementNum"].ToString()),
                         (DateTime)sdr["DateCreated"],
                         (DateTime)sdr["LastUpdated"],
-                        (char)sdr["Type_Code"],
+                        char.Parse(sdr["Type_Code"].ToString()),
                         sdr["Description"].ToString());
                     addresses.Add(address);
                 }

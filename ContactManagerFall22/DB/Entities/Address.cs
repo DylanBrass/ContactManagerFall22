@@ -4,18 +4,15 @@ namespace ContactManagerFall22.DB.Entities
 {
     internal class Address
     {
-        public Address()
-        {
-
-        }
+        public Address() {}
 
         public Address(int id, int contact_id,
             string city,
             string country,
             string areaCode,
             string street,
-            int addressNumber,
-            int apartementNum,
+            int? addressNumber,
+            int? apartementNum,
             DateTime dateCreated,
             DateTime lastUpdated,
             char type,
