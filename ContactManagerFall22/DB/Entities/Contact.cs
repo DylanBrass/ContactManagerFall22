@@ -18,8 +18,8 @@ namespace ContactManagerFall22.DB.Entities
         public Contact(int id,
             string firstName,
             string lastName,
-            DateTime dateAdded,
-            DateTime dateUpdated,
+            string dateAdded,
+            string dateUpdated,
             string email,
             bool favourite,
             bool active,
@@ -43,9 +43,9 @@ namespace ContactManagerFall22.DB.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public DateTime DateAdded { get; set; }
+        public string DateAdded { get; set; }
 
-        public DateTime DateUpdated { get; set; }
+        public string DateUpdated { get; set; }
 
         public string Email { get; set; }
 

@@ -41,8 +41,8 @@ namespace ContactManagerFall22.DB
                     Contact tempCon = new Contact(Convert.ToInt32(sdr["Id"]),
                         sdr["FirstName"].ToString(),
                         sdr["LastName"].ToString(),
-                        (DateTime)sdr["DateAdded"],
-                        (DateTime)sdr["LastUpdated"],
+                        sdr["DateAdded"].ToString(),
+                        sdr["LastUpdated"].ToString(),
                         sdr["Email"].ToString(),
                         (bool)sdr["Favourite"],
                         (bool)sdr["Active"],
@@ -50,6 +50,7 @@ namespace ContactManagerFall22.DB
                         sdr["Nickname"].ToString(),
                         sdr["Birthday"].ToString(),
                         sdr["Note"].ToString());
+
                     contacts.Add(tempCon);
                 }
                 sdr.Close();
@@ -76,8 +77,8 @@ namespace ContactManagerFall22.DB
                     contact = new Contact(Convert.ToInt32(sdr["Id"]),
                         sdr["FirstName"].ToString(),
                         sdr["LastName"].ToString(),
-                        (DateTime)sdr["DateAdded"],
-                        (DateTime)sdr["LastUpdated"],
+                        sdr["DateAdded"].ToString(),
+                        sdr["LastUpdated"].ToString(),
                         sdr["Email"].ToString(),
                         (bool)sdr["Favourite"],
                         (bool)sdr["Active"],
