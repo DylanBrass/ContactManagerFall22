@@ -23,11 +23,18 @@ namespace ContactManagerFall22
             List<Address> Addresses = new List<Address>();
             Addresses = dbManager.GetAdresses(id);
             AddressQuickView.ItemsSource = Addresses;
+
             dbManager = new DBManager();
 
             List<Phone> phones = new List<Phone>();
             phones = dbManager.GetPhones(id);
             PhoneQuickView.ItemsSource = phones;
+
+            dbManager = new DBManager();
+
+            List<Email> emails = new List<Email>();
+            emails = dbManager.GetEmails(id);
+            EmailQuickView.ItemsSource = emails;
         }
 
         private void Window_Loaded(int id)

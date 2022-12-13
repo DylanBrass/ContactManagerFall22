@@ -248,7 +248,36 @@ namespace ContactManagerFall22.DB
                 return phones;
             }
         }
+        public List<Email> GetEmails(int Contact_Id)
+        {
+            List<Email> emails = new List<Email>();
+            Email email;
+            using (connect)
+            {
+                connect.Open();
 
+                SqlCommand cm = new SqlCommand("SELECT * FROM Email e INNER JOIN TYPE t ON e.Type_Code = t.Code WHERE Contact_Id = @Contact_Id AND ACTIVE = 1;", connect);
+
+                cm.Parameters.AddWithValue("@Contact_Id", Contact_Id);
+                SqlDataReader sdr = cm.ExecuteReader();
+
+                while (sdr.Read())
+                {
+                    email = new Email(Convert.ToInt32(sdr["Id"]),
+                        Convert.ToInt32(sdr["Contact_Id"]),
+                        sdr["Email"].ToString(),
+                        Convert.ToChar(sdr["Type_Code"]),
+                        sdr["Description"].ToString(),
+                        (DateTime)sdr["DateCreated"],
+                        (DateTime)sdr["LastUpdated"]);
+
+                    emails.Add(email);
+                }
+                sdr.Close();
+
+                return emails;
+            }
+        }
     }
 }
 /*

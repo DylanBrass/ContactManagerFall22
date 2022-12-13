@@ -36,7 +36,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn x:Name="PhoneNumber" Header="Phone Number" Width="100" DisplayMemberBinding="{Binding PhoneNumber}" />
-                    <GridViewColumn x:Name="Type" Header="Label" Width="100" DisplayMemberBinding="{Binding Desc}" />
+                    <GridViewColumn x:Name="Type_Phone" Header="Label" Width="100" DisplayMemberBinding="{Binding Desc}" />
                 </GridView>
             </ListView.View>
         </ListView>
@@ -46,7 +46,8 @@
         <ListView Name="EmailQuickView" Margin="360,296,10,10">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn x:Name="Email" Header="Email" Width="100" DisplayMemberBinding="{Binding Email}" />
+                    <GridViewColumn x:Name="Email" Header="Email" Width="100" DisplayMemberBinding="{Binding EmailAddress}" />
+                    <GridViewColumn x:Name="Type_Email" Header="Label" Width="100" DisplayMemberBinding="{Binding Desc}" />
                 </GridView>
             </ListView.View>
         </ListView>
