@@ -44,7 +44,7 @@ namespace ContactManagerFall22.DB
                         (bool)sdr["Active"],
                         sdr["Salutation"].ToString(),
                         sdr["Nickname"].ToString(),
-                       (DateTime)sdr["Birthday"],
+                        (DateTime)sdr["Birthday"],
                         sdr["Note"].ToString());
 
                     contacts.Add(tempCon);
@@ -113,12 +113,12 @@ namespace ContactManagerFall22.DB
                         sdr["Country"].ToString(),
                         sdr["AreaCode"].ToString(),
                         sdr["Street"].ToString(),
-                        int.Parse(sdr["AddressNumber"].ToString()),
+                        sdr["AddressNumber"] == DBNull.Value ? default(int) : int.Parse(sdr["AddressNumber"].ToString()),
                         //To avoid DBNull Thanks Brendan !
                         sdr["ApartementNum"] == DBNull.Value ? default(int) : int.Parse(sdr["ApartementNum"].ToString()),
                         (DateTime)sdr["DateCreated"],
                         (DateTime)sdr["LastUpdated"],
-                        char.Parse(sdr["Type_Code"].ToString()),
+                        Convert.ToChar(sdr["Type_Code"]),
                         sdr["Description"].ToString());
                     addresses.Add(address);
                 }
@@ -146,11 +146,11 @@ namespace ContactManagerFall22.DB
                         sdr["Country"].ToString(),
                         sdr["AreaCode"].ToString(),
                         sdr["Street"].ToString(),
-                        Convert.ToInt32(sdr["AddressNumber"]),
-                        Convert.ToInt32(sdr["ApartementNum"]),
+                        sdr["AddressNumber"] == DBNull.Value ? default(int) : int.Parse(sdr["AddressNumber"].ToString()),
+                        sdr["ApartementNum"] == DBNull.Value ? default(int) : int.Parse(sdr["ApartementNum"].ToString()),
                         (DateTime)sdr["DateCreated"],
                         (DateTime)sdr["LastUpdated"],
-                        (char)sdr["Type_Code"],
+                        Convert.ToChar(sdr["Type_Code"]),
                         sdr["Description"].ToString());
                 }
                 sdr.Close();
@@ -210,7 +210,6 @@ namespace ContactManagerFall22.DB
                 cm.Parameters.AddWithValue("@Active", true);
                 cm.Parameters.AddWithValue("@Type_Code", add.Type);
                 cm.ExecuteNonQuery();
-
             }
         }
 
@@ -219,9 +218,35 @@ namespace ContactManagerFall22.DB
 
         }
 
-        public void getPhone()
+        public List<Phone> GetPhones(int Contact_Id)
         {
+            List<Phone> phones = new List<Phone>();
+            Phone phone;
+            using (connect)
+            {
+                connect.Open();
 
+                SqlCommand cm = new SqlCommand("SELECT * FROM Phone p INNER JOIN TYPE t ON p.Type_Code = t.Code WHERE Contact_Id = @Contact_Id AND ACTIVE = 1;", connect);
+
+                cm.Parameters.AddWithValue("@Contact_Id", Contact_Id);
+                SqlDataReader sdr = cm.ExecuteReader();
+
+                while (sdr.Read())
+                {
+                    phone = new Phone(Convert.ToInt32(sdr["Id"]),
+                        Convert.ToInt32(sdr["Contact_Id"]),
+                        sdr["Phone_Number"].ToString(),
+                        Convert.ToChar(sdr["Type_Code"]),
+                        sdr["Description"].ToString(),
+                        (DateTime)sdr["DateCreated"],
+                        (DateTime)sdr["LastUpdated"]);
+
+                    phones.Add(phone);
+                }
+                sdr.Close();
+
+                return phones;
+            }
         }
 
     }

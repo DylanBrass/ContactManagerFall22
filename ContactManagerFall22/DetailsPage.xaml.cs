@@ -3,7 +3,6 @@ using ContactManagerFall22.DB.Entities;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace ContactManagerFall22
 {    /// <summary>
@@ -24,6 +23,11 @@ namespace ContactManagerFall22
             List<Address> Addresses = new List<Address>();
             Addresses = dbManager.GetAdresses(id);
             AddressQuickView.ItemsSource = Addresses;
+            dbManager = new DBManager();
+
+            List<Phone> phones = new List<Phone>();
+            phones = dbManager.GetPhones(id);
+            PhoneQuickView.ItemsSource = phones;
         }
 
         private void Window_Loaded(int id)

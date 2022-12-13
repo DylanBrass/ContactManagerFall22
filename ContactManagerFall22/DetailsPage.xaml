@@ -35,7 +35,8 @@
         <ListView Name="PhoneQuickView" Margin="360,161,10,145">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn x:Name="Phone_Number" Header="Phone Number" Width="100" DisplayMemberBinding="{Binding Phone_Number}" />
+                    <GridViewColumn x:Name="PhoneNumber" Header="Phone Number" Width="100" DisplayMemberBinding="{Binding PhoneNumber}" />
+                    <GridViewColumn x:Name="Type" Header="Label" Width="100" DisplayMemberBinding="{Binding Desc}" />
                 </GridView>
             </ListView.View>
         </ListView>

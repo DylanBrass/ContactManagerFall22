@@ -1,7 +1,6 @@
 ﻿using ContactManagerFall22.DB;
 using ContactManagerFall22.DB.Entities;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 
@@ -71,3 +70,7 @@ namespace ContactManagerFall22
         }
     }
 }
+
+
+//To make the favourite on to create a list and group by with lambda
+//So get all contacts and then group by true and false for favorite from the contact

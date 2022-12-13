@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ContactManagerFall22.DB.Entities
 {
@@ -12,6 +8,7 @@ namespace ContactManagerFall22.DB.Entities
           int contact_Id,
           string phoneNumber,
           char type,
+          string desc,
           DateTime dateCreated,
           DateTime lastUpdated)
         {
@@ -19,6 +16,7 @@ namespace ContactManagerFall22.DB.Entities
             Contact_Id = contact_Id;
             PhoneNumber = phoneNumber;
             Type = type;
+            Desc = desc;
             DateCreated = dateCreated;
             LastUpdated = lastUpdated;
         }
@@ -29,6 +27,8 @@ namespace ContactManagerFall22.DB.Entities
         public string PhoneNumber { get; set; }
 
         public char Type { get; set; }
+
+        public string Desc { get; set; }
 
         public DateTime DateCreated { get; set; }
 
