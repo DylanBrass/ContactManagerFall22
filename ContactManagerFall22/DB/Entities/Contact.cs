@@ -49,7 +49,7 @@ namespace ContactManagerFall22.DB.Entities
 
         public string Email { get; set; }
 
-        public bool Favourite { get; set; }
+        public bool? Favourite { get; set; }
 
         public bool Active { get; set; }
 

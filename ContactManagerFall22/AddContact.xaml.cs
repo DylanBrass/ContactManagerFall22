@@ -16,6 +16,7 @@ namespace ContactManagerFall22
         {
             //Contact addingContact = new Contact(FName.Text,LName.Text);
             Contact addingContact = new Contact();
+            addingContact.Favourite = favourite.IsChecked;
         }
     }
 }
