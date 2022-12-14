@@ -24,8 +24,9 @@ namespace ContactManagerFall22
         {
             InitializeComponent();
         }
-        public void AddContact_Button()
+        public void AddContact_Button(object sender, RoutedEventArgs e)
         {
+            //Contact addingContact = new Contact(FName.Text,LName.Text);
             Contact addingContact = new Contact();
         }
     }
