@@ -51,6 +51,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="41,384,0,0" VerticalAlignment="Top" Click="Delete_Contact"/>
 
 
     </Grid>

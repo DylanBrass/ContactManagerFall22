@@ -10,9 +10,11 @@ namespace ContactManagerFall22
      /// </summary>
     public partial class DetailsPage : Window
     {
+        int Id;
         DBManager dbManager = new DBManager();
         public DetailsPage(int id)
         {
+            Id = id;
             InitializeComponent();
             Window_Loaded(id);
             Address_Window_Loaded(id);
@@ -62,6 +64,11 @@ namespace ContactManagerFall22
         {
             AddressDetails newWindow = new AddressDetails();
             newWindow.ShowDialog();
+        }
+
+        private void Delete_Contact(object sender, RoutedEventArgs e)
+        {
+            dbManager.DeleteContact(Id);
         }
     }
 }

@@ -158,65 +158,6 @@ namespace ContactManagerFall22.DB
             }
         }
 
-        public void CreateContact(Contact con)
-        {
-            using (connect)
-            {
-                AddContact addContact = new AddContact();
-                connect.Open();
-                SqlCommand cm = new SqlCommand("INSERT INTO Contact (FirstName,LastName,Email,Favourite,Active,Salutation,Nickname,Birthday,Note) VALUES (@FirstName,@LastName,@Email,@Favourite,@Active,@Salutation,@Nickname,@Birthday,@Note);", connect);
-
-
-                cm.Parameters.AddWithValue("@FirstName", con.FirstName);
-                cm.Parameters.AddWithValue("@LastName", con.LastName);
-                cm.Parameters.AddWithValue("@Email", con.Email);
-                cm.Parameters.AddWithValue("@Favourite", con.Favourite);
-                cm.Parameters.AddWithValue("@Active", true);
-                cm.Parameters.AddWithValue("@Salutation", con.Salutation);
-                cm.Parameters.AddWithValue("@Nickname", con.Nickname);
-                cm.Parameters.AddWithValue("@Birthday", con.Birthday);
-                cm.Parameters.AddWithValue("@Note", con.Note);
-                cm.ExecuteNonQuery();
-
-                //public void CreateContact(Contact con)
-                //return addContact;
-
-            }
-
-
-        }
-
-        public void DeleteContact()
-        {
-
-        }
-
-        public void CreateAddress(Address add)
-        {
-            using (connect)
-            {
-                connect.Open();
-                SqlCommand cm = new SqlCommand("INSERT INTO Address (Contact_Id,City,Country,AreaCode,Street,AddressNumber,ApartementNum,Type_Code) " +
-                    "VALUES (@Contact_Id,@City,@Country,@AreaCode,@Street,@AddressNumber,@ApartementNum,@Active,@Type_Code);", connect);
-
-
-                cm.Parameters.AddWithValue("@Contact_Id", add.Contact_Id);
-                cm.Parameters.AddWithValue("@City", add.City);
-                cm.Parameters.AddWithValue("@Country", add.Country);
-                cm.Parameters.AddWithValue("@AreaCode", add.AreaCode);
-                cm.Parameters.AddWithValue("@Street", add.Street);
-                cm.Parameters.AddWithValue("@AddressNumber", add.AddressNumber);
-                cm.Parameters.AddWithValue("@ApartementNum", add.ApartementNum);
-                cm.Parameters.AddWithValue("@Active", true);
-                cm.Parameters.AddWithValue("@Type_Code", add.Type);
-                cm.ExecuteNonQuery();
-            }
-        }
-
-        public void CreatePhone()
-        {
-
-        }
 
         public List<Phone> GetPhones(int Contact_Id)
         {
@@ -278,6 +219,104 @@ namespace ContactManagerFall22.DB
                 return emails;
             }
         }
+
+
+        public void CreateContact(Contact con)
+        {
+            using (connect)
+            {
+                AddContact addContact = new AddContact();
+                connect.Open();
+                SqlCommand cm = new SqlCommand("INSERT INTO Contact (FirstName,LastName,Email,Favourite,Active,Salutation,Nickname,Birthday,Note) VALUES (@FirstName,@LastName,@Email,@Favourite,@Active,@Salutation,@Nickname,@Birthday,@Note);", connect);
+
+
+                cm.Parameters.AddWithValue("@FirstName", con.FirstName);
+                cm.Parameters.AddWithValue("@LastName", con.LastName);
+                cm.Parameters.AddWithValue("@Email", con.Email);
+                cm.Parameters.AddWithValue("@Favourite", con.Favourite);
+                cm.Parameters.AddWithValue("@Active", true);
+                cm.Parameters.AddWithValue("@Salutation", con.Salutation);
+                cm.Parameters.AddWithValue("@Nickname", con.Nickname);
+                cm.Parameters.AddWithValue("@Birthday", con.Birthday);
+                cm.Parameters.AddWithValue("@Note", con.Note);
+                cm.ExecuteNonQuery();
+
+                //public void CreateContact(Contact con)
+                //return addContact;
+
+            }
+
+
+        }
+
+        public void CreateAddress(Address add)
+        {
+            using (connect)
+            {
+                connect.Open();
+                SqlCommand cm = new SqlCommand("INSERT INTO Address (Contact_Id,City,Country,AreaCode,Street,AddressNumber,ApartementNum,Type_Code) " +
+                    "VALUES (@Contact_Id,@City,@Country,@AreaCode,@Street,@AddressNumber,@ApartementNum,@Active,@Type_Code);", connect);
+
+
+                cm.Parameters.AddWithValue("@Contact_Id", add.Contact_Id);
+                cm.Parameters.AddWithValue("@City", add.City);
+                cm.Parameters.AddWithValue("@Country", add.Country);
+                cm.Parameters.AddWithValue("@AreaCode", add.AreaCode);
+                cm.Parameters.AddWithValue("@Street", add.Street);
+                cm.Parameters.AddWithValue("@AddressNumber", add.AddressNumber);
+                cm.Parameters.AddWithValue("@ApartementNum", add.ApartementNum);
+                cm.Parameters.AddWithValue("@Active", true);
+                cm.Parameters.AddWithValue("@Type_Code", add.Type);
+                cm.ExecuteNonQuery();
+            }
+        }
+
+        public void CreatePhone()
+        {
+
+        }
+
+        public void CreateAddress()
+        {
+
+        }
+
+        public void CreacteEmail()
+        {
+
+        }
+
+
+        public void DeleteContact(int id)
+        {
+            SqlCommand cm = new SqlCommand("UPDATE Contact SET Active = False WHERE Id = @Id;");
+            DeleteAddress(id);
+            DeleteEmail(id);
+            DeletePhone(id);
+            cm.Parameters.AddWithValue("@Id", id);
+            if (cm.ExecuteNonQuery() > 0)
+            {
+                cm.ExecuteNonQuery();
+            }
+        }
+
+        public void DeleteAddress(int contact_id)
+        {
+            SqlCommand cm = new SqlCommand("UPDATE Address SET Active = False WHERE Contact_Id = @Contact_Id;");
+
+        }
+        public void DeleteEmail(int contact_id)
+        {
+            SqlCommand cm = new SqlCommand("UPDATE Email SET Active = False WHERE Contact_Id = @Contact_Id;");
+
+        }
+        public void DeletePhone(int contact_id)
+        {
+            SqlCommand cm = new SqlCommand("UPDATE Phoen SET Active = False WHERE Contact_Id = @Contact_Id;");
+
+        }
+
+
     }
 }
 /*
