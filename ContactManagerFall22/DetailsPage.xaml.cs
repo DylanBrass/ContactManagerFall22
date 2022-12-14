@@ -70,7 +70,15 @@ namespace ContactManagerFall22
         {
             dbManager = new DBManager();
             dbManager.DeleteContact(Id);
+            this.Close();
 
+        }
+
+
+        private void Window_Closed(object sender, System.EventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
         }
     }
 }

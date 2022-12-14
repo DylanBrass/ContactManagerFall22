@@ -26,7 +26,7 @@ namespace ContactManagerFall22.DB
             using (connect)
             {
                 connect.Open();
-                SqlCommand cm = new SqlCommand("SELECT * FROM Contact", connect);
+                SqlCommand cm = new SqlCommand("SELECT * FROM Contact WHERE Active = 1", connect);
 
 
 
@@ -62,7 +62,7 @@ namespace ContactManagerFall22.DB
 
                 Contact contact = new Contact();
                 connect.Open();
-                SqlCommand cm = new SqlCommand("SELECT * FROM Contact WHERE Id = @Id AND ACTIVE = 1;", connect);
+                SqlCommand cm = new SqlCommand("SELECT * FROM Contact WHERE Id = @Id AND Active = 1;", connect);
 
                 cm.Parameters.AddWithValue("@Id", id);
 
@@ -98,7 +98,7 @@ namespace ContactManagerFall22.DB
 
 
                 connect.Open();
-                SqlCommand cm = new SqlCommand("SELECT * FROM Address a INNER JOIN TYPE t ON a.Type_Code = t.Code WHERE Contact_Id = @Contact_Id AND ACTIVE = 1;", connect);
+                SqlCommand cm = new SqlCommand("SELECT * FROM Address a INNER JOIN TYPE t ON a.Type_Code = t.Code WHERE Contact_Id = @Contact_Id AND Active = 1;", connect);
 
                 cm.Parameters.AddWithValue("@Contact_Id", Contact_Id);
 
@@ -292,14 +292,12 @@ namespace ContactManagerFall22.DB
             using (connect)
             {
                 connect.Open();
-                SqlCommand cm = new SqlCommand("UPDATE Contact SET Active = False WHERE Id = @Id;", connect);
-                connect.Close();
+                SqlCommand cm = new SqlCommand("UPDATE Contact SET Active = 0 WHERE Id = @Id;", connect);
                 DeleteAddress(id);
                 DeleteEmail(id);
                 DeletePhone(id);
                 connect = new SqlConnection(ConString);
 
-                connect.Open();
 
                 cm.Parameters.AddWithValue("@Id", id);
                 cm.ExecuteNonQuery();
@@ -314,7 +312,9 @@ namespace ContactManagerFall22.DB
             {
                 connect.Open();
 
-                SqlCommand cm = new SqlCommand("UPDATE Address SET Active = False WHERE Contact_Id = @Contact_Id;", connect);
+                SqlCommand cm = new SqlCommand("UPDATE Address SET Active = 0 WHERE Contact_Id = @Contact_Id;", connect);
+                cm.Parameters.AddWithValue("@Contact_Id", contact_id);
+                cm.ExecuteNonQuery();
             }
 
         }
@@ -326,7 +326,9 @@ namespace ContactManagerFall22.DB
             {
                 connect.Open();
 
-                SqlCommand cm = new SqlCommand("UPDATE Email SET Active = False WHERE Contact_Id = @Contact_Id;", connect);
+                SqlCommand cm = new SqlCommand("UPDATE Email SET Active = 0 WHERE Contact_Id = @Contact_Id;", connect);
+                cm.Parameters.AddWithValue("@Contact_Id", contact_id);
+                cm.ExecuteNonQuery();
             }
 
         }
@@ -338,7 +340,9 @@ namespace ContactManagerFall22.DB
             {
                 connect.Open();
 
-                SqlCommand cm = new SqlCommand("UPDATE Phoen SET Active = False WHERE Contact_Id = @Contact_Id;", connect);
+                SqlCommand cm = new SqlCommand("UPDATE Phone SET Active = 0 WHERE Contact_Id = @Contact_Id;", connect);
+                cm.Parameters.AddWithValue("@Contact_Id", contact_id);
+                cm.ExecuteNonQuery();
             }
         }
 

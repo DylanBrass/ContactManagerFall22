@@ -27,6 +27,13 @@ namespace ContactManagerFall22
             ContactsListItems.ItemsSource = Contacts;
         }
 
+        public void Refresh()
+        {
+            MainWindow newWin = new MainWindow();
+            newWin.Show();
+            this.Close();
+        }
+
         private void ContactsListItems_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Contact selectedContact = (Contact)ContactsListItems.SelectedItem;
@@ -35,8 +42,10 @@ namespace ContactManagerFall22
             {
                 DetailsPage newWindow = new DetailsPage(selectedContact.Id);
                 newWindow.ShowDialog();
+                this.Close();
             }
         }
+
 
         private void Add_Contact_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -68,6 +77,8 @@ namespace ContactManagerFall22
         {
 
         }
+
+
     }
 }
 
