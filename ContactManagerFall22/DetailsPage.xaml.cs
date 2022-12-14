@@ -68,7 +68,9 @@ namespace ContactManagerFall22
 
         private void Delete_Contact(object sender, RoutedEventArgs e)
         {
+            dbManager = new DBManager();
             dbManager.DeleteContact(Id);
+
         }
     }
 }

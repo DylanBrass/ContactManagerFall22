@@ -289,31 +289,57 @@ namespace ContactManagerFall22.DB
 
         public void DeleteContact(int id)
         {
-            SqlCommand cm = new SqlCommand("UPDATE Contact SET Active = False WHERE Id = @Id;");
-            DeleteAddress(id);
-            DeleteEmail(id);
-            DeletePhone(id);
-            cm.Parameters.AddWithValue("@Id", id);
-            if (cm.ExecuteNonQuery() > 0)
+            using (connect)
             {
+                connect.Open();
+                SqlCommand cm = new SqlCommand("UPDATE Contact SET Active = False WHERE Id = @Id;", connect);
+                connect.Close();
+                DeleteAddress(id);
+                DeleteEmail(id);
+                DeletePhone(id);
+                connect = new SqlConnection(ConString);
+
+                connect.Open();
+
+                cm.Parameters.AddWithValue("@Id", id);
                 cm.ExecuteNonQuery();
             }
         }
 
         public void DeleteAddress(int contact_id)
         {
-            SqlCommand cm = new SqlCommand("UPDATE Address SET Active = False WHERE Contact_Id = @Contact_Id;");
+            connect = new SqlConnection(ConString);
+
+            using (connect)
+            {
+                connect.Open();
+
+                SqlCommand cm = new SqlCommand("UPDATE Address SET Active = False WHERE Contact_Id = @Contact_Id;", connect);
+            }
 
         }
         public void DeleteEmail(int contact_id)
         {
-            SqlCommand cm = new SqlCommand("UPDATE Email SET Active = False WHERE Contact_Id = @Contact_Id;");
+            connect = new SqlConnection(ConString);
+
+            using (connect)
+            {
+                connect.Open();
+
+                SqlCommand cm = new SqlCommand("UPDATE Email SET Active = False WHERE Contact_Id = @Contact_Id;", connect);
+            }
 
         }
         public void DeletePhone(int contact_id)
         {
-            SqlCommand cm = new SqlCommand("UPDATE Phoen SET Active = False WHERE Contact_Id = @Contact_Id;");
+            connect = new SqlConnection(ConString);
 
+            using (connect)
+            {
+                connect.Open();
+
+                SqlCommand cm = new SqlCommand("UPDATE Phoen SET Active = False WHERE Contact_Id = @Contact_Id;", connect);
+            }
         }
 
 
