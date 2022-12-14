@@ -34,6 +34,7 @@
                         <Setter TargetName="Button" Property="Fill" Value="Pink"/>
                     </Trigger>
                 </ControlTemplate.Triggers>
+
             </ControlTemplate>
         </Grid.Resources>
 
@@ -44,15 +45,15 @@
                 <ImageBrush ImageSource="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png"/>
             </Ellipse.Fill>
         </Ellipse>-->
-            <TextBox  x:Name="FName" HorizontalAlignment="Center" Margin="0,59,0,0" TextWrapping="Wrap" Text="First Name" VerticalAlignment="Top" Width="120"/>
+            <TextBox  x:Name="FName" HorizontalAlignment="Left" Margin="337,59,0,0" TextWrapping="Wrap" Text="First Name" VerticalAlignment="Top" Width="120"/>
             <TextBox x:Name="LName" HorizontalAlignment="Left" Margin="337,98,0,0" TextWrapping="Wrap" Text="Last Name" VerticalAlignment="Top" Width="120"/>
             <TextBox x:Name="email" HorizontalAlignment="Left" Margin="337,217,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="120"/>
             <TextBox x:Name="Nickname" HorizontalAlignment="Left" Margin="337,138,0,0" TextWrapping="Wrap" Text="Nickname" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="Salutation" HorizontalAlignment="Center" Margin="0,295,0,0" TextWrapping="Wrap" Text="Salutation" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="Birthday" HorizontalAlignment="Left" Margin="337,256,0,0" TextWrapping="Wrap" Text="Birthday" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="PhoneNumber" HorizontalAlignment="Center" Margin="0,177,0,0" TextWrapping="Wrap" Text="Phone Number" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="Salutation" HorizontalAlignment="Left" Margin="337,295,0,0" TextWrapping="Wrap" Text="Salutation" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="Birthday" HorizontalAlignment="Left" Margin="337,255,0,0" TextWrapping="Wrap" Text="Birthday" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="PhoneNumber" HorizontalAlignment="Left" Margin="337,177,0,0" TextWrapping="Wrap" Text="Phone Number" VerticalAlignment="Top" Width="120"/>
             <RadioButton Template="{DynamicResource StarButton}" x:Name="favourite" Content="Favourites" HorizontalAlignment="Left" Height="40" Margin="254,318,0,0" VerticalAlignment="Top" Width="146" RenderTransformOrigin="0.494,0.56"/>
-            <Button Content="Button" HorizontalAlignment="Left" Margin="337,363,0,0" VerticalAlignment="Top" Height="26" Width="82" Click="AddContact_Button"/>
+            <Button x:Name="AddContactButton" Content="Button" HorizontalAlignment="Left" Margin="337,363,0,0" VerticalAlignment="Top" Height="26" Width="82" Click="AddContact_Button"/>
 
 
 
