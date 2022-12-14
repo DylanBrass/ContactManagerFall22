@@ -40,8 +40,8 @@ namespace ContactManagerFall22
 
         private void Add_Contact_btn_Click(object sender, RoutedEventArgs e)
         {
-            //Contact addContact = (Contact)ContactsListItems.SelectedItem;
-            //AddContact addContactWindow = new AddContact(addContact.Id);
+            AddContact addContactWindow = new AddContact();
+            addContactWindow.ShowDialog();
         }
 
         private void Edit_Contact_btn_Click(object sender, RoutedEventArgs e)

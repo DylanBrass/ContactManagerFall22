@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ContactManagerFall22.DB.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,9 +24,9 @@ namespace ContactManagerFall22
         {
             InitializeComponent();
         }
-        public void AddressListItems_SelectionChanged()
+        public void AddContact_Button()
         {
-
+            Contact addingContact = new Contact();
         }
     }
 }
