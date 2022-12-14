@@ -20,7 +20,7 @@
 
         <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.ColumnSpan="2">
 
-            <ListView Name="AddressesListItems" >
+            <ListView Name="AddressesListItems" SelectionChanged="Address_SelectionChanged" >
 
                 <ListView.View>
                     <GridView>

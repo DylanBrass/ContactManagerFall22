@@ -11,13 +11,48 @@
         <Label x:Name="FName" Content="First Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Label x:Name="LName" Content="Last Name" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Nickname" Content="NickName" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Email" Content="Email" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Birthday" Content="Birthday" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Salutation" Content="Salutation" HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top"/>
         <Label x:Name="DateAdded" Content="DateAdded" HorizontalAlignment="Left" Margin="9,0,0,0" VerticalAlignment="Center"/>
         <Label x:Name="DateUpdated" Content="DateUpdated" HorizontalAlignment="Left" Margin="9,220,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Note" Content="Note" HorizontalAlignment="Left" Margin="11,246,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Favourite" Content="Favourite" HorizontalAlignment="Left" Margin="12,272,0,0" VerticalAlignment="Top"/>
+        
+        <Button Content="Address" HorizontalAlignment="Left" Margin="360,3,0,0" VerticalAlignment="Top" Click="Address_Click"/>
+
+        <ListView Name="AddressQuickView" Margin="360,31,10,275">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="StreetNumber" Header="Street Number" Width="100" DisplayMemberBinding="{Binding AddressNumber}" />
+                    <GridViewColumn x:Name="Street" Header="Street Name" Width="100" DisplayMemberBinding="{Binding Street}" />
+                    <GridViewColumn x:Name="City" Header="City" Width="100" DisplayMemberBinding="{Binding City}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button Content="Phone" HorizontalAlignment="Left" Margin="360,134,0,0" VerticalAlignment="Top"/>
+
+        <ListView Name="PhoneQuickView" Margin="360,161,10,145">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="PhoneNumber" Header="Phone Number" Width="100" DisplayMemberBinding="{Binding PhoneNumber}" />
+                    <GridViewColumn x:Name="Type_Phone" Header="Label" Width="100" DisplayMemberBinding="{Binding Desc}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button Content="Email" HorizontalAlignment="Left" Margin="365,270,0,0" VerticalAlignment="Top"/>
+
+        <ListView Name="EmailQuickView" Margin="360,296,10,10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="Email" Header="Email" Width="100" DisplayMemberBinding="{Binding EmailAddress}" />
+                    <GridViewColumn x:Name="Type_Email" Header="Label" Width="100" DisplayMemberBinding="{Binding Desc}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
     </Grid>
 
 </Window>

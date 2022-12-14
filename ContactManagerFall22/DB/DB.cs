@@ -3,10 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Net;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Windows.Controls.Primitives;
 
 namespace ContactManagerFall22.DB
 {
@@ -18,7 +14,7 @@ namespace ContactManagerFall22.DB
         //GetAddress
 
         SqlConnection connect;
-        string ConString = ConfigurationManager.ConnectionStrings["ContactConnection"].ConnectionString;
+        readonly string ConString = ConfigurationManager.ConnectionStrings["ContactConnection"].ConnectionString;
 
         public DBManager()
         {
@@ -41,15 +37,16 @@ namespace ContactManagerFall22.DB
                     Contact tempCon = new Contact(Convert.ToInt32(sdr["Id"]),
                         sdr["FirstName"].ToString(),
                         sdr["LastName"].ToString(),
-                        sdr["DateAdded"].ToString(),
-                        sdr["LastUpdated"].ToString(),
+                        (DateTime)sdr["DateAdded"],
+                        (DateTime)sdr["LastUpdated"],
                         sdr["Email"].ToString(),
                         (bool)sdr["Favourite"],
                         (bool)sdr["Active"],
                         sdr["Salutation"].ToString(),
                         sdr["Nickname"].ToString(),
-                        sdr["Birthday"].ToString(),
+                        (DateTime)sdr["Birthday"],
                         sdr["Note"].ToString());
+
                     contacts.Add(tempCon);
                 }
                 sdr.Close();
@@ -59,8 +56,10 @@ namespace ContactManagerFall22.DB
 
         public Contact GetContact(int id)
         {
+
             using (connect)
             {
+
                 Contact contact = new Contact();
                 connect.Open();
                 SqlCommand cm = new SqlCommand("SELECT * FROM Contact WHERE Id = @Id AND ACTIVE = 1;", connect);
@@ -74,14 +73,14 @@ namespace ContactManagerFall22.DB
                     contact = new Contact(Convert.ToInt32(sdr["Id"]),
                         sdr["FirstName"].ToString(),
                         sdr["LastName"].ToString(),
-                        sdr["DateAdded"].ToString(),
-                        sdr["LastUpdated"].ToString(),
+                        (DateTime)sdr["DateAdded"],
+                        (DateTime)sdr["LastUpdated"],
                         sdr["Email"].ToString(),
                         (bool)sdr["Favourite"],
                         (bool)sdr["Active"],
                         sdr["Salutation"].ToString(),
                         sdr["Nickname"].ToString(),
-                        sdr["Birthday"].ToString(),
+                        (DateTime)sdr["Birthday"],
                         sdr["Note"].ToString());
                 }
                 sdr.Close();
@@ -91,10 +90,12 @@ namespace ContactManagerFall22.DB
 
         public List<Address> GetAdresses(int Contact_Id)
         {
+            List<Address> addresses = new List<Address>();
 
             using (connect)
             {
-                List<Address> addresses = new List<Address>();
+                connect = new SqlConnection(ConString);
+
 
                 connect.Open();
                 SqlCommand cm = new SqlCommand("SELECT * FROM Address a INNER JOIN TYPE t ON a.Type_Code = t.Code WHERE Contact_Id = @Contact_Id AND ACTIVE = 1;", connect);
@@ -107,15 +108,17 @@ namespace ContactManagerFall22.DB
                 {
                     Address address = new Address();
                     address = new Address(Convert.ToInt32(sdr["Id"]),
+                        Convert.ToInt32(sdr["Contact_Id"]),
                         sdr["City"].ToString(),
                         sdr["Country"].ToString(),
                         sdr["AreaCode"].ToString(),
                         sdr["Street"].ToString(),
-                        Convert.ToInt32(sdr["AddressNumber"]),
-                        Convert.ToInt32(sdr["ApartementNum"]),
-                        sdr["DateCreated"].ToString(),
-                        sdr["LastUpdated"].ToString(),
-                        (char)sdr["Type_Code"],
+                        sdr["AddressNumber"] == DBNull.Value ? default(int) : int.Parse(sdr["AddressNumber"].ToString()),
+                        //To avoid DBNull Thanks Brendan !
+                        sdr["ApartementNum"] == DBNull.Value ? default(int) : int.Parse(sdr["ApartementNum"].ToString()),
+                        (DateTime)sdr["DateCreated"],
+                        (DateTime)sdr["LastUpdated"],
+                        Convert.ToChar(sdr["Type_Code"]),
                         sdr["Description"].ToString());
                     addresses.Add(address);
                 }
@@ -138,16 +141,16 @@ namespace ContactManagerFall22.DB
                 SqlDataReader sdr = cm.ExecuteReader();
                 while (sdr.Read())
                 {
-                    address = new Address(Convert.ToInt32(sdr["Id"]),
+                    address = new Address(Convert.ToInt32(sdr["Id"]), Convert.ToInt32(sdr["Contact_Id"]),
                         sdr["City"].ToString(),
                         sdr["Country"].ToString(),
                         sdr["AreaCode"].ToString(),
                         sdr["Street"].ToString(),
-                        Convert.ToInt32(sdr["AddressNumber"]),
-                        Convert.ToInt32(sdr["ApartementNum"]),
-                        sdr["DateCreated"].ToString(),
-                        sdr["LastUpdated"].ToString(),
-                        (char)sdr["Type_Code"],
+                        sdr["AddressNumber"] == DBNull.Value ? default(int) : int.Parse(sdr["AddressNumber"].ToString()),
+                        sdr["ApartementNum"] == DBNull.Value ? default(int) : int.Parse(sdr["ApartementNum"].ToString()),
+                        (DateTime)sdr["DateCreated"],
+                        (DateTime)sdr["LastUpdated"],
+                        Convert.ToChar(sdr["Type_Code"]),
                         sdr["Description"].ToString());
                 }
                 sdr.Close();
@@ -205,9 +208,8 @@ namespace ContactManagerFall22.DB
                 cm.Parameters.AddWithValue("@AddressNumber", add.AddressNumber);
                 cm.Parameters.AddWithValue("@ApartementNum", add.ApartementNum);
                 cm.Parameters.AddWithValue("@Active", true);
-                cm.Parameters.AddWithValue("@Type_Code", add.type);
+                cm.Parameters.AddWithValue("@Type_Code", add.Type);
                 cm.ExecuteNonQuery();
-
             }
         }
 
@@ -216,11 +218,66 @@ namespace ContactManagerFall22.DB
 
         }
 
-        public void getPhone()
+        public List<Phone> GetPhones(int Contact_Id)
         {
+            List<Phone> phones = new List<Phone>();
+            Phone phone;
+            using (connect)
+            {
+                connect.Open();
 
+                SqlCommand cm = new SqlCommand("SELECT * FROM Phone p INNER JOIN TYPE t ON p.Type_Code = t.Code WHERE Contact_Id = @Contact_Id AND ACTIVE = 1;", connect);
+
+                cm.Parameters.AddWithValue("@Contact_Id", Contact_Id);
+                SqlDataReader sdr = cm.ExecuteReader();
+
+                while (sdr.Read())
+                {
+                    phone = new Phone(Convert.ToInt32(sdr["Id"]),
+                        Convert.ToInt32(sdr["Contact_Id"]),
+                        sdr["Phone_Number"].ToString(),
+                        Convert.ToChar(sdr["Type_Code"]),
+                        sdr["Description"].ToString(),
+                        (DateTime)sdr["DateCreated"],
+                        (DateTime)sdr["LastUpdated"]);
+
+                    phones.Add(phone);
+                }
+                sdr.Close();
+
+                return phones;
+            }
         }
+        public List<Email> GetEmails(int Contact_Id)
+        {
+            List<Email> emails = new List<Email>();
+            Email email;
+            using (connect)
+            {
+                connect.Open();
 
+                SqlCommand cm = new SqlCommand("SELECT * FROM Email e INNER JOIN TYPE t ON e.Type_Code = t.Code WHERE Contact_Id = @Contact_Id AND ACTIVE = 1;", connect);
+
+                cm.Parameters.AddWithValue("@Contact_Id", Contact_Id);
+                SqlDataReader sdr = cm.ExecuteReader();
+
+                while (sdr.Read())
+                {
+                    email = new Email(Convert.ToInt32(sdr["Id"]),
+                        Convert.ToInt32(sdr["Contact_Id"]),
+                        sdr["Email"].ToString(),
+                        Convert.ToChar(sdr["Type_Code"]),
+                        sdr["Description"].ToString(),
+                        (DateTime)sdr["DateCreated"],
+                        (DateTime)sdr["LastUpdated"]);
+
+                    emails.Add(email);
+                }
+                sdr.Close();
+
+                return emails;
+            }
+        }
     }
 }
 /*
