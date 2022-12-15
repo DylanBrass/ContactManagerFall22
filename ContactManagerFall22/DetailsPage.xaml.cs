@@ -47,7 +47,7 @@ namespace ContactManagerFall22
             Nickname.Content = "Nickname: " + contact.Nickname;
             LName.Content = "Last Name: " + contact.LastName;
             FName.Content = "First Name: " + contact.FirstName;
-            Birthday.Content = "Birthday: " + contact.Birthday.ToShortDateString();
+            Birthday.Content = "Birthday: " + contact.Birthday.ToLongDateString();
             Salutation.Content = "Salutation: " + contact.Salutation;
             DateAdded.Content = "DateAdded: " + contact.DateAdded.ToShortDateString();
             DateUpdated.Content = "DateUpdated: " + contact.DateUpdated.ToShortDateString();
@@ -71,9 +71,9 @@ namespace ContactManagerFall22
             MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this contact?", "Confirmation", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
-            dbManager = new DBManager();
-            dbManager.DeleteContact(Id);
-            this.Close();
+                dbManager = new DBManager();
+                dbManager.DeleteContact(Id);
+                this.Close();
             }
             else
             {

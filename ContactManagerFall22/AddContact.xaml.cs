@@ -1,4 +1,6 @@
-﻿using ContactManagerFall22.DB.Entities;
+﻿using ContactManagerFall22.DB;
+using ContactManagerFall22.DB.Entities;
+using System;
 using System.Windows;
 
 namespace ContactManagerFall22
@@ -8,6 +10,7 @@ namespace ContactManagerFall22
     /// </summary>
     public partial class AddContact : Window
     {
+        readonly DBManager dB = new DBManager();
         public AddContact()
         {
             InitializeComponent();
@@ -16,24 +19,27 @@ namespace ContactManagerFall22
         {
             //Contact addingContact = new Contact(FName.Text, LName.Text, email.Text, Salutation.Text, Nickname.Text, Birthday.Text,);
             Contact addingContact = new Contact();
+            addingContact.FirstName = FName.Text;
+            addingContact.LastName = LName.Text;
+            addingContact.Nickname = Nickname.Text;
+            //string BDString = Birthday.Text;
+            //if (BDString != null)
+            //{
+            //    addingContact.Birthday = DateTime.Parse(BDString);
+            //}
+            addingContact.Birthday = Convert.ToDateTime(Birthday.Text);
+            addingContact.Salutation = Salutation.Text;
+            addingContact.Note = Note.Text;
             addingContact.Favourite = favourite.IsChecked;
+            dB.CreateContact(addingContact);
+            this.Close();
 
         }
 
-        private void FName_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
+        private void Window_Closed(object sender, EventArgs e)
         {
-            if (FName.Text == "First Name")
-            {
-                FName.Text = "";
-            }
-        }
-
-        private void FName_LostMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-            if (FName.Text == "")
-            {
-                FName.Text = "First";
-            }
+            MainWindow main = new MainWindow();
+            main.Show();
         }
     }
 }

@@ -20,7 +20,6 @@ namespace ContactManagerFall22.DB.Entities
             string lastName,
             DateTime dateAdded,
             DateTime dateUpdated,
-            string email,
             bool favourite,
             bool active,
             string salutation,
@@ -30,7 +29,6 @@ namespace ContactManagerFall22.DB.Entities
         {
             DateAdded = dateAdded;
             DateUpdated = dateUpdated;
-            Email = email;
             Favourite = favourite;
             Active = active;
             Salutation = salutation;
@@ -46,8 +44,6 @@ namespace ContactManagerFall22.DB.Entities
         public DateTime DateAdded { get; set; }
 
         public DateTime DateUpdated { get; set; }
-
-        public string Email { get; set; }
 
         public bool? Favourite { get; set; }
 
