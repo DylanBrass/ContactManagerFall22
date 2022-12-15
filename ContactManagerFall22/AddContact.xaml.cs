@@ -1,8 +1,7 @@
-﻿using ContactManagerFall22.DB.Entities;
+﻿using ContactManagerFall22.DB;
+using ContactManagerFall22.DB.Entities;
 using System;
-using System.Data;
 using System.Windows;
-using System.Windows.Media;
 
 namespace ContactManagerFall22
 {
@@ -11,6 +10,7 @@ namespace ContactManagerFall22
     /// </summary>
     public partial class AddContact : Window
     {
+        DBManager dB = new DBManager();
         public AddContact()
         {
             InitializeComponent();
@@ -22,15 +22,16 @@ namespace ContactManagerFall22
             addingContact.FirstName = FName.Text;
             addingContact.LastName = LName.Text;
             addingContact.Nickname = Nickname.Text;
-            addingContact.Email = email.Text;
             //string BDString = Birthday.Text;
             //if (BDString != null)
             //{
             //    addingContact.Birthday = DateTime.Parse(BDString);
             //}
+            addingContact.Birthday = Convert.ToDateTime(Birthday.Text);
             addingContact.Salutation = Salutation.Text;
             addingContact.Note = Note.Text;
             addingContact.Favourite = favourite.IsChecked;
+            dB.CreateContact(addingContact);
             this.Close();
 
         }

@@ -226,7 +226,7 @@ namespace ContactManagerFall22.DB
             {
                 AddContact addContact = new AddContact();
                 connect.Open();
-                SqlCommand cm = new SqlCommand("INSERT INTO Contact (FirstName,LastName,Email,Favourite,Active,Salutation,Nickname,Birthday,Note) VALUES (@FirstName,@LastName,@Email,@Favourite,@Active,@Salutation,@Nickname,@Birthday,@Note);", connect);
+                SqlCommand cm = new SqlCommand("INSERT INTO Contact (FirstName,LastName,Favourite,Active,Salutation,Nickname,Birthday,Note) VALUES (@FirstName,@LastName,@Favourite,@Active,@Salutation,@Nickname,@Birthday,@Note);", connect);
 
 
                 cm.Parameters.AddWithValue("@FirstName", con.FirstName);
