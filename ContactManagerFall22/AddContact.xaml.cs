@@ -14,9 +14,18 @@ namespace ContactManagerFall22
         }
         public void AddContact_Button(object sender, RoutedEventArgs e)
         {
-            //Contact addingContact = new Contact(FName.Text,LName.Text);
+            //Contact addingContact = new Contact(FName.Text, LName.Text, email.Text, Salutation.Text, Nickname.Text, Birthday.Text,);
             Contact addingContact = new Contact();
             addingContact.Favourite = favourite.IsChecked;
+    
+        }
+
+        private void FName_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (FName.Text == "First Name")
+            {
+                FName.Text = "";
+            }
         }
     }
 }
