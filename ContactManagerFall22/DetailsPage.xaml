@@ -23,9 +23,7 @@
         <ListView Name="AddressQuickView" Margin="360,31,10,275">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn x:Name="StreetNumber" Header="Street Number" Width="100" DisplayMemberBinding="{Binding AddressNumber}" />
-                    <GridViewColumn x:Name="Street" Header="Street Name" Width="100" DisplayMemberBinding="{Binding Street}" />
-                    <GridViewColumn x:Name="City" Header="City" Width="100" DisplayMemberBinding="{Binding City}" />
+                    
                 </GridView>
             </ListView.View>
         </ListView>
