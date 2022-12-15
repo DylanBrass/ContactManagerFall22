@@ -72,12 +72,22 @@ namespace ContactManagerFall22
         private void Ex_Contact_btn_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder csv = new StringBuilder();
+            StringBuilder csvFile = new StringBuilder();
+
             List<Contact> contacts = db.GetContacts();
 
             foreach (Contact con in contacts)
             {
-                csv.AppendLine(con.ToString());
+                var fullcon = con.GetType().GetProperties();
+                foreach (var property in fullcon)
+                {
+                    csv.Append("," + property.GetValue(con, null).ToString());
+                }
+                csv.Remove(0, 1);
+                csvFile.AppendLine(csv.ToString());
+                csv.Clear();
             }
+            string test = csvFile.ToString();
         }
 
         private void ContactsListItems_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
