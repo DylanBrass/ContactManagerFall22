@@ -68,7 +68,7 @@ namespace ContactManagerFall22
 
         private void Delete_Contact(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this contact?", "Confirmation", MessageBoxButton.YesNoCancel);
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this contact?", "Confirmation", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
             dbManager = new DBManager();
@@ -77,7 +77,7 @@ namespace ContactManagerFall22
             }
             else
             {
-                // Cancel code here  
+                
             }
 
 
