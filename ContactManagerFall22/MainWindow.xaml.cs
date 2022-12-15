@@ -1,6 +1,7 @@
 ﻿using ContactManagerFall22.DB;
 using ContactManagerFall22.DB.Entities;
 using System.Collections.Generic;
+using System.Text;
 using System.Windows;
 using System.Windows.Input;
 
@@ -11,7 +12,7 @@ namespace ContactManagerFall22
     /// </summary>
     public partial class MainWindow : Window
     {
-        DBManager db = new DBManager();
+        readonly DBManager db = new DBManager();
 
         // Shows the window.
         public MainWindow()
@@ -70,7 +71,13 @@ namespace ContactManagerFall22
 
         private void Ex_Contact_btn_Click(object sender, RoutedEventArgs e)
         {
+            StringBuilder csv = new StringBuilder();
+            List<Contact> contacts = db.GetContacts();
 
+            foreach (Contact con in contacts)
+            {
+                csv.AppendLine(con.ToString());
+            }
         }
 
         private void ContactsListItems_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)

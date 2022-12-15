@@ -21,6 +21,13 @@ namespace ContactManagerFall22.DB.Entities
             LastUpdated = lastUpdated;
         }
 
+        public Email(int contact_Id, string emailAddress, char type)
+        {
+            Contact_Id = contact_Id;
+            EmailAddress = emailAddress;
+            Type = type;
+        }
+
         public int Id { get; set; }
         public int Contact_Id { get; set; }
 

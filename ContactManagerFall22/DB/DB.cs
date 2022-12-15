@@ -219,6 +219,8 @@ namespace ContactManagerFall22.DB
             }
         }
 
+        //Get phone by id
+        //get Email by id 
 
         public void CreateContact(Contact con)
         {
@@ -287,9 +289,20 @@ namespace ContactManagerFall22.DB
         }
 
 
-        public void CreateEmail()
+        public void CreateEmail(Email em)
         {
+            using (connect = new SqlConnection(ConString))
+            {
+                connect.Open();
+                SqlCommand cm = new SqlCommand("INSERT INTO Email (Contact_Id,Email,Type_Code,Active)" + "VALUES(@Contact_Id,@Email,@Type_Code,@Active);", connect);
 
+                cm.Parameters.AddWithValue("@Contact_Id", em.Contact_Id);
+                cm.Parameters.AddWithValue("@Email", em.EmailAddress);
+                cm.Parameters.AddWithValue("@Type_Code", em.Type);
+                cm.Parameters.AddWithValue("@Active", true);
+                cm.ExecuteNonQuery();
+
+            }
 
         }
 
@@ -303,9 +316,6 @@ namespace ContactManagerFall22.DB
                 DeleteAddress(id);
                 DeleteEmail(id);
                 DeletePhone(id);
-                connect = new SqlConnection(ConString);
-
-
                 cm.Parameters.AddWithValue("@Id", id);
                 cm.ExecuteNonQuery();
             }
@@ -314,7 +324,7 @@ namespace ContactManagerFall22.DB
         public void DeleteAddress(int contact_id)
         {
 
-            using (connect)
+            using (connect = new SqlConnection(ConString))
             {
                 connect.Open();
 
@@ -351,28 +361,11 @@ namespace ContactManagerFall22.DB
             }
         }
 
-
+        //Update all of them (phone,email,contact and address)
     }
 }
-/*
-     * public TypeOf GetType(char code)
-    {
-        using (connect)
-        {
-            TypeOf type = new TypeOf();
-            connect.Open();
-            SqlCommand cm = new SqlCommand("SELECT * FROM Type WHERE Code = @Code;", connect);
-            cm.Parameters.AddWithValue("@Code", code);
 
-            SqlDataReader sdr = cm.ExecuteReader();
-            while (sdr.Read())
-            {
-                type = new TypeOf((char)sdr["Code"], sdr["Description"].ToString());
-            }
-            sdr.Close();
-            return type;
 
-        }
 
-    }
-    */
+
+
