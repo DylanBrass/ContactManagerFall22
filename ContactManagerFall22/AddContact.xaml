@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactManagerFall22"
         mc:Ignorable="d"
-        Title="AddContactPage" Height="450" Width="800">
+        Title="AddContactPage" Height="450" Width="800" Closed="Window_Closed">
     <Grid >
         <Grid.Resources>
             <!-- StarButton Template -->
@@ -37,33 +37,43 @@
 
             </ControlTemplate>
         </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="367*"/>
+            <ColumnDefinition Width="433*"/>
+        </Grid.ColumnDefinitions>
 
-        <Grid Margin="0,-10,0,10">
+        <Grid Margin="0,-10,0,10" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="309*"/>
+                <ColumnDefinition Width="16*"/>
+                <ColumnDefinition Width="69*"/>
+            </Grid.ColumnDefinitions>
 
             <!--<Ellipse HorizontalAlignment="Center" Height="100" Margin="0,38,0,0" Stroke="Black" VerticalAlignment="Top" Width="100">
             <Ellipse.Fill>
                 <ImageBrush ImageSource="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png"/>
             </Ellipse.Fill>
         </Ellipse>-->
-            <TextBox x:Name="FName" HorizontalAlignment="Left" Margin="337,23,0,0" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="LName" HorizontalAlignment="Left" Margin="337,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="email" HorizontalAlignment="Left" Margin="337,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="Nickname" HorizontalAlignment="Left" Margin="337,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="Salutation" HorizontalAlignment="Left" Margin="337,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="Birthday" HorizontalAlignment="Left" Margin="337,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="PhoneNumber" HorizontalAlignment="Left" Margin="337,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLength="12" IsUndoEnabled="False"/>
-            <CheckBox Template="{DynamicResource StarButton}" x:Name="favourite" Content="Favourites" HorizontalAlignment="Left" Height="40" Margin="254,335,0,0" VerticalAlignment="Top" Width="146" RenderTransformOrigin="0.494,0.56"/>
-            <Button x:Name="AddContactButton" Content="Add Contact 📝" HorizontalAlignment="Left" Margin="337,375,0,0" VerticalAlignment="Top" Height="26" Width="91" Click="AddContact_Button"/>
-            <Label Content="First Name" HorizontalAlignment="Left" Margin="259,17,0,0" VerticalAlignment="Top" Height="24" Width="68"/>
-            <Label Content="Last Name" HorizontalAlignment="Left" Margin="259,53,0,0" VerticalAlignment="Top" Height="24" Width="68"/>
-            <Label Content="Nickame" HorizontalAlignment="Left" Margin="259,90,0,0" VerticalAlignment="Top" Height="24" Width="68"/>
-            <Label Content="Phone Number" HorizontalAlignment="Left" Margin="228,131,0,0" VerticalAlignment="Top" Height="24" Width="94"/>
-            <Label Content="Email" HorizontalAlignment="Left" Margin="259,169,0,0" VerticalAlignment="Top" Height="24" Width="68"/>
-            <Label Content="Birthday" HorizontalAlignment="Left" Margin="259,207,0,0" VerticalAlignment="Top" Height="24" Width="68"/>
-            <Label Content="Salutation" HorizontalAlignment="Left" Margin="259,242,0,0" VerticalAlignment="Top" Height="24" Width="68"/>
-            <TextBox x:Name="Note" HorizontalAlignment="Left" Margin="337,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            <Label Content="Note" HorizontalAlignment="Left" Margin="259,282,0,0" VerticalAlignment="Top" Height="24" Width="68"/>
-           
+            <TextBox x:Name="FName" HorizontalAlignment="Left" Margin="325,23,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+            <TextBox x:Name="LName" HorizontalAlignment="Left" Margin="325,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+            <TextBox x:Name="email" HorizontalAlignment="Left" Margin="325,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+            <TextBox x:Name="Nickname" HorizontalAlignment="Left" Margin="325,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+            <TextBox x:Name="Salutation" HorizontalAlignment="Left" Margin="325,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+            <TextBox x:Name="Birthday" HorizontalAlignment="Left" Margin="325,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+            <TextBox x:Name="PhoneNumber" HorizontalAlignment="Left" Margin="325,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLength="12" IsUndoEnabled="False" Grid.Column="1"/>
+            <CheckBox Template="{DynamicResource StarButton}" x:Name="favourite" Content="Favourites" HorizontalAlignment="Left" Height="40" Margin="242,335,0,0" VerticalAlignment="Top" Width="146" RenderTransformOrigin="0.494,0.56" Grid.Column="1"/>
+            <Button x:Name="AddContactButton" Content="Add Contact 📝" HorizontalAlignment="Left" Margin="325,375,0,0" VerticalAlignment="Top" Height="26" Width="91" Click="AddContact_Button" Grid.Column="1"/>
+            <Label Content="First Name" HorizontalAlignment="Left" Margin="247,17,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
+            <Label Content="Last Name" HorizontalAlignment="Left" Margin="247,53,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
+            <Label Content="Nickame" HorizontalAlignment="Left" Margin="247,90,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
+            <Label Content="Phone Number" HorizontalAlignment="Left" Margin="216,131,0,0" VerticalAlignment="Top" Height="24" Width="94" Grid.Column="1"/>
+            <Label Content="Email" HorizontalAlignment="Left" Margin="247,169,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
+            <Label Content="Birthday" HorizontalAlignment="Left" Margin="247,207,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
+            <Label Content="Salutation" HorizontalAlignment="Left" Margin="247,242,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
+            <TextBox x:Name="Note" HorizontalAlignment="Left" Margin="325,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+            <Label Content="Note" HorizontalAlignment="Left" Margin="247,282,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
+
 
 
 
