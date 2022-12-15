@@ -5,15 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactManagerFall22"
         mc:Ignorable="d"
- Title="MainWindow" Height="450" Width="640" >
+ Title="MainWindow" Height="450" Width="640">
 
     <Grid Margin="15,15,15,15">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="309*"/>
+            <ColumnDefinition Width="301*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2">
             <ListView Name="ContactsListItems" MouseDoubleClick="ContactsListItems_MouseDoubleClick">
                 <ListView.View>
                     <GridView>
@@ -25,15 +29,15 @@
             </ListView>
         </ScrollViewer>
 
-        <Button Name="Add_Contact_btn" Grid.Row="1" Margin="10,10,490,10" Content="Add Contact..." Click="Add_Contact_btn_Click" />
+        <Button Name="Add_Contact_btn" Grid.Row="1" Margin="10,10,189,10" Content="Add Contact..." Click="Add_Contact_btn_Click" />
 
-        <Button Name="Edit_Contact_btn" Grid.Row="1" Margin="130,10,370,10" Content="Edit Contact..." Click="Edit_Contact_btn_Click"/>
+        <Button Name="Edit_Contact_btn" Grid.Row="1" Margin="130,10,69,10" Content="Edit Contact..." Click="Edit_Contact_btn_Click"/>
 
-        <Button Name="Del_Contact_btn" Grid.Row="1" Margin="251,10,249,10" Content="Delete Contact... " Click="Del_Contact_btn_Click"/>
+        <Button Name="Del_Contact_btn" Grid.Row="1" Margin="251,10,249,10" Content="Delete Contact... " Click="Del_Contact_btn_Click" Grid.ColumnSpan="2"/>
 
-        <Button Name="Imp_Contact_btn" Grid.Row="1" Margin="370,10,130,10" Content="Import Contact..." Click="Imp_Contact_btn_Click"/>
+        <Button Name="Imp_Contact_btn" Grid.Row="1" Margin="61,10,130,10" Content="Import Contact..." Click="Imp_Contact_btn_Click" Grid.Column="1"/>
 
-        <Button Name="Ex_Contact_btn" Grid.Row="1" Margin="490,10,10,10" Content="ExportContact..." Click="Ex_Contact_btn_Click"/>
+        <Button Name="Ex_Contact_btn" Grid.Row="1" Margin="181,10,10,10" Content="ExportContact..." Click="Ex_Contact_btn_Click" Grid.Column="1"/>
 
     </Grid>
 

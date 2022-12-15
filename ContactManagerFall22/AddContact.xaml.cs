@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ContactManagerFall22.DB.Entities;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ContactManagerFall22
 {
@@ -23,9 +12,28 @@ namespace ContactManagerFall22
         {
             InitializeComponent();
         }
-        public void AddressListItems_SelectionChanged()
+        public void AddContact_Button(object sender, RoutedEventArgs e)
         {
+            //Contact addingContact = new Contact(FName.Text, LName.Text, email.Text, Salutation.Text, Nickname.Text, Birthday.Text,);
+            Contact addingContact = new Contact();
+            addingContact.Favourite = favourite.IsChecked;
 
+        }
+
+        private void FName_GotMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (FName.Text == "First Name")
+            {
+                FName.Text = "";
+            }
+        }
+
+        private void FName_LostMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (FName.Text == "")
+            {
+                FName.Text = "First";
+            }
         }
     }
 }

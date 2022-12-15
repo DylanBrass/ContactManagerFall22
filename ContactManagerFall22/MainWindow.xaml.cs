@@ -1,7 +1,7 @@
 ﻿using ContactManagerFall22.DB;
 using ContactManagerFall22.DB.Entities;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Text;
 using System.Windows;
 using System.Windows.Input;
 
@@ -12,7 +12,7 @@ namespace ContactManagerFall22
     /// </summary>
     public partial class MainWindow : Window
     {
-        DBManager db = new DBManager();
+        readonly DBManager db = new DBManager();
 
         // Shows the window.
         public MainWindow()
@@ -28,6 +28,13 @@ namespace ContactManagerFall22
             ContactsListItems.ItemsSource = Contacts;
         }
 
+        public void Refresh()
+        {
+            MainWindow newWin = new MainWindow();
+            newWin.Show();
+            this.Close();
+        }
+
         private void ContactsListItems_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Contact selectedContact = (Contact)ContactsListItems.SelectedItem;
@@ -36,13 +43,15 @@ namespace ContactManagerFall22
             {
                 DetailsPage newWindow = new DetailsPage(selectedContact.Id);
                 newWindow.ShowDialog();
+                this.Close();
             }
         }
 
+
         private void Add_Contact_btn_Click(object sender, RoutedEventArgs e)
         {
-            //Contact addContact = (Contact)ContactsListItems.SelectedItem;
-            //AddContactPage addContactWindow = new AddContactPage(addContact.Id);
+            AddContact addContactWindow = new AddContact();
+            addContactWindow.ShowDialog();
         }
 
         private void Edit_Contact_btn_Click(object sender, RoutedEventArgs e)
@@ -62,12 +71,24 @@ namespace ContactManagerFall22
 
         private void Ex_Contact_btn_Click(object sender, RoutedEventArgs e)
         {
+            StringBuilder csv = new StringBuilder();
+            List<Contact> contacts = db.GetContacts();
 
+            foreach (Contact con in contacts)
+            {
+                csv.AppendLine(con.ToString());
+            }
         }
 
         private void ContactsListItems_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
 
         }
+
+
     }
 }
+
+
+//To make the favourite on to create a list and group by with lambda
+//So get all contacts and then group by true and false for favorite from the contact

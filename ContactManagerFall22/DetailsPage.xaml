@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactManagerFall22"
         mc:Ignorable="d"
-        Title="DetailsPage" Height="450" Width="800">
+        Title="DetailsPage" Height="450" Width="800" Closed="Window_Closed">
     <Grid Margin="15,15,15,15">
 
         <Label x:Name="FName" Content="First Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
@@ -33,7 +33,8 @@
         <ListView Name="PhoneQuickView" Margin="360,161,10,145">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn x:Name="Phone_Number" Header="Phone Number" Width="100" DisplayMemberBinding="{Binding Phone_Number}" />
+                    <GridViewColumn x:Name="PhoneNumber" Header="Phone Number" Width="100" DisplayMemberBinding="{Binding PhoneNumber}" />
+                    <GridViewColumn x:Name="Type_Phone" Header="Label" Width="100" DisplayMemberBinding="{Binding Desc}" />
                 </GridView>
             </ListView.View>
         </ListView>
@@ -43,10 +44,12 @@
         <ListView Name="EmailQuickView" Margin="360,296,10,10">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn x:Name="Email" Header="Email" Width="100" DisplayMemberBinding="{Binding Email}" />
+                    <GridViewColumn x:Name="Email" Header="Email" Width="100" DisplayMemberBinding="{Binding EmailAddress}" />
+                    <GridViewColumn x:Name="Type_Email" Header="Label" Width="100" DisplayMemberBinding="{Binding Desc}" />
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="18,335,0,0" VerticalAlignment="Top" Click="Delete_Contact"/>
 
 
     </Grid>

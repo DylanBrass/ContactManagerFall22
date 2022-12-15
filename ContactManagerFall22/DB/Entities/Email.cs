@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ContactManagerFall22.DB.Entities
 {
@@ -12,24 +8,34 @@ namespace ContactManagerFall22.DB.Entities
             int contact_Id,
             string emailAddress,
             char type,
+            string desc,
             DateTime dateCreated,
             DateTime lastUpdated)
         {
-            this.id = id;
+            Id = id;
             Contact_Id = contact_Id;
             EmailAddress = emailAddress;
             Type = type;
+            Desc = desc;
             DateCreated = dateCreated;
             LastUpdated = lastUpdated;
         }
 
-        public int id { get; set; }
+        public Email(int contact_Id, string emailAddress, char type)
+        {
+            Contact_Id = contact_Id;
+            EmailAddress = emailAddress;
+            Type = type;
+        }
+
+        public int Id { get; set; }
         public int Contact_Id { get; set; }
 
         public string EmailAddress { get; set; }
 
         public char Type { get; set; }
 
+        public string Desc { get; set; }
         public DateTime DateCreated { get; set; }
 
         public DateTime LastUpdated { get; set; }
