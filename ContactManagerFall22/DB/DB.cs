@@ -13,8 +13,8 @@ namespace ContactManagerFall22.DB
         //GetAddresses
         //GetAddress
 
+        readonly static string ConString = ConfigurationManager.ConnectionStrings["ContactConnection"].ConnectionString;
         SqlConnection connect;
-        readonly string ConString = ConfigurationManager.ConnectionStrings["ContactConnection"].ConnectionString;
 
         public DBManager()
         {
@@ -23,7 +23,7 @@ namespace ContactManagerFall22.DB
         public List<Contact> GetContacts()
         {
             List<Contact> contacts = new List<Contact>();
-            using (connect)
+            using (connect = new SqlConnection(ConString))
             {
                 connect.Open();
                 SqlCommand cm = new SqlCommand("SELECT * FROM Contact WHERE Active = 1", connect);
@@ -57,7 +57,7 @@ namespace ContactManagerFall22.DB
         public Contact GetContact(int id)
         {
 
-            using (connect)
+            using (connect = new SqlConnection(ConString))
             {
 
                 Contact contact = new Contact();
@@ -92,9 +92,8 @@ namespace ContactManagerFall22.DB
         {
             List<Address> addresses = new List<Address>();
 
-            using (connect)
+            using (connect = new SqlConnection(ConString))
             {
-                connect = new SqlConnection(ConString);
 
 
                 connect.Open();
@@ -129,7 +128,7 @@ namespace ContactManagerFall22.DB
 
         public Address GetAddress(int Address_Id)
         {
-            using (connect)
+            using (connect = new SqlConnection(ConString))
             {
                 Address address = new Address();
                 connect.Open();
@@ -163,7 +162,7 @@ namespace ContactManagerFall22.DB
         {
             List<Phone> phones = new List<Phone>();
             Phone phone;
-            using (connect)
+            using (connect = new SqlConnection(ConString))
             {
                 connect.Open();
 
@@ -193,7 +192,7 @@ namespace ContactManagerFall22.DB
         {
             List<Email> emails = new List<Email>();
             Email email;
-            using (connect)
+            using (connect = new SqlConnection(ConString))
             {
                 connect.Open();
 
@@ -223,7 +222,7 @@ namespace ContactManagerFall22.DB
 
         public void CreateContact(Contact con)
         {
-            using (connect)
+            using (connect = new SqlConnection(ConString))
             {
                 AddContact addContact = new AddContact();
                 connect.Open();
@@ -251,7 +250,7 @@ namespace ContactManagerFall22.DB
 
         public void CreateAddress(Address add)
         {
-            using (connect)
+            using (connect = new SqlConnection(ConString))
             {
                 connect.Open();
                 SqlCommand cm = new SqlCommand("INSERT INTO Address (Contact_Id,City,Country,AreaCode,Street,AddressNumber,ApartementNum,Type_Code) " +
@@ -271,25 +270,33 @@ namespace ContactManagerFall22.DB
             }
         }
 
-        public void CreatePhone()
+        public void CreatePhone(Phone ph)
         {
+            using (connect = new SqlConnection(ConString))
+            {
+                connect.Open();
+                SqlCommand cm = new SqlCommand("INSERT INTO Phone (Contact_Id,Phone_Number,Type_Code,Active)" + "VALUES(@Contact_Id,@Phone_Number,@Type_Code,@Active);", connect);
 
+                cm.Parameters.AddWithValue("@Contact_Id", ph.Contact_Id);
+                cm.Parameters.AddWithValue("@Phone_Number", ph.PhoneNumber);
+                cm.Parameters.AddWithValue("@Type_Code", ph.Type);
+                cm.Parameters.AddWithValue("@Active", true);
+                cm.ExecuteNonQuery();
+
+            }
         }
 
-        public void CreateAddress()
+
+        public void CreateEmail()
         {
 
-        }
-
-        public void CreacteEmail()
-        {
 
         }
 
 
         public void DeleteContact(int id)
         {
-            using (connect)
+            using (connect = new SqlConnection(ConString))
             {
                 connect.Open();
                 SqlCommand cm = new SqlCommand("UPDATE Contact SET Active = 0 WHERE Id = @Id;", connect);
@@ -306,7 +313,6 @@ namespace ContactManagerFall22.DB
 
         public void DeleteAddress(int contact_id)
         {
-            connect = new SqlConnection(ConString);
 
             using (connect)
             {
@@ -320,9 +326,8 @@ namespace ContactManagerFall22.DB
         }
         public void DeleteEmail(int contact_id)
         {
-            connect = new SqlConnection(ConString);
 
-            using (connect)
+            using (connect = new SqlConnection(ConString))
             {
                 connect.Open();
 
@@ -334,9 +339,9 @@ namespace ContactManagerFall22.DB
         }
         public void DeletePhone(int contact_id)
         {
-            connect = new SqlConnection(ConString);
 
-            using (connect)
+            using (connect = new SqlConnection(ConString)
+)
             {
                 connect.Open();
 

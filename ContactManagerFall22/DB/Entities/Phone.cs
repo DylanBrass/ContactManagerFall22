@@ -4,13 +4,18 @@ namespace ContactManagerFall22.DB.Entities
 {
     internal class Phone
     {
-        public Phone(int id,
-          int contact_Id,
-          string phoneNumber,
-          char type,
-          string desc,
-          DateTime dateCreated,
-          DateTime lastUpdated)
+
+
+        //For creating
+        public Phone(int contact_Id, string phoneNumber, char type)
+        {
+            Contact_Id = contact_Id;
+            PhoneNumber = phoneNumber;
+            Type = type;
+        }
+
+        //For reading
+        public Phone(int id, int contact_Id, string phoneNumber, char type, string desc, DateTime dateCreated, DateTime lastUpdated)
         {
             Id = id;
             Contact_Id = contact_Id;
@@ -20,8 +25,8 @@ namespace ContactManagerFall22.DB.Entities
             DateCreated = dateCreated;
             LastUpdated = lastUpdated;
         }
-        public int Id { get; set; }
 
+        public int Id { get; set; }
         public int Contact_Id { get; set; }
 
         public string PhoneNumber { get; set; }
