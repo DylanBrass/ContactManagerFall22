@@ -39,7 +39,6 @@ namespace ContactManagerFall22.DB
                         sdr["LastName"].ToString(),
                         (DateTime)sdr["DateAdded"],
                         (DateTime)sdr["LastUpdated"],
-                        sdr["Email"].ToString(),
                         (bool)sdr["Favourite"],
                         (bool)sdr["Active"],
                         sdr["Salutation"].ToString(),
@@ -75,7 +74,6 @@ namespace ContactManagerFall22.DB
                         sdr["LastName"].ToString(),
                         (DateTime)sdr["DateAdded"],
                         (DateTime)sdr["LastUpdated"],
-                        sdr["Email"].ToString(),
                         (bool)sdr["Favourite"],
                         (bool)sdr["Active"],
                         sdr["Salutation"].ToString(),
@@ -233,7 +231,6 @@ namespace ContactManagerFall22.DB
 
                 cm.Parameters.AddWithValue("@FirstName", con.FirstName);
                 cm.Parameters.AddWithValue("@LastName", con.LastName);
-                cm.Parameters.AddWithValue("@Email", con.Email);
                 cm.Parameters.AddWithValue("@Favourite", con.Favourite);
                 cm.Parameters.AddWithValue("@Active", true);
                 cm.Parameters.AddWithValue("@Salutation", con.Salutation);

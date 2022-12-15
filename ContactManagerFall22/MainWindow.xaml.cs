@@ -1,6 +1,8 @@
 ﻿using ContactManagerFall22.DB;
 using ContactManagerFall22.DB.Entities;
+using Microsoft.Win32;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
@@ -87,7 +89,10 @@ namespace ContactManagerFall22
                 csvFile.AppendLine(csv.ToString());
                 csv.Clear();
             }
-            string test = csvFile.ToString();
+            string csvContent = csvFile.ToString();
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() == true)
+                File.WriteAllText(saveFileDialog.FileName, csvContent);
         }
 
         private void ContactsListItems_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
