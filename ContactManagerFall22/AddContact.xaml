@@ -45,7 +45,7 @@
                 <ImageBrush ImageSource="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png"/>
             </Ellipse.Fill>
         </Ellipse>-->
-            <TextBox x:Name="FName" HorizontalAlignment="Left" Margin="337,59,0,0" TextWrapping="Wrap" Text="First Name" VerticalAlignment="Top" Width="120" Foreground="{DynamicResource {x:Static SystemColors.InactiveCaptionTextBrushKey}}" GotMouseCapture="FName_GotMouseCapture"  />
+            <TextBox x:Name="FName" HorizontalAlignment="Left" Margin="337,59,0,0" TextWrapping="Wrap" Text="First Name" VerticalAlignment="Top" Width="120"  GotMouseCapture="FName_GotMouseCapture" LostMouseCapture="FName_LostMouseCapture"/>
             <TextBox x:Name="LName" HorizontalAlignment="Left" Margin="337,98,0,0" TextWrapping="Wrap" Text="Last Name" VerticalAlignment="Top" Width="120"/>
             <TextBox x:Name="email" HorizontalAlignment="Left" Margin="337,217,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="120"/>
             <TextBox x:Name="Nickname" HorizontalAlignment="Left" Margin="337,138,0,0" TextWrapping="Wrap" Text="Nickname" VerticalAlignment="Top" Width="120"/>

@@ -27,5 +27,13 @@ namespace ContactManagerFall22
                 FName.Text = "";
             }
         }
+
+        private void FName_LostMouseCapture(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (FName.Text == "")
+            {
+                FName.Text = "First";
+            }
+        }
     }
 }
