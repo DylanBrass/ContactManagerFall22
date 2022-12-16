@@ -18,6 +18,7 @@ namespace ContactManagerFall22
         string csvContentEmail;
         string csvContentPhone;
         string csvContentAdd;
+        string path;
         public void ExportCSV()
         {
             StringBuilder csv = new StringBuilder();
@@ -116,17 +117,27 @@ namespace ContactManagerFall22
                 filesToSave = new List<string> { "Contacts.csv", "Addresses.csv", "Phones.csv", "Emails.csv" };
                 string pathStr = folderBrowserDialog.SelectedPath;
 
-                string path = Path.Combine(pathStr, filesToSave[0]);
-                File.WriteAllText(path, csvContentCon);
+                if (contacts.Count > 0)
+                {
+                    path = Path.Combine(pathStr, filesToSave[0]);
+                    File.WriteAllText(path, csvContentCon);
+                }
 
-                path = Path.Combine(pathStr, filesToSave[1]);
-                File.WriteAllText(path, csvContentAdd);
-
-                path = Path.Combine(pathStr, filesToSave[2]);
-                File.WriteAllText(path, csvContentPhone);
-
-                path = Path.Combine(pathStr, filesToSave[3]);
-                File.WriteAllText(path, csvContentEmail);
+                if (addresses.Count > 0)
+                {
+                    path = Path.Combine(pathStr, filesToSave[1]);
+                    File.WriteAllText(path, csvContentAdd);
+                }
+                if (phones.Count > 0)
+                {
+                    path = Path.Combine(pathStr, filesToSave[2]);
+                    File.WriteAllText(path, csvContentPhone);
+                }
+                if (emails.Count > 0)
+                {
+                    path = Path.Combine(pathStr, filesToSave[3]);
+                    File.WriteAllText(path, csvContentEmail);
+                }
             }
         }
 
