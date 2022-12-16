@@ -353,8 +353,7 @@ namespace ContactManagerFall22.DB
             using (connect = new SqlConnection(ConString))
             {
                 connect.Open();
-                SqlCommand cm = new SqlCommand("INSERT INTO Address (Contact_Id,City,Country,AreaCode,Street,AddressNumber,ApartementNum,Type_Code) " +
-                    "VALUES (@Contact_Id,@City,@Country,@AreaCode,@Street,@AddressNumber,@ApartementNum,@Active,@Type_Code);", connect);
+                SqlCommand cm = new SqlCommand("INSERT INTO Address (Contact_Id,City,Country,AreaCode,Street,AddressNumber,ApartementNum,Type_Code) VALUES (@Contact_Id,@City,@Country,@AreaCode,@Street,@AddressNumber,@ApartementNum,@Type_Code);", connect);
 
 
                 cm.Parameters.AddWithValue("@Contact_Id", add.Contact_Id);
@@ -375,7 +374,7 @@ namespace ContactManagerFall22.DB
             using (connect = new SqlConnection(ConString))
             {
                 connect.Open();
-                SqlCommand cm = new SqlCommand("INSERT INTO Phone (Contact_Id,Phone_Number,Type_Code,Active)" + "VALUES(@Contact_Id,@Phone_Number,@Type_Code,@Active);", connect);
+                SqlCommand cm = new SqlCommand("INSERT INTO Phone (Contact_Id,Phone_Number,Type_Code,Active) VALUES(@Contact_Id,@Phone_Number,@Type_Code,@Active);", connect);
 
                 cm.Parameters.AddWithValue("@Contact_Id", ph.Contact_Id);
                 cm.Parameters.AddWithValue("@Phone_Number", ph.PhoneNumber);
@@ -392,16 +391,12 @@ namespace ContactManagerFall22.DB
             using (connect = new SqlConnection(ConString))
             {
                 connect.Open();
-                SqlCommand cm = new SqlCommand("INSERT INTO Email (Contact_Id,Email,Type_Code,Active)" + "VALUES(@Contact_Id,@Email,@Type_Code,@Active);", connect);
-
+                SqlCommand cm = new SqlCommand("INSERT INTO Email (Contact_Id,Email,Type_Code) VALUES(@Contact_Id,@Email,@Type_Code);", connect);
                 cm.Parameters.AddWithValue("@Contact_Id", em.Contact_Id);
                 cm.Parameters.AddWithValue("@Email", em.EmailAddress);
                 cm.Parameters.AddWithValue("@Type_Code", em.Type);
-                cm.Parameters.AddWithValue("@Active", true);
                 cm.ExecuteNonQuery();
-
             }
-
         }
 
 

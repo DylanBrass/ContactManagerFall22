@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Windows.Forms;
+using MessageBox = System.Windows.MessageBox;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
 namespace ContactManagerFall22
@@ -35,7 +37,7 @@ namespace ContactManagerFall22
                 if (ExportAddress() != "")
                 {
                     path = Path.Combine(pathStr, filesToSave[1]);
-                    File.WriteAllText(path, ExportAddress();
+                    File.WriteAllText(path, ExportAddress());
                 }
                 if (ExportPhone() != "")
                 {
@@ -147,29 +149,82 @@ namespace ContactManagerFall22
 
         public void ImportCSV()
         {
-            ImportContact();
-        }
-        public void ImportContact()
-        {
-            string[] lines;
-            Contact contact = new Contact();
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "CSV file (*.csv)|*.csv| All Files (*.*)|*.*";
+            string[] lines = null;
 
+            string currentfile;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Multiselect = true;
+            openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             if (openFileDialog.ShowDialog() == true)
             {
-                lines = File.ReadAllLines(openFileDialog.FileName);
+                foreach (string fileName in openFileDialog.FileNames)
+                {
+                    currentfile = Path.GetFileName(fileName);
 
-                List<Contact> contacts = lines.Select(line =>
-                {
-                    string[] data = line.Split(',');
-                    return new Contact(Convert.ToInt32(data[0]), data[1], data[2], Convert.ToDateTime(data[3]), Convert.ToDateTime(data[4]), Convert.ToBoolean(data[5]), Convert.ToBoolean(data[6]), data[7], data[8], Convert.ToDateTime(data[9]), data[10]);
-                }).ToList();
-                foreach (Contact con in contacts)
-                {
-                    db.CreateContact(con);
+                    if (db.GetContacts().Count > 0 || currentfile == "Contacts.csv")
+                    {
+                        lines = File.ReadAllLines(fileName);
+                        ImportContact(lines);
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Insert the Contacts.csv first then import other files", "No contacts found", MessageBoxButton.OK, MessageBoxImage.Error);
+                        break;
+                    }
                 }
+            }
+        }
+        public void ImportContact(string[] lines)
+        {
+            List<Contact> contacts = lines.Select(line =>
+            {
+                string[] data = line.Split(',');
+                return new Contact(Convert.ToInt32(data[0]), data[1], data[2], Convert.ToDateTime(data[3]), Convert.ToDateTime(data[4]), Convert.ToBoolean(data[5]), Convert.ToBoolean(data[6]), data[7], data[8], Convert.ToDateTime(data[9]), data[10]);
+            }).ToList();
+            foreach (Contact con in contacts)
+            {
+                db.CreateContact(con);
+            }
+        }
 
+        public void ImportAddress(string[] lines)
+        {
+            List<Address> addresses = lines.Select(line =>
+            {
+                string[] data = line.Split(',');
+                return new Address(Convert.ToInt32(data[0]), Convert.ToInt32(data[1]), data[2], data[3], data[4], data[5], Convert.ToInt32(data[6]), Convert.ToInt32(data[7]), Convert.ToDateTime(data[8]), Convert.ToDateTime(data[9]), Convert.ToChar(data[10]));
+            }).ToList();
+            foreach (Address add in addresses)
+            {
+                db.CreateAddress(add);
+            }
+        }
+
+        public void ImportPhone(string[] lines)
+        {
+            List<Phone> phones = lines.Select(line =>
+            {
+                string[] data = line.Split(',');
+                return new Phone(Convert.ToInt32(data[0]), Convert.ToInt32(data[1]), data[2], Convert.ToChar(data[3]), Convert.ToDateTime(data[8]), Convert.ToDateTime(data[9]));
+            }).ToList();
+            foreach (Phone ph in phones)
+            {
+                db.CreatePhone(ph);
+            }
+        }
+
+        public void ImportEmail(string[] lines)
+        {
+            List<Email> emails = lines.Select(line =>
+            {
+                string[] data = line.Split(',');
+                return new Email(Convert.ToInt32(data[0]), Convert.ToInt32(data[1]), data[2], Convert.ToChar(data[3]), Convert.ToDateTime(data[5]), Convert.ToDateTime(data[6]));
+            }).ToList();
+            foreach (Email em in emails)
+            {
+                db.CreateEmail(em);
             }
         }
 
