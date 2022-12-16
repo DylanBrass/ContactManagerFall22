@@ -15,11 +15,42 @@ namespace ContactManagerFall22
     {
         readonly DBManager db = new DBManager();
         List<string> filesToSave = null;
-        string csvContentEmail;
-        string csvContentPhone;
-        string csvContentAdd;
+
         string path;
         public void ExportCSV()
+        {
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+
+            if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                filesToSave = new List<string> { "Contacts.csv", "Addresses.csv", "Phones.csv", "Emails.csv" };
+                string pathStr = folderBrowserDialog.SelectedPath;
+
+                if (ExportContact() != "")
+                {
+                    path = Path.Combine(pathStr, filesToSave[0]);
+                    File.WriteAllText(path, ExportContact());
+                }
+
+                if (ExportAddress() != "")
+                {
+                    path = Path.Combine(pathStr, filesToSave[1]);
+                    File.WriteAllText(path, ExportAddress();
+                }
+                if (ExportPhone() != "")
+                {
+                    path = Path.Combine(pathStr, filesToSave[2]);
+                    File.WriteAllText(path, ExportPhone());
+                }
+                if (ExportEmail() != "")
+                {
+                    path = Path.Combine(pathStr, filesToSave[3]);
+                    File.WriteAllText(path, ExportEmail());
+                }
+            }
+        }
+
+        public string ExportContact()
         {
             StringBuilder csv = new StringBuilder();
             StringBuilder csvFileContact = new StringBuilder();
@@ -37,12 +68,12 @@ namespace ContactManagerFall22
                 csvFileContact.AppendLine(csv.ToString());
                 csv.Clear();
             }
-            string csvContentCon = csvFileContact.ToString();
+            return csvFileContact.ToString();
+        }
 
-
-
-
-            csv = new StringBuilder();
+        public string ExportAddress()
+        {
+            StringBuilder csv = new StringBuilder();
             StringBuilder csvFileAddress = new StringBuilder();
 
             List<Address> addresses = db.GetAdresses();
@@ -59,12 +90,14 @@ namespace ContactManagerFall22
                     csvFileAddress.AppendLine(csv.ToString());
                     csv.Clear();
                 }
-                csvContentAdd = csvFileAddress.ToString();
+                return csvFileAddress.ToString();
             }
+            return null;
+        }
 
-
-
-            csv = new StringBuilder();
+        public string ExportPhone()
+        {
+            StringBuilder csv = new StringBuilder();
             StringBuilder csvFilePhone = new StringBuilder();
 
             List<Phone> phones = db.GetPhones();
@@ -81,10 +114,15 @@ namespace ContactManagerFall22
                     csvFilePhone.AppendLine(csv.ToString());
                     csv.Clear();
                 }
-                csvContentPhone = csvFilePhone.ToString();
+                return csvFilePhone.ToString();
 
             }
-            csv = new StringBuilder();
+            return null;
+        }
+
+        public string ExportEmail()
+        {
+            StringBuilder csv = new StringBuilder();
             StringBuilder csvFileEmail = new StringBuilder();
 
             List<Email> emails = db.GetEmails();
@@ -102,47 +140,16 @@ namespace ContactManagerFall22
                     csvFileEmail.AppendLine(csv.ToString());
                     csv.Clear();
                 }
-                csvContentEmail = csvFileEmail.ToString();
+                return csvFileEmail.ToString();
             }
-
-
-
-
-
-
-            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-
-            if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                filesToSave = new List<string> { "Contacts.csv", "Addresses.csv", "Phones.csv", "Emails.csv" };
-                string pathStr = folderBrowserDialog.SelectedPath;
-
-                if (contacts.Count > 0)
-                {
-                    path = Path.Combine(pathStr, filesToSave[0]);
-                    File.WriteAllText(path, csvContentCon);
-                }
-
-                if (addresses.Count > 0)
-                {
-                    path = Path.Combine(pathStr, filesToSave[1]);
-                    File.WriteAllText(path, csvContentAdd);
-                }
-                if (phones.Count > 0)
-                {
-                    path = Path.Combine(pathStr, filesToSave[2]);
-                    File.WriteAllText(path, csvContentPhone);
-                }
-                if (emails.Count > 0)
-                {
-                    path = Path.Combine(pathStr, filesToSave[3]);
-                    File.WriteAllText(path, csvContentEmail);
-                }
-            }
+            return null;
         }
 
-
         public void ImportCSV()
+        {
+            ImportContact();
+        }
+        public void ImportContact()
         {
             string[] lines;
             Contact contact = new Contact();
