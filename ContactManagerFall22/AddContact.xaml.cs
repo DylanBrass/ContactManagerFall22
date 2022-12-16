@@ -27,7 +27,7 @@ namespace ContactManagerFall22
             //{
             //    addingContact.Birthday = DateTime.Parse(BDString);
             //}
-            addingContact.Birthday = Convert.ToDateTime(Birthday.Text);
+            //addingContact.Birthday = Convert.ToDateTime(Birthday.Text);
             addingContact.Salutation = Salutation.Text;
             addingContact.Note = Note.Text;
             addingContact.Favourite = favourite.IsChecked;
