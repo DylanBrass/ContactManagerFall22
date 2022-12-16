@@ -14,6 +14,16 @@ namespace ContactManagerFall22.DB.Entities
             Type = type;
         }
 
+        public Phone(int id, int contact_Id, string phoneNumber, char type, DateTime dateCreated, DateTime lastUpdated)
+        {
+            Id = id;
+            Contact_Id = contact_Id;
+            PhoneNumber = phoneNumber;
+            Type = type;
+            DateCreated = dateCreated;
+            LastUpdated = lastUpdated;
+        }
+
         //For reading
         public Phone(int id, int contact_Id, string phoneNumber, char type, string desc, DateTime dateCreated, DateTime lastUpdated)
         {

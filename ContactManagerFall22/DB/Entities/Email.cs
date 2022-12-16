@@ -28,6 +28,16 @@ namespace ContactManagerFall22.DB.Entities
             Type = type;
         }
 
+        public Email(int id, int contact_Id, string emailAddress, char type, DateTime dateCreated, DateTime lastUpdated)
+        {
+            Id = id;
+            Contact_Id = contact_Id;
+            EmailAddress = emailAddress;
+            Type = type;
+            DateCreated = dateCreated;
+            LastUpdated = lastUpdated;
+        }
+
         public int Id { get; set; }
         public int Contact_Id { get; set; }
 

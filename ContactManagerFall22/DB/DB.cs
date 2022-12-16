@@ -124,6 +124,45 @@ namespace ContactManagerFall22.DB
             }
         }
 
+
+        public List<Address> GetAdresses()
+        {
+            List<Address> addresses = new List<Address>();
+
+            using (connect = new SqlConnection(ConString))
+            {
+
+
+                connect.Open();
+                SqlCommand cm = new SqlCommand("SELECT * FROM Address a INNER JOIN TYPE t ON a.Type_Code = t.Code WHERE Active = 1;", connect);
+
+
+
+
+                SqlDataReader sdr = cm.ExecuteReader();
+                while (sdr.Read())
+                {
+                    Address address = new Address();
+                    address = new Address(Convert.ToInt32(sdr["Id"]),
+                        Convert.ToInt32(sdr["Contact_Id"]),
+                        sdr["City"].ToString(),
+                        sdr["Country"].ToString(),
+                        sdr["AreaCode"].ToString(),
+                        sdr["Street"].ToString(),
+                        sdr["AddressNumber"] == DBNull.Value ? default(int) : int.Parse(sdr["AddressNumber"].ToString()),
+                        //To avoid DBNull Thanks Brendan !
+                        sdr["ApartementNum"] == DBNull.Value ? default(int) : int.Parse(sdr["ApartementNum"].ToString()),
+                        (DateTime)sdr["DateCreated"],
+                        (DateTime)sdr["LastUpdated"],
+                        Convert.ToChar(sdr["Type_Code"]),
+                        sdr["Description"].ToString());
+                    addresses.Add(address);
+                }
+                sdr.Close();
+                return addresses;
+            }
+        }
+
         public Address GetAddress(int Address_Id)
         {
             using (connect = new SqlConnection(ConString))
@@ -186,6 +225,37 @@ namespace ContactManagerFall22.DB
                 return phones;
             }
         }
+
+        public List<Phone> GetPhones()
+        {
+            List<Phone> phones = new List<Phone>();
+            Phone phone;
+            using (connect = new SqlConnection(ConString))
+            {
+                connect.Open();
+
+                SqlCommand cm = new SqlCommand("SELECT * FROM Phone p INNER JOIN TYPE t ON p.Type_Code = t.Code WHERE ACTIVE = 1;", connect);
+
+                SqlDataReader sdr = cm.ExecuteReader();
+
+                while (sdr.Read())
+                {
+                    phone = new Phone(Convert.ToInt32(sdr["Id"]),
+                        Convert.ToInt32(sdr["Contact_Id"]),
+                        sdr["Phone_Number"].ToString(),
+                        Convert.ToChar(sdr["Type_Code"]),
+                        sdr["Description"].ToString(),
+                        (DateTime)sdr["DateCreated"],
+                        (DateTime)sdr["LastUpdated"]);
+
+                    phones.Add(phone);
+                }
+                sdr.Close();
+
+                return phones;
+            }
+        }
+
         public List<Email> GetEmails(int Contact_Id)
         {
             List<Email> emails = new List<Email>();
@@ -197,6 +267,36 @@ namespace ContactManagerFall22.DB
                 SqlCommand cm = new SqlCommand("SELECT * FROM Email e INNER JOIN TYPE t ON e.Type_Code = t.Code WHERE Contact_Id = @Contact_Id AND ACTIVE = 1;", connect);
 
                 cm.Parameters.AddWithValue("@Contact_Id", Contact_Id);
+                SqlDataReader sdr = cm.ExecuteReader();
+
+                while (sdr.Read())
+                {
+                    email = new Email(Convert.ToInt32(sdr["Id"]),
+                        Convert.ToInt32(sdr["Contact_Id"]),
+                        sdr["Email"].ToString(),
+                        Convert.ToChar(sdr["Type_Code"]),
+                        sdr["Description"].ToString(),
+                        (DateTime)sdr["DateCreated"],
+                        (DateTime)sdr["LastUpdated"]);
+
+                    emails.Add(email);
+                }
+                sdr.Close();
+
+                return emails;
+            }
+        }
+
+        public List<Email> GetEmails()
+        {
+            List<Email> emails = new List<Email>();
+            Email email;
+            using (connect = new SqlConnection(ConString))
+            {
+                connect.Open();
+
+                SqlCommand cm = new SqlCommand("SELECT * FROM Email e INNER JOIN TYPE t ON e.Type_Code = t.Code WHERE ACTIVE = 1;", connect);
+
                 SqlDataReader sdr = cm.ExecuteReader();
 
                 while (sdr.Read())

@@ -1,13 +1,8 @@
 ﻿using ContactManagerFall22.DB;
 using ContactManagerFall22.DB.Entities;
-using Microsoft.Win32;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Input;
-using File = System.IO.File;
 
 namespace ContactManagerFall22
 {
@@ -17,7 +12,7 @@ namespace ContactManagerFall22
     public partial class MainWindow : Window
     {
         readonly DBManager db = new DBManager();
-
+        readonly CSVHandler csvHandler = new CSVHandler();
         // Shows the window.
         public MainWindow()
         {
@@ -72,53 +67,13 @@ namespace ContactManagerFall22
 
         private void Imp_Contact_btn_Click(object sender, RoutedEventArgs e)
         {
-            string[] lines;
-            Contact contact = new Contact();
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "CSV file (*.csv)|*.csv| All Files (*.*)|*.*";
-
-            if (openFileDialog.ShowDialog() == true)
-            {
-                lines = File.ReadAllLines(openFileDialog.FileName);
-
-                List<Contact> contacts = lines.Select(line =>
-                {
-                    string[] data = line.Split(',');
-                    return new Contact(Convert.ToInt32(data[0]), data[1], data[2], Convert.ToDateTime(data[3]), Convert.ToDateTime(data[4]), Convert.ToBoolean(data[5]), Convert.ToBoolean(data[6]), data[7], data[8], Convert.ToDateTime(data[9]), data[10]);
-                }).ToList();
-                foreach (Contact con in contacts)
-                {
-                    db.CreateContact(con);
-                }
-                this.Refresh();
-
-            }
+            csvHandler.ImportCSV();
+            this.Refresh();
         }
 
         private void Ex_Contact_btn_Click(object sender, RoutedEventArgs e)
         {
-            StringBuilder csv = new StringBuilder();
-            StringBuilder csvFile = new StringBuilder();
-
-            List<Contact> contacts = db.GetContacts();
-
-            foreach (Contact con in contacts)
-            {
-                var fullcon = con.GetType().GetProperties();
-                foreach (var property in fullcon)
-                {
-                    csv.Append("," + property.GetValue(con, null).ToString());
-                }
-                csv.Remove(0, 1);
-                csvFile.AppendLine(csv.ToString());
-                csv.Clear();
-            }
-            string csvContent = csvFile.ToString();
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "CSV file (*.csv)|*.csv| All Files (*.*)|*.*";
-
-            if (saveFileDialog.ShowDialog() == true)
-                File.WriteAllText(saveFileDialog.FileName, csvContent);
+            csvHandler.ExportCSV();
         }
 
         private void ContactsListItems_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
