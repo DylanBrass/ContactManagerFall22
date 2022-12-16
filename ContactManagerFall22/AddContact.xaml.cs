@@ -10,7 +10,7 @@ namespace ContactManagerFall22
     /// </summary>
     public partial class AddContact : Window
     {
-        DBManager dB = new DBManager();
+        readonly DBManager dB = new DBManager();
         public AddContact()
         {
             InitializeComponent();
@@ -34,6 +34,12 @@ namespace ContactManagerFall22
             dB.CreateContact(addingContact);
             this.Close();
 
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
         }
     }
 }

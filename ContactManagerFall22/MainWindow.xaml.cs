@@ -54,6 +54,8 @@ namespace ContactManagerFall22
         {
             AddContact addContactWindow = new AddContact();
             addContactWindow.ShowDialog();
+            this.Close();
+
         }
 
         private void Edit_Contact_btn_Click(object sender, RoutedEventArgs e)
