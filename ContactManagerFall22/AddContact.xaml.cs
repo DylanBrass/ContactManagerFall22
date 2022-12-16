@@ -2,6 +2,7 @@
 using ContactManagerFall22.DB.Entities;
 using System;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace ContactManagerFall22
 {
@@ -22,12 +23,8 @@ namespace ContactManagerFall22
             addingContact.FirstName = FName.Text;
             addingContact.LastName = LName.Text;
             addingContact.Nickname = Nickname.Text;
-            //string BDString = Birthday.Text;
-            //if (BDString != null)
-            //{
-            //    addingContact.Birthday = DateTime.Parse(BDString);
-            //}
-            //addingContact.Birthday = Convert.ToDateTime(Birthday.Text);
+            DateTime stringBD  = Convert.ToDateTime(BirthDate.Text);
+            addingContact.Birthday = stringBD;
             addingContact.Salutation = Salutation.Text;
             addingContact.Note = Note.Text;
             addingContact.Favourite = favourite.IsChecked;

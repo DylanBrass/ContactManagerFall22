@@ -60,7 +60,7 @@
             <TextBox x:Name="email" HorizontalAlignment="Left" Margin="325,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
             <TextBox x:Name="Nickname" HorizontalAlignment="Left" Margin="325,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
             <TextBox x:Name="Salutation" HorizontalAlignment="Left" Margin="325,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-            <DatePicker x:Name="BirthDate" Text="Pick a Date"  Margin="325,213,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" SelectedDateFormat="Short" Grid.Column="1"/>
+            <DatePicker x:Name="BirthDate" Text="Pick a Date"  Margin="325,213,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" SelectedDateFormat="Short" Grid.Column="1" />
             <!--<TextBox x:Name="Birthday" HorizontalAlignment="Left" Margin="325,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>-->
             <TextBox x:Name="PhoneNumber" HorizontalAlignment="Left" Margin="325,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLength="12" IsUndoEnabled="False" Grid.Column="1"/>
             <CheckBox Template="{DynamicResource StarButton}" x:Name="favourite" Content="Favourites" HorizontalAlignment="Left" Height="40" Margin="242,335,0,0" VerticalAlignment="Top" Width="146" RenderTransformOrigin="0.494,0.56" Grid.Column="1"/>
