@@ -1,12 +1,12 @@
 ﻿using ContactManagerFall22.DB;
 using ContactManagerFall22.DB.Entities;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
-using System.Windows.Forms;
 using MessageBox = System.Windows.MessageBox;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
@@ -16,135 +16,129 @@ namespace ContactManagerFall22
     internal class CSVHandler
     {
         readonly DBManager db = new DBManager();
-        List<string> filesToSave = null;
 
-        string path;
-        public void ExportCSV()
-        {
-            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-
-            if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                filesToSave = new List<string> { "Contacts.csv", "Addresses.csv", "Phones.csv", "Emails.csv" };
-                string pathStr = folderBrowserDialog.SelectedPath;
-
-                if (ExportContact() != "")
-                {
-                    path = Path.Combine(pathStr, filesToSave[0]);
-                    File.WriteAllText(path, ExportContact());
-                }
-
-                if (ExportAddress() != "")
-                {
-                    path = Path.Combine(pathStr, filesToSave[1]);
-                    File.WriteAllText(path, ExportAddress());
-                }
-                if (ExportPhone() != "")
-                {
-                    path = Path.Combine(pathStr, filesToSave[2]);
-                    File.WriteAllText(path, ExportPhone());
-                }
-                if (ExportEmail() != "")
-                {
-                    path = Path.Combine(pathStr, filesToSave[3]);
-                    File.WriteAllText(path, ExportEmail());
-                }
-            }
-        }
-
-        public string ExportContact()
+        public void ExportContact()
         {
             StringBuilder csv = new StringBuilder();
             StringBuilder csvFileContact = new StringBuilder();
-
-            List<Contact> contacts = db.GetContacts();
-
-            foreach (Contact con in contacts)
+            SaveFileDialog openFileDialog = new SaveFileDialog
             {
-                var fullcon = con.GetType().GetProperties();
-                foreach (var property in fullcon)
-                {
-                    csv.Append("," + property.GetValue(con, null).ToString());
-                }
-                csv.Remove(0, 1);
-                csvFileContact.AppendLine(csv.ToString());
-                csv.Clear();
-            }
-            return csvFileContact.ToString();
-        }
+                InitialDirectory = "c:\\",
+                Filter = "CSV Files (*.csv)|*.csv"
+            };
 
-        public string ExportAddress()
+            if (openFileDialog.ShowDialog() == true)
+            {
+
+
+                List<Contact> contacts = db.GetContacts();
+
+                foreach (Contact con in contacts)
+                {
+                    var fullcon = con.GetType().GetProperties();
+                    foreach (var property in fullcon)
+                    {
+                        csv.Append("," + property.GetValue(con, null).ToString());
+                    }
+                    csv.Remove(0, 1);
+                    csvFileContact.AppendLine(csv.ToString());
+                    csv.Clear();
+                }
+                File.WriteAllText(openFileDialog.FileName, csvFileContact.ToString());
+            }
+        }
+        public void ExportAddress()
         {
             StringBuilder csv = new StringBuilder();
             StringBuilder csvFileAddress = new StringBuilder();
-
-            List<Address> addresses = db.GetAdresses();
-            if (addresses.Count > 0)
+            SaveFileDialog openFileDialog = new SaveFileDialog
             {
-                foreach (Address add in addresses)
+                InitialDirectory = "c:\\",
+                Filter = "CSV Files (*.csv)|*.csv"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                List<Address> addresses = db.GetAdresses();
+                if (addresses.Count > 0)
                 {
-                    var fullAdd = add.GetType().GetProperties();
-                    foreach (var property in fullAdd)
+                    foreach (Address add in addresses)
                     {
-                        csv.Append("," + property.GetValue(add, null).ToString());
+                        var fullAdd = add.GetType().GetProperties();
+                        foreach (var property in fullAdd)
+                        {
+                            csv.Append("," + property.GetValue(add, null).ToString());
+                        }
+                        csv.Remove(0, 1);
+                        csvFileAddress.AppendLine(csv.ToString());
+                        csv.Clear();
                     }
-                    csv.Remove(0, 1);
-                    csvFileAddress.AppendLine(csv.ToString());
-                    csv.Clear();
+                    File.WriteAllText(openFileDialog.FileName, csvFileAddress.ToString());
                 }
-                return csvFileAddress.ToString();
             }
-            return null;
         }
 
-        public string ExportPhone()
+        public void ExportPhone()
         {
             StringBuilder csv = new StringBuilder();
             StringBuilder csvFilePhone = new StringBuilder();
-
-            List<Phone> phones = db.GetPhones();
-            if (phones.Count > 0)
+            SaveFileDialog openFileDialog = new SaveFileDialog
             {
-                foreach (Phone ph in phones)
-                {
-                    var fullPh = ph.GetType().GetProperties();
-                    foreach (var property in fullPh)
-                    {
-                        csv.Append("," + property.GetValue(ph, null).ToString());
-                    }
-                    csv.Remove(0, 1);
-                    csvFilePhone.AppendLine(csv.ToString());
-                    csv.Clear();
-                }
-                return csvFilePhone.ToString();
+                InitialDirectory = "c:\\",
+                Filter = "CSV Files (*.csv)|*.csv"
+            };
 
+            if (openFileDialog.ShowDialog() == true)
+            {
+                List<Phone> phones = db.GetPhones();
+                if (phones.Count > 0)
+                {
+                    foreach (Phone ph in phones)
+                    {
+                        var fullPh = ph.GetType().GetProperties();
+                        foreach (var property in fullPh)
+                        {
+                            csv.Append("," + property.GetValue(ph, null).ToString());
+                        }
+                        csv.Remove(0, 1);
+                        csvFilePhone.AppendLine(csv.ToString());
+                        csv.Clear();
+                    }
+                    File.WriteAllText(openFileDialog.FileName, csvFilePhone.ToString());
+                }
             }
-            return null;
         }
 
-        public string ExportEmail()
+        public void ExportEmail()
         {
             StringBuilder csv = new StringBuilder();
             StringBuilder csvFileEmail = new StringBuilder();
-
-            List<Email> emails = db.GetEmails();
-
-            if (emails.Count > 0)
+            SaveFileDialog openFileDialog = new SaveFileDialog
             {
-                foreach (Email em in emails)
+                InitialDirectory = "c:\\",
+                Filter = "CSV Files (*.csv)|*.csv"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                List<Email> emails = db.GetEmails();
+
+                if (emails.Count > 0)
                 {
-                    var fullEm = em.GetType().GetProperties();
-                    foreach (var property in fullEm)
+                    foreach (Email em in emails)
                     {
-                        csv.Append("," + property.GetValue(em, null).ToString());
+                        var fullEm = em.GetType().GetProperties();
+                        foreach (var property in fullEm)
+                        {
+                            csv.Append("," + property.GetValue(em, null).ToString());
+                        }
+                        csv.Remove(0, 1);
+                        csvFileEmail.AppendLine(csv.ToString());
+                        csv.Clear();
                     }
-                    csv.Remove(0, 1);
-                    csvFileEmail.AppendLine(csv.ToString());
-                    csv.Clear();
+                    File.WriteAllText(openFileDialog.FileName, csvFileEmail.ToString());
                 }
-                return csvFileEmail.ToString();
             }
-            return null;
         }
 
         public void ImportCSV()
@@ -166,7 +160,6 @@ namespace ContactManagerFall22
                     {
                         lines = File.ReadAllLines(fileName);
                         ImportContact(lines);
-
                     }
                     else
                     {

@@ -73,7 +73,7 @@ namespace ContactManagerFall22
 
         private void Ex_Contact_btn_Click(object sender, RoutedEventArgs e)
         {
-            csvHandler.ExportCSV();
+            csvHandler.ExportContact();
         }
 
         private void ContactsListItems_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
