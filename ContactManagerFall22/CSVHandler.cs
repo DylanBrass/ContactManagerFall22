@@ -222,7 +222,7 @@ namespace ContactManagerFall22
                     List<Address> addresses = lines.Select(line =>
                     {
                         string[] data = line.Split(',');
-                        return new Address(Convert.ToInt32(data[0]), Convert.ToInt32(data[1]), data[2], data[3], data[4], data[5], Convert.ToInt32(data[6]), Convert.ToInt32(data[7]), Convert.ToDateTime(data[8]), Convert.ToDateTime(data[9]), Convert.ToChar(data[10]));
+                        return new Address(Convert.ToInt32(data[0]), contact_id, data[2], data[3], data[4], data[5], Convert.ToInt32(data[6]), Convert.ToInt32(data[7]), Convert.ToDateTime(data[8]), Convert.ToDateTime(data[9]), Convert.ToChar(data[10]));
                     }).ToList();
                     foreach (Address add in addresses)
                     {
@@ -253,7 +253,7 @@ namespace ContactManagerFall22
                     List<Phone> phones = lines.Select(line =>
                     {
                         string[] data = line.Split(',');
-                        return new Phone(Convert.ToInt32(data[0]), Convert.ToInt32(data[1]), data[2], Convert.ToChar(data[3]), Convert.ToDateTime(data[8]), Convert.ToDateTime(data[9]));
+                        return new Phone(Convert.ToInt32(data[0]), contact_id, data[2], Convert.ToChar(data[3]), Convert.ToDateTime(data[8]), Convert.ToDateTime(data[9]));
                     }).ToList();
                     foreach (Phone ph in phones)
                     {
@@ -284,7 +284,7 @@ namespace ContactManagerFall22
                     List<Email> emails = lines.Select(line =>
                     {
                         string[] data = line.Split(',');
-                        return new Email(Convert.ToInt32(data[0]), Convert.ToInt32(data[1]), data[2], Convert.ToChar(data[3]), Convert.ToDateTime(data[5]), Convert.ToDateTime(data[6]));
+                        return new Email(Convert.ToInt32(data[0]), contact_id, data[2], Convert.ToChar(data[3]), Convert.ToDateTime(data[5]), Convert.ToDateTime(data[6]));
                     }).ToList();
                     foreach (Email em in emails)
                     {
