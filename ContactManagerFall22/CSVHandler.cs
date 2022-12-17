@@ -16,6 +16,7 @@ namespace ContactManagerFall22
     internal class CSVHandler
     {
         readonly DBManager db = new DBManager();
+        string[] lines = null;
 
         public void ExportContact()
         {
@@ -47,7 +48,7 @@ namespace ContactManagerFall22
                 File.WriteAllText(openFileDialog.FileName, csvFileContact.ToString());
             }
         }
-        public void ExportAddress()
+        public void ExportAddress(int contact_id)
         {
             StringBuilder csv = new StringBuilder();
             StringBuilder csvFileAddress = new StringBuilder();
@@ -59,7 +60,7 @@ namespace ContactManagerFall22
 
             if (openFileDialog.ShowDialog() == true)
             {
-                List<Address> addresses = db.GetAdresses();
+                List<Address> addresses = db.GetAdresses(contact_id);
                 if (addresses.Count > 0)
                 {
                     foreach (Address add in addresses)
@@ -78,7 +79,7 @@ namespace ContactManagerFall22
             }
         }
 
-        public void ExportPhone()
+        public void ExportPhone(int contact_id)
         {
             StringBuilder csv = new StringBuilder();
             StringBuilder csvFilePhone = new StringBuilder();
@@ -90,7 +91,7 @@ namespace ContactManagerFall22
 
             if (openFileDialog.ShowDialog() == true)
             {
-                List<Phone> phones = db.GetPhones();
+                List<Phone> phones = db.GetPhones(contact_id);
                 if (phones.Count > 0)
                 {
                     foreach (Phone ph in phones)
@@ -109,7 +110,7 @@ namespace ContactManagerFall22
             }
         }
 
-        public void ExportEmail()
+        public void ExportEmail(int contact_id)
         {
             StringBuilder csv = new StringBuilder();
             StringBuilder csvFileEmail = new StringBuilder();
@@ -121,7 +122,7 @@ namespace ContactManagerFall22
 
             if (openFileDialog.ShowDialog() == true)
             {
-                List<Email> emails = db.GetEmails();
+                List<Email> emails = db.GetEmails(contact_id);
 
                 if (emails.Count > 0)
                 {
@@ -143,7 +144,6 @@ namespace ContactManagerFall22
 
         public void ImportCSV()
         {
-            string[] lines = null;
 
             string currentfile;
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -171,6 +171,30 @@ namespace ContactManagerFall22
         }
         public void ImportContact(string[] lines)
         {
+
+            string currentfile;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Multiselect = true;
+            openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            if (openFileDialog.ShowDialog() == true)
+            {
+                foreach (string fileName in openFileDialog.FileNames)
+                {
+                    currentfile = Path.GetFileName(fileName);
+
+                    if (db.GetContacts().Count > 0 || currentfile == "Contacts.csv")
+                    {
+                        lines = File.ReadAllLines(fileName);
+                        ImportContact(lines);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Insert the Contacts.csv first then import other files", "No contacts found", MessageBoxButton.OK, MessageBoxImage.Error);
+                        break;
+                    }
+                }
+            }
             List<Contact> contacts = lines.Select(line =>
             {
                 string[] data = line.Split(',');
@@ -182,44 +206,96 @@ namespace ContactManagerFall22
             }
         }
 
-        public void ImportAddress(string[] lines)
+        public void ImportAddress(string[] lines, int contact_id)
         {
-            List<Address> addresses = lines.Select(line =>
+            string currentfile;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Multiselect = true;
+            openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            if (openFileDialog.ShowDialog() == true)
             {
-                string[] data = line.Split(',');
-                return new Address(Convert.ToInt32(data[0]), Convert.ToInt32(data[1]), data[2], data[3], data[4], data[5], Convert.ToInt32(data[6]), Convert.ToInt32(data[7]), Convert.ToDateTime(data[8]), Convert.ToDateTime(data[9]), Convert.ToChar(data[10]));
-            }).ToList();
-            foreach (Address add in addresses)
+                foreach (string fileName in openFileDialog.FileNames)
+                {
+                    currentfile = Path.GetFileName(fileName);
+                    lines = File.ReadAllLines(fileName);
+                    List<Address> addresses = lines.Select(line =>
+                    {
+                        string[] data = line.Split(',');
+                        return new Address(Convert.ToInt32(data[0]), Convert.ToInt32(data[1]), data[2], data[3], data[4], data[5], Convert.ToInt32(data[6]), Convert.ToInt32(data[7]), Convert.ToDateTime(data[8]), Convert.ToDateTime(data[9]), Convert.ToChar(data[10]));
+                    }).ToList();
+                    foreach (Address add in addresses)
+                    {
+                        db.CreateAddress(add);
+                    }
+
+                }
+            }
+
+        }
+
+        public void ImportPhone(string[] lines, int contact_id)
+        {
+
+            string currentfile;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Multiselect = true;
+            openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            if (openFileDialog.ShowDialog() == true)
             {
-                db.CreateAddress(add);
+                foreach (string fileName in openFileDialog.FileNames)
+                {
+                    currentfile = Path.GetFileName(fileName);
+
+
+                    lines = File.ReadAllLines(fileName);
+                    List<Phone> phones = lines.Select(line =>
+                    {
+                        string[] data = line.Split(',');
+                        return new Phone(Convert.ToInt32(data[0]), Convert.ToInt32(data[1]), data[2], Convert.ToChar(data[3]), Convert.ToDateTime(data[8]), Convert.ToDateTime(data[9]));
+                    }).ToList();
+                    foreach (Phone ph in phones)
+                    {
+                        db.CreatePhone(ph);
+                    }
+
+                }
             }
         }
 
-        public void ImportPhone(string[] lines)
-        {
-            List<Phone> phones = lines.Select(line =>
-            {
-                string[] data = line.Split(',');
-                return new Phone(Convert.ToInt32(data[0]), Convert.ToInt32(data[1]), data[2], Convert.ToChar(data[3]), Convert.ToDateTime(data[8]), Convert.ToDateTime(data[9]));
-            }).ToList();
-            foreach (Phone ph in phones)
-            {
-                db.CreatePhone(ph);
-            }
-        }
 
-        public void ImportEmail(string[] lines)
+        public void ImportEmail(string[] lines, int contact_id)
         {
-            List<Email> emails = lines.Select(line =>
+
+            string currentfile;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Multiselect = true;
+            openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            if (openFileDialog.ShowDialog() == true)
             {
-                string[] data = line.Split(',');
-                return new Email(Convert.ToInt32(data[0]), Convert.ToInt32(data[1]), data[2], Convert.ToChar(data[3]), Convert.ToDateTime(data[5]), Convert.ToDateTime(data[6]));
-            }).ToList();
-            foreach (Email em in emails)
-            {
-                db.CreateEmail(em);
+                foreach (string fileName in openFileDialog.FileNames)
+                {
+                    currentfile = Path.GetFileName(fileName);
+
+
+                    lines = File.ReadAllLines(fileName);
+                    List<Email> emails = lines.Select(line =>
+                    {
+                        string[] data = line.Split(',');
+                        return new Email(Convert.ToInt32(data[0]), Convert.ToInt32(data[1]), data[2], Convert.ToChar(data[3]), Convert.ToDateTime(data[5]), Convert.ToDateTime(data[6]));
+                    }).ToList();
+                    foreach (Email em in emails)
+                    {
+                        db.CreateEmail(em);
+                    }
+
+                }
             }
+
         }
 
     }
 }
+
