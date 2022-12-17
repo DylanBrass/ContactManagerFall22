@@ -8,11 +8,6 @@ namespace ContactManagerFall22.DB
 {
     internal class DBManager
     {
-        //GetContacts
-        //GetContact
-        //GetAddresses
-        //GetAddress
-
         readonly static string ConString = ConfigurationManager.ConnectionStrings["ContactConnection"].ConnectionString;
         SqlConnection connect;
 
@@ -339,10 +334,6 @@ namespace ContactManagerFall22.DB
                 cm.Parameters.AddWithValue("@Birthday", con.Birthday);
                 cm.Parameters.AddWithValue("@Note", con.Note);
                 cm.ExecuteNonQuery();
-
-                //public void CreateContact(Contact con)
-                //return addContact;
-
             }
 
 
