@@ -146,10 +146,12 @@ namespace ContactManagerFall22
         {
 
             string currentfile;
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Multiselect = true;
-            openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Multiselect = true,
+                Filter = "CSV Files (*.csv)|*.csv",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+            };
             if (openFileDialog.ShowDialog() == true)
             {
                 foreach (string fileName in openFileDialog.FileNames)
@@ -173,10 +175,12 @@ namespace ContactManagerFall22
         {
 
             string currentfile;
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Multiselect = true;
-            openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Multiselect = true,
+                Filter = "CSV Files (*.csv)|*.csv",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+            };
             if (openFileDialog.ShowDialog() == true)
             {
                 foreach (string fileName in openFileDialog.FileNames)
@@ -209,10 +213,12 @@ namespace ContactManagerFall22
         public void ImportAddress(string[] lines, int contact_id)
         {
             string currentfile;
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Multiselect = true;
-            openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Multiselect = true,
+                Filter = "CSV Files (*.csv)|*.csv",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+            };
             if (openFileDialog.ShowDialog() == true)
             {
                 foreach (string fileName in openFileDialog.FileNames)
@@ -238,10 +244,12 @@ namespace ContactManagerFall22
         {
 
             string currentfile;
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Multiselect = true;
-            openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Multiselect = true,
+                Filter = "CSV Files (*.csv)|*.csv",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+            };
             if (openFileDialog.ShowDialog() == true)
             {
                 foreach (string fileName in openFileDialog.FileNames)
@@ -269,10 +277,12 @@ namespace ContactManagerFall22
         {
 
             string currentfile;
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Multiselect = true;
-            openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Multiselect = true,
+                Filter = "CSV Files (*.csv)|*.csv",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+            };
             if (openFileDialog.ShowDialog() == true)
             {
                 foreach (string fileName in openFileDialog.FileNames)
