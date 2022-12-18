@@ -66,6 +66,20 @@ namespace ContactManagerFall22
             newWindow.ShowDialog();
         }
 
+        private void New_Address_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Phone_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void New_Phone_Click(object sender, RoutedEventArgs e)
+        {
+            AddPhoneNumber newPNWindow = new AddPhoneNumber();
+            newPNWindow.ShowDialog();
+        }
 
 
         private void Delete_Contact(object sender, RoutedEventArgs e)
