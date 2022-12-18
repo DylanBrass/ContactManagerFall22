@@ -66,6 +66,8 @@ namespace ContactManagerFall22
             newWindow.ShowDialog();
         }
 
+
+
         private void Delete_Contact(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this contact?", "Confirmation", MessageBoxButton.YesNo);
@@ -89,5 +91,6 @@ namespace ContactManagerFall22
             MainWindow main = new MainWindow();
             main.Show();
         }
+
     }
 }

@@ -120,45 +120,8 @@ namespace ContactManagerFall22.DB
         }
 
 
-        public List<Address> GetAdresses()
-        {
-            List<Address> addresses = new List<Address>();
 
-            using (connect = new SqlConnection(ConString))
-            {
-
-
-                connect.Open();
-                SqlCommand cm = new SqlCommand("SELECT * FROM Address a INNER JOIN TYPE t ON a.Type_Code = t.Code WHERE Active = 1;", connect);
-
-
-
-
-                SqlDataReader sdr = cm.ExecuteReader();
-                while (sdr.Read())
-                {
-                    Address address = new Address();
-                    address = new Address(Convert.ToInt32(sdr["Id"]),
-                        Convert.ToInt32(sdr["Contact_Id"]),
-                        sdr["City"].ToString(),
-                        sdr["Country"].ToString(),
-                        sdr["AreaCode"].ToString(),
-                        sdr["Street"].ToString(),
-                        sdr["AddressNumber"] == DBNull.Value ? default(int) : int.Parse(sdr["AddressNumber"].ToString()),
-                        //To avoid DBNull Thanks Brendan !
-                        sdr["ApartementNum"] == DBNull.Value ? default(int) : int.Parse(sdr["ApartementNum"].ToString()),
-                        (DateTime)sdr["DateCreated"],
-                        (DateTime)sdr["LastUpdated"],
-                        Convert.ToChar(sdr["Type_Code"]),
-                        sdr["Description"].ToString());
-                    addresses.Add(address);
-                }
-                sdr.Close();
-                return addresses;
-            }
-        }
-
-        public Address GetAddress(int Address_Id)
+        public Address GetAddress(int id)
         {
             using (connect = new SqlConnection(ConString))
             {
@@ -166,7 +129,7 @@ namespace ContactManagerFall22.DB
                 connect.Open();
                 SqlCommand cm = new SqlCommand("SELECT * FROM Address a INNER JOIN TYPE t ON a.Type_Code = t.Code WHERE Id = @Address_Id AND ACTIVE = 1;", connect);
 
-                cm.Parameters.AddWithValue("@Address_Id", Address_Id);
+                cm.Parameters.AddWithValue("@Address_Id", id);
 
 
                 SqlDataReader sdr = cm.ExecuteReader();
@@ -221,7 +184,7 @@ namespace ContactManagerFall22.DB
             }
         }
 
-        public List<Phone> GetPhones()
+        public List<Phone> GetPhone(int id)
         {
             List<Phone> phones = new List<Phone>();
             Phone phone;
@@ -229,8 +192,9 @@ namespace ContactManagerFall22.DB
             {
                 connect.Open();
 
-                SqlCommand cm = new SqlCommand("SELECT * FROM Phone p INNER JOIN TYPE t ON p.Type_Code = t.Code WHERE ACTIVE = 1;", connect);
+                SqlCommand cm = new SqlCommand("SELECT * FROM Phone p INNER JOIN TYPE t ON p.Type_Code = t.Code WHERE Id = @Id AND ACTIVE = 1;", connect);
 
+                cm.Parameters.AddWithValue("@Id", id);
                 SqlDataReader sdr = cm.ExecuteReader();
 
                 while (sdr.Read())
@@ -282,7 +246,7 @@ namespace ContactManagerFall22.DB
             }
         }
 
-        public List<Email> GetEmails()
+        public List<Email> GetEmail(int id)
         {
             List<Email> emails = new List<Email>();
             Email email;
@@ -290,8 +254,9 @@ namespace ContactManagerFall22.DB
             {
                 connect.Open();
 
-                SqlCommand cm = new SqlCommand("SELECT * FROM Email e INNER JOIN TYPE t ON e.Type_Code = t.Code WHERE ACTIVE = 1;", connect);
+                SqlCommand cm = new SqlCommand("SELECT * FROM Email e INNER JOIN TYPE t ON e.Type_Code = t.Code WHERE Id = @Id AND ACTIVE = 1;", connect);
 
+                cm.Parameters.AddWithValue("@Id", id);
                 SqlDataReader sdr = cm.ExecuteReader();
 
                 while (sdr.Read())
@@ -312,8 +277,7 @@ namespace ContactManagerFall22.DB
             }
         }
 
-        //Get phone by id
-        //get Email by id 
+
 
         public void CreateContact(Contact con)
         {
@@ -445,7 +409,47 @@ namespace ContactManagerFall22.DB
             }
         }
 
-        //Update all of them (phone,email,contact and address)
+        public void UpdateContact(Contact con)
+        {
+            using (connect = new SqlConnection(ConString))
+            {
+                AddContact addContact = new AddContact();
+                connect.Open();
+                SqlCommand cm = new SqlCommand("UPDATE Contact SET FirstName = @FirstName, LastName = @LastName,Favourite = @Favourite, Salutation = @Salutation,NickName = @Nickname,Birthday = @Birthday,Note = @Note WHERE Id = @Id;", connect);
+
+                cm.Parameters.AddWithValue("@Id", con.Id);
+                cm.Parameters.AddWithValue("@FirstName", con.FirstName);
+                cm.Parameters.AddWithValue("@LastName", con.LastName);
+                cm.Parameters.AddWithValue("@Favourite", con.Favourite);
+                cm.Parameters.AddWithValue("@Salutation", con.Salutation);
+                cm.Parameters.AddWithValue("@Nickname", con.Nickname);
+                cm.Parameters.AddWithValue("@Birthday", con.Birthday);
+                cm.Parameters.AddWithValue("@Note", con.Note);
+                cm.ExecuteNonQuery();
+            }
+
+
+        }
+
+        public void UpdateAddress(Address add, int Contact_id)
+        {
+            using (connect = new SqlConnection(ConString))
+            {
+                connect.Open();
+                SqlCommand cm = new SqlCommand("UPDATE Address SET Contact_Id = @Contact_Id,City = @City,Country = @Country,AreaCode = @AreaCode,Street = @Street,AddressNumber = @AddressNumber,ApartementNum = @ApartementNum,Type_Num = @Type_Code WHERE Contact_Id = @Contact_Id;");
+
+                cm.Parameters.AddWithValue("@Contact_Id", Contact_id);
+                cm.Parameters.AddWithValue("@City", add.City);
+                cm.Parameters.AddWithValue("@Country", add.Country);
+                cm.Parameters.AddWithValue("@AreaCode", add.AreaCode);
+                cm.Parameters.AddWithValue("@Street", add.Street);
+                cm.Parameters.AddWithValue("@AddressNumber", add.AddressNumber);
+                cm.Parameters.AddWithValue("@ApartementNum", add.ApartementNum);
+                cm.Parameters.AddWithValue("@Type_Code", add.Type);
+                cm.ExecuteNonQuery();
+            }
+        }
+        //Update all of them (phone,email)
     }
 }
 
