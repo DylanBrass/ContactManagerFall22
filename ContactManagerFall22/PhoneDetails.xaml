@@ -1,0 +1,56 @@
+﻿<Window x:Class="ContactManagerFall22.PhoneDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ContactManagerFall22"
+        mc:Ignorable="d"
+        Title="Phone Details" Height="450" Width="400">
+
+    <Grid Margin="15,40,15,15">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.ColumnSpan="2">
+
+            <ListView Name="PhoneListItems" Width="370" >
+
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn x:Name="StreetNumber" Header="Street Number" Width="185" DisplayMemberBinding="{Binding AddressNumber}" />
+                        <GridViewColumn x:Name="Street" Header="Street Name" Width="185" DisplayMemberBinding="{Binding Street}" />
+                    </GridView>
+                </ListView.View>
+
+
+                <!--<ListView.ItemTemplate>
+                        <DataTemplate>
+                            <WrapPanel>
+                                <TextBlock Text="{Binding firstName}"/>
+                            </WrapPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>-->
+
+            </ListView>
+        </ScrollViewer>
+
+        <Button Name="Add_Address_btn" Grid.Row="1" Margin="0,10,360,10" Content="Add Address" Grid.Column="1"  />
+
+        <Button Name="Edit_Address_btn" Grid.Row="1" Margin="63,10,240,10" Content="Edit Address..." Grid.Column="1"/>
+
+        <Button Name="Del_Address_btn" Grid.Row="1" Margin="118,10,185,10" Content="Delete Address... " Grid.Column="1"/>
+
+        <Button Name="Adress_Done" Grid.Row="1" Margin="293,10,10,10" Content="Done"  Grid.Column="1"/>
+
+        <Label Content="Persons Name" HorizontalAlignment="Left" Margin="0,-31,0,0" VerticalAlignment="Top" Width="133" Grid.ColumnSpan="2" Height="26"/>
+
+    </Grid>
+
+</Window>

@@ -18,19 +18,24 @@ namespace ContactManagerFall22
         }
         public void AddContact_Button(object sender, RoutedEventArgs e)
         {
-            //Contact addingContact = new Contact(FName.Text, LName.Text, email.Text, Salutation.Text, Nickname.Text, Birthday.Text,);
-            Contact addingContact = new Contact();
-            addingContact.FirstName = FName.Text;
-            addingContact.LastName = LName.Text;
-            addingContact.Nickname = Nickname.Text;
-            DateTime stringBD  = Convert.ToDateTime(BirthDate.Text);
-            addingContact.Birthday = stringBD;
-            addingContact.Salutation = Salutation.Text;
-            addingContact.Note = Note.Text;
-            addingContact.Favourite = favourite.IsChecked;
-            dB.CreateContact(addingContact);
-            this.Close();
-
+            if (String.IsNullOrEmpty(FName.Text) || String.IsNullOrEmpty(LName.Text))
+            {
+                this.Close();
+            }
+            else
+            {
+                Contact addingContact = new Contact();
+                addingContact.FirstName = FName.Text;
+                addingContact.LastName = LName.Text;
+                addingContact.Nickname = Nickname.Text;
+                String stringBD = Convert.ToString(BirthDate.Text);
+                addingContact.Birthday = Convert.ToDateTime(BirthDate.Text);
+                addingContact.Salutation = Salutation.Text;
+                addingContact.Note = Note.Text;
+                addingContact.Favourite = favourite.IsChecked;
+                dB.CreateContact(addingContact);
+                this.Close();
+            }
         }
 
         private void Window_Closed(object sender, EventArgs e)
