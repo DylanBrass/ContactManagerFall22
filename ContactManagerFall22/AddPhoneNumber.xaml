@@ -1,0 +1,41 @@
+﻿<Window x:Class="ContactManagerFall22.AddPhoneNumber"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ContactManagerFall22"
+        mc:Ignorable="d"
+        Title="AddPhoneNumber" Height="450" Width="800">
+    <Grid>
+        <Label Content="Phone Number" HorizontalAlignment="Left" Margin="227,58,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="PNInput" HorizontalAlignment="Center" Margin="0,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock x:Name="examplePhoneNumber" Text="xxx-xxx-xxxx" HorizontalAlignment="Left" Margin="340,68,0,0" VerticalAlignment="Top" IsHitTestVisible="False" Foreground="DarkGray" Width="106">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=PNInput}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+
+
+        <Label Content="Type: " HorizontalAlignment="Left" Margin="227,136,0,0" VerticalAlignment="Top" Height="25" Width="85"/>
+        <CheckBox  x:Name="WorkType" Content="Work" HorizontalAlignment="Left" Margin="329,142,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="HomeType"  Content="Home" HorizontalAlignment="Left" Margin="400,141,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="OtherType" Content="Other" HorizontalAlignment="Left" Margin="468,141,0,0" VerticalAlignment="Top"/>
+        <Button Content="Add 📞" HorizontalAlignment="Left" Margin="360,249,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="36" Width="63" Click="AddPhoneNumberButton">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.841"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+    </Grid>
+</Window>
