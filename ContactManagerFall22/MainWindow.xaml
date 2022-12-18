@@ -17,8 +17,8 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2">
-            <ListView Name="ContactsListItems" MouseDoubleClick="ContactsListItems_MouseDoubleClick">
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2" Margin="1,40,-1,10" Grid.RowSpan="2">
+            <ListView Name="ContactsListItems" MouseDoubleClick="ContactsListItems_MouseDoubleClick" Height="278">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Favourite" Width="150" DisplayMemberBinding="{Binding Favourite}" />
