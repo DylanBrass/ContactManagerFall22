@@ -5,8 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactManagerFall22"
         mc:Ignorable="d"
- Title="MainWindow" Height="450" Width="640">
+ Title="Contacts" Height="450" Width="640" Background="#95252525" FontFamily="Candara Light">
+    
+    <Window.Resources>
+        <Style x:Key="Title" TargetType="Label">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="FontFamily" Value="Copperplate Gothic Light"/>
+            <Setter Property="FontSize" Value="70" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
 
+        <Style TargetType="ListView">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="Background" Value="#95363636" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+        </Style>
+
+        <Style TargetType="ListViewItem">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#FF68BDFF" />
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="Background" Value="#95363636" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            
+        </Style> 
+
+    </Window.Resources>
+    
     <Grid Margin="15,15,15,15">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="309*"/>
@@ -17,8 +54,17 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2" Margin="1,40,-1,10" Grid.RowSpan="2">
-            <ListView Name="ContactsListItems" MouseDoubleClick="ContactsListItems_MouseDoubleClick" Height="278">
+        <Label HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Height="59" Width="289">
+            <Viewbox>
+                <Label Content="Contacts" Style="{StaticResource Title}"/>
+            </Viewbox>
+        </Label>
+
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2" Margin="1,69,-1,10" Grid.RowSpan="2">
+            <ListView Name="ContactsListItems" MouseDoubleClick="ContactsListItems_MouseDoubleClick" Height="211" >
+                <ListView.BorderBrush>
+                    <ImageBrush Opacity="0"/>
+                </ListView.BorderBrush>
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Favourite" Width="150" DisplayMemberBinding="{Binding Favourite}" />
@@ -38,6 +84,7 @@
         <Button Name="Imp_Contact_btn" Grid.Row="1" Margin="61,10,130,10" Content="Import Contact..." Click="Imp_Contact_btn_Click" Grid.Column="1"/>
 
         <Button Name="Ex_Contact_btn" Grid.Row="1" Margin="181,10,10,10" Content="ExportContact..." Click="Ex_Contact_btn_Click" Grid.Column="1"/>
+
 
     </Grid>
 
