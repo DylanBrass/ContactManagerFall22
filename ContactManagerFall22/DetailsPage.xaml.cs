@@ -65,6 +65,11 @@ namespace ContactManagerFall22
             AddressDetails newWindow = new AddressDetails();
             newWindow.ShowDialog();
         }
+        private void New_Address_Click(object sender, RoutedEventArgs e)
+        {
+            AddAdressPage newWindow = new AddAdressPage();
+            newWindow.ShowDialog();
+        }
 
         private void New_Address_Click(object sender, RoutedEventArgs e)
         {
