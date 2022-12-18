@@ -92,9 +92,5 @@ namespace ContactManagerFall22
             main.Show();
         }
 
-        private void New_Address_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
