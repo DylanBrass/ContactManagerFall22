@@ -6,13 +6,25 @@
         xmlns:local="clr-namespace:ContactManagerFall22"
         mc:Ignorable="d"
  Title="Contacts" Height="450" Width="640" Background="#95252525" FontFamily="Candara Light">
-    
+
     <Window.Resources>
         <Style x:Key="Title" TargetType="Label">
             <Setter Property="Foreground" Value="LightGray" />
             <Setter Property="FontFamily" Value="Copperplate Gothic Light"/>
             <Setter Property="FontSize" Value="70" />
             <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <Style x:Key="Button" TargetType="Button">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="Background" Value="#95363636" />
+            <Setter Property="FontFamily" Value="Copperplate Gothic Light"/>
+            <Setter Property="FontSize" Value="70" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="LightGray" />
         </Style>
 
         <Style TargetType="ListView">
@@ -30,6 +42,18 @@
                     <Setter Property="Foreground" Value="#FF68BDFF" />
                     <Setter Property="Background" Value="Transparent"/>
                     <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <Border Name="Border" BorderBrush="{TemplateBinding BorderBrush}" 
+                                  BorderThickness="{TemplateBinding BorderThickness}" 
+                                  Background="{TemplateBinding Background}">
+                                    <GridViewRowPresenter Content="{TemplateBinding Content}"
+                                      Margin="{TemplateBinding Padding}" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -39,10 +63,11 @@
             <Setter Property="Background" Value="#95363636" />
             <Setter Property="FontFamily" Value="Candara Light"/>
             <Setter Property="BorderBrush" Value="Black"/>
-        </Style> 
+
+        </Style>
 
     </Window.Resources>
-    
+
     <Grid Margin="15,15,15,15">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="309*"/>
@@ -59,8 +84,8 @@
             </Viewbox>
         </Label>
 
-        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2" Margin="1,69,-1,10" Grid.RowSpan="2">
-            <ListView Name="ContactsListItems" MouseDoubleClick="ContactsListItems_MouseDoubleClick" Height="211" >
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2" Margin="1,1,1,1" Grid.RowSpan="2">
+            <ListView Name="ContactsListItems" MouseDoubleClick="ContactsListItems_MouseDoubleClick" Height="241" >
                 <ListView.BorderBrush>
                     <ImageBrush Opacity="0"/>
                 </ListView.BorderBrush>
@@ -74,16 +99,23 @@
             </ListView>
         </ScrollViewer>
 
-        <Button Name="Add_Contact_btn" Grid.Row="1" Margin="10,10,189,10" Content="Add Contact..." Click="Add_Contact_btn_Click" />
+        <Button Name="Add_Contact_btn" HorizontalAlignment="Stretch" Margin="10,10,189,10" Grid.Row="1" VerticalAlignment="Stretch" Click="Add_Contact_btn_Click" Style="{StaticResource Button}">
+            <Viewbox>
+                <Label Content="Add Contact" />
+            </Viewbox>
+        </Button>
 
-        <Button Name="Edit_Contact_btn" Grid.Row="1" Margin="130,10,69,10" Content="Edit Contact..." Click="Edit_Contact_btn_Click"/>
+        <Button Name="Imp_Contact_btn" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="50,10,133,10" Grid.Row="1" Click="Imp_Contact_btn_Click" Grid.Column="1" Style="{StaticResource Button}">
+            <Viewbox>
+                <Label Content="Import Contacts" />
+            </Viewbox>
+        </Button>
 
-        <Button Name="Del_Contact_btn" Grid.Row="1" Margin="251,10,249,10" Content="Delete Contact... " Click="Del_Contact_btn_Click" Grid.ColumnSpan="2"/>
-
-        <Button Name="Imp_Contact_btn" Grid.Row="1" Margin="61,10,130,10" Content="Import Contact..." Click="Imp_Contact_btn_Click" Grid.Column="1"/>
-
-        <Button Name="Ex_Contact_btn" Grid.Row="1" Margin="181,10,10,10" Content="ExportContact..." Click="Ex_Contact_btn_Click" Grid.Column="1"/>
-
+        <Button Name="Ex_Contact_btn" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="173,10,10,10" Grid.Row="1" Click="Imp_Contact_btn_Click" Grid.Column="1" Style="{StaticResource Button}">
+            <Viewbox>
+                <Label Content="ExportContact" />
+            </Viewbox>
+        </Button>
 
     </Grid>
 
