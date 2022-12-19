@@ -110,10 +110,5 @@ namespace ContactManagerFall22
             MainWindow main = new MainWindow();
             main.Show();
         }
-
-        private void Phone_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
