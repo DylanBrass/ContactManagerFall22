@@ -72,11 +72,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="AddAdressPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddContact.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddEmailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddPhoneNumber.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -92,11 +100,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AddAdressPage.xaml.cs">
+      <DependentUpon>AddAdressPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddContact.xaml.cs">
       <DependentUpon>AddContact.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddEmailPage.xaml.cs">
       <DependentUpon>AddEmailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddPhoneNumber.xaml.cs">
+      <DependentUpon>AddPhoneNumber.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddressDetails.xaml.cs">
       <DependentUpon>AddressDetails.xaml</DependentUpon>
