@@ -1,8 +1,10 @@
 ﻿using ContactManagerFall22.DB;
 using ContactManagerFall22.DB.Entities;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Forms;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace ContactManagerFall22
 {
@@ -18,23 +20,29 @@ namespace ContactManagerFall22
         }
         public void AddContact_Button(object sender, RoutedEventArgs e)
         {
-            if (String.IsNullOrEmpty(FName.Text) || String.IsNullOrEmpty(LName.Text))
+            if (String.IsNullOrEmpty(FName.Text) || String.IsNullOrEmpty(LName.Text) || String.IsNullOrEmpty(BirthDate.Text))
             {
-                this.Close();
+                MessageBox.Show("Not all required fields were filled !", "Empty fields");
             }
             else
             {
-                Contact addingContact = new Contact();
-                addingContact.FirstName = FName.Text;
-                addingContact.LastName = LName.Text;
-                addingContact.Nickname = Nickname.Text;
-                String stringBD = Convert.ToString(BirthDate.Text);
-                addingContact.Birthday = Convert.ToDateTime(BirthDate.Text);
-                addingContact.Salutation = Salutation.Text;
-                addingContact.Note = Note.Text;
-                addingContact.Favourite = favourite.IsChecked;
+                string stringBD = Convert.ToString(BirthDate.Text);
+
+                Contact addingContact = new Contact
+                {
+                    FirstName = FName.Text,
+                    LastName = LName.Text,
+                    Nickname = Nickname.Text,
+                    Birthday = Convert.ToDateTime(BirthDate.Text),
+                    Salutation = Salutation.Text,
+                    Note = Note.Text,
+                    Favourite = favourite.IsChecked
+                };
                 dB.CreateContact(addingContact);
-                this.Close();
+                if (IsValidFirst(FName.Text) && IsValidLast(LName.Text))
+                    MessageBox.Show("Numbers in First or last name !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    this.Close();
             }
         }
 
@@ -42,6 +50,18 @@ namespace ContactManagerFall22
         {
             MainWindow main = new MainWindow();
             main.Show();
+        }
+        private static bool IsValidFirst(string first)
+        {
+            string regex = @"[a-z]+";
+
+            return Regex.IsMatch(first, regex, RegexOptions.IgnoreCase);
+        }
+        private static bool IsValidLast(string last)
+        {
+            string regex = @"[a-z]+";
+
+            return Regex.IsMatch(last, regex, RegexOptions.IgnoreCase);
         }
     }
 }

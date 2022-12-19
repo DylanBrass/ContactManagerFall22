@@ -98,12 +98,15 @@ namespace ContactManagerFall22
 
         }
 
-
         private void Window_Closed(object sender, System.EventArgs e)
         {
             MainWindow main = new MainWindow();
             main.Show();
         }
 
+        private void Phone_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

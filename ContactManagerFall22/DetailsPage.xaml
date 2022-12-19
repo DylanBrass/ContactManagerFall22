@@ -32,7 +32,7 @@
             </ListView.View>
         </ListView>
 
-        <Button Content="Phone" HorizontalAlignment="Left" Margin="360,134,0,0" VerticalAlignment="Top" Click="Phone_Click"/>
+        <Button Content="Phone" HorizontalAlignment="Left" Margin="360,134,0,0" VerticalAlignment="Top" Click="Phone_Click" />
         <Button Content="New Phone" HorizontalAlignment="Left" Margin="432,134,0,0" VerticalAlignment="Top" Click="New_Phone_Click"/>
         <Button Content="New Email" HorizontalAlignment="Left" Margin="437,270,0,0" VerticalAlignment="Top" Click="New_Email_Click"/>
 
