@@ -41,7 +41,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn x:Name="PhoneNumber" Header="Phone Number" Width="100" DisplayMemberBinding="{Binding PhoneNumber}" />
-                    <GridViewColumn x:Name="Type_Phone" Header="Label" Width="100" DisplayMemberBinding="{Binding Desc}" />
+                    <GridViewColumn x:Name="Type_Phone" Header="Type" Width="100" DisplayMemberBinding="{Binding Type}" />
                 </GridView>
             </ListView.View>
         </ListView>
