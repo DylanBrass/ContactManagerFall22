@@ -26,7 +26,7 @@ namespace ContactManagerFall22
             Address addingAddress = new Address();
 
             addingAddress.Contact_Id = Id;
-            var addressNumber = int.TryParse(AddressNumber.Text, out int number);
+            bool addressNumber = int.TryParse(AddressNumber.Text, out int number);
             addingAddress.AddressNumber = number;
 
             addingAddress.Street = Street.Text;

@@ -7,50 +7,17 @@
         mc:Ignorable="d"
         Title="AddPhoneNumber" Height="450" Width="800">
     <Grid>
-        <Label Content="Phone Number" HorizontalAlignment="Left" Margin="227,58,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="PNInput" HorizontalAlignment="Center" Margin="0,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="examplePhoneNumber" Text="xxx-xxx-xxxx" HorizontalAlignment="Left" Margin="340,68,0,0" VerticalAlignment="Top" IsHitTestVisible="False" Foreground="DarkGray" Width="106">
-            <TextBlock.Style>
-                <Style TargetType="{x:Type TextBlock}">
-                    <Setter Property="Visibility" Value="Collapsed"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Text, ElementName=PNInput}" Value="">
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>
 
 
-        <Label Content="Type: " HorizontalAlignment="Left" Margin="227,135,0,0" VerticalAlignment="Top" Height="25" Width="86"/>
-        <RadioButton GroupName="Type" Content="Home" Margin="340,141,354,222" />
-        <RadioButton GroupName="Type"  Content="Work" Margin="422,141,268,222"/>
-        <RadioButton GroupName="Type" Content="Other" Margin="506,141,197,222" />
-        <Button Content="Add 📞" HorizontalAlignment="Left" Margin="360,317,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="36" Width="63" Click="AddPhoneNumberButton">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.841"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-        </Button>
-        <Label Content="Description: " HorizontalAlignment="Left" Margin="229,215,0,0" VerticalAlignment="Top" Height="25" Width="86"/>
-        <TextBox x:Name="PhoneNumDesc" HorizontalAlignment="Left" Height="56" Margin="316,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="343"/>
-        <TextBlock x:Name="exampleDescription" Text="Description..." HorizontalAlignment="Left" Margin="320,217,0,0" VerticalAlignment="Top" IsHitTestVisible="False" Foreground="DarkGray" Width="106">
-            <TextBlock.Style>
-                <Style TargetType="{x:Type TextBlock}">
-                    <Setter Property="Visibility" Value="Collapsed"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Text, ElementName=PhoneNumDesc}" Value="">
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>
+        <TextBox x:Name="PhoneNumber" HorizontalAlignment="Left" Margin="325,37,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <RadioButton GroupName="Type" Content="Home" Margin="43,73,699,332" Checked="RadioButton_Checked" />
+        <RadioButton GroupName="Type"  Content="Work" Margin="123,73,580,328" Checked="RadioButton_Checked"/>
+        <RadioButton GroupName="Type" Content="Other" Margin="99,127,605,237" Checked="RadioButton_Checked" />
+
+        <Button x:Name="AddEmailButton" Content="Add 📞" HorizontalAlignment="Left" Margin="340,330,0,0" 
+                VerticalAlignment="Top" Height="26" Width="90" Grid.Column="1" Click="AddPhoneButton_Click"/>
+
+        <Label Content="Phone Number" HorizontalAlignment="Left" Margin="212,34,0,0" VerticalAlignment="Top" Height="24" Width="103"/>
 
     </Grid>
 </Window>

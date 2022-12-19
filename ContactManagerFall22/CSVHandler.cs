@@ -5,9 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
-using System.Windows;
-using MessageBox = System.Windows.MessageBox;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
 namespace ContactManagerFall22
@@ -22,13 +21,13 @@ namespace ContactManagerFall22
         {
             StringBuilder csv = new StringBuilder();
             StringBuilder csvFileContact = new StringBuilder();
-            SaveFileDialog openFileDialog = new SaveFileDialog
+            SaveFileDialog saveFileDialog = new SaveFileDialog
             {
                 InitialDirectory = "c:\\",
                 Filter = "CSV Files (*.csv)|*.csv"
             };
 
-            if (openFileDialog.ShowDialog() == true)
+            if (saveFileDialog.ShowDialog() == true)
             {
 
 
@@ -36,8 +35,8 @@ namespace ContactManagerFall22
 
                 foreach (Contact con in contacts)
                 {
-                    var fullcon = con.GetType().GetProperties();
-                    foreach (var property in fullcon)
+                    PropertyInfo[] fullcon = con.GetType().GetProperties();
+                    foreach (PropertyInfo property in fullcon)
                     {
                         csv.Append("," + property.GetValue(con, null).ToString());
                     }
@@ -45,7 +44,7 @@ namespace ContactManagerFall22
                     csvFileContact.AppendLine(csv.ToString());
                     csv.Clear();
                 }
-                File.WriteAllText(openFileDialog.FileName, csvFileContact.ToString());
+                File.WriteAllText(saveFileDialog.FileName, csvFileContact.ToString());
             }
         }
         public void ExportAddress(int contact_id)
@@ -65,8 +64,8 @@ namespace ContactManagerFall22
                 {
                     foreach (Address add in addresses)
                     {
-                        var fullAdd = add.GetType().GetProperties();
-                        foreach (var property in fullAdd)
+                        PropertyInfo[] fullAdd = add.GetType().GetProperties();
+                        foreach (PropertyInfo property in fullAdd)
                         {
                             csv.Append("," + property.GetValue(add, null).ToString());
                         }
@@ -96,8 +95,8 @@ namespace ContactManagerFall22
                 {
                     foreach (Phone ph in phones)
                     {
-                        var fullPh = ph.GetType().GetProperties();
-                        foreach (var property in fullPh)
+                        PropertyInfo[] fullPh = ph.GetType().GetProperties();
+                        foreach (PropertyInfo property in fullPh)
                         {
                             csv.Append("," + property.GetValue(ph, null).ToString());
                         }
@@ -114,13 +113,13 @@ namespace ContactManagerFall22
         {
             StringBuilder csv = new StringBuilder();
             StringBuilder csvFileEmail = new StringBuilder();
-            SaveFileDialog openFileDialog = new SaveFileDialog
+            SaveFileDialog saveFileDialog = new SaveFileDialog
             {
                 InitialDirectory = "c:\\",
                 Filter = "CSV Files (*.csv)|*.csv"
             };
 
-            if (openFileDialog.ShowDialog() == true)
+            if (saveFileDialog.ShowDialog() == true)
             {
                 List<Email> emails = db.GetEmails(contact_id);
 
@@ -128,8 +127,8 @@ namespace ContactManagerFall22
                 {
                     foreach (Email em in emails)
                     {
-                        var fullEm = em.GetType().GetProperties();
-                        foreach (var property in fullEm)
+                        PropertyInfo[] fullEm = em.GetType().GetProperties();
+                        foreach (PropertyInfo property in fullEm)
                         {
                             csv.Append("," + property.GetValue(em, null).ToString());
                         }
@@ -137,7 +136,7 @@ namespace ContactManagerFall22
                         csvFileEmail.AppendLine(csv.ToString());
                         csv.Clear();
                     }
-                    File.WriteAllText(openFileDialog.FileName, csvFileEmail.ToString());
+                    File.WriteAllText(saveFileDialog.FileName, csvFileEmail.ToString());
                 }
             }
         }
@@ -158,22 +157,16 @@ namespace ContactManagerFall22
                 {
                     currentfile = Path.GetFileName(fileName);
 
-                    if (db.GetContacts().Count > 0 || currentfile == "Contacts.csv")
-                    {
-                        lines = File.ReadAllLines(fileName);
-                        ImportContact(lines);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Insert the Contacts.csv first then import other files", "No contacts found", MessageBoxButton.OK, MessageBoxImage.Error);
-                        break;
-                    }
+
+                    lines = File.ReadAllLines(fileName);
+                    ImportContact();
+
                 }
             }
         }
-        public void ImportContact(string[] lines)
+        public void ImportContact()
         {
-
+            string[] lines;
             string currentfile;
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
@@ -187,31 +180,26 @@ namespace ContactManagerFall22
                 {
                     currentfile = Path.GetFileName(fileName);
 
-                    if (db.GetContacts().Count > 0 || currentfile == "Contacts.csv")
+
+                    lines = File.ReadAllLines(fileName);
+                    List<Contact> contacts = lines.Select(line =>
                     {
-                        lines = File.ReadAllLines(fileName);
-                        ImportContact(lines);
-                    }
-                    else
+                        string[] data = line.Split(',');
+                        return new Contact(Convert.ToInt32(data[0]), data[1], data[2], Convert.ToDateTime(data[3]), Convert.ToDateTime(data[4]), Convert.ToBoolean(data[5]), Convert.ToBoolean(data[6]), data[7], data[8], Convert.ToDateTime(data[9]), data[10]);
+                    }).ToList();
+                    foreach (Contact con in contacts)
                     {
-                        MessageBox.Show("Insert the Contacts.csv first then import other files", "No contacts found", MessageBoxButton.OK, MessageBoxImage.Error);
-                        break;
+                        db.CreateContact(con);
                     }
+
                 }
             }
-            List<Contact> contacts = lines.Select(line =>
-            {
-                string[] data = line.Split(',');
-                return new Contact(Convert.ToInt32(data[0]), data[1], data[2], Convert.ToDateTime(data[3]), Convert.ToDateTime(data[4]), Convert.ToBoolean(data[5]), Convert.ToBoolean(data[6]), data[7], data[8], Convert.ToDateTime(data[9]), data[10]);
-            }).ToList();
-            foreach (Contact con in contacts)
-            {
-                db.CreateContact(con);
-            }
+
         }
 
-        public void ImportAddress(string[] lines, int contact_id)
+        public void ImportAddress(int contact_id)
         {
+            string[] lines;
             string currentfile;
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
@@ -240,8 +228,9 @@ namespace ContactManagerFall22
 
         }
 
-        public void ImportPhone(string[] lines, int contact_id)
+        public void ImportPhone(int contact_id)
         {
+            string[] lines;
 
             string currentfile;
             OpenFileDialog openFileDialog = new OpenFileDialog
@@ -273,8 +262,9 @@ namespace ContactManagerFall22
         }
 
 
-        public void ImportEmail(string[] lines, int contact_id)
+        public void ImportEmail(int contact_id)
         {
+            string[] lines;
 
             string currentfile;
             OpenFileDialog openFileDialog = new OpenFileDialog

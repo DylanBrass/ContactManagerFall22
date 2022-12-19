@@ -5,7 +5,7 @@ namespace ContactManagerFall22.DB.Entities
     internal class Phone
     {
 
-
+        public Phone() {}
         //For creating
         public Phone(int contact_Id, string phoneNumber, char type)
         {
