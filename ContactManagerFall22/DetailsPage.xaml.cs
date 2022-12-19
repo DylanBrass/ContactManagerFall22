@@ -82,6 +82,12 @@ namespace ContactManagerFall22
             newPNWindow.ShowDialog();
         }
 
+        private void New_Email_Click(object sender, RoutedEventArgs e)
+        {
+            AddEmailPage newEMWindow = new AddEmailPage(Id);
+            newEMWindow.ShowDialog();
+        }
+
 
         private void Delete_Contact(object sender, RoutedEventArgs e)
         {

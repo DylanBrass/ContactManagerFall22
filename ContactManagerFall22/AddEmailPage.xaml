@@ -7,6 +7,15 @@
         mc:Ignorable="d"
         Title="AddEmailPage" Height="450" Width="800">
     <Grid>
-        
+        <TextBox x:Name="Email" HorizontalAlignment="Left" Margin="325,37,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <RadioButton GroupName="Type" Content="Home" Margin="43,73,699,332" Checked="RadioButton_Checked" />
+        <RadioButton GroupName="Type"  Content="Work" Margin="123,73,580,328" Checked="RadioButton_Checked"/>
+        <RadioButton GroupName="Type" Content="Other" Margin="99,127,605,237" Checked="RadioButton_Checked" />
+
+        <Button x:Name="AddEmailButton" Content="Add Email 📝" HorizontalAlignment="Left" Margin="340,330,0,0" 
+                VerticalAlignment="Top" Height="26" Width="90" Grid.Column="1" Click="AddEmailButton_Click"/>
+
+        <Label Content="Email" HorizontalAlignment="Left" Margin="212,34,0,0" VerticalAlignment="Top" Height="24" Width="103"/>
+ 
     </Grid>
 </Window>

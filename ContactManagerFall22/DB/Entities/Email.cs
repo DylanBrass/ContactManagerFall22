@@ -4,6 +4,7 @@ namespace ContactManagerFall22.DB.Entities
 {
     internal class Email
     {
+        public Email() { }
         public Email(int id,
             int contact_Id,
             string emailAddress,
