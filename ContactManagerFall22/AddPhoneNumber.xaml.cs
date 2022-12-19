@@ -1,4 +1,5 @@
-﻿using ContactManagerFall22.DB.Entities;
+﻿using ContactManagerFall22.DB;
+using ContactManagerFall22.DB.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,17 +21,38 @@ namespace ContactManagerFall22
     /// </summary>
     public partial class AddPhoneNumber : Window
     {
-        public AddPhoneNumber()
+        string radioCheck;
+        readonly DBManager dB = new DBManager();
+        readonly int Id;
+        public AddPhoneNumber(int id)
         {
             InitializeComponent();
+            Id = id;
         }
-
+        
         private void AddPhoneNumberButton(object sender, RoutedEventArgs e)
         {
-        //    Phone addingPhone = new Phone();
-        //    addingPhone.PhoneNumber = PNInput.Text;
-        //    addingPhone.Type = 
-        //I will add details to it
+            Phone addingPhone = new Phone(Id, PNInput.Text,'0');
+            addingPhone.Contact_Id = Id;
+            addingPhone.PhoneNumber = PNInput.Text;
+            switch (radioCheck)
+            {
+                case "Work":
+                    addingPhone.Type = 'H';
+                    break;
+                case "Home":
+                    addingPhone.Type = 'W';
+                    break;
+                default:
+                    addingPhone.Type = 'O';
+                    break;
+            }
+            addingPhone.Desc = PhoneNumDesc.Text;
+            addingPhone.LastUpdated = DateTime.Now;
+            addingPhone.DateCreated = DateTime.Now;
+            dB.CreatePhone(addingPhone);
+            this.Close();
+            //I will add details to it
         }
     }
 }
