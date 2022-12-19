@@ -32,7 +32,6 @@
             </ListView.View>
         </ListView>
 
-        <Button Content="Phone" HorizontalAlignment="Left" Margin="360,134,0,0" VerticalAlignment="Top" Click="Phone_Click"/>
         <Button Content="New Phone" HorizontalAlignment="Left" Margin="432,134,0,0" VerticalAlignment="Top" Click="New_Phone_Click"/>
         <Button Content="New Email" HorizontalAlignment="Left" Margin="437,270,0,0" VerticalAlignment="Top" Click="New_Email_Click"/>
 
@@ -41,18 +40,19 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn x:Name="PhoneNumber" Header="Phone Number" Width="100" DisplayMemberBinding="{Binding PhoneNumber}" />
-                    <GridViewColumn x:Name="Type_Phone" Header="Label" Width="100" DisplayMemberBinding="{Binding Desc}" />
+                    <GridViewColumn x:Name="Type_Phone" Header="Type" Width="100" DisplayMemberBinding="{Binding Desc}" />
                 </GridView>
             </ListView.View>
         </ListView>
 
+        <Button Content="Phone" HorizontalAlignment="Left" Margin="360,134,0,0" VerticalAlignment="Top"/>
         <Button Content="Email" HorizontalAlignment="Left" Margin="365,270,0,0" VerticalAlignment="Top"/>
 
         <ListView Name="EmailQuickView" Margin="360,296,10,10">
             <ListView.View>
                 <GridView>
                     <GridViewColumn x:Name="Email" Header="Email" Width="100" DisplayMemberBinding="{Binding EmailAddress}" />
-                    <GridViewColumn x:Name="Type_Email" Header="Label" Width="100" DisplayMemberBinding="{Binding Desc}" />
+                    <GridViewColumn x:Name="Type_Email" Header="Type" Width="100" DisplayMemberBinding="{Binding Desc}" />
                 </GridView>
             </ListView.View>
         </ListView>
