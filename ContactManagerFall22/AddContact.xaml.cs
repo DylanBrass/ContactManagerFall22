@@ -39,7 +39,7 @@ namespace ContactManagerFall22
                     Favourite = favourite.IsChecked
                 };
                 dB.CreateContact(addingContact);
-                if (IsValidFirst(FName.Text) && IsValidLast(LName.Text))
+                if (!IsValidFirst(FName.Text) && !IsValidLast(LName.Text))
                     MessageBox.Show("Numbers in First or last name !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                     this.Close();

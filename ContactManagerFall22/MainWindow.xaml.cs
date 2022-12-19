@@ -1,6 +1,7 @@
 ﻿using ContactManagerFall22.DB;
 using ContactManagerFall22.DB.Entities;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 
@@ -67,7 +68,7 @@ namespace ContactManagerFall22
 
         private void Imp_Contact_btn_Click(object sender, RoutedEventArgs e)
         {
-            csvHandler.ImportCSV();
+            csvHandler.ImportContact();
             this.Refresh();
         }
 
@@ -78,6 +79,23 @@ namespace ContactManagerFall22
 
         private void ContactsListItems_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
+        }
+
+        private void FavouriteSort_Click(object sender, RoutedEventArgs e)
+        {
+            List<Contact> contacts = new List<Contact>();
+            contacts = db.GetContacts();
+            List<Contact> contactsSorted = contacts.OrderByDescending(con => con.Favourite).ToList();
+            ContactsListItems.ItemsSource = contactsSorted;
+        }
+
+
+        private void LastNameSort_Click(object sender, RoutedEventArgs e)
+        {
+            List<Contact> contacts = new List<Contact>();
+            contacts = db.GetContacts();
+            List<Contact> contactsSorted = contacts.OrderBy(con => con.LastName).ToList();
+            ContactsListItems.ItemsSource = contactsSorted;
         }
     }
 
