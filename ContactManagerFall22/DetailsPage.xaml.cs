@@ -72,10 +72,6 @@ namespace ContactManagerFall22
             newWindow.ShowDialog();
         }
 
-        private void Phone_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
         private void New_Phone_Click(object sender, RoutedEventArgs e)
         {
             AddPhoneNumber newPNWindow = new AddPhoneNumber();
@@ -97,10 +93,6 @@ namespace ContactManagerFall22
                 dbManager = new DBManager();
                 dbManager.DeleteContact(Id);
                 this.Close();
-            }
-            else
-            {
-
             }
 
 
