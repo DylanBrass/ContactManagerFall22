@@ -9,7 +9,7 @@
     <Grid>
         <TextBox x:Name="AddressNumber" HorizontalAlignment="Left" Margin="325,37,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
         <TextBox x:Name="Street" HorizontalAlignment="Left" Margin="325,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-        <TextBox x:Name="AppartementNum" HorizontalAlignment="Left" Margin="325,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <TextBox x:Name="AppartementNum" Text="" HorizontalAlignment="Left" Margin="325,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
         <TextBox x:Name="City" HorizontalAlignment="Left" Margin="325,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="Country" HorizontalAlignment="Left" Margin="320,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="AreaCode" HorizontalAlignment="Left" Margin="325,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />

@@ -67,7 +67,7 @@ namespace ContactManagerFall22
         }
         private void New_Address_Click(object sender, RoutedEventArgs e)
         {
-            AddAdressPage newWindow = new AddAdressPage();
+            AddAdressPage newWindow = new AddAdressPage(Id);
             newWindow.ShowDialog();
         }
 
@@ -93,7 +93,7 @@ namespace ContactManagerFall22
             }
             else
             {
-                
+
             }
 
 
