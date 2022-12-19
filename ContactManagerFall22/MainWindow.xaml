@@ -63,7 +63,6 @@
             <Setter Property="Background" Value="#95363636" />
             <Setter Property="FontFamily" Value="Candara Light"/>
             <Setter Property="BorderBrush" Value="Black"/>
-
         </Style>
 
     </Window.Resources>
