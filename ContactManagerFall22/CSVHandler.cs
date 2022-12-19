@@ -228,7 +228,7 @@ namespace ContactManagerFall22
 
         }
 
-        public void ImportPhone(string[] lines, int contact_id)
+        public void ImportPhone(int contact_id)
         {
             string[] lines;
 
@@ -262,7 +262,7 @@ namespace ContactManagerFall22
         }
 
 
-        public void ImportEmail(string[] lines, int contact_id)
+        public void ImportEmail(int contact_id)
         {
             string[] lines;
 
