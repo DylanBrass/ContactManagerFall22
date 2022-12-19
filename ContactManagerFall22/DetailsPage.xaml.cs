@@ -64,12 +64,19 @@ namespace ContactManagerFall22
         {
             AddressDetails newWindow = new AddressDetails();
             newWindow.ShowDialog();
-            this.Close();
+            
         }
         private void New_Address_Click(object sender, RoutedEventArgs e)
         {
             AddAdressPage newWindow = new AddAdressPage(Id);
             newWindow.ShowDialog();
+        }
+
+        private void Phone_Click(object sender, RoutedEventArgs e)
+        {
+            PhoneDetails phoneDetailsWindow = new PhoneDetails(Id);
+            phoneDetailsWindow.ShowDialog();
+            
         }
 
         private void New_Phone_Click(object sender, RoutedEventArgs e)
@@ -98,12 +105,10 @@ namespace ContactManagerFall22
 
         }
 
-
         private void Window_Closed(object sender, System.EventArgs e)
         {
             MainWindow main = new MainWindow();
             main.Show();
         }
-
     }
 }
