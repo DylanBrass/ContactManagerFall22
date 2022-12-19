@@ -24,9 +24,9 @@
 
 
         <Label Content="Type: " HorizontalAlignment="Left" Margin="227,136,0,0" VerticalAlignment="Top" Height="25" Width="85"/>
-        <CheckBox  x:Name="WorkType" Content="Work" HorizontalAlignment="Left" Margin="329,142,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="HomeType"  Content="Home" HorizontalAlignment="Left" Margin="400,141,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="OtherType" Content="Other" HorizontalAlignment="Left" Margin="468,141,0,0" VerticalAlignment="Top"/>
+        <RadioButton GroupName="Type" Content="Home" Margin="43,73,430,227" />
+        <RadioButton GroupName="Type"  Content="Work" Margin="123,73,359,227"/>
+        <RadioButton GroupName="Type" Content="Other" Margin="206,124,266,176" />
         <Button Content="Add 📞" HorizontalAlignment="Left" Margin="360,249,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="36" Width="63" Click="AddPhoneNumberButton">
             <Button.RenderTransform>
                 <TransformGroup>

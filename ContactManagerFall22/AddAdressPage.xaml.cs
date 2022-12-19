@@ -2,6 +2,7 @@
 using ContactManagerFall22.DB.Entities;
 using System;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace ContactManagerFall22
 {
@@ -10,7 +11,7 @@ namespace ContactManagerFall22
     /// </summary>
     public partial class AddAdressPage : Window
     {
-
+        string radioCheck;
         readonly DBManager dB = new DBManager();
         readonly int Id;
         public AddAdressPage(int id)
@@ -41,7 +42,18 @@ namespace ContactManagerFall22
             addingAddress.City = City.Text;
             addingAddress.Country = Country.Text;
             addingAddress.AreaCode = AreaCode.Text;
-            addingAddress.Type = 'H';
+            switch (radioCheck)
+            {
+                case "Work":
+                    addingAddress.Type = 'B';
+                    break;
+                case "Home":
+                    addingAddress.Type = 'H';
+                    break;
+                default:
+                    addingAddress.Type = 'O';
+                    break;
+            }
 
             dB.CreateAddress(addingAddress);
             this.Close();
@@ -52,6 +64,13 @@ namespace ContactManagerFall22
         {
             DetailsPage DP = new DetailsPage(Id);
             DP.Show();
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton ck = sender as RadioButton;
+            if (ck.IsChecked.Value)
+                radioCheck = ck.Content.ToString();
         }
     }
 }
