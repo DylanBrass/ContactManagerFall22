@@ -10,7 +10,7 @@
     <Window.Resources>
         <Style x:Key="Title" TargetType="Label">
             <Setter Property="Foreground" Value="LightGray" />
-            <Setter Property="FontFamily" Value="Copperplate Gothic Light"/>
+            <Setter Property="FontFamily" Value="Candara Light"/>
             <Setter Property="FontSize" Value="70" />
             <Setter Property="FontWeight" Value="Bold" />
         </Style>
@@ -18,9 +18,23 @@
         <Style x:Key="Button" TargetType="Button">
             <Setter Property="Foreground" Value="LightGray" />
             <Setter Property="Background" Value="#95363636" />
-            <Setter Property="FontFamily" Value="Copperplate Gothic Light"/>
+            <Setter Property="FontFamily" Value="Candara Light"/>
             <Setter Property="FontSize" Value="70" />
             <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF459EE4"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
         <Style TargetType="Label">
@@ -63,6 +77,13 @@
             <Setter Property="Background" Value="#95363636" />
             <Setter Property="FontFamily" Value="Candara Light"/>
             <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GridViewColumnHeader">
+                        <!-- Standard template but with redundant Storyboard removed -->
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
     </Window.Resources>
@@ -112,7 +133,7 @@
 
         <Button Name="Ex_Contact_btn" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="173,10,10,10" Grid.Row="1" Click="Imp_Contact_btn_Click" Grid.Column="1" Style="{StaticResource Button}">
             <Viewbox>
-                <Label Content="ExportContact" />
+                <Label Content="Export Contact" />
             </Viewbox>
         </Button>
 
