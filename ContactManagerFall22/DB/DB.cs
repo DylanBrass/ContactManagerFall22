@@ -449,7 +449,37 @@ namespace ContactManagerFall22.DB
                 cm.ExecuteNonQuery();
             }
         }
-        //Update all of them (phone,email)
+
+
+        public void UpdatePhone(Phone ph)
+        {
+            using (connect = new SqlConnection(ConString))
+            {
+                connect.Open();
+                SqlCommand cm = new SqlCommand("UPDATE  Phone SET Phone_Number = @Phone_Number,Type_Code = @Type_Code WHERE Contact_Id = @Contact_Id;", connect);
+
+                cm.Parameters.AddWithValue("@Contact_Id", ph.Contact_Id);
+                cm.Parameters.AddWithValue("@Phone_Number", ph.PhoneNumber);
+                cm.Parameters.AddWithValue("@Type_Code", ph.Type);
+                cm.ExecuteNonQuery();
+
+            }
+        }
+
+        public void UpdateEmail(Email em)
+        {
+            using (connect = new SqlConnection(ConString))
+            {
+                connect.Open();
+                SqlCommand cm = new SqlCommand("UPDATE  Phone SET Email = @Email,Type_Code = @Type_Code WHERE Contact_Id = @Contact_Id;", connect);
+
+                cm.Parameters.AddWithValue("@Contact_Id", em.Contact_Id);
+                cm.Parameters.AddWithValue("@Email", em.EmailAddress);
+                cm.Parameters.AddWithValue("@Type_Code", em.Type);
+                cm.ExecuteNonQuery();
+
+            }
+        }
     }
 }
 
