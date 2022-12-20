@@ -168,25 +168,25 @@
 
         
         <!--Imports Exports buttons--> 
-        <Button HorizontalAlignment="Left" Margin="615,2,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="65">
+        <Button HorizontalAlignment="Left" Margin="615,2,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="65" Click="Import_Address">
             <Viewbox>
                 <Label Content="Import Address" />
             </Viewbox>
         </Button>
 
-        <Button HorizontalAlignment="Left" Margin="691,2,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="64">
+        <Button HorizontalAlignment="Left" Margin="691,2,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="64" Click="Export_Address">
             <Viewbox>
                 <Label Content="Export Address" />
             </Viewbox>
         </Button>
 
-        <Button HorizontalAlignment="Left" Margin="615,134,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="65">
+        <Button HorizontalAlignment="Left" Margin="615,134,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="65" Click="Import_Phone">
             <Viewbox>
                 <Label Content="Import Phone" />
             </Viewbox>
         </Button>
 
-        <Button HorizontalAlignment="Left" Margin="691,134,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="64">
+        <Button HorizontalAlignment="Left" Margin="691,134,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="64" Click="Export_Phone">
             <Viewbox>
                 <Label Content="Export Phone" />
             </Viewbox>

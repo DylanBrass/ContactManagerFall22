@@ -13,6 +13,7 @@ namespace ContactManagerFall22
     {
         readonly int Id;
         DBManager dbManager = new DBManager();
+        CSVHandler csv = new CSVHandler();
         public DetailsPage(int id)
         {
             Id = id;
@@ -146,6 +147,37 @@ namespace ContactManagerFall22
             MainWindow main = new MainWindow();
             main.Show();
         }
+
+        private void Import_Address(object sender, RoutedEventArgs e)
+        {
+            csv.ImportAddress(Id);
+            dbManager = new DBManager();
+
+            List<Address> Addresses = dbManager.GetAdresses(Id);
+            AddressQuickView.ItemsSource = Addresses;
+        }
+
+        private void Export_Address(object sender, RoutedEventArgs e)
+        {
+            if (dbManager.GetAdresses(Id).Count > 0)
+                csv.ExportAddress(Id);
+        }
+
+        private void Import_Phone(object sender, RoutedEventArgs e)
+        {
+            csv.ImportPhone(Id);
+            dbManager = new DBManager();
+
+            List<Phone> phones = dbManager.GetPhones(Id);
+            PhoneQuickView.ItemsSource = phones;
+        }
+
+        private void Export_Phone(object sender, RoutedEventArgs e)
+        {
+            if (dbManager.GetPhones(Id).Count > 0)
+                csv.ExportPhone(Id);
+        }
+
 
     }
 }
