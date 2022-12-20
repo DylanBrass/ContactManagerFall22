@@ -1,7 +1,5 @@
 ﻿using ContactManagerFall22.DB;
 using ContactManagerFall22.DB.Entities;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Windows;
 
 namespace ContactManagerFall22
@@ -58,8 +56,9 @@ namespace ContactManagerFall22
             newAddrWindow.Street.Text = inputedAddress.Street.ToString();
             newAddrWindow.AddressNumber.Text = inputedAddress.AddressNumber.ToString();
             newAddrWindow.AppartementNum.Text = inputedAddress.ApartementNum.ToString();
+            newAddrWindow.
             newAddrWindow.ShowDialog();
-            
+
 
         }
 
