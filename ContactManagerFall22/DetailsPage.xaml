@@ -57,7 +57,7 @@
             </ListView.View>
         </ListView>
         <Button Content="Delete" HorizontalAlignment="Left" Margin="18,335,0,0" VerticalAlignment="Top" Click="Delete_Contact"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="235,210,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <!--<Button Content="Button" HorizontalAlignment="Left" Margin="235,210,0,0" VerticalAlignment="Top" Click="Button_Click"/>-->
         <Image x:Name="Pfp" HorizontalAlignment="Left" Height="100" Margin="235,298,0,0" VerticalAlignment="Top" Width="100"/>
 
 
