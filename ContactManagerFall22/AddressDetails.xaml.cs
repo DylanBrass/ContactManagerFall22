@@ -1,6 +1,7 @@
 ﻿using ContactManagerFall22.DB;
 using ContactManagerFall22.DB.Entities;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Windows;
 
 namespace ContactManagerFall22
@@ -46,20 +47,21 @@ namespace ContactManagerFall22
 
 
         private void Edit_Address_btn_Click(object sender, RoutedEventArgs e)
-        {
-
-            List<Address> inputedAddress = dbManager3.GetAdresses(Id);
+        { List<Address> inputedAddress = dbManager3.GetAdresses(Id);
 
             AddAdressPage newAddrWindow = new AddAdressPage(Id);
 
-            newAddrWindow.City.Text = "Hello"/*inputedAddress[Id].City*/;
-            newAddrWindow.Country.Text = inputedAddress[Id].Country;
-            newAddrWindow.ZipCode.Text = inputedAddress[Id].ZipCode;
-            newAddrWindow.Street.Text = inputedAddress[Id].Street;
-            newAddrWindow.AddressNumber.Text = inputedAddress[Id].AddressNumber.ToString();
-            newAddrWindow.AppartementNum.Text = inputedAddress[Id].ApartementNum.ToString();
-            newAddrWindow.ShowDialog();
+            newAddrWindow.City.Text = inputedAddress[Id].ToString();
 
+                //newAddrWindow.City.Text = inputedAddress[Id].City;
+            
+                //newAddrWindow.Country.Text = inputedAddress[Id].Country;
+                //newAddrWindow.ZipCode.Text = inputedAddress[Id].ZipCode;
+                //newAddrWindow.Street.Text = inputedAddress[Id].Street;
+                //newAddrWindow.AddressNumber.Text = inputedAddress[Id].AddressNumber.ToString();
+                //newAddrWindow.AppartementNum.Text = inputedAddress[Id].ApartementNum.ToString();
+                newAddrWindow.ShowDialog();
+            
 
         }
 
