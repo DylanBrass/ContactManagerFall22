@@ -5,42 +5,108 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactManagerFall22"
         mc:Ignorable="d"
-        Title="PhoneDetails" MaxHeight="450" MaxWidth="800" MinHeight="450" MinWidth="800">
+        Title="PhoneDetails"  MinHeight="450" MinWidth="800" MaxHeight="450" MaxWidth="800" Background="#95252525" FontFamily="Candara Light">
+
+    <Window.Resources>
+        <Style x:Key="Title" TargetType="Label">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="FontSize" Value="70" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <Style x:Key="Button" TargetType="Button">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="Background" Value="#95363636" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="FontSize" Value="70" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF459EE4"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="LightGray" />
+        </Style>
+
+        <Style TargetType="ListView">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="Background" Value="#95363636" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+        </Style>
+
+        <Style TargetType="ListViewItem">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#FF68BDFF" />
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <Border Name="Border" BorderBrush="{TemplateBinding BorderBrush}" 
+                                  BorderThickness="{TemplateBinding BorderThickness}" 
+                                  Background="{TemplateBinding Background}">
+                                    <GridViewRowPresenter Content="{TemplateBinding Content}"
+                                      Margin="{TemplateBinding Padding}" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="Background" Value="#95363636" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GridViewColumnHeader">
+                        <!-- Standard template but with redundant Storyboard removed -->
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
     <Grid Margin="15,40,15,15">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="133*"/>
-            <ColumnDefinition Width="477*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
-        </Grid.RowDefinitions>
 
+        <Label HorizontalAlignment="Left" Margin="14,10,0,0" VerticalAlignment="Top" Height="59" Width="209">
+            <Viewbox>
+                <Label Content="Address Details" Style="{StaticResource Title}"/>
+            </Viewbox>
+        </Label>
 
-        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.ColumnSpan="2">
+        <Button  HorizontalAlignment="Left" Margin="305,90,0,0" VerticalAlignment="Top" Click="Delete_Phone" Style="{StaticResource Button}" Height="20" Width="80">
+            <Viewbox>
+                <Label Content="Delete" />
+            </Viewbox>
+        </Button>
 
-            <ListView Name="PhoneListItems" SelectionChanged="Phone_SelectionChanged" >
-
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn x:Name="PhoneNumber" Header="Phone Number" Width="150" DisplayMemberBinding="{Binding PhoneNumber}" />
-                        <GridViewColumn x:Name="Type" Header="Type" Width="150" DisplayMemberBinding="{Binding Type}" />
-                        <GridViewColumn x:Name="Description" Header="Description" Width="150" DisplayMemberBinding="{Binding Desc}" />
-
-                        <GridViewColumn x:Name="DateCreated" Header="Date Created" Width="150" DisplayMemberBinding="{Binding DateCreated}" />
-                        <GridViewColumn x:Name="LastUpdated" Header="Last Updated" Width="150" DisplayMemberBinding="{Binding LastUpdated}" />
-                    </GridView>
-                </ListView.View>
-
-            </ListView>
-        </ScrollViewer>
-
-        <Button Name="Add_PhoneNum_btn" Grid.Row="1" Margin="10,10,584,10" Content="Add Phone Number" Grid.ColumnSpan="2" Click="Add_PhoneNum_btn_Click"  />
-
-        <Button Name="Edit_PhoneNum_btn" Grid.Row="1" Margin="43,10,385,10" Content="Edit Phone Number" Grid.Column="1" Click="Edit_PhoneNum"/>
-
-        <Button Name="Del_PhoneNum_btn" Grid.Row="1" Margin="246,10,200,10" Content="Delete Phone Number " Grid.Column="1"/>
-
+        <Label x:Name="PhoneNumber" Content="Phone Number" HorizontalAlignment="Left" Margin="14,90,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Type" Content="Street" HorizontalAlignment="Left" Margin="14,120,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Description" Content="ApartementNum" HorizontalAlignment="Left" Margin="14,150,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="DateCreated" Content="Date Created" HorizontalAlignment="Left" Margin="14,180,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LastUpdated" Content="Last Updated" HorizontalAlignment="Left" Margin="14,210,0,0" VerticalAlignment="Top"/>
 
 
     </Grid>

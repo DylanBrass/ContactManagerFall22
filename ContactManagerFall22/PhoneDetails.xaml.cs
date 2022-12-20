@@ -12,33 +12,32 @@ namespace ContactManagerFall22
     public partial class PhoneDetails : Window
     {
         readonly int Id;
-        string radioCheck;
-        readonly DBManager dbManager2 = new DBManager();
+        DBManager dbManager3 = new DBManager();
         public PhoneDetails(int id)
         {
-            InitializeComponent();
             Id = id;
+            InitializeComponent();
+            Window_Loaded();
         }
 
-        private void Phone_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Window_Loaded()
         {
+            Phone phone = dbManager3.GetPhone(Id);
+
+
 
         }
 
-        private void Add_PhoneNum_btn_Click(object sender, RoutedEventArgs e)
+        private void Delete_Address(object sender, RoutedEventArgs e)
         {
-            AddPhoneNumber newPhone = new AddPhoneNumber(Id);
-            newPhone.ShowDialog();
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this Address?", "Confirmation", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                dbManager3.DeleteAddress(Id);
+                this.Close();
+            }
+
+
         }
-
-        private void Edit_PhoneNum(object sender, RoutedEventArgs e)
-        {
-            List<Phone> phones = dbManager2.GetPhones(Id);
-
-            AddPhoneNumber newPNWindow = new AddPhoneNumber(Id);
-            newPNWindow.PhoneNumber.Text = phones[0].PhoneNumber;
-            newPNWindow.ShowDialog();
-        }
-
     }
 }
