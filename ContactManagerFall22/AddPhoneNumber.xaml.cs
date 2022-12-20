@@ -1,6 +1,5 @@
 ﻿using ContactManagerFall22.DB;
 using ContactManagerFall22.DB.Entities;
-using System;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Forms;
@@ -56,7 +55,7 @@ namespace ContactManagerFall22
             }
         }
 
-        private void Window_closed(object sender, EventArgs e)
+        private void Window_closed(object sender, System.EventArgs e)
         {
             DetailsPage DP = new DetailsPage(Id);
             DP.Show();

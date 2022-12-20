@@ -83,12 +83,14 @@ namespace ContactManagerFall22
             PhoneDetails phoneDetailsWindow = new PhoneDetails(Id);
             phoneDetailsWindow.ShowDialog();
 
+
         }
 
         private void New_Phone_Click(object sender, RoutedEventArgs e)
         {
             AddPhoneNumber newPNWindow = new AddPhoneNumber(Id);
             newPNWindow.ShowDialog();
+            this.Close();
         }
 
         private void New_Email_Click(object sender, RoutedEventArgs e)
