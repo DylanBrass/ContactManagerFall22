@@ -1,11 +1,11 @@
-﻿<Window x:Class="ContactManagerFall22.AddressDetails"
+﻿<Window x:Class="ContactManagerFall22.EmailDetails"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactManagerFall22"
         mc:Ignorable="d"
-        Title="AddressDetails" MinHeight="450" MinWidth="800" MaxHeight="450" MaxWidth="800" Background="#95252525" FontFamily="Candara Light">
+        Title="EmailDetails" MinHeight="450" MinWidth="800" MaxHeight="450" MaxWidth="800" Background="#95252525" FontFamily="Candara Light">
 
     <Window.Resources>
         <Style x:Key="Title" TargetType="Label">
@@ -92,34 +92,28 @@
 
         <Label HorizontalAlignment="Left" Margin="14,10,0,0" VerticalAlignment="Top" Height="59" Width="209">
             <Viewbox>
-                <Label Content="Address Details" Style="{StaticResource Title}"/>
+                <Label Content="Email Details" Style="{StaticResource Title}"/>
             </Viewbox>
         </Label>
 
-        <Button  HorizontalAlignment="Left" Margin="305,90,0,0" VerticalAlignment="Top" Click="Delete_Address" Style="{StaticResource Button}" Height="20" Width="80">
+        <Button  HorizontalAlignment="Left" Margin="305,90,0,0" VerticalAlignment="Top" Click="Delete_Click" Style="{StaticResource Button}" Height="20" Width="80">
             <Viewbox>
                 <Label Content="Delete" />
             </Viewbox>
         </Button>
 
-        <Label x:Name="StreetNumber" Content="Street Number" HorizontalAlignment="Left" Margin="14,90,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Street" Content="Street" HorizontalAlignment="Left" Margin="14,120,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="ApartementNum" Content="ApartementNum" HorizontalAlignment="Left" Margin="14,150,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="City" Content="City" HorizontalAlignment="Left" Margin="14,180,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Country" Content="Country" HorizontalAlignment="Left" Margin="14,210,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="AreaCode" Content="AreaCode" HorizontalAlignment="Left" Margin="14,240,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="DateCreated" Content="DateCreated" HorizontalAlignment="Left" Margin="14,270,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="LastUpdated" Content="LastUpdated" HorizontalAlignment="Left" Margin="14,299,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Email" Content="Email" HorizontalAlignment="Left" Margin="14,90,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Type" Content="Type" HorizontalAlignment="Left" Margin="14,120,0,0" VerticalAlignment="Top"/>
 
-        <Button  HorizontalAlignment="Left" Margin="305,132,0,0" VerticalAlignment="Top" Click="Edit_Address_btn_Click" Style="{StaticResource Button}" Height="20" Width="80">
+        <Label x:Name="DateCreated" Content="DateCreated" HorizontalAlignment="Left" Margin="14,150,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LastUpdated" Content="LastUpdated" HorizontalAlignment="Left" Margin="14,180,0,0" VerticalAlignment="Top"/>
+
+        <Button  HorizontalAlignment="Left" Margin="305,132,0,0" VerticalAlignment="Top" Click="Edit_Email_btn_Click" Style="{StaticResource Button}" Height="20" Width="80">
             <Viewbox>
                 <Label Content="Edit" />
             </Viewbox>
         </Button>
 
 
-
     </Grid>
-
 </Window>
-
