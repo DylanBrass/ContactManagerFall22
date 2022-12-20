@@ -97,6 +97,7 @@ namespace ContactManagerFall22
         {
             AddEmailPage newEMWindow = new AddEmailPage(Id);
             newEMWindow.ShowDialog();
+            this.Close();
         }
 
 
