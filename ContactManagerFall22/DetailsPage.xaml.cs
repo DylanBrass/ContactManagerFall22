@@ -72,6 +72,22 @@ namespace ContactManagerFall22
                 AddressQuickView.ItemsSource = Addresses;
             }
         }
+
+        private void PhoneDetails_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Phone selectedPhone = (Phone)PhoneQuickView.SelectedItem;
+
+            if (selectedPhone != null)
+            {
+                PhoneDetails newWindow = new PhoneDetails(selectedPhone.Id);
+                newWindow.ShowDialog();
+                dbManager = new DBManager();
+
+                List<Phone> Phones = dbManager.GetPhones(Id);
+                PhoneQuickView.ItemsSource = Phones;
+            }
+        }
+
         private void New_Address_Click(object sender, RoutedEventArgs e)
         {
             AddAdressPage newAddressWindow = new AddAdressPage(Id);
