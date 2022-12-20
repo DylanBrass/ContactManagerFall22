@@ -1,21 +1,7 @@
-﻿using ContactManagerFall22.DB.Entities;
-using ContactManagerFall22.DB;
-using System;
+﻿using ContactManagerFall22.DB;
+using ContactManagerFall22.DB.Entities;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Reflection.Emit;
-using System.Security.Cryptography;
-using System.Xml.Linq;
 
 namespace ContactManagerFall22
 {
@@ -25,16 +11,17 @@ namespace ContactManagerFall22
     public partial class AddressDetails : Window
     {
         readonly int Id;
-        DBManager dbManager3 = new DBManager();
+        readonly DBManager dbManager3 = new DBManager();
         public AddressDetails(int id)
         {
+            Id = id;
             InitializeComponent();
-            Window_Loaded(id);
+            Window_Loaded();
         }
 
-        private void Window_Loaded(int id)
+        private void Window_Loaded()
         {
-            Address address = dbManager3.GetAddress(id);
+            Address address = dbManager3.GetAddress(Id);
             StreetNumber.Content = "Street Number: " + address.AddressNumber.ToString();
             Street.Content = "Street: " + address.Street;
             ApartementNum.Content = "Apartment Number: " + address.ApartementNum.ToString();
@@ -52,16 +39,16 @@ namespace ContactManagerFall22
         {
 
             List<Address> inputedAddress = dbManager3.GetAdresses(Id);
-  
+
             AddAdressPage newAddrWindow = new AddAdressPage(Id);
-            newAddrWindow.City.Text = inputedAddress[Id].City; 
+            newAddrWindow.City.Text = inputedAddress[Id].City;
             newAddrWindow.Country.Text = inputedAddress[Id].Country;
             newAddrWindow.ZipCode.Text = inputedAddress[Id].ZipCode;
             newAddrWindow.Street.Text = inputedAddress[Id].Street;
             newAddrWindow.AddressNumber.Text = inputedAddress[Id].AddressNumber.ToString();
             newAddrWindow.AppartementNum.Text = inputedAddress[Id].ApartementNum.ToString();
             newAddrWindow.ShowDialog();
-            
+
 
         }
 

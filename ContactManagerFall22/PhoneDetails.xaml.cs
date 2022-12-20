@@ -1,11 +1,8 @@
-﻿using ContactManagerFall22.DB.Entities;
-using ContactManagerFall22.DB;
+﻿using ContactManagerFall22.DB;
+using ContactManagerFall22.DB.Entities;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Xml.Linq;
-using System.Collections.Generic;
-using System.Globalization;
-using System;
 
 namespace ContactManagerFall22
 {
@@ -16,7 +13,7 @@ namespace ContactManagerFall22
     {
         readonly int Id;
         string radioCheck;
-        DBManager dbManager2 = new DBManager();
+        readonly DBManager dbManager2 = new DBManager();
         public PhoneDetails(int id)
         {
             InitializeComponent();
@@ -42,6 +39,6 @@ namespace ContactManagerFall22
             newPNWindow.PhoneNumber.Text = phones[0].PhoneNumber;
             newPNWindow.ShowDialog();
         }
-      
+
     }
 }

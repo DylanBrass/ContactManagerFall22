@@ -67,7 +67,7 @@ namespace ContactManagerFall22
 
             if (selectedAddress != null)
             {
-                AddressDetails newWindow = new AddressDetails(Id);
+                AddressDetails newWindow = new AddressDetails(selectedAddress.Id);
                 newWindow.ShowDialog();
                 this.Close();
             }

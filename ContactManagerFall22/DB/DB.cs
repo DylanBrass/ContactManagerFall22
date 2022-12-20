@@ -137,7 +137,7 @@ namespace ContactManagerFall22.DB
                     address = new Address(Convert.ToInt32(sdr["Id"]), Convert.ToInt32(sdr["Contact_Id"]),
                         sdr["City"].ToString(),
                         sdr["Country"].ToString(),
-                        sdr["ZipCode"].ToString(),
+                        sdr["AreaCode"].ToString(),
                         sdr["Street"].ToString(),
                         sdr["AddressNumber"] == DBNull.Value ? default : int.Parse(sdr["AddressNumber"].ToString()),
                         sdr["ApartementNum"] == DBNull.Value ? default : int.Parse(sdr["ApartementNum"].ToString()),
