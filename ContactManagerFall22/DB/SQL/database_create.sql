@@ -17,7 +17,7 @@ CREATE TABLE [dbo].[Address](
 	[Contact_Id] [int] NOT NULL,
 	[City] [varchar](50) NOT NULL,
 	[Country] [varchar](50) NOT NULL,
-	[AreaCode] [varchar](50) NOT NULL,
+	[ZipCode] [varchar](50) NOT NULL,
 	[Street] [varchar](50) NOT NULL,
 	[AddressNumber] [int] NOT NULL,
 	[ApartementNum] [int] NULL,
@@ -122,11 +122,11 @@ CREATE TABLE [dbo].[Type](
 GO
 SET IDENTITY_INSERT [dbo].[Address] ON 
 GO
-INSERT [dbo].[Address] ([Id], [Contact_Id], [City], [Country], [AreaCode], [Street], [AddressNumber], [ApartementNum], [DateCreated], [LastUpdated], [Active], [Type_Code]) VALUES (11, 58, N'La Prairie', N'Canada', N'J5R 5J4', N'Des Glaieuls ', 45, 0, CAST(N'2022-12-18' AS Date), CAST(N'2022-12-18' AS Date), 1, N'H')
+INSERT [dbo].[Address] ([Id], [Contact_Id], [City], [Country], [ZipCode], [Street], [AddressNumber], [ApartementNum], [DateCreated], [LastUpdated], [Active], [Type_Code]) VALUES (11, 58, N'La Prairie', N'Canada', N'J5R 5J4', N'Des Glaieuls ', 45, 0, CAST(N'2022-12-18' AS Date), CAST(N'2022-12-18' AS Date), 1, N'H')
 GO
-INSERT [dbo].[Address] ([Id], [Contact_Id], [City], [Country], [AreaCode], [Street], [AddressNumber], [ApartementNum], [DateCreated], [LastUpdated], [Active], [Type_Code]) VALUES (13, 58, N'Idk', N'Canada', N'fff 222', N'Yes', 33, 0, CAST(N'2022-12-18' AS Date), CAST(N'2022-12-18' AS Date), 1, N'B')
+INSERT [dbo].[Address] ([Id], [Contact_Id], [City], [Country], [ZipCode], [Street], [AddressNumber], [ApartementNum], [DateCreated], [LastUpdated], [Active], [Type_Code]) VALUES (13, 58, N'Idk', N'Canada', N'fff 222', N'Yes', 33, 0, CAST(N'2022-12-18' AS Date), CAST(N'2022-12-18' AS Date), 1, N'B')
 GO
-INSERT [dbo].[Address] ([Id], [Contact_Id], [City], [Country], [AreaCode], [Street], [AddressNumber], [ApartementNum], [DateCreated], [LastUpdated], [Active], [Type_Code]) VALUES (14, 58, N'bbbb', N'bbbb', N'bbbbb', N'bbbb', 45, 0, CAST(N'2022-12-18' AS Date), CAST(N'2022-12-18' AS Date), 1, N'H')
+INSERT [dbo].[Address] ([Id], [Contact_Id], [City], [Country], [ZipCode], [Street], [AddressNumber], [ApartementNum], [DateCreated], [LastUpdated], [Active], [Type_Code]) VALUES (14, 58, N'bbbb', N'bbbb', N'bbbbb', N'bbbb', 45, 0, CAST(N'2022-12-18' AS Date), CAST(N'2022-12-18' AS Date), 1, N'H')
 GO
 SET IDENTITY_INSERT [dbo].[Address] OFF
 GO

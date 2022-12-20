@@ -138,6 +138,7 @@
         </Button>
         <Button Grid.Column="1" Content="Sort By Favourite" HorizontalAlignment="Left" Margin="99,-3,0,0" VerticalAlignment="Top" Click="FavouriteSort_Click"/>
         <Button Grid.Column="1" Content="Sort By last Name" HorizontalAlignment="Left" Margin="193,-8,0,0" VerticalAlignment="Top" Click="LastNameSort_Click"/>
+        <Button Grid.Column="1" Content="Sort By last Name Z-&gt; A" HorizontalAlignment="Left" Margin="156,21,0,0" VerticalAlignment="Top" Click="LastNameSortReverse_Click"/>
 
     </Grid>
 

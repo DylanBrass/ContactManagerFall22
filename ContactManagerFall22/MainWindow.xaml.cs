@@ -23,8 +23,7 @@ namespace ContactManagerFall22
 
         private void Window_Loaded()
         {
-            List<Contact> Contacts = new List<Contact>();
-            Contacts = db.GetContacts();
+            List<Contact> Contacts = db.GetContacts();
             ContactsListItems.ItemsSource = Contacts;
         }
 
@@ -95,6 +94,14 @@ namespace ContactManagerFall22
             List<Contact> contacts = new List<Contact>();
             contacts = db.GetContacts();
             List<Contact> contactsSorted = contacts.OrderBy(con => con.LastName).ToList();
+            ContactsListItems.ItemsSource = contactsSorted;
+        }
+
+        private void LastNameSortReverse_Click(object sender, RoutedEventArgs e)
+        {
+            List<Contact> contacts = new List<Contact>();
+            contacts = db.GetContacts();
+            List<Contact> contactsSorted = contacts.OrderByDescending(con => con.LastName).ToList();
             ContactsListItems.ItemsSource = contactsSorted;
         }
     }

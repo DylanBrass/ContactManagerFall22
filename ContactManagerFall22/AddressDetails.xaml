@@ -30,7 +30,7 @@
 
                         <GridViewColumn x:Name="City" Header="City" Width="150" DisplayMemberBinding="{Binding City}" />
                         <GridViewColumn x:Name="Country" Header="Country" Width="150" DisplayMemberBinding="{Binding Country}" />
-                        <GridViewColumn x:Name="AdreaCode" Header="Area Code" Width="150" DisplayMemberBinding="{Binding AreaCode}" />
+                        <GridViewColumn x:Name="AdreaCode" Header="Zip Code" Width="150" DisplayMemberBinding="{Binding ZipCode}" />
 
                         <GridViewColumn x:Name="DateCreated" Header="Date Created" Width="150" DisplayMemberBinding="{Binding DateCreated}" />
                         <GridViewColumn x:Name="LastUpdated" Header="Last Updated" Width="150" DisplayMemberBinding="{Binding LastUpdated}" />

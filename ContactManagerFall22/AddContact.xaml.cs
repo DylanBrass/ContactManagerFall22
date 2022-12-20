@@ -26,7 +26,6 @@ namespace ContactManagerFall22
             }
             else
             {
-                string stringBD = Convert.ToString(BirthDate.Text);
 
                 Contact addingContact = new Contact
                 {
@@ -38,11 +37,17 @@ namespace ContactManagerFall22
                     Note = Note.Text,
                     Favourite = favourite.IsChecked
                 };
-                dB.CreateContact(addingContact);
-                if (!IsValidFirst(FName.Text) && !IsValidLast(LName.Text))
-                    MessageBox.Show("Numbers in First or last name !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                else
+                if (IsValidNoNumbers(FName.Text) && IsValidNoNumbers(LName.Text))
+                {
+                    MessageBox.Show("Contact Added", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dB.CreateContact(addingContact);
                     this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Numbers in First or Last name !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
             }
         }
 
@@ -51,17 +56,16 @@ namespace ContactManagerFall22
             MainWindow main = new MainWindow();
             main.Show();
         }
-        private static bool IsValidFirst(string first)
+        private static bool IsValidNoNumbers(string str)
         {
-            string regex = @"[a-z]+";
+            str = str.Replace(" ", "");
+            str = str.Replace("-", "");
 
-            return Regex.IsMatch(first, regex, RegexOptions.IgnoreCase);
-        }
-        private static bool IsValidLast(string last)
-        {
-            string regex = @"[a-z]+";
+            string regex = @"[a-z]+$";
 
-            return Regex.IsMatch(last, regex, RegexOptions.IgnoreCase);
+            return Regex.IsMatch(str, regex, RegexOptions.IgnoreCase);
         }
+
+
     }
 }
