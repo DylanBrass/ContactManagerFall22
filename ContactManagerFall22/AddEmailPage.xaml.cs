@@ -26,11 +26,12 @@ namespace ContactManagerFall22
         {
             if (IsValidEmail(Email.Text))
             {
-                Email addingEmail = new Email();
+                Email addingEmail = new Email
+                {
+                    Contact_Id = Id,
 
-                addingEmail.Contact_Id = Id;
-
-                addingEmail.EmailAddress = Email.Text;
+                    EmailAddress = Email.Text
+                };
 
                 switch (radioCheck)
                 {
