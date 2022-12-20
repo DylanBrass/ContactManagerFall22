@@ -5,35 +5,133 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactManagerFall22"
         mc:Ignorable="d"
-        Title="DetailsPage" Height="450" Width="800" Closed="Window_Closed">
+        Title="Contact Details Page" Height="450" Width="800" Closed="Window_Closed" Background="#95252525" FontFamily="Candara Light">
+
+    <Window.Resources>
+        <Style x:Key="Title" TargetType="Label">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="FontSize" Value="70" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <Style x:Key="Button" TargetType="Button">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="Background" Value="#95363636" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="FontSize" Value="70" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF459EE4"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="LightGray" />
+        </Style>
+
+        <Style TargetType="ListView">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="Background" Value="#95363636" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+        </Style>
+
+        <Style TargetType="ListViewItem">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#FF68BDFF" />
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <Border Name="Border" BorderBrush="{TemplateBinding BorderBrush}" 
+                                  BorderThickness="{TemplateBinding BorderThickness}" 
+                                  Background="{TemplateBinding Background}">
+                                    <GridViewRowPresenter Content="{TemplateBinding Content}"
+                                      Margin="{TemplateBinding Padding}" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="Background" Value="#95363636" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GridViewColumnHeader">
+                        <!-- Standard template but with redundant Storyboard removed -->
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
     <Grid Margin="15,15,15,15">
 
-        <Label x:Name="FName" Content="First Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="LName" Content="Last Name" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Nickname" Content="NickName" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Birthday" Content="Birthday" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Salutation" Content="Salutation" HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="DateAdded" Content="DateAdded" HorizontalAlignment="Left" Margin="9,0,0,0" VerticalAlignment="Center"/>
-        <Label x:Name="DateUpdated" Content="DateUpdated" HorizontalAlignment="Left" Margin="9,220,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Note" Content="Note" HorizontalAlignment="Left" Margin="11,246,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Favourite" Content="Favourite" HorizontalAlignment="Left" Margin="12,272,0,0" VerticalAlignment="Top"/>
-        
-        <Button Content="Address" HorizontalAlignment="Left" Margin="360,3,0,0" VerticalAlignment="Top" Click="Address_Click"/>
-        <Button Content="New Address" HorizontalAlignment="Left" Margin="428,3,0,0" VerticalAlignment="Top" Click="New_Address_Click"/>
+        <Label x:Name="FName" Content="First Name" HorizontalAlignment="Left" Margin="14,90,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LName" Content="Last Name" HorizontalAlignment="Left" Margin="14,120,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Nickname" Content="NickName" HorizontalAlignment="Left" Margin="14,150,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Birthday" Content="Birthday" HorizontalAlignment="Left" Margin="14,180,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Salutation" Content="Salutation" HorizontalAlignment="Left" Margin="14,210,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="DateAdded" Content="DateAdded" HorizontalAlignment="Left" Margin="14,240,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="DateUpdated" Content="DateUpdated" HorizontalAlignment="Left" Margin="14,270,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Note" Content="Note" HorizontalAlignment="Left" Margin="14,299,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Favourite" Content="Favourite" HorizontalAlignment="Left" Margin="14,329,0,0" VerticalAlignment="Top"/>
+
+        <Button HorizontalAlignment="Left" Margin="360,3,0,0" VerticalAlignment="Top" Click="Address_Click" Style="{StaticResource Button}" Height="20" Width="47">
+            <Viewbox>
+                <Label Content="Address" />
+            </Viewbox>
+        </Button>
+
+        <Button  HorizontalAlignment="Left" Margin="428,3,0,0" VerticalAlignment="Top" Click="New_Address_Click" Style="{StaticResource Button}" Height="20" Width="80">
+            <Viewbox>
+                <Label Content="New Address"/>
+            </Viewbox>
+        </Button>
 
         <ListView Name="AddressQuickView" Margin="360,31,10,275">
             <ListView.View>
                 <GridView>
                     <GridViewColumn x:Name="StreetNumber" Header="Street Number" Width="100" DisplayMemberBinding="{Binding AddressNumber}" />
                     <GridViewColumn x:Name="Street" Header="Street Name" Width="100" DisplayMemberBinding="{Binding Street}" />
-                    <GridViewColumn x:Name="ApartementNum" Header="Apartement Number" Width="100" DisplayMemberBinding="{Binding ApartementNum}" />
                     <GridViewColumn x:Name="City" Header="City" Width="100" DisplayMemberBinding="{Binding City}" />
                 </GridView>
             </ListView.View>
         </ListView>
 
-        <Button Content="New Phone" HorizontalAlignment="Left" Margin="432,134,0,0" VerticalAlignment="Top" Click="New_Phone_Click"/>
-        <Button Content="New Email" HorizontalAlignment="Left" Margin="437,270,0,0" VerticalAlignment="Top" Click="New_Email_Click"/>
+        <Button  HorizontalAlignment="Left" Margin="432,134,0,0" VerticalAlignment="Top" Click="New_Phone_Click" Style="{StaticResource Button}" Height="20" Width="80">
+            <Viewbox>
+                <Label Content="New Phone" />
+            </Viewbox>
+        </Button>
+        <Button  HorizontalAlignment="Left" Margin="437,270,0,0" VerticalAlignment="Top" Click="New_Email_Click" Style="{StaticResource Button}" Height="20" Width="80">
+            <Viewbox>
+                <Label Content="New Email" />
+            </Viewbox>
+        </Button>
 
 
         <ListView Name="PhoneQuickView" Margin="360,161,10,145">
@@ -45,8 +143,17 @@
             </ListView.View>
         </ListView>
 
-        <Button Content="Phone" HorizontalAlignment="Left" Margin="360,134,0,0" VerticalAlignment="Top" Click="Phone_Click"/>
-        <Button Content="Email" HorizontalAlignment="Left" Margin="365,270,0,0" VerticalAlignment="Top"/>
+        <Button HorizontalAlignment="Left" Margin="360,134,0,0" VerticalAlignment="Top" Click="Phone_Click" Style="{StaticResource Button}" Height="20" Width="47" >
+            <Viewbox>
+                <Label Content="Phone" />
+            </Viewbox>
+        </Button>
+
+        <Button  HorizontalAlignment="Center" Margin="0,270,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="47">
+            <Viewbox>
+                <Label Content="Email" />
+            </Viewbox>
+        </Button>
 
         <ListView Name="EmailQuickView" Margin="360,296,10,10">
             <ListView.View>
@@ -56,10 +163,19 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="18,335,0,0" VerticalAlignment="Top" Click="Delete_Contact"/>
-        <!--<Button Content="Button" HorizontalAlignment="Left" Margin="235,210,0,0" VerticalAlignment="Top" Click="Button_Click"/>-->
-        <Image x:Name="Pfp" HorizontalAlignment="Left" Height="100" Margin="235,298,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button  HorizontalAlignment="Left" Margin="228,134,0,0" VerticalAlignment="Top" Click="Delete_Contact" Style="{StaticResource Button}" Height="20" Width="80">
+            <Viewbox>
+                <Label Content="Delete" />
+            </Viewbox>
+        </Button>
 
+        <!--<Button Content="Button" HorizontalAlignment="Left" Margin="235,210,0,0" VerticalAlignment="Top" Click="Button_Click"/>-->
+        <Image x:Name="Pfp" HorizontalAlignment="Left" Height="100" Margin="228,22,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label HorizontalAlignment="Left" Margin="14,10,0,0" VerticalAlignment="Top" Height="59" Width="209">
+            <Viewbox>
+                <Label Content="Details Page" Style="{StaticResource Title}"/>
+            </Viewbox>
+        </Label>
 
     </Grid>
 
