@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactManagerFall22"
         mc:Ignorable="d"
-        Title="AddressDetails" Height="450" Width="800" Background="#95252525" FontFamily="Candara Light">
+        Title="AddressDetails" MinHeight="450" MinWidth="800" MaxHeight="450" MaxWidth="800" Background="#95252525" FontFamily="Candara Light">
 
     <Window.Resources>
         <Style x:Key="Title" TargetType="Label">
