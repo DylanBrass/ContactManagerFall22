@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Reflection.Emit;
 using System.Security.Cryptography;
+using System.Xml.Linq;
 
 namespace ContactManagerFall22
 {
@@ -24,17 +25,28 @@ namespace ContactManagerFall22
     public partial class AddressDetails : Window
     {
         readonly int Id;
-        string radioCheck;
         DBManager dbManager3 = new DBManager();
-        public AddressDetails()
+        public AddressDetails(int id)
         {
             InitializeComponent();
+            Window_Loaded(id);
         }
 
-        private void Add_Address_btn_Click(object sender, RoutedEventArgs e)
+        private void Window_Loaded(int id)
         {
+            Address address = dbManager3.GetAddress(id);
+            StreetNumber.Content = "Street Number: " + address.AddressNumber.ToString();
+            Street.Content = "Street: " + address.Street;
+            ApartementNum.Content = "Apartment Number: " + address.ApartementNum.ToString();
+            City.Content = "City: " + address.City;
+            Country.Content = "Country: " + address.Country;
+            AreaCode.Content = "Area Code: " + address.ZipCode;
+            DateCreated.Content = "DateAdded: " + address.DateCreated.ToShortDateString();
+            LastUpdated.Content = "DateUpdated: " + address.LastUpdated.ToShortDateString();
+
 
         }
+
 
         private void Edit_Address_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -42,30 +54,16 @@ namespace ContactManagerFall22
             List<Address> inputedAddress = dbManager3.GetAdresses(Id);
   
             AddAdressPage newAddrWindow = new AddAdressPage(Id);
-            newAddrWindow.City.Text = inputedAddress[0].City; 
-            newAddrWindow.Country.Text = inputedAddress[0].Country;
-            newAddrWindow.ZipCode.Text = inputedAddress[0].ZipCode;
-            newAddrWindow.Street.Text = inputedAddress[0].Street;
-            newAddrWindow.AddressNumber.Text = inputedAddress[0].AddressNumber.ToString();
-            newAddrWindow.AppartementNum.Text = inputedAddress[0].ApartementNum.ToString();
+            newAddrWindow.City.Text = inputedAddress[Id].City; 
+            newAddrWindow.Country.Text = inputedAddress[Id].Country;
+            newAddrWindow.ZipCode.Text = inputedAddress[Id].ZipCode;
+            newAddrWindow.Street.Text = inputedAddress[Id].Street;
+            newAddrWindow.AddressNumber.Text = inputedAddress[Id].AddressNumber.ToString();
+            newAddrWindow.AppartementNum.Text = inputedAddress[Id].ApartementNum.ToString();
             newAddrWindow.ShowDialog();
             
 
         }
 
-        private void Del_Address_btn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Done(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Address_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

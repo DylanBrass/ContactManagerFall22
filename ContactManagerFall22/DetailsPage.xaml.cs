@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
 namespace ContactManagerFall22
@@ -60,12 +61,16 @@ namespace ContactManagerFall22
 
         }
 
-        private void Address_Click(object sender, RoutedEventArgs e)
+        private void AddressDetails_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            AddressDetails newWindow = new AddressDetails();
-            newWindow.ShowDialog();
-            //this.Close();
+            Address selectedAddress = (Address)AddressQuickView.SelectedItem;
 
+            if (selectedAddress != null)
+            {
+                AddressDetails newWindow = new AddressDetails(Id);
+                newWindow.ShowDialog();
+                this.Close();
+            }
         }
         private void New_Address_Click(object sender, RoutedEventArgs e)
         {
@@ -111,5 +116,6 @@ namespace ContactManagerFall22
             MainWindow main = new MainWindow();
             main.Show();
         }
+
     }
 }

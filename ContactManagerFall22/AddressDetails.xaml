@@ -5,7 +5,88 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactManagerFall22"
         mc:Ignorable="d"
-        Title="AddressDetails" Height="450" Width="800">
+        Title="AddressDetails" Height="450" Width="800" Background="#95252525" FontFamily="Candara Light">
+
+    <Window.Resources>
+        <Style x:Key="Title" TargetType="Label">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="FontSize" Value="70" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <Style x:Key="Button" TargetType="Button">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="Background" Value="#95363636" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="FontSize" Value="70" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF459EE4"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="LightGray" />
+        </Style>
+
+        <Style TargetType="ListView">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="Background" Value="#95363636" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+        </Style>
+
+        <Style TargetType="ListViewItem">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#FF68BDFF" />
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <Border Name="Border" BorderBrush="{TemplateBinding BorderBrush}" 
+                                  BorderThickness="{TemplateBinding BorderThickness}" 
+                                  Background="{TemplateBinding Background}">
+                                    <GridViewRowPresenter Content="{TemplateBinding Content}"
+                                      Margin="{TemplateBinding Padding}" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="Background" Value="#95363636" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GridViewColumnHeader">
+                        <!-- Standard template but with redundant Storyboard removed -->
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
 
     <Grid Margin="15,40,15,15">
         <Grid.ColumnDefinitions>
@@ -17,25 +98,33 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
+        <Label x:Name="StreetNumber" Content="Street Number" HorizontalAlignment="Left" Margin="14,90,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Street" Content="Street" HorizontalAlignment="Left" Margin="14,120,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="ApartementNum" Content="ApartementNum" HorizontalAlignment="Left" Margin="14,150,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="City" Content="City" HorizontalAlignment="Left" Margin="14,180,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Country" Content="Country" HorizontalAlignment="Left" Margin="14,210,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="AreaCode" Content="AreaCode" HorizontalAlignment="Left" Margin="14,240,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="DateCreated" Content="DateCreated" HorizontalAlignment="Left" Margin="14,270,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LastUpdated" Content="LastUpdated" HorizontalAlignment="Left" Margin="14,299,0,0" VerticalAlignment="Top"/>
 
-        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.ColumnSpan="2">
+        <!--<ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.ColumnSpan="2">-->
 
-            <ListView Name="AddressesListItems" SelectionChanged="Address_SelectionChanged" >
+            <!--<ListView Name="AddressesListItems" SelectionChanged="Address_SelectionChanged" Width="1200" >
 
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn x:Name="StreetNumber" Header="Street Number" Width="150" DisplayMemberBinding="{Binding AddressNumber}" />
-                        <GridViewColumn x:Name="Street" Header="Street Name" Width="150" DisplayMemberBinding="{Binding Street}" />
-                        <GridViewColumn x:Name="ApartementNum" Header="Apartement Number" Width="150" DisplayMemberBinding="{Binding ApartementNum}" />
+                        <GridViewColumn x:Name="StreetNumber" Header="Street Number" Width="200" DisplayMemberBinding="{Binding AddressNumber}" />
+                        <GridViewColumn x:Name="Street" Header="Street Name" Width="200" DisplayMemberBinding="{Binding Street}" />
+                        <GridViewColumn x:Name="ApartementNum" Header="Apartement Number" Width="200" DisplayMemberBinding="{Binding ApartementNum}" />
 
-                        <GridViewColumn x:Name="City" Header="City" Width="150" DisplayMemberBinding="{Binding City}" />
-                        <GridViewColumn x:Name="Country" Header="Country" Width="150" DisplayMemberBinding="{Binding Country}" />
-                        <GridViewColumn x:Name="AdreaCode" Header="Zip Code" Width="150" DisplayMemberBinding="{Binding ZipCode}" />
+                        <GridViewColumn x:Name="City" Header="City" Width="200" DisplayMemberBinding="{Binding City}" />
+                        <GridViewColumn x:Name="Country" Header="Country" Width="200" DisplayMemberBinding="{Binding Country}" />
+                        <GridViewColumn x:Name="AdreaCode" Header="Zip Code" Width="200" DisplayMemberBinding="{Binding ZipCode}" />
 
-                        <GridViewColumn x:Name="DateCreated" Header="Date Created" Width="150" DisplayMemberBinding="{Binding DateCreated}" />
-                        <GridViewColumn x:Name="LastUpdated" Header="Last Updated" Width="150" DisplayMemberBinding="{Binding LastUpdated}" />
+                        <GridViewColumn x:Name="DateCreated" Header="Date Created" Width="200" DisplayMemberBinding="{Binding DateCreated}" />
+                        <GridViewColumn x:Name="LastUpdated" Header="Last Updated" Width="200" DisplayMemberBinding="{Binding LastUpdated}" />
                     </GridView>
-                </ListView.View>
+                </ListView.View>-->
 
 
                 <!--<ListView.ItemTemplate>
@@ -46,18 +135,9 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>-->
 
-            </ListView>
-        </ScrollViewer>
+            <!--</ListView>
+        </ScrollViewer>-->
 
-        <Button Name="Add_Address_btn" Grid.Row="1" Margin="10,10,13,10" Content="Add Address"  />
-
-        <Button Name="Edit_Address_btn" Grid.Row="1" Margin="130,10,370,10" Content="Edit Address..." Grid.ColumnSpan="2"/>
-
-        <Button Name="Del_Address_btn" Grid.Row="1" Margin="118,10,249,10" Content="Delete Address... " Grid.Column="1"/>
-
-        <Button Name="Adress_Done" Grid.Row="1" Margin="357,10,10,10" Content="Done"  Grid.Column="1"/>
-
-        <Label Content="Persons Name" HorizontalAlignment="Left" Margin="0,-31,0,0" VerticalAlignment="Top" Width="133"/>
 
     </Grid>
 
