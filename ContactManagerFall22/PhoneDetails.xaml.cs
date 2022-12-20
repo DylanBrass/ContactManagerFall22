@@ -42,8 +42,6 @@ namespace ContactManagerFall22
         private void Edit_PhoneNum(object sender, RoutedEventArgs e)
         {
             AddPhoneNumber newPNWindow = new AddPhoneNumber(Id);
-            newPNWindow.PNInput.Text = "Hello";
-            newPNWindow.PhoneNumDesc.Text = "Hello";
             newPNWindow.ShowDialog();
         }
     }

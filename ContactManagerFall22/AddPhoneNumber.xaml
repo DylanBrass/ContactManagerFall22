@@ -10,9 +10,9 @@
 
 
         <TextBox x:Name="PhoneNumber" HorizontalAlignment="Left" Margin="325,37,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-        <RadioButton GroupName="Type" Content="Home" Margin="43,73,699,332" Checked="RadioButton_Checked" />
-        <RadioButton GroupName="Type"  Content="Work" Margin="123,73,580,328" Checked="RadioButton_Checked"/>
-        <RadioButton GroupName="Type" Content="Other" Margin="99,127,605,237" Checked="RadioButton_Checked" />
+        <RadioButton GroupName="Type" Content="Home" Margin="325,128,417,277" Checked="RadioButton_Checked" />
+        <RadioButton GroupName="Type"  Content="Work" Margin="400,128,304,273" Checked="RadioButton_Checked"/>
+        <RadioButton GroupName="Type" Content="Other" Margin="472,128,232,236" Checked="RadioButton_Checked" />
 
         <Button x:Name="AddEmailButton" Content="Add 📞" HorizontalAlignment="Left" Margin="340,330,0,0" 
                 VerticalAlignment="Top" Height="26" Width="90" Grid.Column="1" Click="AddPhoneButton_Click"/>
