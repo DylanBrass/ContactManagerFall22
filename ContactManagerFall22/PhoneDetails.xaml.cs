@@ -1,4 +1,7 @@
-﻿namespace ContactManagerFall22
+﻿using System.Windows;
+using System.Windows.Controls;
+
+namespace ContactManagerFall22
 {
     /// <summary>
     /// Interaction logic for PhoneDetails.xaml
