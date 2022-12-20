@@ -48,11 +48,11 @@
 
     <Grid RenderTransformOrigin="0.478,0.797">
         <TextBox x:Name="AddressNumber" HorizontalAlignment="Left" Margin="325,63,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="Street" HorizontalAlignment="Left" Margin="325,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Street" MaxLength="50" HorizontalAlignment="Left" Margin="325,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="AppartementNum" Text="" HorizontalAlignment="Left" Margin="325,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="City" HorizontalAlignment="Left" Margin="325,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="Country" HorizontalAlignment="Left" Margin="325,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="ZipCode" HorizontalAlignment="Left" Margin="325,267,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="City" MaxLength="50" HorizontalAlignment="Left" Margin="325,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Country" MaxLength="50" HorizontalAlignment="Left" Margin="325,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="ZipCode" MaxLength="50" HorizontalAlignment="Left" Margin="325,267,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
         <RadioButton GroupName="Type" Content="Home" Margin="252,333,485,32" Checked="RadioButton_Checked" />
         <RadioButton GroupName="Type"  Content="Work" Margin="349,333,355,68" Checked="RadioButton_Checked"/>
         <RadioButton GroupName="Type" Content="Other" Margin="435,333,269,31" Checked="RadioButton_Checked" />
