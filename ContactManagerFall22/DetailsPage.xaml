@@ -117,19 +117,8 @@
             </ListView.View>
         </ListView>
 
-        <Button  HorizontalAlignment="Left" Margin="432,134,0,0" VerticalAlignment="Top" Click="New_Phone_Click" Style="{StaticResource Button}" Height="20" Width="80">
-            <Viewbox>
-                <Label Content="New Phone" />
-            </Viewbox>
-        </Button>
-        <Button  HorizontalAlignment="Left" Margin="437,270,0,0" VerticalAlignment="Top" Click="New_Email_Click" Style="{StaticResource Button}" Height="20" Width="80">
-            <Viewbox>
-                <Label Content="New Email" />
-            </Viewbox>
-        </Button>
 
-
-        <ListView Name="PhoneQuickView" Margin="360,161,10,145">
+        <ListView Name="PhoneQuickView" Margin="360,161,10,145" MouseDoubleClick="PhoneDetails_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn x:Name="PhoneNumber" Header="Phone Number" Width="100" DisplayMemberBinding="{Binding PhoneNumber}" />
@@ -138,15 +127,15 @@
             </ListView.View>
         </ListView>
 
-        <Button HorizontalAlignment="Left" Margin="360,134,0,0" VerticalAlignment="Top" Click="Phone_Click" Style="{StaticResource Button}" Height="20" Width="47" >
+        <Button HorizontalAlignment="Left" Margin="360,134,0,0" VerticalAlignment="Top" Click="New_Phone_Click" Style="{StaticResource Button}" Height="20" Width="47" >
             <Viewbox>
-                <Label Content="Phone" />
+                <Label Content="New Phone" />
             </Viewbox>
         </Button>
 
-        <Button  HorizontalAlignment="Center" Margin="0,270,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="47">
+        <Button  HorizontalAlignment="Center" Click="New_Email_Click" Margin="0,270,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="47">
             <Viewbox>
-                <Label Content="Email" />
+                <Label Content="New Email" />
             </Viewbox>
         </Button>
 
