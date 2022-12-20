@@ -13,9 +13,9 @@
         <TextBox x:Name="City" HorizontalAlignment="Left" Margin="325,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="Country" HorizontalAlignment="Left" Margin="320,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="ZipCode" HorizontalAlignment="Left" Margin="325,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
-        <RadioButton GroupName="Type" Content="Home" Margin="43,73,699,332" Checked="RadioButton_Checked" />
-        <RadioButton GroupName="Type"  Content="Work" Margin="123,73,580,328" Checked="RadioButton_Checked"/>
-        <RadioButton GroupName="Type" Content="Other" Margin="99,127,605,237" Checked="RadioButton_Checked" />
+        <RadioButton GroupName="Type" Content="Home" Margin="257,273,485,132" Checked="RadioButton_Checked" />
+        <RadioButton GroupName="Type"  Content="Work" Margin="352,273,352,128" Checked="RadioButton_Checked"/>
+        <RadioButton GroupName="Type" Content="Other" Margin="440,273,264,91" Checked="RadioButton_Checked" />
         <Button x:Name="AddAddressButton" Content="Add Address 📝" HorizontalAlignment="Left" Margin="340,330,0,0" 
                 VerticalAlignment="Top" Height="26" Width="90" Grid.Column="1" Click="AddAddressButton_Click"/>
 
