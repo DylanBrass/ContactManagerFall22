@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ContactManagerFall22.DB.Entities;
+using ContactManagerFall22.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +19,44 @@ namespace ContactManagerFall22
     /// <summary>
     /// Interaction logic for EmailDetails.xaml
     /// </summary>
-    public partial class EmailDetails : Window
+    public partial class EmailDetails : Window { 
+
+    readonly int Id;
+    readonly DBManager dbManager3 = new DBManager();
+
+    public EmailDetails(int id)
     {
-        public EmailDetails()
+        Id = id;
+        InitializeComponent();
+        Window_Loaded();
+    }
+
+    private void Window_Loaded()
+    {
+        Email email = dbManager3.GetEmail(Id);
+
+        Email.Content = "Email: " + email.EmailAddress;
+        Type.Content = "Type: " + email.Type;
+        DateCreated.Content = "DateAdded: " + email.DateCreated.ToShortDateString();
+        LastUpdated.Content = "DateUpdated: " + email.LastUpdated.ToShortDateString();
+
+    }
+
+    private void Delete_Click(object sender, RoutedEventArgs e)
+    {
+        MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this Address?", "Confirmation", MessageBoxButton.YesNo);
+        if (result == MessageBoxResult.Yes)
         {
-            InitializeComponent();
+            dbManager3.DeleteEmail(Id);
+            this.Close();
+        }
+
+
+    }
+
+    private void Edit_Email_btn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
