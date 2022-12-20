@@ -44,7 +44,33 @@ namespace ContactManagerFall22
 
         private void Edit_Phone(object sender, RoutedEventArgs e)
         {
+            Phone inputedPhone = dbManager3.GetPhone(Id);
 
+            EditAddress editpage = new EditAddress(inputedAddress.Contact_Id);
+
+            editpage = inputedPhone.City.ToString();
+            editpage.Country.Text = inputedPhone.Country.ToString();
+            editpage.ZipCode.Text = inputedPhone.ZipCode.ToString();
+            editpage.Street.Text = inputedPhone.Street.ToString();
+            editpage.AddressNumber.Text = inputedPhone.AddressNumber.ToString();
+            editpage.AppartementNum.Text = inputedPhone.ApartementNum.ToString();
+            if (inputedAddress.Type == 'H')
+            {
+                editpage.Home.IsChecked = true;
+            }
+            else if (inputedAddress.Type == 'B')
+            {
+                editpage.Work.IsChecked = true;
+
+            }
+            else
+            {
+                editpage.Other.IsChecked = true;
+
+            }
+            editpage.ShowDialog();
+
+            Window_Loaded();
         }
     }
 }

@@ -48,18 +48,31 @@ namespace ContactManagerFall22
         {
             Address inputedAddress = dbManager3.GetAddress(Id);
 
-            AddAdressPage newAddrWindow = new AddAdressPage(Id);
+            EditAddress editpage = new EditAddress(inputedAddress.Contact_Id);
 
-            newAddrWindow.City.Text = inputedAddress.City.ToString();
-            newAddrWindow.Country.Text = inputedAddress.Country.ToString();
-            newAddrWindow.ZipCode.Text = inputedAddress.ZipCode.ToString();
-            newAddrWindow.Street.Text = inputedAddress.Street.ToString();
-            newAddrWindow.AddressNumber.Text = inputedAddress.AddressNumber.ToString();
-            newAddrWindow.AppartementNum.Text = inputedAddress.ApartementNum.ToString();
-            newAddrWindow.
-            newAddrWindow.ShowDialog();
+            editpage.City.Text = inputedAddress.City.ToString();
+            editpage.Country.Text = inputedAddress.Country.ToString();
+            editpage.ZipCode.Text = inputedAddress.ZipCode.ToString();
+            editpage.Street.Text = inputedAddress.Street.ToString();
+            editpage.AddressNumber.Text = inputedAddress.AddressNumber.ToString();
+            editpage.AppartementNum.Text = inputedAddress.ApartementNum.ToString();
+            if (inputedAddress.Type == 'H')
+            {
+                editpage.Home.IsChecked = true;
+            }
+            else if (inputedAddress.Type == 'B')
+            {
+                editpage.Work.IsChecked = true;
 
+            }
+            else
+            {
+                editpage.Other.IsChecked = true;
 
+            }
+            editpage.ShowDialog();
+
+            Window_Loaded();
         }
 
     }

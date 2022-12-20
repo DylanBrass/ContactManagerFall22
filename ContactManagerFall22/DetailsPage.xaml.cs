@@ -19,11 +19,14 @@ namespace ContactManagerFall22
             Id = id;
             InitializeComponent();
             Window_Loaded(id);
-            Address_Window_Loaded();
         }
 
-        private void Address_Window_Loaded()
+
+
+        private void Window_Loaded(int id)
         {
+            dbManager = new DBManager();
+
             List<Address> Addresses = dbManager.GetAdresses(Id);
             AddressQuickView.ItemsSource = Addresses;
 
@@ -36,10 +39,6 @@ namespace ContactManagerFall22
 
             List<Email> emails = dbManager.GetEmails(Id);
             EmailQuickView.ItemsSource = emails;
-        }
-
-        private void Window_Loaded(int id)
-        {
             Contact contact = dbManager.GetContact(id);
 
             Nickname.Content = "Nickname: " + contact.Nickname;
@@ -72,6 +71,9 @@ namespace ContactManagerFall22
                 List<Address> Addresses = dbManager.GetAdresses(Id);
                 AddressQuickView.ItemsSource = Addresses;
             }
+
+
+
         }
 
         private void PhoneDetails_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -191,6 +193,13 @@ namespace ContactManagerFall22
         {
             if (dbManager.GetEmails(Id).Count > 0)
                 csv.ExportEmail(Id);
+        }
+
+        private void Window_Activated(object sender, System.EventArgs e)
+        {
+
+            Window_Loaded(Id);
+
         }
     }
 }

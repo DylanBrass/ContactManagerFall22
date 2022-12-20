@@ -468,12 +468,12 @@ namespace ContactManagerFall22.DB
             using (connect = new SqlConnection(ConString))
             {
                 connect.Open();
-                SqlCommand cm = new SqlCommand("UPDATE Address SET Contact_Id = @Contact_Id,City = @City,Country = @Country,ZipCode = @ZipCode,Street = @Street,AddressNumber = @AddressNumber,ApartementNum = @ApartementNum,Type_Num = @Type_Code WHERE Contact_Id = @Contact_Id;");
+                SqlCommand cm = new SqlCommand("UPDATE Address SET Contact_Id = @Contact_Id,City = @City,Country = @Country,AreaCode = @AreaCode,Street = @Street,AddressNumber = @AddressNumber,ApartementNum = @ApartementNum,Type_Code = @Type_Code WHERE Contact_Id = @Contact_Id;", connect);
 
                 cm.Parameters.AddWithValue("@Contact_Id", Contact_id);
                 cm.Parameters.AddWithValue("@City", add.City);
                 cm.Parameters.AddWithValue("@Country", add.Country);
-                cm.Parameters.AddWithValue("@ZipCode", add.ZipCode);
+                cm.Parameters.AddWithValue("@AreaCode", add.ZipCode);
                 cm.Parameters.AddWithValue("@Street", add.Street);
                 cm.Parameters.AddWithValue("@AddressNumber", add.AddressNumber);
                 cm.Parameters.AddWithValue("@ApartementNum", add.ApartementNum);

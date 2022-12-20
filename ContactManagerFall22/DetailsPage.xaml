@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactManagerFall22"
         mc:Ignorable="d"
-        Title="Contact Details Page" Height="450" Width="800" Background="#95252525" FontFamily="Candara Light">
+        Title="Contact Details Page" Height="450" Width="800" Background="#95252525" FontFamily="Candara Light" Activated="Window_Activated">
 
     <Window.Resources>
         <Style x:Key="Title" TargetType="Label">
@@ -89,6 +89,10 @@
     </Window.Resources>
 
     <Grid Margin="15,15,15,15">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="52*"/>
+        </Grid.ColumnDefinitions>
 
         <Label x:Name="FName" Content="First Name" HorizontalAlignment="Left" Margin="14,90,0,0" VerticalAlignment="Top"/>
         <Label x:Name="LName" Content="Last Name" HorizontalAlignment="Left" Margin="14,120,0,0" VerticalAlignment="Top"/>
@@ -100,14 +104,14 @@
         <Label x:Name="Note" Content="Note" HorizontalAlignment="Left" Margin="14,299,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Favourite" Content="Favourite" HorizontalAlignment="Left" Margin="14,329,0,0" VerticalAlignment="Top"/>
 
-        <Button HorizontalAlignment="Left" Margin="360,3,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="65" Click="New_Address_Click">
+        <Button HorizontalAlignment="Left" Margin="110,3,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="65" Click="New_Address_Click" Grid.Column="1">
             <Viewbox>
                 <Label Content="New Address" />
             </Viewbox>
         </Button>
 
 
-        <ListView Name="AddressQuickView" Margin="360,31,10,275" MouseDoubleClick="AddressDetails_MouseDoubleClick" >
+        <ListView Name="AddressQuickView" Margin="110,31,10,275" MouseDoubleClick="AddressDetails_MouseDoubleClick" Grid.Column="1" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn x:Name="StreetNumber" Header="Street Number" Width="100" DisplayMemberBinding="{Binding AddressNumber}" />
@@ -118,7 +122,7 @@
         </ListView>
 
 
-        <ListView Name="PhoneQuickView" Margin="360,161,10,145" MouseDoubleClick="PhoneDetails_MouseDoubleClick">
+        <ListView Name="PhoneQuickView" Margin="110,161,10,145" MouseDoubleClick="PhoneDetails_MouseDoubleClick" Grid.Column="1">
             <ListView.View>
                 <GridView>
                     <GridViewColumn x:Name="PhoneNumber" Header="Phone Number" Width="100" DisplayMemberBinding="{Binding PhoneNumber}" />
@@ -127,19 +131,19 @@
             </ListView.View>
         </ListView>
 
-        <Button HorizontalAlignment="Left" Margin="360,134,0,0" VerticalAlignment="Top" Click="New_Phone_Click" Style="{StaticResource Button}" Height="20" Width="47" >
+        <Button HorizontalAlignment="Left" Margin="110,134,0,0" VerticalAlignment="Top" Click="New_Phone_Click" Style="{StaticResource Button}" Height="20" Width="47" Grid.Column="1" >
             <Viewbox>
                 <Label Content="New Phone" />
             </Viewbox>
         </Button>
 
-        <Button  HorizontalAlignment="Center" Click="New_Email_Click" Margin="0,270,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="47">
+        <Button  HorizontalAlignment="Center" Click="New_Email_Click" Margin="0,270,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="46" Grid.Column="1">
             <Viewbox>
                 <Label Content="New Email" />
             </Viewbox>
         </Button>
 
-        <ListView Name="EmailQuickView" Margin="360,296,10,10">
+        <ListView Name="EmailQuickView" Margin="110,296,10,10" Grid.Column="1">
             <ListView.View>
                 <GridView>
                     <GridViewColumn x:Name="Email" Header="Email" Width="100" DisplayMemberBinding="{Binding EmailAddress}" />
@@ -147,58 +151,58 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button  HorizontalAlignment="Left" Margin="228,134,0,0" VerticalAlignment="Top" Click="Delete_Contact" Style="{StaticResource Button}" Height="20" Width="80">
+        <Button  HorizontalAlignment="Left" Margin="228,134,0,0" VerticalAlignment="Top" Click="Delete_Contact" Style="{StaticResource Button}" Height="20" Width="80" Grid.ColumnSpan="2">
             <Viewbox>
                 <Label Content="Delete" />
             </Viewbox>
         </Button>
 
         <!--<Button Content="Button" HorizontalAlignment="Left" Margin="235,210,0,0" VerticalAlignment="Top" Click="Button_Click"/>-->
-        <Image x:Name="Pfp" HorizontalAlignment="Left" Height="100" Margin="228,22,0,0" VerticalAlignment="Top" Width="100"/>
+        <Image x:Name="Pfp" HorizontalAlignment="Left" Height="100" Margin="228,22,0,0" VerticalAlignment="Top" Width="100" Grid.ColumnSpan="2"/>
         <Label HorizontalAlignment="Left" Margin="14,10,0,0" VerticalAlignment="Top" Height="59" Width="209">
             <Viewbox>
                 <Label Content="Details Page" Style="{StaticResource Title}"/>
             </Viewbox>
         </Label>
-        <Button HorizontalAlignment="Left" Margin="360,3,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="65" Click="New_Address_Click">
+        <Button HorizontalAlignment="Left" Margin="110,3,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="65" Click="New_Address_Click" Grid.Column="1">
             <Viewbox>
                 <Label Content="New Address" />
             </Viewbox>
         </Button>
 
-        
-        <!--Imports Exports buttons--> 
-        <Button HorizontalAlignment="Left" Margin="615,2,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="65" Click="Import_Address">
+
+        <!--Imports Exports buttons-->
+        <Button HorizontalAlignment="Left" Margin="365,2,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="65" Click="Import_Address" Grid.Column="1">
             <Viewbox>
                 <Label Content="Import Address" />
             </Viewbox>
         </Button>
 
-        <Button HorizontalAlignment="Left" Margin="691,2,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="64" Click="Export_Address">
+        <Button HorizontalAlignment="Left" Margin="441,2,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="64" Click="Export_Address" Grid.Column="1">
             <Viewbox>
                 <Label Content="Export Address" />
             </Viewbox>
         </Button>
 
-        <Button HorizontalAlignment="Left" Margin="615,134,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="65" Click="Import_Phone">
+        <Button HorizontalAlignment="Left" Margin="365,134,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="65" Click="Import_Phone" Grid.Column="1">
             <Viewbox>
                 <Label Content="Import Phone" />
             </Viewbox>
         </Button>
 
-        <Button HorizontalAlignment="Left" Margin="691,134,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="64" Click="Export_Phone">
+        <Button HorizontalAlignment="Left" Margin="441,134,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="64" Click="Export_Phone" Grid.Column="1">
             <Viewbox>
                 <Label Content="Export Phone" />
             </Viewbox>
         </Button>
 
-        <Button HorizontalAlignment="Left" Margin="615,270,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="65" Click="Import_Email">
+        <Button HorizontalAlignment="Left" Margin="365,270,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="65" Click="Import_Email" Grid.Column="1">
             <Viewbox>
                 <Label Content="Import Email" />
             </Viewbox>
         </Button>
 
-        <Button HorizontalAlignment="Left" Margin="691,270,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="64" Click="Export_Email">
+        <Button HorizontalAlignment="Left" Margin="441,270,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="64" Click="Export_Email" Grid.Column="1">
             <Viewbox>
                 <Label Content="Export Email" />
             </Viewbox>
