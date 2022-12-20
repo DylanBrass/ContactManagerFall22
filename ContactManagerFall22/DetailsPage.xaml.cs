@@ -68,8 +68,8 @@ namespace ContactManagerFall22
         }
         private void New_Address_Click(object sender, RoutedEventArgs e)
         {
-            AddAdressPage newWindow = new AddAdressPage(Id);
-            newWindow.ShowDialog();
+            AddAdressPage newAddressWindow = new AddAdressPage(Id);
+            newAddressWindow.ShowDialog();
         }
 
         private void Phone_Click(object sender, RoutedEventArgs e)
