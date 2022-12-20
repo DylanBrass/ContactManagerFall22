@@ -365,15 +365,15 @@ namespace ContactManagerFall22.DB
             }
         }
 
-        public void DeleteAddress(int contact_id)
+        public void DeleteAddress(int id)
         {
 
             using (connect = new SqlConnection(ConString))
             {
                 connect.Open();
 
-                SqlCommand cm = new SqlCommand("UPDATE Address SET Active = 0 WHERE Contact_Id = @Contact_Id;", connect);
-                cm.Parameters.AddWithValue("@Contact_Id", contact_id);
+                SqlCommand cm = new SqlCommand("UPDATE Address SET Active = 0 WHERE Id = @Id;", connect);
+                cm.Parameters.AddWithValue("@Id", id);
                 cm.ExecuteNonQuery();
             }
 
