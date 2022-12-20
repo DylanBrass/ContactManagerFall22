@@ -47,20 +47,18 @@ namespace ContactManagerFall22
 
 
         private void Edit_Address_btn_Click(object sender, RoutedEventArgs e)
-        { List<Address> inputedAddress = dbManager3.GetAdresses(Id);
+        {
+            Address inputedAddress = dbManager3.GetAddress(Id);
 
             AddAdressPage newAddrWindow = new AddAdressPage(Id);
 
-            newAddrWindow.City.Text = inputedAddress[Id].ToString();
-
-                //newAddrWindow.City.Text = inputedAddress[Id].City;
-            
-                //newAddrWindow.Country.Text = inputedAddress[Id].Country;
-                //newAddrWindow.ZipCode.Text = inputedAddress[Id].ZipCode;
-                //newAddrWindow.Street.Text = inputedAddress[Id].Street;
-                //newAddrWindow.AddressNumber.Text = inputedAddress[Id].AddressNumber.ToString();
-                //newAddrWindow.AppartementNum.Text = inputedAddress[Id].ApartementNum.ToString();
-                newAddrWindow.ShowDialog();
+            newAddrWindow.City.Text = inputedAddress.City.ToString();
+            newAddrWindow.Country.Text = inputedAddress.Country.ToString();
+            newAddrWindow.ZipCode.Text = inputedAddress.ZipCode.ToString();
+            newAddrWindow.Street.Text = inputedAddress.Street.ToString();
+            newAddrWindow.AddressNumber.Text = inputedAddress.AddressNumber.ToString();
+            newAddrWindow.AppartementNum.Text = inputedAddress.ApartementNum.ToString();
+            newAddrWindow.ShowDialog();
             
 
         }
