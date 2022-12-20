@@ -5,17 +5,69 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactManagerFall22"
         mc:Ignorable="d"
-        Title="AddEmailPage" Height="450" Width="800">
+        Title="AddEmailPage" Height="450" Width="800" Background="#95252525" FontFamily="Candara Light">
+
+    <Window.Resources>
+        <Style x:Key="Title" TargetType="Label">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="FontSize" Value="70" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <Style x:Key="Button" TargetType="Button">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="Background" Value="#95363636" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="FontSize" Value="70" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF459EE4"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="LightGray" />
+        </Style>
+
+        <Style TargetType="RadioButton">
+            <Setter Property="Foreground" Value="LightGray" />
+        </Style>
+
+    </Window.Resources>
+
     <Grid>
-        <TextBox x:Name="Email" HorizontalAlignment="Left" Margin="377,74,0,0" VerticalAlignment="Top" Width="120"/>
-        <RadioButton GroupName="Type" Content="Home" Margin="206,163,536,242" Checked="RadioButton_Checked" />
-        <RadioButton GroupName="Type"  Content="Work" Margin="340,163,364,238" Checked="RadioButton_Checked"/>
-        <RadioButton GroupName="Type" Content="Other" Margin="464,163,240,201" Checked="RadioButton_Checked" />
+        <TextBox x:Name="Email" HorizontalAlignment="Left" Margin="325,200,0,0" VerticalAlignment="Top" Width="120"/>
+        <RadioButton GroupName="Type" Content="Home" Margin="204,285,526,79" Checked="RadioButton_Checked" />
+        <RadioButton GroupName="Type"  Content="Work" Margin="352,285,352,116" Checked="RadioButton_Checked"/>
+        <RadioButton GroupName="Type" Content="Other" Margin="494,285,210,79" Checked="RadioButton_Checked" />
 
-        <Button x:Name="AddEmailButton" Content="Add Email 📝" HorizontalAlignment="Left" Margin="340,330,0,0" 
-                VerticalAlignment="Top" Height="26" Width="90" Grid.Column="1" Click="AddEmailButton_Click"/>
+        <Button x:Name="AddEmailButton"  HorizontalAlignment="Left" Margin="340,330,0,0" 
+                VerticalAlignment="Top" Height="26" Width="90" Grid.Column="1" Click="AddEmailButton_Click" Style="{StaticResource Button}">
+            <Viewbox>
+                <Label Content="Add Email 📝"/>
+            </Viewbox>
+        </Button>
 
-        <Label Content="Email" HorizontalAlignment="Left" Margin="264,71,0,0" VerticalAlignment="Top" Height="24" Width="103"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="256,196,0,0" VerticalAlignment="Top" Height="24" Width="103"/>
+
+        <Label HorizontalAlignment="Left" Margin="18,20,0,0" VerticalAlignment="Top" Height="59" Width="290">
+            <Viewbox>
+                <Label Content="New Email" Style="{StaticResource Title}"/>
+            </Viewbox>
+        </Label>
+
 
     </Grid>
 </Window>
