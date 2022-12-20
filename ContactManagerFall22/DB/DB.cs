@@ -284,14 +284,13 @@ namespace ContactManagerFall22.DB
             {
                 AddContact addContact = new AddContact();
                 connect.Open();
-                SqlCommand cm = new SqlCommand("INSERT INTO Contact (FirstName,LastName,Favourite,Active,Salutation,Nickname,Birthday,Note) " +
-                    "VALUES (@FirstName,@LastName,@Favourite,@Active,@Salutation,@Nickname,@Birthday,@Note);", connect);
+                SqlCommand cm = new SqlCommand("INSERT INTO Contact (FirstName,LastName,Favourite,Salutation,Nickname,Birthday,Note) " +
+                    "VALUES (@FirstName,@LastName,@Favourite,@Salutation,@Nickname,@Birthday,@Note);", connect);
 
 
                 cm.Parameters.AddWithValue("@FirstName", con.FirstName);
                 cm.Parameters.AddWithValue("@LastName", con.LastName);
                 cm.Parameters.AddWithValue("@Favourite", con.Favourite);
-                cm.Parameters.AddWithValue("@Active", true);
                 cm.Parameters.AddWithValue("@Salutation", con.Salutation);
                 cm.Parameters.AddWithValue("@Nickname", con.Nickname);
                 cm.Parameters.AddWithValue("@Birthday", con.Birthday);
@@ -317,7 +316,6 @@ namespace ContactManagerFall22.DB
                 cm.Parameters.AddWithValue("@Street", add.Street);
                 cm.Parameters.AddWithValue("@AddressNumber", add.AddressNumber);
                 cm.Parameters.AddWithValue("@ApartementNum", add.ApartementNum);
-                cm.Parameters.AddWithValue("@Active", true);
                 cm.Parameters.AddWithValue("@Type_Code", add.Type);
                 cm.ExecuteNonQuery();
             }
@@ -328,12 +326,11 @@ namespace ContactManagerFall22.DB
             using (connect = new SqlConnection(ConString))
             {
                 connect.Open();
-                SqlCommand cm = new SqlCommand("INSERT INTO Phone (Contact_Id,Phone_Number,Type_Code,Active) VALUES(@Contact_Id,@Phone_Number,@Type_Code,@Active);", connect);
+                SqlCommand cm = new SqlCommand("INSERT INTO Phone (Contact_Id,Phone_Number,Type_Code) VALUES(@Contact_Id,@Phone_Number,@Type_Code);", connect);
 
                 cm.Parameters.AddWithValue("@Contact_Id", ph.Contact_Id);
                 cm.Parameters.AddWithValue("@Phone_Number", ph.PhoneNumber);
                 cm.Parameters.AddWithValue("@Type_Code", ph.Type);
-                cm.Parameters.AddWithValue("@Active", true);
                 cm.ExecuteNonQuery();
 
             }
