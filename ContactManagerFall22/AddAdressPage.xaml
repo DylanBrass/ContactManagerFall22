@@ -5,25 +5,76 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactManagerFall22"
         mc:Ignorable="d"
-        Title="AddAdressPage" Height="450" Width="800" Closed="Window_closed">
-    <Grid>
-        <TextBox x:Name="AddressNumber" HorizontalAlignment="Left" Margin="325,37,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-        <TextBox x:Name="Street" HorizontalAlignment="Left" Margin="325,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-        <TextBox x:Name="AppartementNum" Text="" HorizontalAlignment="Left" Margin="325,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-        <TextBox x:Name="City" HorizontalAlignment="Left" Margin="325,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="Country" HorizontalAlignment="Left" Margin="320,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="ZipCode" HorizontalAlignment="Left" Margin="325,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
-        <RadioButton GroupName="Type" Content="Home" Margin="257,273,485,132" Checked="RadioButton_Checked" />
-        <RadioButton GroupName="Type"  Content="Work" Margin="352,273,352,128" Checked="RadioButton_Checked"/>
-        <RadioButton GroupName="Type" Content="Other" Margin="440,273,264,91" Checked="RadioButton_Checked" />
-        <Button x:Name="AddAddressButton" Content="Add Address 📝" HorizontalAlignment="Left" Margin="340,330,0,0" 
-                VerticalAlignment="Top" Height="26" Width="90" Grid.Column="1" Click="AddAddressButton_Click"/>
+        Title="AddAdressPage" Height="450" Width="800" Closed="Window_closed" Background="#95252525" FontFamily="Candara Light">
+    <Window.Resources>
+        <Style x:Key="Title" TargetType="Label">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="FontSize" Value="70" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
 
-        <Label Content="Address Number" HorizontalAlignment="Left" Margin="212,34,0,0" VerticalAlignment="Top" Height="24" Width="103"/>
-        <Label Content="Street Name" HorizontalAlignment="Left" Margin="225,70,0,0" VerticalAlignment="Top" Height="24" Width="90"/>
-        <Label Content="Appartement Number" HorizontalAlignment="Left" Margin="184,106,0,0" VerticalAlignment="Top" Height="24" Width="131"/>
-        <Label Content="City" HorizontalAlignment="Left" Margin="247,146,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
-        <Label Content="Country" HorizontalAlignment="Left" Margin="247,185,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
-        <Label Content="Zip Code" HorizontalAlignment="Left" Margin="247,221,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
+        <Style x:Key="Button" TargetType="Button">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="Background" Value="#95363636" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="FontSize" Value="70" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF459EE4"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="LightGray" />
+        </Style>
+
+        <Style TargetType="RadioButton">
+            <Setter Property="Foreground" Value="LightGray" />
+        </Style>
+
+    </Window.Resources>
+
+    <Grid RenderTransformOrigin="0.478,0.797">
+        <TextBox x:Name="AddressNumber" HorizontalAlignment="Left" Margin="325,63,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Street" HorizontalAlignment="Left" Margin="325,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="AppartementNum" Text="" HorizontalAlignment="Left" Margin="325,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="City" HorizontalAlignment="Left" Margin="325,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Country" HorizontalAlignment="Left" Margin="325,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="ZipCode" HorizontalAlignment="Left" Margin="325,267,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+        <RadioButton GroupName="Type" Content="Home" Margin="252,333,485,32" Checked="RadioButton_Checked" />
+        <RadioButton GroupName="Type"  Content="Work" Margin="349,333,355,68" Checked="RadioButton_Checked"/>
+        <RadioButton GroupName="Type" Content="Other" Margin="435,333,269,31" Checked="RadioButton_Checked" />
+
+        <Button x:Name="AddAddressButton"  HorizontalAlignment="Left" Margin="340,377,0,0" 
+                VerticalAlignment="Top" Height="26" Width="90" Click="AddAddressButton_Click" Style="{StaticResource Button}">
+            <Viewbox>
+                <Label Content="Add Address 📝"/>
+            </Viewbox>
+        </Button>
+
+        <Label HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="59" Width="289">
+            <Viewbox>
+                <Label Content="New Address" Style="{StaticResource Title}"/>
+            </Viewbox>
+        </Label>
+
+        <Label Content="Address Number" HorizontalAlignment="Left" Margin="221,59,0,0" VerticalAlignment="Top" Height="24" Width="98"/>
+        <Label Content="Street Name" HorizontalAlignment="Left" Margin="225,99,0,0" VerticalAlignment="Top" Height="24" Width="90"/>
+        <Label Content="Appartement Number" HorizontalAlignment="Left" Margin="184,140,0,0" VerticalAlignment="Top" Height="24" Width="131"/>
+        <Label Content="City" HorizontalAlignment="Left" Margin="252,180,0,0" VerticalAlignment="Top" Height="24" Width="68"/>
+        <Label Content="Country" HorizontalAlignment="Left" Margin="252,223,0,0" VerticalAlignment="Top" Height="24" Width="68"/>
+        <Label Content="Zip Code" HorizontalAlignment="Left" Margin="252,263,0,0" VerticalAlignment="Top" Height="24" Width="68"/>
     </Grid>
 </Window>
