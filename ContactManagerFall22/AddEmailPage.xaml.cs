@@ -64,7 +64,7 @@ namespace ContactManagerFall22
         private bool IsValidEmail(string str)
         {
 
-            string regex = @"^[^@\s]+@[^@\s]+\.(com|net|org|gov)$";
+            string regex = @"^[^@\s]+@[^@\s]+\.(com|net|org|gov|ca|edu)$";
 
             return Regex.IsMatch(str, regex, RegexOptions.IgnoreCase);
 
