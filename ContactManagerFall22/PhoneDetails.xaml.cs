@@ -45,10 +45,10 @@ namespace ContactManagerFall22
 
         }
 
-        private void Delete_Phone(object sender, RoutedEventArgs e)
-        {
+        //private void Delete_Phone(object sender, RoutedEventArgs e)
+        //{
 
-        }
+        //}
 
         private void Edit_Phone(object sender, RoutedEventArgs e)
         {
