@@ -132,19 +132,20 @@ namespace ContactManagerFall22.DB
 
 
                 SqlDataReader sdr = cm.ExecuteReader();
-
-                address = new Address(Convert.ToInt32(sdr["Id"]), Convert.ToInt32(sdr["Contact_Id"]),
-                    sdr["City"].ToString(),
-                    sdr["Country"].ToString(),
-                    sdr["AreaCode"].ToString(),
-                    sdr["Street"].ToString(),
-                    sdr["AddressNumber"] == DBNull.Value ? default : int.Parse(sdr["AddressNumber"].ToString()),
-                    sdr["ApartementNum"] == DBNull.Value ? default : int.Parse(sdr["ApartementNum"].ToString()),
-                    (DateTime)sdr["DateCreated"],
-                    (DateTime)sdr["LastUpdated"],
-                    Convert.ToChar(sdr["Type_Code"]),
-                    sdr["Description"].ToString());
-
+                while (sdr.Read())
+                {
+                    address = new Address(Convert.ToInt32(sdr["Id"]), Convert.ToInt32(sdr["Contact_Id"]),
+                        sdr["City"].ToString(),
+                        sdr["Country"].ToString(),
+                        sdr["AreaCode"].ToString(),
+                        sdr["Street"].ToString(),
+                        sdr["AddressNumber"] == DBNull.Value ? default : int.Parse(sdr["AddressNumber"].ToString()),
+                        sdr["ApartementNum"] == DBNull.Value ? default : int.Parse(sdr["ApartementNum"].ToString()),
+                        (DateTime)sdr["DateCreated"],
+                        (DateTime)sdr["LastUpdated"],
+                        Convert.ToChar(sdr["Type_Code"]),
+                        sdr["Description"].ToString());
+                }
                 sdr.Close();
                 return address;
             }
@@ -195,8 +196,9 @@ namespace ContactManagerFall22.DB
                 cm.Parameters.AddWithValue("@Id", id);
                 SqlDataReader sdr = cm.ExecuteReader();
 
-
-                phone = new Phone(Convert.ToInt32(sdr["Id"]),
+                while (sdr.Read())
+                {
+                    phone = new Phone(Convert.ToInt32(sdr["Id"]),
                     Convert.ToInt32(sdr["Contact_Id"]),
                     sdr["Phone_Number"].ToString(),
                     Convert.ToChar(sdr["Type_Code"]),
@@ -204,7 +206,7 @@ namespace ContactManagerFall22.DB
                     (DateTime)sdr["DateCreated"],
                     (DateTime)sdr["LastUpdated"]);
 
-
+                }
                 sdr.Close();
 
                 return phones;
@@ -255,8 +257,9 @@ namespace ContactManagerFall22.DB
                 cm.Parameters.AddWithValue("@Id", id);
                 SqlDataReader sdr = cm.ExecuteReader();
 
-
-                email = new Email(Convert.ToInt32(sdr["Id"]),
+                while (sdr.Read())
+                {
+                    email = new Email(Convert.ToInt32(sdr["Id"]),
                     Convert.ToInt32(sdr["Contact_Id"]),
                     sdr["Email"].ToString(),
                     Convert.ToChar(sdr["Type_Code"]),
@@ -264,7 +267,7 @@ namespace ContactManagerFall22.DB
                     (DateTime)sdr["DateCreated"],
                     (DateTime)sdr["LastUpdated"]);
 
-
+                }
                 sdr.Close();
 
                 return emails;

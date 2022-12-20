@@ -65,7 +65,7 @@ namespace ContactManagerFall22
             if (selectedAddress != null)
             {
                 AddressDetails newWindow = new AddressDetails(selectedAddress.Id);
-                newWindow.ShowDialog();
+                newWindow.Show();
                 dbManager = new DBManager();
 
                 List<Address> Addresses = dbManager.GetAdresses(Id);
