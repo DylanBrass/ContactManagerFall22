@@ -53,14 +53,15 @@ namespace ContactManagerFall22
             List<Address> inputedAddress = dbManager3.GetAdresses(Id);
 
             AddAdressPage newAddrWindow = new AddAdressPage(Id);
-            newAddrWindow.City.Text = inputedAddress[Id].City;
-            newAddrWindow.Country.Text = inputedAddress[Id].Country;
-            newAddrWindow.ZipCode.Text = inputedAddress[Id].ZipCode;
-            newAddrWindow.Street.Text = inputedAddress[Id].Street;
-            newAddrWindow.AddressNumber.Text = inputedAddress[Id].AddressNumber.ToString();
-            newAddrWindow.AppartementNum.Text = inputedAddress[Id].ApartementNum.ToString();
-            newAddrWindow.ShowDialog();
-
+          
+                newAddrWindow.City.Text = "Hello"/*inputedAddress[Id].City*/;
+                newAddrWindow.Country.Text = inputedAddress[Id].Country;
+                newAddrWindow.ZipCode.Text = inputedAddress[Id].ZipCode;
+                newAddrWindow.Street.Text = inputedAddress[Id].Street;
+                newAddrWindow.AddressNumber.Text = inputedAddress[Id].AddressNumber.ToString();
+                newAddrWindow.AppartementNum.Text = inputedAddress[Id].ApartementNum.ToString();
+                newAddrWindow.ShowDialog();
+            
 
         }
 

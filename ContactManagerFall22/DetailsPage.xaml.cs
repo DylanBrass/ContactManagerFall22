@@ -119,6 +119,5 @@ namespace ContactManagerFall22
             MainWindow main = new MainWindow();
             main.Show();
         }
-
     }
 }

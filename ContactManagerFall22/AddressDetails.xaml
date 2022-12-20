@@ -111,9 +111,25 @@
         <Label x:Name="DateCreated" Content="DateCreated" HorizontalAlignment="Left" Margin="14,270,0,0" VerticalAlignment="Top"/>
         <Label x:Name="LastUpdated" Content="LastUpdated" HorizontalAlignment="Left" Margin="14,299,0,0" VerticalAlignment="Top"/>
 
+        <Button  HorizontalAlignment="Left" Margin="305,132,0,0" VerticalAlignment="Top" Click="Edit_Address_btn_Click" Style="{StaticResource Button}" Height="20" Width="80">
+            <Viewbox>
+                <Label Content="Edit" />
+            </Viewbox>
+        </Button>
+        <Button  HorizontalAlignment="Left" Margin="305,170,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="80">
+            <Viewbox>
+                <Label Content="Delete" />
+            </Viewbox>
+        </Button>
+        <Button  HorizontalAlignment="Left" Margin="305,210,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="80">
+            <Viewbox>
+                <Label Content="Delete" />
+            </Viewbox>
+        </Button>
+
         <!--<ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.ColumnSpan="2">-->
 
-            <!--<ListView Name="AddressesListItems" SelectionChanged="Address_SelectionChanged" Width="1200" >
+        <!--<ListView Name="AddressesListItems" SelectionChanged="Address_SelectionChanged" Width="1200" >
 
                 <ListView.View>
                     <GridView>
@@ -131,7 +147,7 @@
                 </ListView.View>-->
 
 
-                <!--<ListView.ItemTemplate>
+        <!--<ListView.ItemTemplate>
                         <DataTemplate>
                             <WrapPanel>
                                 <TextBlock Text="{Binding firstName}"/>
@@ -139,7 +155,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>-->
 
-            <!--</ListView>
+        <!--</ListView>
         </ScrollViewer>-->
 
 

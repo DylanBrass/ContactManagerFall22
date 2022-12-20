@@ -171,6 +171,11 @@
                 <Label Content="Details Page" Style="{StaticResource Title}"/>
             </Viewbox>
         </Label>
+        <Button HorizontalAlignment="Left" Margin="360,3,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="65" Click="New_Address_Click">
+            <Viewbox>
+                <Label Content="New Address" />
+            </Viewbox>
+        </Button>
 
     </Grid>
 
