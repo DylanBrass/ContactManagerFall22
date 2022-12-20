@@ -65,13 +65,29 @@ namespace ContactManagerFall22
             if (selectedAddress != null)
             {
                 AddressDetails newWindow = new AddressDetails(selectedAddress.Id);
-                newWindow.ShowDialog();
+                newWindow.Show();
                 dbManager = new DBManager();
 
                 List<Address> Addresses = dbManager.GetAdresses(Id);
                 AddressQuickView.ItemsSource = Addresses;
             }
         }
+
+        private void PhoneDetails_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Phone selectedPhone = (Phone)PhoneQuickView.SelectedItem;
+
+            if (selectedPhone != null)
+            {
+                PhoneDetails newWindow = new PhoneDetails(selectedPhone.Id);
+                newWindow.ShowDialog();
+                dbManager = new DBManager();
+
+                List<Phone> Phones = dbManager.GetPhones(Id);
+                PhoneQuickView.ItemsSource = Phones;
+            }
+        }
+
         private void New_Address_Click(object sender, RoutedEventArgs e)
         {
             AddAdressPage newAddressWindow = new AddAdressPage(Id);
