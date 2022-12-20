@@ -357,10 +357,49 @@ namespace ContactManagerFall22.DB
             {
                 connect.Open();
                 SqlCommand cm = new SqlCommand("UPDATE Contact SET Active = 0 WHERE Id = @Id;", connect);
-                DeleteAddress(id);
-                DeleteEmail(id);
-                DeletePhone(id);
+                DeleteAddressOfContact(id);
+                DeleteEmailOfContact(id);
+                DeletePhoneOfContact(id);
                 cm.Parameters.AddWithValue("@Id", id);
+                cm.ExecuteNonQuery();
+            }
+        }
+        public void DeleteAddressOfContact(int contact_id)
+        {
+
+            using (connect = new SqlConnection(ConString))
+            {
+                connect.Open();
+
+                SqlCommand cm = new SqlCommand("UPDATE Address SET Active = 0 WHERE Contact_Id = @Contact_Id;", connect);
+                cm.Parameters.AddWithValue("@Contact_Id", contact_id);
+                cm.ExecuteNonQuery();
+            }
+
+        }
+        public void DeleteEmailOfContact(int contact_id)
+        {
+
+            using (connect = new SqlConnection(ConString))
+            {
+                connect.Open();
+
+                SqlCommand cm = new SqlCommand("UPDATE Email SET Active = 0 WHERE Contact_Id = @Contact_Id;", connect);
+                cm.Parameters.AddWithValue("@Contact_Id", contact_id);
+                cm.ExecuteNonQuery();
+            }
+
+        }
+        public void DeletePhoneOfContact(int contact_id)
+        {
+
+            using (connect = new SqlConnection(ConString)
+)
+            {
+                connect.Open();
+
+                SqlCommand cm = new SqlCommand("UPDATE Phone SET Active = 0 WHERE Contact_Id = @Contact_Id;", connect);
+                cm.Parameters.AddWithValue("@Contact_Id", contact_id);
                 cm.ExecuteNonQuery();
             }
         }

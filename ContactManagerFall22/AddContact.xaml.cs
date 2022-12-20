@@ -51,11 +51,7 @@ namespace ContactManagerFall22
             }
         }
 
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            MainWindow main = new MainWindow();
-            main.Show();
-        }
+
         private static bool IsValidNoNumbers(string str)
         {
             str = str.Replace(" ", "");

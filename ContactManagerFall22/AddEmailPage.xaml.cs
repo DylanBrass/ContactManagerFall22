@@ -1,18 +1,7 @@
-﻿using ContactManagerFall22.DB.Entities;
-using ContactManagerFall22.DB;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ContactManagerFall22.DB;
+using ContactManagerFall22.DB.Entities;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ContactManagerFall22
 {
@@ -56,11 +45,6 @@ namespace ContactManagerFall22
 
         }
 
-        private void Window_closed(object sender, EventArgs e)
-        {
-            DetailsPage DP = new DetailsPage(Id);
-            DP.Show();
-        }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
