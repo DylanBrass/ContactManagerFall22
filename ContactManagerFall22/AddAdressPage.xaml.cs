@@ -100,7 +100,7 @@ namespace ContactManagerFall22
         private void Window_closed(object sender, EventArgs e)
         {
             DetailsPage DP = new DetailsPage(Id);
-            DP.Show();
+            DP.Close();
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)

@@ -9,15 +9,46 @@
     <Grid>
 
 
-        <TextBox x:Name="PhoneNumber" HorizontalAlignment="Left" Margin="325,37,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-        <RadioButton GroupName="Type" Content="Home" Margin="43,73,699,332" Checked="RadioButton_Checked" />
-        <RadioButton GroupName="Type"  Content="Work" Margin="123,73,580,328" Checked="RadioButton_Checked"/>
-        <RadioButton GroupName="Type" Content="Other" Margin="99,127,605,237" Checked="RadioButton_Checked" />
+        <TextBox x:Name="PhoneNumber" HorizontalAlignment="Left" Margin="325,37,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1" MaxLength="12"/>
+        <TextBlock  x:Name="DefaultPhone" HorizontalAlignment="Left" Margin="334,37,0,0" TextWrapping="Wrap" Text="xxx-xxx-xxxx" VerticalAlignment="Top" Width="88"  IsHitTestVisible="False" Foreground="DarkGray">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=PhoneNumber}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
 
-        <Button x:Name="AddEmailButton" Content="Add 📞" HorizontalAlignment="Left" Margin="340,330,0,0" 
-                VerticalAlignment="Top" Height="26" Width="90" Grid.Column="1" Click="AddPhoneButton_Click"/>
+        </TextBlock>
+
+        <RadioButton GroupName="Type" Content="Home" Margin="333,128,400,259" Checked="RadioButton_Checked" />
+        <RadioButton GroupName="Type"  Content="Work" Margin="418,128,286,259" Checked="RadioButton_Checked"/>
+        <RadioButton GroupName="Type" Content="Other" Margin="496,128,208,222" Checked="RadioButton_Checked" />
+
+        <Button x:Name="AddEmailButton" Content="Add 📞" HorizontalAlignment="Left" Margin="333,343,0,0" 
+                VerticalAlignment="Top" Height="26" Width="90" Click="AddPhoneButton_Click"/>
 
         <Label Content="Phone Number" HorizontalAlignment="Left" Margin="212,34,0,0" VerticalAlignment="Top" Height="24" Width="103"/>
+        <Label Content="Type" HorizontalAlignment="Left" Height="38" Margin="222,122,0,0" VerticalAlignment="Top" Width="82"/>
+        <Label Content="Description" HorizontalAlignment="Left" Height="41" Margin="212,217,0,0" VerticalAlignment="Top" Width="80"/>
+        <TextBox x:Name="Description" HorizontalAlignment="Left" Height="82" Margin="325,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="277" MaxLength="255"/>
+        <TextBlock  x:Name="DefaultDescription" HorizontalAlignment="Left" Margin="330,217,0,0" TextWrapping="Wrap" Text="Description..." VerticalAlignment="Top" Width="121"  IsHitTestVisible="False" Foreground="DarkGray" Height="30">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=Description}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+
+        </TextBlock>
+
 
     </Grid>
 </Window>
