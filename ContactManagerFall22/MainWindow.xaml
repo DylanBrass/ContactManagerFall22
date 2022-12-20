@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactManagerFall22"
         mc:Ignorable="d"
- Title="Contacts" MaxHeight="450" MaxWidth="640" MinHeight="450" MinWidth="640" Background="#95252525" FontFamily="Candara Light">
+ Title="Contacts" MaxHeight="450" MaxWidth="800" MinHeight="450" MinWidth="800" Background="#95252525" FontFamily="Candara Light">
 
     <Window.Resources>
         <Style x:Key="Title" TargetType="Label">
@@ -36,6 +36,8 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+
 
         <Style TargetType="Label">
             <Setter Property="Foreground" Value="LightGray" />
@@ -105,7 +107,7 @@
         </Label>
 
         <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2" Margin="1,1,1,1" Grid.RowSpan="2">
-            <ListView Name="ContactsListItems" MouseDoubleClick="ContactsListItems_MouseDoubleClick" Height="241" >
+            <ListView Name="ContactsListItems" MouseDoubleClick="ContactsListItems_MouseDoubleClick" Height="226" >
                 <ListView.BorderBrush>
                     <ImageBrush Opacity="0"/>
                 </ListView.BorderBrush>
@@ -116,7 +118,7 @@
                         <GridViewColumn Header="Last Name" Width="150" DisplayMemberBinding="{Binding LastName}" />
                     </GridView>
                 </ListView.View>
-           </ListView>
+            </ListView>
         </ScrollViewer>
 
         <Button Name="Add_Contact_btn" HorizontalAlignment="Stretch" Margin="10,10,189,10" Grid.Row="1" VerticalAlignment="Stretch" Click="Add_Contact_btn_Click" Style="{StaticResource Button}">
@@ -125,7 +127,7 @@
             </Viewbox>
         </Button>
 
-        <Button Name="Imp_Contact_btn" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="50,10,133,10" Grid.Row="1" Click="Imp_Contact_btn_Click" Grid.Column="1" Style="{StaticResource Button}">
+        <Button Name="Imp_Contact_btn" Margin="348,10,225,10" Grid.Row="1" Click="Imp_Contact_btn_Click" Style="{StaticResource Button}" Grid.ColumnSpan="2">
             <Viewbox>
                 <Label Content="Import Contacts" />
             </Viewbox>
@@ -136,9 +138,22 @@
                 <Label Content="Export Contact" />
             </Viewbox>
         </Button>
-        <Button Grid.Column="1" Content="Sort By Favourite" HorizontalAlignment="Left" Margin="99,-3,0,0" VerticalAlignment="Top" Click="FavouriteSort_Click"/>
-        <Button Grid.Column="1" Content="Sort By last Name" HorizontalAlignment="Left" Margin="193,-8,0,0" VerticalAlignment="Top" Click="LastNameSort_Click"/>
-        <Button Grid.Column="1" Content="Sort By last Name Z-&gt; A" HorizontalAlignment="Left" Margin="156,21,0,0" VerticalAlignment="Top" Click="LastNameSortReverse_Click"/>
+        <Button Grid.Column="1" Margin="196,22,33,283" Click="FavouriteSort_Click" Style="{StaticResource Button}">
+            <Viewbox>
+                <Label Content="Sort By Favourite" Width="507" Height="93"/>
+            </Viewbox>
+        </Button>
+        <Button Grid.Column="1" Margin="40,22,190,283" Click="LastNameSort_Click" Style="{StaticResource Button}">
+            <Viewbox>
+                <Label Content="Sort By last Name"/>
+            </Viewbox>
+        </Button>
+
+        <Button Margin="224,22,356,283" Click="LastNameSortReverse_Click" Style="{StaticResource Button}" Grid.ColumnSpan="2">
+            <Viewbox>
+                <Label Content="Sort By last Name Z-&gt; A"/>
+            </Viewbox>
+        </Button>
 
     </Grid>
 
