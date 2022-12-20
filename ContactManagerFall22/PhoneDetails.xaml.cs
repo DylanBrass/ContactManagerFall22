@@ -1,5 +1,11 @@
-﻿using System.Windows;
+﻿using ContactManagerFall22.DB.Entities;
+using ContactManagerFall22.DB;
+using System.Windows;
 using System.Windows.Controls;
+using System.Xml.Linq;
+using System.Collections.Generic;
+using System.Globalization;
+using System;
 
 namespace ContactManagerFall22
 {
@@ -9,6 +15,8 @@ namespace ContactManagerFall22
     public partial class PhoneDetails : Window
     {
         readonly int Id;
+        string radioCheck;
+        DBManager dbManager2 = new DBManager();
         public PhoneDetails(int id)
         {
             InitializeComponent();
@@ -28,10 +36,12 @@ namespace ContactManagerFall22
 
         private void Edit_PhoneNum(object sender, RoutedEventArgs e)
         {
+            List<Phone> phones = dbManager2.GetPhones(Id);
+
             AddPhoneNumber newPNWindow = new AddPhoneNumber(Id);
-            //newPNWindow.PNInput.Text = "Hello";
-            //newPNWindow.PhoneNumDesc.Text = "Hello";
+            newPNWindow.PhoneNumber.Text = phones[0].PhoneNumber;
             newPNWindow.ShowDialog();
         }
+      
     }
 }

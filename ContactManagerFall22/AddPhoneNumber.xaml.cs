@@ -42,7 +42,7 @@ namespace ContactManagerFall22
                     addingPhone.Type = 'O';
                     break;
             }
-
+           
             dB.CreatePhone(addingPhone);
             this.Close();
 
