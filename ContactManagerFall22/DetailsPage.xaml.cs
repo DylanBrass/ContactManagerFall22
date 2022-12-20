@@ -60,7 +60,7 @@ namespace ContactManagerFall22
         {
             AddressDetails newWindow = new AddressDetails();
             newWindow.ShowDialog();
-            this.Close();
+            //this.Close();
 
         }
         private void New_Address_Click(object sender, RoutedEventArgs e)
