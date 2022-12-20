@@ -185,8 +185,7 @@ namespace ContactManagerFall22.DB
 
         public Phone GetPhone(int id)
         {
-            Phone phones = new Phone();
-            Phone phone;
+            Phone phone = new Phone();
             using (connect = new SqlConnection(ConString))
             {
                 connect.Open();
@@ -209,7 +208,7 @@ namespace ContactManagerFall22.DB
                 }
                 sdr.Close();
 
-                return phones;
+                return phone;
             }
         }
 

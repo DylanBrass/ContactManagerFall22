@@ -250,7 +250,7 @@ namespace ContactManagerFall22
                     List<Phone> phones = lines.Select(line =>
                     {
                         string[] data = line.Split(',');
-                        return new Phone(Convert.ToInt32(data[0]), contact_id, data[2], Convert.ToChar(data[3]), Convert.ToDateTime(data[8]), Convert.ToDateTime(data[9]));
+                        return new Phone(Convert.ToInt32(data[0]), contact_id, data[2], Convert.ToChar(data[3]), Convert.ToDateTime(data[5]), Convert.ToDateTime(data[6]));
                     }).ToList();
                     foreach (Phone ph in phones)
                     {
