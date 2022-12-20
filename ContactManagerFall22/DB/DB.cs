@@ -476,6 +476,47 @@ namespace ContactManagerFall22.DB
 
             }
         }
+
+
+        //Testing Image with database
+
+        public void CreateImage(Images image)
+        {
+
+            using (connect = new SqlConnection(ConString))
+            {
+                connect.Open();
+                SqlCommand cm = new SqlCommand("INSERT INTO Image (Contact_Id,Image) VALUES (@Contact_Id,@Image);", connect);
+
+                cm.Parameters.AddWithValue("@Contact_Id", image.Contact_Id);
+                cm.Parameters.AddWithValue("@Image", image.Image);
+                cm.ExecuteNonQuery();
+            }
+        }
+
+        public Images GetImage(int id)
+        {
+            Images image = new Images();
+
+            using (connect = new SqlConnection(ConString))
+            {
+                Address address = new Address();
+                connect.Open();
+                SqlCommand cm = new SqlCommand("SELECT * FROM Image WHERE Contact_Id = @Contact_Id;", connect);
+
+                cm.Parameters.AddWithValue("@Contact_Id", id);
+
+                SqlDataReader sdr = cm.ExecuteReader();
+
+                while (sdr.Read())
+                {
+                    image = new Images((byte[])sdr["Image"],
+                   Convert.ToInt32(sdr["Contact_Id"]));
+                }
+            }
+            return image;
+
+        }
     }
 }
 
