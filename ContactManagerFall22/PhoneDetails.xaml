@@ -107,6 +107,11 @@
         <Label x:Name="Description" Content="ApartementNum" HorizontalAlignment="Left" Margin="14,150,0,0" VerticalAlignment="Top"/>
         <Label x:Name="DateCreated" Content="Date Created" HorizontalAlignment="Left" Margin="14,180,0,0" VerticalAlignment="Top"/>
         <Label x:Name="LastUpdated" Content="Last Updated" HorizontalAlignment="Left" Margin="14,210,0,0" VerticalAlignment="Top"/>
+        <Button  HorizontalAlignment="Left" Margin="305,142,0,0" VerticalAlignment="Top" Click="Edit_Phone" Style="{StaticResource Button}" Height="20" Width="80">
+            <Viewbox>
+                <Label Content="Delete" />
+            </Viewbox>
+        </Button>
 
 
     </Grid>

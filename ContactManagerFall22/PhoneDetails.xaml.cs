@@ -44,5 +44,10 @@ namespace ContactManagerFall22
         {
 
         }
+
+        private void Edit_Phone(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
