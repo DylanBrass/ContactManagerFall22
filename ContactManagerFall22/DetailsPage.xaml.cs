@@ -10,7 +10,7 @@ namespace ContactManagerFall22
      /// </summary>
     public partial class DetailsPage : Window
     {
-        int Id;
+        readonly int Id;
         DBManager dbManager = new DBManager();
         public DetailsPage(int id)
         {
@@ -22,27 +22,23 @@ namespace ContactManagerFall22
 
         private void Address_Window_Loaded(int id)
         {
-            List<Address> Addresses = new List<Address>();
-            Addresses = dbManager.GetAdresses(id);
+            List<Address> Addresses = dbManager.GetAdresses(id);
             AddressQuickView.ItemsSource = Addresses;
 
             dbManager = new DBManager();
 
-            List<Phone> phones = new List<Phone>();
-            phones = dbManager.GetPhones(id);
+            List<Phone> phones = dbManager.GetPhones(id);
             PhoneQuickView.ItemsSource = phones;
 
             dbManager = new DBManager();
 
-            List<Email> emails = new List<Email>();
-            emails = dbManager.GetEmails(id);
+            List<Email> emails = dbManager.GetEmails(id);
             EmailQuickView.ItemsSource = emails;
         }
 
         private void Window_Loaded(int id)
         {
-            Contact contact = new Contact();
-            contact = dbManager.GetContact(id);
+            Contact contact = dbManager.GetContact(id);
 
             Nickname.Content = "Nickname: " + contact.Nickname;
             LName.Content = "Last Name: " + contact.LastName;
@@ -64,7 +60,8 @@ namespace ContactManagerFall22
         {
             AddressDetails newWindow = new AddressDetails();
             newWindow.ShowDialog();
-            
+            this.Close();
+
         }
         private void New_Address_Click(object sender, RoutedEventArgs e)
         {
@@ -76,7 +73,7 @@ namespace ContactManagerFall22
         {
             PhoneDetails phoneDetailsWindow = new PhoneDetails(Id);
             phoneDetailsWindow.ShowDialog();
-            
+
         }
 
         private void New_Phone_Click(object sender, RoutedEventArgs e)

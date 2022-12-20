@@ -1,27 +1,11 @@
-﻿using ContactManagerFall22.DB.Entities;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-
-namespace ContactManagerFall22
+﻿namespace ContactManagerFall22
 {
     /// <summary>
     /// Interaction logic for PhoneDetails.xaml
     /// </summary>
     public partial class PhoneDetails : Window
     {
-        int Id;
+        readonly int Id;
         public PhoneDetails(int id)
         {
             InitializeComponent();
@@ -42,6 +26,8 @@ namespace ContactManagerFall22
         private void Edit_PhoneNum(object sender, RoutedEventArgs e)
         {
             AddPhoneNumber newPNWindow = new AddPhoneNumber(Id);
+            //newPNWindow.PNInput.Text = "Hello";
+            //newPNWindow.PhoneNumDesc.Text = "Hello";
             newPNWindow.ShowDialog();
         }
     }

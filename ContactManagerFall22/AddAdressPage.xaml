@@ -12,10 +12,10 @@
         <TextBox x:Name="AppartementNum" Text="" HorizontalAlignment="Left" Margin="325,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
         <TextBox x:Name="City" HorizontalAlignment="Left" Margin="325,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="Country" HorizontalAlignment="Left" Margin="320,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="AreaCode" HorizontalAlignment="Left" Margin="325,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
-        <RadioButton GroupName="Type" Content="Home" Margin="252,282,490,123" Checked="RadioButton_Checked" />
-        <RadioButton GroupName="Type"  Content="Work" Margin="349,282,355,119" Checked="RadioButton_Checked"/>
-        <RadioButton GroupName="Type" Content="Other" Margin="445,282,259,82" Checked="RadioButton_Checked" />
+        <TextBox x:Name="ZipCode" HorizontalAlignment="Left" Margin="325,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+        <RadioButton GroupName="Type" Content="Home" Margin="43,73,699,332" Checked="RadioButton_Checked" />
+        <RadioButton GroupName="Type"  Content="Work" Margin="123,73,580,328" Checked="RadioButton_Checked"/>
+        <RadioButton GroupName="Type" Content="Other" Margin="99,127,605,237" Checked="RadioButton_Checked" />
         <Button x:Name="AddAddressButton" Content="Add Address 📝" HorizontalAlignment="Left" Margin="340,330,0,0" 
                 VerticalAlignment="Top" Height="26" Width="90" Grid.Column="1" Click="AddAddressButton_Click"/>
 
@@ -24,6 +24,6 @@
         <Label Content="Appartement Number" HorizontalAlignment="Left" Margin="184,106,0,0" VerticalAlignment="Top" Height="24" Width="131"/>
         <Label Content="City" HorizontalAlignment="Left" Margin="247,146,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
         <Label Content="Country" HorizontalAlignment="Left" Margin="247,185,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
-        <Label Content="Area Code" HorizontalAlignment="Left" Margin="247,221,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
+        <Label Content="Zip Code" HorizontalAlignment="Left" Margin="247,221,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
     </Grid>
 </Window>

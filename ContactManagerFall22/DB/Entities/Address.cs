@@ -12,7 +12,7 @@ namespace ContactManagerFall22.DB.Entities
             Contact_Id = contact_Id;
             City = city;
             Country = country;
-            AreaCode = areaCode;
+            ZipCode = areaCode;
             Street = street;
             AddressNumber = addressNumber;
             ApartementNum = apartementNum;
@@ -37,7 +37,7 @@ namespace ContactManagerFall22.DB.Entities
             Contact_Id = contact_id;
             City = city;
             Country = country;
-            AreaCode = areaCode;
+            ZipCode = areaCode;
             Street = street;
             AddressNumber = addressNumber;
             ApartementNum = apartementNum;
@@ -53,7 +53,7 @@ namespace ContactManagerFall22.DB.Entities
         public string City { get; set; }
         public string Country { get; set; }
 
-        public string AreaCode { get; set; }
+        public string ZipCode { get; set; }
 
         public string Street { get; set; }
 

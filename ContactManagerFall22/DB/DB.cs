@@ -98,16 +98,15 @@ namespace ContactManagerFall22.DB
                 SqlDataReader sdr = cm.ExecuteReader();
                 while (sdr.Read())
                 {
-                    Address address = new Address();
-                    address = new Address(Convert.ToInt32(sdr["Id"]),
+                    Address address = new Address(Convert.ToInt32(sdr["Id"]),
                         Convert.ToInt32(sdr["Contact_Id"]),
                         sdr["City"].ToString(),
                         sdr["Country"].ToString(),
                         sdr["AreaCode"].ToString(),
                         sdr["Street"].ToString(),
-                        sdr["AddressNumber"] == DBNull.Value ? default(int) : int.Parse(sdr["AddressNumber"].ToString()),
+                        sdr["AddressNumber"] == DBNull.Value ? default : int.Parse(sdr["AddressNumber"].ToString()),
                         //To avoid DBNull Thanks Brendan !
-                        sdr["ApartementNum"] == DBNull.Value ? default(int) : int.Parse(sdr["ApartementNum"].ToString()),
+                        sdr["ApartementNum"] == DBNull.Value ? default : int.Parse(sdr["ApartementNum"].ToString()),
                         (DateTime)sdr["DateCreated"],
                         (DateTime)sdr["LastUpdated"],
                         Convert.ToChar(sdr["Type_Code"]),
@@ -138,10 +137,10 @@ namespace ContactManagerFall22.DB
                     address = new Address(Convert.ToInt32(sdr["Id"]), Convert.ToInt32(sdr["Contact_Id"]),
                         sdr["City"].ToString(),
                         sdr["Country"].ToString(),
-                        sdr["AreaCode"].ToString(),
+                        sdr["ZipCode"].ToString(),
                         sdr["Street"].ToString(),
-                        sdr["AddressNumber"] == DBNull.Value ? default(int) : int.Parse(sdr["AddressNumber"].ToString()),
-                        sdr["ApartementNum"] == DBNull.Value ? default(int) : int.Parse(sdr["ApartementNum"].ToString()),
+                        sdr["AddressNumber"] == DBNull.Value ? default : int.Parse(sdr["AddressNumber"].ToString()),
+                        sdr["ApartementNum"] == DBNull.Value ? default : int.Parse(sdr["ApartementNum"].ToString()),
                         (DateTime)sdr["DateCreated"],
                         (DateTime)sdr["LastUpdated"],
                         Convert.ToChar(sdr["Type_Code"]),
@@ -314,7 +313,7 @@ namespace ContactManagerFall22.DB
                 cm.Parameters.AddWithValue("@Contact_Id", add.Contact_Id);
                 cm.Parameters.AddWithValue("@City", add.City);
                 cm.Parameters.AddWithValue("@Country", add.Country);
-                cm.Parameters.AddWithValue("@AreaCode", add.AreaCode);
+                cm.Parameters.AddWithValue("@AreaCode", add.ZipCode);
                 cm.Parameters.AddWithValue("@Street", add.Street);
                 cm.Parameters.AddWithValue("@AddressNumber", add.AddressNumber);
                 cm.Parameters.AddWithValue("@ApartementNum", add.ApartementNum);
@@ -436,12 +435,12 @@ namespace ContactManagerFall22.DB
             using (connect = new SqlConnection(ConString))
             {
                 connect.Open();
-                SqlCommand cm = new SqlCommand("UPDATE Address SET Contact_Id = @Contact_Id,City = @City,Country = @Country,AreaCode = @AreaCode,Street = @Street,AddressNumber = @AddressNumber,ApartementNum = @ApartementNum,Type_Num = @Type_Code WHERE Contact_Id = @Contact_Id;");
+                SqlCommand cm = new SqlCommand("UPDATE Address SET Contact_Id = @Contact_Id,City = @City,Country = @Country,ZipCode = @ZipCode,Street = @Street,AddressNumber = @AddressNumber,ApartementNum = @ApartementNum,Type_Num = @Type_Code WHERE Contact_Id = @Contact_Id;");
 
                 cm.Parameters.AddWithValue("@Contact_Id", Contact_id);
                 cm.Parameters.AddWithValue("@City", add.City);
                 cm.Parameters.AddWithValue("@Country", add.Country);
-                cm.Parameters.AddWithValue("@AreaCode", add.AreaCode);
+                cm.Parameters.AddWithValue("@ZipCode", add.ZipCode);
                 cm.Parameters.AddWithValue("@Street", add.Street);
                 cm.Parameters.AddWithValue("@AddressNumber", add.AddressNumber);
                 cm.Parameters.AddWithValue("@ApartementNum", add.ApartementNum);
