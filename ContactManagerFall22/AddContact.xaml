@@ -5,7 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactManagerFall22"
         mc:Ignorable="d"
-        Title="AddContactPage" Height="450" Width="800" Closed="Window_Closed">
+        Title="AddContactPage" Height="450" Width="800" Closed="Window_Closed" Background="#95252525" FontFamily="Candara Light">
+
+    <Window.Resources>
+        <Style x:Key="Title" TargetType="Label">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="FontSize" Value="70" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <Style x:Key="Button" TargetType="Button">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="Background" Value="#95363636" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="FontSize" Value="70" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF459EE4"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="LightGray" />
+        </Style>
+
+        <Style TargetType="RadioButton">
+            <Setter Property="Foreground" Value="LightGray" />
+        </Style>
+
+    </Window.Resources>
+
     <Grid >
         <Grid.Resources>
             <!-- StarButton Template -->
@@ -22,7 +63,7 @@
                         Canvas.Top="-3.922"
                           Data="F1 M 27.416,32.25L 32.910,32.25L 38,18L 43.089,32.25L 58.583,32.25L 45.679,41.494L 51.458,56L 38,48.083L 26.125,56L 30.597,41.710L 17.416,32.25 Z "
                         Fill="Transparent"
-                        Stroke="Pink"
+                        Stroke="#FF459EE4"
                         StrokeThickness="1"
                         Stretch="Uniform"
                         />
@@ -31,7 +72,7 @@
 
                 <ControlTemplate.Triggers>
                     <Trigger Property="IsChecked" Value="true">
-                        <Setter TargetName="Button" Property="Fill" Value="Pink"/>
+                        <Setter TargetName="Button" Property="Fill" Value="#FF459EE4"/>
                     </Trigger>
                 </ControlTemplate.Triggers>
 
@@ -55,23 +96,33 @@
                 <ImageBrush ImageSource="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png"/>
             </Ellipse.Fill>
         </Ellipse>-->
-            <TextBox x:Name="FName" HorizontalAlignment="Left" Margin="325,37,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-            <TextBox x:Name="LName" HorizontalAlignment="Left" Margin="325,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-            <TextBox x:Name="Nickname" HorizontalAlignment="Left" Margin="325,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-            <TextBox x:Name="Salutation" HorizontalAlignment="Left" Margin="325,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-            <DatePicker x:Name="BirthDate" Text="Pick a Date"  Margin="325,146,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" SelectedDateFormat="Short" Grid.Column="1" />
+            <TextBox x:Name="FName" HorizontalAlignment="Left" Margin="325,82,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+            <TextBox x:Name="LName" HorizontalAlignment="Left" Margin="325,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+            <TextBox x:Name="Nickname" HorizontalAlignment="Left" Margin="325,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+            <TextBox x:Name="Salutation" HorizontalAlignment="Left" Margin="325,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+            <DatePicker x:Name="BirthDate" Text="Pick a Date"  Margin="325,197,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" SelectedDateFormat="Short" Grid.Column="1" />
             <!--<TextBox x:Name="Birthday" HorizontalAlignment="Left" Margin="325,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>-->
-            <CheckBox Template="{DynamicResource StarButton}" x:Name="favourite" Content="Favourites" HorizontalAlignment="Left" Height="40" Margin="239,261,0,0" VerticalAlignment="Top" Width="146" RenderTransformOrigin="0.494,0.56" Grid.Column="1"/>
-            <Button x:Name="AddContactButton" Content="Add Contact 📝" HorizontalAlignment="Left" Margin="340,330,0,0" VerticalAlignment="Top" Height="26" Width="90" Click="AddContact_Button" Grid.Column="1"/>
-            <Label Content="First Name" HorizontalAlignment="Left" Margin="247,34,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
-            <Label Content="Last Name" HorizontalAlignment="Left" Margin="247,70,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
-            <Label Content="Nickame" HorizontalAlignment="Left" Margin="247,106,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
-            <Label Content="Birthdate" HorizontalAlignment="Left" Margin="247,146,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
-            <Label Content="Salutation" HorizontalAlignment="Left" Margin="247,185,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
-            <TextBox x:Name="Note" HorizontalAlignment="Left" Margin="325,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-            <Label Content="Note" HorizontalAlignment="Left" Margin="247,221,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
+            <CheckBox Template="{DynamicResource StarButton}" x:Name="favourite" Content="Favourites" HorizontalAlignment="Left" Height="40" Margin="239,332,0,0" VerticalAlignment="Top" Width="186" RenderTransformOrigin="0.494,0.56" Grid.Column="1"/>
 
+            <Button x:Name="AddContactButton"  HorizontalAlignment="Left" Margin="340,372,0,0" VerticalAlignment="Top" Height="26" Width="90" Click="AddContact_Button" Grid.Column="1" Style="{StaticResource Button}">
+                <Viewbox>
+                    <Label Content="Add Contact 📝"/>
+                </Viewbox>
+            </Button>
 
+            <Label Content="First Name" HorizontalAlignment="Left" Margin="247,78,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
+            <Label Content="Last Name" HorizontalAlignment="Left" Margin="252,114,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
+            <Label Content="Nickame" HorizontalAlignment="Left" Margin="252,154,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
+            <Label Content="Birthdate" HorizontalAlignment="Left" Margin="252,197,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
+            <Label Content="Salutation" HorizontalAlignment="Left" Margin="247,239,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
+            <TextBox x:Name="Note" HorizontalAlignment="Left" Margin="325,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+            <Label Content="Note" HorizontalAlignment="Left" Margin="252,278,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
+
+            <Label HorizontalAlignment="Left" Margin="0,22,0,0" VerticalAlignment="Top" Height="59" Width="289" Grid.Column="1">
+                <Viewbox>
+                    <Label Content="New Contact" Style="{StaticResource Title}"/>
+                </Viewbox>
+            </Label>
 
 
         </Grid>
