@@ -192,13 +192,13 @@
             </Viewbox>
         </Button>
 
-        <Button HorizontalAlignment="Left" Margin="615,270,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="65">
+        <Button HorizontalAlignment="Left" Margin="615,270,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="65" Click="Import_Email">
             <Viewbox>
                 <Label Content="Import Email" />
             </Viewbox>
         </Button>
 
-        <Button HorizontalAlignment="Left" Margin="691,270,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="64">
+        <Button HorizontalAlignment="Left" Margin="691,270,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="64" Click="Export_Email">
             <Viewbox>
                 <Label Content="Export Email" />
             </Viewbox>

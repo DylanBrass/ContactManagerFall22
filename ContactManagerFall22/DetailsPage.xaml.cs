@@ -178,6 +178,19 @@ namespace ContactManagerFall22
                 csv.ExportPhone(Id);
         }
 
+        private void Import_Email(object sender, RoutedEventArgs e)
+        {
+            csv.ImportEmail(Id);
+            dbManager = new DBManager();
 
+            List<Email> emails = dbManager.GetEmails(Id);
+            EmailQuickView.ItemsSource = emails;
+        }
+
+        private void Export_Email(object sender, RoutedEventArgs e)
+        {
+            if (dbManager.GetEmails(Id).Count > 0)
+                csv.ExportEmail(Id);
+        }
     }
 }
