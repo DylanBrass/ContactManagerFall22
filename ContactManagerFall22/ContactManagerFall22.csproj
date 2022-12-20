@@ -125,6 +125,7 @@
     <Compile Include="DB\Entities\Contact.cs" />
     <Content Include="DB\SQL\database_create.sql" />
     <Compile Include="DB\Entities\Email.cs" />
+    <Compile Include="DB\Entities\Images.cs" />
     <Compile Include="DB\Entities\Phone.cs" />
     <Compile Include="DB\Entities\TypeOf.cs" />
     <Compile Include="DetailsPage.xaml.cs">

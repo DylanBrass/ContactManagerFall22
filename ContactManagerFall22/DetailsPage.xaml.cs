@@ -1,8 +1,10 @@
 ﻿using ContactManagerFall22.DB;
 using ContactManagerFall22.DB.Entities;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace ContactManagerFall22
 {    /// <summary>
@@ -49,6 +51,8 @@ namespace ContactManagerFall22
             DateUpdated.Content = "DateUpdated: " + contact.DateUpdated.ToShortDateString();
             Note.Content = "Note: " + contact.Note;
             Favourite.Content = "Favourite: " + contact.Favourite;
+
+            Pfp.Source = new BitmapImage(new Uri(@"", UriKind.Relative));
         }
 
         private void AddressListItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
