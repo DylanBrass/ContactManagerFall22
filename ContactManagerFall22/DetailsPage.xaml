@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactManagerFall22"
         mc:Ignorable="d"
-        Title="Contact Details Page" MinHeight="450" MaxHeight="450" MinWidth="800" MaxWidth="800" Closed="Window_Closed" Background="#95252525" FontFamily="Candara Light">
+        Title="Contact Details Page" Height="450" Width="800" Closed="Window_Closed" Background="#95252525" FontFamily="Candara Light">
 
     <Window.Resources>
         <Style x:Key="Title" TargetType="Label">
@@ -100,17 +100,12 @@
         <Label x:Name="Note" Content="Note" HorizontalAlignment="Left" Margin="14,299,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Favourite" Content="Favourite" HorizontalAlignment="Left" Margin="14,329,0,0" VerticalAlignment="Top"/>
 
-        <Button HorizontalAlignment="Left" Margin="360,3,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="47">
+        <Button HorizontalAlignment="Left" Margin="360,3,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="65" Click="New_Address_Click">
             <Viewbox>
-                <Label Content="Address" />
+                <Label Content="New Address" />
             </Viewbox>
         </Button>
 
-        <Button  HorizontalAlignment="Left" Margin="428,3,0,0" VerticalAlignment="Top" Click="New_Address_Click" Style="{StaticResource Button}" Height="20" Width="80">
-            <Viewbox>
-                <Label Content="New Address"/>
-            </Viewbox>
-        </Button>
 
         <ListView Name="AddressQuickView" Margin="360,31,10,275" MouseDoubleClick="AddressDetails_MouseDoubleClick" >
             <ListView.View>
