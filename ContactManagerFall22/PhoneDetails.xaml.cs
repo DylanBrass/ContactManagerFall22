@@ -1,9 +1,6 @@
 ﻿using ContactManagerFall22.DB;
 using ContactManagerFall22.DB.Entities;
-using System.Collections.Generic;
-using System.Net;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace ContactManagerFall22
 {
@@ -13,7 +10,7 @@ namespace ContactManagerFall22
     public partial class PhoneDetails : Window
     {
         readonly int Id;
-        DBManager dbManager3 = new DBManager();
+        readonly DBManager dbManager3 = new DBManager();
         public PhoneDetails(int id)
         {
             Id = id;
@@ -29,7 +26,7 @@ namespace ContactManagerFall22
             Type.Content = "Type: " + phone.Type;
             Description.Content = "Description: " + phone.Desc;
             DateCreated.Content = "DateAdded: " + phone.DateCreated.ToShortDateString();
-            LastUpdated.Content = "DateUpdated: " + phone .LastUpdated.ToShortDateString();
+            LastUpdated.Content = "DateUpdated: " + phone.LastUpdated.ToShortDateString();
 
         }
 
