@@ -48,7 +48,7 @@
     </Window.Resources>
 
     <Grid>
-        <TextBox x:Name="Email" HorizontalAlignment="Left" Margin="325,200,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox MaxLength="100" x:Name="Email" HorizontalAlignment="Left" Margin="325,200,0,0" VerticalAlignment="Top" Width="120"/>
         <RadioButton GroupName="Type" Content="Home" Margin="204,285,526,79" Checked="RadioButton_Checked" />
         <RadioButton GroupName="Type"  Content="Work" Margin="352,285,352,116" Checked="RadioButton_Checked"/>
         <RadioButton GroupName="Type" Content="Other" Margin="494,285,210,79" Checked="RadioButton_Checked" />
