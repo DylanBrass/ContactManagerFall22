@@ -11,7 +11,7 @@ namespace ContactManagerFall22
     public partial class AddressDetails : Window
     {
         readonly int Id;
-        readonly DBManager dbManager3 = new DBManager();
+        DBManager dbManager3 = new DBManager();
         public AddressDetails(int id)
         {
             Id = id;
@@ -30,6 +30,18 @@ namespace ContactManagerFall22
             AreaCode.Content = "Area Code: " + address.ZipCode;
             DateCreated.Content = "DateAdded: " + address.DateCreated.ToShortDateString();
             LastUpdated.Content = "DateUpdated: " + address.LastUpdated.ToShortDateString();
+
+
+        }
+
+        private void Delete_Address(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this Address?", "Confirmation", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                dbManager3.DeleteAddress(Id);
+                this.Close();
+            }
 
 
         }
