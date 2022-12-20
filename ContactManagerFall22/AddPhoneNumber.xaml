@@ -5,12 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactManagerFall22"
         mc:Ignorable="d"
-        Title="AddPhoneNumber" Height="450" Width="800">
+        Title="AddPhoneNumber" Height="450" Width="800" Background="#95252525" FontFamily="Candara Light">
+
+    <Window.Resources>
+        <Style x:Key="Title" TargetType="Label">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="FontSize" Value="70" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <Style x:Key="Button" TargetType="Button">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="Background" Value="#95363636" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="FontSize" Value="70" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF459EE4"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="LightGray" />
+        </Style>
+
+        <Style TargetType="RadioButton">
+            <Setter Property="Foreground" Value="LightGray" />
+        </Style>
+
+    </Window.Resources>
+
     <Grid>
 
 
-        <TextBox x:Name="PhoneNumber" HorizontalAlignment="Left" Margin="325,117,0,0" VerticalAlignment="Top" Width="120" MaxLength="12"/>
-        <TextBlock  x:Name="DefaultPhone" HorizontalAlignment="Left" Margin="334,117,0,0" TextWrapping="Wrap" Text="xxx-xxx-xxxx" VerticalAlignment="Top" Width="88"  IsHitTestVisible="False" Foreground="DarkGray">
+        <TextBox x:Name="PhoneNumber" HorizontalAlignment="Left" Margin="318,217,0,0" VerticalAlignment="Top" Width="120" MaxLength="12"/>
+        <TextBlock  x:Name="DefaultPhone" HorizontalAlignment="Left" Margin="321,217,0,0" TextWrapping="Wrap" Text="xxx-xxx-xxxx" VerticalAlignment="Top" Width="88"  IsHitTestVisible="False" Foreground="DarkGray">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
                     <Setter Property="Visibility" Value="Collapsed"/>
@@ -24,16 +65,24 @@
 
         </TextBlock>
 
-        <RadioButton GroupName="Type" Content="Home" Margin="323,204,410,183" Checked="RadioButton_Checked" />
-        <RadioButton GroupName="Type"  Content="Work" Margin="408,204,296,183" Checked="RadioButton_Checked"/>
-        <RadioButton GroupName="Type" Content="Other" Margin="486,204,218,146" Checked="RadioButton_Checked" />
+        <RadioButton GroupName="Type" Content="Home" Margin="204,285,526,79" Checked="RadioButton_Checked" />
+        <RadioButton GroupName="Type"  Content="Work" Margin="352,285,352,116" Checked="RadioButton_Checked"/>
+        <RadioButton GroupName="Type" Content="Other" Margin="494,285,210,79" Checked="RadioButton_Checked" />
 
-        <Button x:Name="AddEmailButton" Content="Add 📞" HorizontalAlignment="Left" Margin="333,343,0,0" 
-                VerticalAlignment="Top" Height="26" Width="90" Click="AddPhoneButton_Click"/>
+        <Button x:Name="AddEmailButton"  HorizontalAlignment="Left" Margin="333,343,0,0" 
+                VerticalAlignment="Top" Height="26" Width="90" Click="AddPhoneButton_Click" Style="{StaticResource Button}">
+            <Viewbox>
+                <Label Content="Add 📞"/>
+            </Viewbox>
+        </Button>
 
-        <Label Content="Phone Number" HorizontalAlignment="Left" Margin="212,114,0,0" VerticalAlignment="Top" Height="24" Width="103"/>
-        <Label Content="Type" HorizontalAlignment="Left" Height="38" Margin="212,0,0,0" VerticalAlignment="Center" Width="82"/>
+        <Label Content="Phone Number" HorizontalAlignment="Left" Margin="210,213,0,0" VerticalAlignment="Top" Height="24" Width="103"/>
 
+        <Label HorizontalAlignment="Left" Margin="18,20,0,0" VerticalAlignment="Top" Height="59" Width="290">
+            <Viewbox>
+                <Label Content="New Phone Number" Style="{StaticResource Title}"/>
+            </Viewbox>
+        </Label>
 
     </Grid>
 </Window>
