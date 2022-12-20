@@ -1,11 +1,9 @@
 ﻿using ContactManagerFall22.DB;
 using ContactManagerFall22.DB.Entities;
-using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
 
 namespace ContactManagerFall22
 {    /// <summary>
@@ -20,22 +18,22 @@ namespace ContactManagerFall22
             Id = id;
             InitializeComponent();
             Window_Loaded(id);
-            Address_Window_Loaded(id);
+            Address_Window_Loaded();
         }
 
-        private void Address_Window_Loaded(int id)
+        private void Address_Window_Loaded()
         {
-            List<Address> Addresses = dbManager.GetAdresses(id);
+            List<Address> Addresses = dbManager.GetAdresses(Id);
             AddressQuickView.ItemsSource = Addresses;
 
             dbManager = new DBManager();
 
-            List<Phone> phones = dbManager.GetPhones(id);
+            List<Phone> phones = dbManager.GetPhones(Id);
             PhoneQuickView.ItemsSource = phones;
 
             dbManager = new DBManager();
 
-            List<Email> emails = dbManager.GetEmails(id);
+            List<Email> emails = dbManager.GetEmails(Id);
             EmailQuickView.ItemsSource = emails;
         }
 
@@ -53,7 +51,6 @@ namespace ContactManagerFall22
             Note.Content = "Note: " + contact.Note;
             Favourite.Content = "Favourite: " + contact.Favourite;
 
-            Pfp.Source = new BitmapImage(new Uri(@"", UriKind.Relative));
         }
 
         private void AddressListItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -69,13 +66,20 @@ namespace ContactManagerFall22
             {
                 AddressDetails newWindow = new AddressDetails(selectedAddress.Id);
                 newWindow.ShowDialog();
-                this.Close();
+                dbManager = new DBManager();
+
+                List<Address> Addresses = dbManager.GetAdresses(Id);
+                AddressQuickView.ItemsSource = Addresses;
             }
         }
         private void New_Address_Click(object sender, RoutedEventArgs e)
         {
             AddAdressPage newAddressWindow = new AddAdressPage(Id);
             newAddressWindow.ShowDialog();
+            dbManager = new DBManager();
+
+            List<Address> Addresses = dbManager.GetAdresses(Id);
+            AddressQuickView.ItemsSource = Addresses;
         }
 
         private void Phone_Click(object sender, RoutedEventArgs e)
@@ -90,14 +94,21 @@ namespace ContactManagerFall22
         {
             AddPhoneNumber newPNWindow = new AddPhoneNumber(Id);
             newPNWindow.ShowDialog();
-            this.Close();
+            dbManager = new DBManager();
+
+            List<Phone> phones = dbManager.GetPhones(Id);
+            PhoneQuickView.ItemsSource = phones;
         }
 
         private void New_Email_Click(object sender, RoutedEventArgs e)
         {
             AddEmailPage newEMWindow = new AddEmailPage(Id);
             newEMWindow.ShowDialog();
-            this.Close();
+            dbManager = new DBManager();
+
+            List<Email> emails = dbManager.GetEmails(Id);
+            EmailQuickView.ItemsSource = emails;
+
         }
 
 
@@ -108,7 +119,7 @@ namespace ContactManagerFall22
             {
                 dbManager = new DBManager();
                 dbManager.DeleteContact(Id);
-                this.Close();
+                Window_Loaded(Id);
             }
 
 
@@ -119,5 +130,6 @@ namespace ContactManagerFall22
             MainWindow main = new MainWindow();
             main.Show();
         }
+
     }
 }

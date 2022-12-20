@@ -126,26 +126,25 @@ namespace ContactManagerFall22.DB
             {
                 Address address = new Address();
                 connect.Open();
-                SqlCommand cm = new SqlCommand("SELECT * FROM Address a INNER JOIN TYPE t ON a.Type_Code = t.Code WHERE Id = @Address_Id AND ACTIVE = 1;", connect);
+                SqlCommand cm = new SqlCommand("SELECT * FROM Address a INNER JOIN TYPE t ON a.Type_Code = t.Code WHERE Id = @Id AND ACTIVE = 1;", connect);
 
-                cm.Parameters.AddWithValue("@Address_Id", id);
+                cm.Parameters.AddWithValue("@Id", id);
 
 
                 SqlDataReader sdr = cm.ExecuteReader();
-                while (sdr.Read())
-                {
-                    address = new Address(Convert.ToInt32(sdr["Id"]), Convert.ToInt32(sdr["Contact_Id"]),
-                        sdr["City"].ToString(),
-                        sdr["Country"].ToString(),
-                        sdr["AreaCode"].ToString(),
-                        sdr["Street"].ToString(),
-                        sdr["AddressNumber"] == DBNull.Value ? default : int.Parse(sdr["AddressNumber"].ToString()),
-                        sdr["ApartementNum"] == DBNull.Value ? default : int.Parse(sdr["ApartementNum"].ToString()),
-                        (DateTime)sdr["DateCreated"],
-                        (DateTime)sdr["LastUpdated"],
-                        Convert.ToChar(sdr["Type_Code"]),
-                        sdr["Description"].ToString());
-                }
+
+                address = new Address(Convert.ToInt32(sdr["Id"]), Convert.ToInt32(sdr["Contact_Id"]),
+                    sdr["City"].ToString(),
+                    sdr["Country"].ToString(),
+                    sdr["AreaCode"].ToString(),
+                    sdr["Street"].ToString(),
+                    sdr["AddressNumber"] == DBNull.Value ? default : int.Parse(sdr["AddressNumber"].ToString()),
+                    sdr["ApartementNum"] == DBNull.Value ? default : int.Parse(sdr["ApartementNum"].ToString()),
+                    (DateTime)sdr["DateCreated"],
+                    (DateTime)sdr["LastUpdated"],
+                    Convert.ToChar(sdr["Type_Code"]),
+                    sdr["Description"].ToString());
+
                 sdr.Close();
                 return address;
             }
@@ -183,9 +182,9 @@ namespace ContactManagerFall22.DB
             }
         }
 
-        public List<Phone> GetPhone(int id)
+        public Phone GetPhone(int id)
         {
-            List<Phone> phones = new List<Phone>();
+            Phone phones = new Phone();
             Phone phone;
             using (connect = new SqlConnection(ConString))
             {
@@ -196,18 +195,16 @@ namespace ContactManagerFall22.DB
                 cm.Parameters.AddWithValue("@Id", id);
                 SqlDataReader sdr = cm.ExecuteReader();
 
-                while (sdr.Read())
-                {
-                    phone = new Phone(Convert.ToInt32(sdr["Id"]),
-                        Convert.ToInt32(sdr["Contact_Id"]),
-                        sdr["Phone_Number"].ToString(),
-                        Convert.ToChar(sdr["Type_Code"]),
-                        sdr["Description"].ToString(),
-                        (DateTime)sdr["DateCreated"],
-                        (DateTime)sdr["LastUpdated"]);
 
-                    phones.Add(phone);
-                }
+                phone = new Phone(Convert.ToInt32(sdr["Id"]),
+                    Convert.ToInt32(sdr["Contact_Id"]),
+                    sdr["Phone_Number"].ToString(),
+                    Convert.ToChar(sdr["Type_Code"]),
+                    sdr["Description"].ToString(),
+                    (DateTime)sdr["DateCreated"],
+                    (DateTime)sdr["LastUpdated"]);
+
+
                 sdr.Close();
 
                 return phones;
@@ -245,9 +242,9 @@ namespace ContactManagerFall22.DB
             }
         }
 
-        public List<Email> GetEmail(int id)
+        public Email GetEmail(int id)
         {
-            List<Email> emails = new List<Email>();
+            Email emails = new Email();
             Email email;
             using (connect = new SqlConnection(ConString))
             {
@@ -258,18 +255,16 @@ namespace ContactManagerFall22.DB
                 cm.Parameters.AddWithValue("@Id", id);
                 SqlDataReader sdr = cm.ExecuteReader();
 
-                while (sdr.Read())
-                {
-                    email = new Email(Convert.ToInt32(sdr["Id"]),
-                        Convert.ToInt32(sdr["Contact_Id"]),
-                        sdr["Email"].ToString(),
-                        Convert.ToChar(sdr["Type_Code"]),
-                        sdr["Description"].ToString(),
-                        (DateTime)sdr["DateCreated"],
-                        (DateTime)sdr["LastUpdated"]);
 
-                    emails.Add(email);
-                }
+                email = new Email(Convert.ToInt32(sdr["Id"]),
+                    Convert.ToInt32(sdr["Contact_Id"]),
+                    sdr["Email"].ToString(),
+                    Convert.ToChar(sdr["Type_Code"]),
+                    sdr["Description"].ToString(),
+                    (DateTime)sdr["DateCreated"],
+                    (DateTime)sdr["LastUpdated"]);
+
+
                 sdr.Close();
 
                 return emails;
@@ -357,10 +352,49 @@ namespace ContactManagerFall22.DB
             {
                 connect.Open();
                 SqlCommand cm = new SqlCommand("UPDATE Contact SET Active = 0 WHERE Id = @Id;", connect);
-                DeleteAddress(id);
-                DeleteEmail(id);
-                DeletePhone(id);
+                DeleteAddressOfContact(id);
+                DeleteEmailOfContact(id);
+                DeletePhoneOfContact(id);
                 cm.Parameters.AddWithValue("@Id", id);
+                cm.ExecuteNonQuery();
+            }
+        }
+        public void DeleteAddressOfContact(int contact_id)
+        {
+
+            using (connect = new SqlConnection(ConString))
+            {
+                connect.Open();
+
+                SqlCommand cm = new SqlCommand("UPDATE Address SET Active = 0 WHERE Contact_Id = @Contact_Id;", connect);
+                cm.Parameters.AddWithValue("@Contact_Id", contact_id);
+                cm.ExecuteNonQuery();
+            }
+
+        }
+        public void DeleteEmailOfContact(int contact_id)
+        {
+
+            using (connect = new SqlConnection(ConString))
+            {
+                connect.Open();
+
+                SqlCommand cm = new SqlCommand("UPDATE Email SET Active = 0 WHERE Contact_Id = @Contact_Id;", connect);
+                cm.Parameters.AddWithValue("@Contact_Id", contact_id);
+                cm.ExecuteNonQuery();
+            }
+
+        }
+        public void DeletePhoneOfContact(int contact_id)
+        {
+
+            using (connect = new SqlConnection(ConString)
+)
+            {
+                connect.Open();
+
+                SqlCommand cm = new SqlCommand("UPDATE Phone SET Active = 0 WHERE Contact_Id = @Contact_Id;", connect);
+                cm.Parameters.AddWithValue("@Contact_Id", contact_id);
                 cm.ExecuteNonQuery();
             }
         }

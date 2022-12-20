@@ -12,7 +12,7 @@ namespace ContactManagerFall22
     /// </summary>
     public partial class MainWindow : Window
     {
-        readonly DBManager db = new DBManager();
+        DBManager db = new DBManager();
         readonly CSVHandler csvHandler = new CSVHandler();
         // Shows the window.
         public MainWindow()
@@ -31,7 +31,9 @@ namespace ContactManagerFall22
         {
             MainWindow newWin = new MainWindow();
             newWin.Show();
-            this.Close();
+            db = new DBManager();
+            List<Contact> Contacts = db.GetContacts();
+            ContactsListItems.ItemsSource = Contacts;
         }
 
         private void ContactsListItems_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -42,7 +44,9 @@ namespace ContactManagerFall22
             {
                 DetailsPage newWindow = new DetailsPage(selectedContact.Id);
                 newWindow.ShowDialog();
-                this.Close();
+                db = new DBManager();
+                List<Contact> Contacts = db.GetContacts();
+                ContactsListItems.ItemsSource = Contacts;
             }
         }
 
@@ -51,8 +55,9 @@ namespace ContactManagerFall22
         {
             AddContact addContactWindow = new AddContact();
             addContactWindow.ShowDialog();
-            this.Close();
-
+            db = new DBManager();
+            List<Contact> Contacts = db.GetContacts();
+            ContactsListItems.ItemsSource = Contacts;
         }
 
         private void Edit_Contact_btn_Click(object sender, RoutedEventArgs e)
@@ -68,7 +73,9 @@ namespace ContactManagerFall22
         private void Imp_Contact_btn_Click(object sender, RoutedEventArgs e)
         {
             csvHandler.ImportContact();
-            this.Refresh();
+            db = new DBManager();
+            List<Contact> Contacts = db.GetContacts();
+            ContactsListItems.ItemsSource = Contacts;
         }
 
         private void Ex_Contact_btn_Click(object sender, RoutedEventArgs e)
