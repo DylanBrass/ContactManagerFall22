@@ -1,8 +1,10 @@
 ﻿using ContactManagerFall22.DB;
 using ContactManagerFall22.DB.Entities;
-using System;
+using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Forms;
+using MessageBox = System.Windows.Forms.MessageBox;
+using RadioButton = System.Windows.Controls.RadioButton;
 
 namespace ContactManagerFall22
 {
@@ -27,28 +29,33 @@ namespace ContactManagerFall22
             Phone addingPhone = new Phone();
 
             addingPhone.Contact_Id = Id;
-
-            addingPhone.PhoneNumber = PhoneNumber.Text;
-
-            switch (radioCheck)
+            if (IsValidPhone(PhoneNumber.Text))
             {
-                case "Work":
-                    addingPhone.Type = 'B';
-                    break;
-                case "Home":
-                    addingPhone.Type = 'H';
-                    break;
-                default:
-                    addingPhone.Type = 'O';
-                    break;
-            }
-           
-            dB.CreatePhone(addingPhone);
-            this.Close();
+                addingPhone.PhoneNumber = PhoneNumber.Text;
 
+                switch (radioCheck)
+                {
+                    case "Work":
+                        addingPhone.Type = 'B';
+                        break;
+                    case "Home":
+                        addingPhone.Type = 'H';
+                        break;
+                    default:
+                        addingPhone.Type = 'O';
+                        break;
+                }
+
+                dB.CreatePhone(addingPhone);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Improper Format", "Phone number does not follow the correct Format !", (MessageBoxButtons)MessageBoxButton.OK, MessageBoxIcon.Warning);
+            }
         }
 
-        private void Window_closed(object sender, EventArgs e)
+        private void Window_closed(object sender, System.EventArgs e)
         {
             DetailsPage DP = new DetailsPage(Id);
             DP.Show();
@@ -59,6 +66,18 @@ namespace ContactManagerFall22
             RadioButton ck = sender as RadioButton;
             if (ck.IsChecked.Value)
                 radioCheck = ck.Content.ToString();
+        }
+
+
+        public bool IsValidPhone(string str)
+        {
+
+
+            string regex = @"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$";
+
+            return Regex.IsMatch(str, regex, RegexOptions.IgnoreCase);
+
+
         }
     }
 }

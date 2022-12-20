@@ -145,13 +145,13 @@
         </Button>
         <Button Grid.Column="1" Margin="40,22,190,283" Click="LastNameSort_Click" Style="{StaticResource Button}">
             <Viewbox>
-                <Label Content="Sort By last Name"/>
+                <Label Content="Sort By last Name A -> Z"/>
             </Viewbox>
         </Button>
 
         <Button Margin="224,22,356,283" Click="LastNameSortReverse_Click" Style="{StaticResource Button}" Grid.ColumnSpan="2">
             <Viewbox>
-                <Label Content="Sort By last Name Z-&gt; A"/>
+                <Label Content="Sort By last Name Z -&gt; A"/>
             </Viewbox>
         </Button>
 

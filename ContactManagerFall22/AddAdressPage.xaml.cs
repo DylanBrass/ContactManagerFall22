@@ -110,7 +110,7 @@ namespace ContactManagerFall22
                 radioCheck = ck.Content.ToString();
         }
 
-        private static bool IsValidNoNumbers(string str)
+        private bool IsValidNoNumbers(string str)
         {
             str = str.Replace(" ", "");
 
@@ -118,13 +118,13 @@ namespace ContactManagerFall22
 
             return Regex.IsMatch(str, regex, RegexOptions.IgnoreCase);
         }
-        private static bool IsValidOnlyNumbers(string str)
+        private bool IsValidOnlyNumbers(string str)
         {
             string regex = @"^\d+$";
 
             return Regex.IsMatch(str, regex, RegexOptions.IgnoreCase);
         }
-        private static bool IsValidZipCode(string str)
+        private bool IsValidZipCode(string str)
         {
 
             string regex = @"(^\d{5}(-\d{4})?$)|(^[ABCEGHJKLMNPRSTVXYabceghjklmnprstvxy]{1}\d{1}[ABCEGHJKLMNPRSTVWXYZabceghjklmnprstv‌​xy]{1} *\d{1}[ABCEGHJKLMNPRSTVWXYZabceghjklmnprstvxy]{1}\d{1}$)";
