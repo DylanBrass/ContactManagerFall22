@@ -1,7 +1,10 @@
 ﻿using ContactManagerFall22.DB;
 using ContactManagerFall22.DB.Entities;
+using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Forms;
+using MessageBox = System.Windows.Forms.MessageBox;
+using RadioButton = System.Windows.Controls.RadioButton;
 
 namespace ContactManagerFall22
 {
@@ -21,27 +24,31 @@ namespace ContactManagerFall22
 
         private void AddEmailButton_Click(object sender, RoutedEventArgs e)
         {
-
-            Email addingEmail = new Email();
-
-            addingEmail.Contact_Id = Id;
-
-            addingEmail.EmailAddress = Email.Text;
-
-            switch (radioCheck)
+            if (IsValidEmail(Email.Text))
             {
-                case "Work":
-                    addingEmail.Type = 'B';
-                    break;
-                case "Home":
-                    addingEmail.Type = 'H';
-                    break;
-                default:
-                    addingEmail.Type = 'O';
-                    break;
+                Email addingEmail = new Email();
+
+                addingEmail.Contact_Id = Id;
+
+                addingEmail.EmailAddress = Email.Text;
+
+                switch (radioCheck)
+                {
+                    case "Work":
+                        addingEmail.Type = 'B';
+                        break;
+                    case "Home":
+                        addingEmail.Type = 'H';
+                        break;
+                    default:
+                        addingEmail.Type = 'O';
+                        break;
+                }
+                dB.CreateEmail(addingEmail);
+                this.Close();
             }
-            dB.CreateEmail(addingEmail);
-            this.Close();
+            else
+                MessageBox.Show("Improper Format", "Email does not follow the correct Format !", (MessageBoxButtons)MessageBoxButton.OK, MessageBoxIcon.Warning);
 
         }
 
@@ -52,5 +59,16 @@ namespace ContactManagerFall22
             if (ck.IsChecked.Value)
                 radioCheck = ck.Content.ToString();
         }
+
+
+        private bool IsValidEmail(string str)
+        {
+
+            string regex = @"^[^@\s]+@[^@\s]+\.(com|net|org|gov)$";
+
+            return Regex.IsMatch(str, regex, RegexOptions.IgnoreCase);
+
+        }
+
     }
 }
