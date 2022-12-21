@@ -5,7 +5,88 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactManagerFall22"
         mc:Ignorable="d"
-        Title="SelectingImagePage" Height="450" Width="800">
+        Title="SelectingImagePage" MinHeight="450" MinWidth="800" MaxHeight="450" MaxWidth="800" Background="#95252525" FontFamily="Candara Light">
+
+    <Window.Resources>
+        <Style x:Key="Title" TargetType="Label">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="FontSize" Value="70" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <Style x:Key="Button" TargetType="Button">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="Background" Value="#95363636" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="FontSize" Value="70" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF459EE4"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="LightGray" />
+        </Style>
+
+        <Style TargetType="ListView">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="Background" Value="#95363636" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+        </Style>
+
+        <Style TargetType="ListViewItem">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#FF68BDFF" />
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <Border Name="Border" BorderBrush="{TemplateBinding BorderBrush}" 
+                                  BorderThickness="{TemplateBinding BorderThickness}" 
+                                  Background="{TemplateBinding Background}">
+                                    <GridViewRowPresenter Content="{TemplateBinding Content}"
+                                      Margin="{TemplateBinding Padding}" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Foreground" Value="LightGray" />
+            <Setter Property="Background" Value="#95363636" />
+            <Setter Property="FontFamily" Value="Candara Light"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GridViewColumnHeader">
+                        <!-- Standard template but with redundant Storyboard removed -->
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200*"/>
@@ -19,20 +100,24 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Margin="29,21,19,21">Select Image :</Label>
-
-        <Button x:Name="GetImage"  Grid.Column="1" Grid.Row="0" Margin="437,11,10,55" Click="Select">
+        <Label HorizontalAlignment="Left" Margin="14,10,0,0" VerticalAlignment="Top" Height="59" Width="209">
             <Viewbox>
-                <Label>Select Image</Label>
+                <Label Content="New Image" Style="{StaticResource Title}"/>
+            </Viewbox>
+        </Label>
+
+        <Button x:Name="GetImage"  Grid.Column="1" Grid.Row="0" Margin="48,36,309,31" Click="Select" Style="{StaticResource Button}">
+            <Viewbox Width="188">
+                <Label Width="399" Height="96">Select Image</Label>
             </Viewbox>
         </Button>
-        <Image x:Name="preview" Grid.Row="2" Grid.ColumnSpan="2" Width="200"></Image>
-        <Button x:Name="CancelButton" Grid.Row="3" Click="Cancel" Margin="60,10,55,62">
+        <Image x:Name="preview" Grid.Row="1" Width="200" Margin="33,54,300,55" Grid.RowSpan="2" Grid.Column="1"/>
+        <Button x:Name="CancelButton" Grid.Row="3" Click="Cancel" Margin="196,10,453,62" Style="{StaticResource Button}" Grid.ColumnSpan="2">
             <Viewbox>
                 <Label>Cancel</Label>
             </Viewbox>
         </Button>
-        <Button x:Name="SaveButton" Grid.Row="3" Grid.Column="1" Click="Save" Margin="94,10,237,62">
+        <Button x:Name="SaveButton" Grid.Row="3" Grid.Column="1" Click="Save" Margin="181,10,202,62" Style="{StaticResource Button}">
             <Viewbox>
                 <Label>Save</Label>
             </Viewbox>
