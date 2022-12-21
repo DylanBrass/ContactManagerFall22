@@ -152,24 +152,24 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button  HorizontalAlignment="Left" Margin="228,134,0,0" VerticalAlignment="Top" Click="Delete_Contact" Style="{StaticResource Button}" Height="20" Width="80" Grid.ColumnSpan="2">
+        <Button  HorizontalAlignment="Left" Margin="229,134,0,0" VerticalAlignment="Top" Click="Delete_Contact" Style="{StaticResource Button}" Height="20" Width="80" Grid.ColumnSpan="2">
             <Viewbox>
                 <Label Content="Delete" />
             </Viewbox>
         </Button>
-        <Button  HorizontalAlignment="Left" Margin="228,182,0,0" VerticalAlignment="Top" Click="Add_Image" Style="{StaticResource Button}" Height="20" Width="80" Grid.ColumnSpan="2">
+        <Button  HorizontalAlignment="Left" Margin="229,182,0,0" VerticalAlignment="Top" Click="Add_Image" Style="{StaticResource Button}" Height="20" Width="80" Grid.ColumnSpan="2">
             <Viewbox>
                 <Label Content="Add Image" />
             </Viewbox>
         </Button>
-        <Button  HorizontalAlignment="Left" Margin="228,232,0,0" VerticalAlignment="Top" Click="Edit_Contact_btn_Click" Style="{StaticResource Button}" Height="20" Width="80" Grid.ColumnSpan="2">
+        <Button  HorizontalAlignment="Left" Margin="229,232,0,0" VerticalAlignment="Top" Click="Edit_Contact_btn_Click" Style="{StaticResource Button}" Height="20" Width="80" Grid.ColumnSpan="2">
             <Viewbox>
                 <Label Content="Edit Contact" />
             </Viewbox>
         </Button>
 
         <!--<Button Content="Button" HorizontalAlignment="Left" Margin="235,210,0,0" VerticalAlignment="Top" Click="Button_Click"/>-->
-        <Image x:Name="Pfp" HorizontalAlignment="Left" Height="100" Margin="228,22,0,0" VerticalAlignment="Top" Width="100" Grid.ColumnSpan="2"/>
+        <Image x:Name="Pfp" HorizontalAlignment="Left" Height="100" Margin="229,22,0,0" VerticalAlignment="Top" Width="100" Grid.ColumnSpan="2"/>
         <Label HorizontalAlignment="Left" Margin="14,10,0,0" VerticalAlignment="Top" Height="59" Width="209">
             <Viewbox>
                 <Label Content="Details Page" Style="{StaticResource Title}"/>
