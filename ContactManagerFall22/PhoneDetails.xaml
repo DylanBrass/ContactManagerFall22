@@ -92,7 +92,7 @@
 
         <Label HorizontalAlignment="Left" Margin="14,10,0,0" VerticalAlignment="Top" Height="59" Width="209">
             <Viewbox>
-                <Label Content="Address Details" Style="{StaticResource Title}"/>
+                <Label Content="Phone Details" Style="{StaticResource Title}"/>
             </Viewbox>
         </Label>
 
