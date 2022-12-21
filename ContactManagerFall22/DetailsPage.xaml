@@ -147,7 +147,7 @@
         <ListView Name="EmailQuickView" Margin="110,296,10,10" Grid.Column="1" MouseDoubleClick="EmailDetailsPage_MouseDoubleClick">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn x:Name="Email" Header="Email" Width="100" DisplayMemberBinding="{Binding EmailAddress}" />
+                    <GridViewColumn x:Name="Email" Header="Email" Width="200" DisplayMemberBinding="{Binding EmailAddress}" />
                     <GridViewColumn x:Name="Type_Email" Header="Type" Width="100" DisplayMemberBinding="{Binding Desc}" />
                 </GridView>
             </ListView.View>
