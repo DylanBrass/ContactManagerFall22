@@ -31,6 +31,7 @@ namespace ContactManagerFall22
 
                 Contact updatedContact = new Contact
                 {
+                    Id = Id,
                     FirstName = FName.Text,
                     LastName = LName.Text,
                     Nickname = Nickname.Text,
@@ -41,8 +42,8 @@ namespace ContactManagerFall22
                 };
                 if (IsValidNoNumbers(FName.Text) && IsValidNoNumbers(LName.Text))
                 {
-                    MessageBox.Show("Contact Updated", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                     dB.UpdateContact(updatedContact);
+                    this.Close();
                 }
                 else
                 {

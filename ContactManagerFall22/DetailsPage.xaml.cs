@@ -25,7 +25,7 @@ namespace ContactManagerFall22
         {
             Contact inputedContact = dbManager.GetContact(Id);
 
-            EditContact editpage = new EditContact(inputedContact.Id);
+            EditContact editpage = new EditContact(Id);
 
             editpage.FName.Text = inputedContact.FirstName;
             editpage.LName.Text = inputedContact.LastName;
