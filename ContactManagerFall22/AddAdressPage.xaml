@@ -44,11 +44,12 @@
             <Setter Property="Foreground" Value="LightGray" />
         </Style>
 
+
     </Window.Resources>
 
     <Grid RenderTransformOrigin="0.478,0.797">
-        <TextBox x:Name="AddressNumber" HorizontalAlignment="Left" Margin="325,63,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="Street" MaxLength="50" HorizontalAlignment="Left" Margin="325,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="AddressNumber" HorizontalAlignment="Left" Margin="325,63,0,0" VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="Street" MaxLength="50" HorizontalAlignment="Left" Margin="325,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
         <TextBox x:Name="AppartementNum" Text="" HorizontalAlignment="Left" Margin="325,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="City" MaxLength="50" HorizontalAlignment="Left" Margin="325,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="Country" MaxLength="50" HorizontalAlignment="Left" Margin="325,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
@@ -70,11 +71,12 @@
             </Viewbox>
         </Label>
 
-        <Label Content="Address Number" HorizontalAlignment="Left" Margin="221,59,0,0" VerticalAlignment="Top" Height="24" Width="98"/>
-        <Label Content="Street Name" HorizontalAlignment="Left" Margin="225,99,0,0" VerticalAlignment="Top" Height="24" Width="90"/>
-        <Label Content="Appartement Number" HorizontalAlignment="Left" Margin="184,140,0,0" VerticalAlignment="Top" Height="24" Width="131"/>
-        <Label Content="City" HorizontalAlignment="Left" Margin="252,180,0,0" VerticalAlignment="Top" Height="24" Width="68"/>
-        <Label Content="Country" HorizontalAlignment="Left" Margin="252,223,0,0" VerticalAlignment="Top" Height="24" Width="68"/>
-        <Label Content="Zip Code" HorizontalAlignment="Left" Margin="252,263,0,0" VerticalAlignment="Top" Height="24" Width="68"/>
+        <Label Content="Address Number*" HorizontalAlignment="Left" Margin="218,59,0,0" VerticalAlignment="Top" Height="24" Width="101"/>
+        <Label Content="Street Name*" HorizontalAlignment="Left" Margin="237,99,0,0" VerticalAlignment="Top" Height="24" Width="78"/>
+        <Label Content="Appartement Number" HorizontalAlignment="Left" Margin="192,140,0,0" VerticalAlignment="Top" Height="24" Width="123"/>
+        <Label Content="City*" HorizontalAlignment="Left" Margin="284,180,0,0" VerticalAlignment="Top" Height="24" Width="36"/>
+        <Label Content="Country*" HorizontalAlignment="Left" Margin="265,223,0,0" VerticalAlignment="Top" Height="24" Width="55"/>
+        <Label Content="Zip Code*" HorizontalAlignment="Left" Margin="259,263,0,0" VerticalAlignment="Top" Height="24" Width="60"/>
+        <Label Content="*" HorizontalAlignment="Left" Margin="209,327,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

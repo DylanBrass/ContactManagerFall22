@@ -102,7 +102,9 @@
             <TextBox x:Name="Salutation" HorizontalAlignment="Left" Margin="325,243,0,0" MaxLength="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
             <DatePicker x:Name="BirthDate" Text="Pick a Date"  Margin="325,197,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" SelectedDateFormat="Short" Grid.Column="1" />
             <!--<TextBox x:Name="Birthday" HorizontalAlignment="Left" Margin="325,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>-->
-            <CheckBox Template="{DynamicResource StarButton}" x:Name="favourite" Content="Favourites" HorizontalAlignment="Left" Height="40" Margin="239,332,0,0" VerticalAlignment="Top" Width="186" RenderTransformOrigin="0.494,0.56" Grid.Column="1"/>
+            <CheckBox Template="{DynamicResource StarButton}" x:Name="favourite" HorizontalAlignment="Left" Height="35" Margin="252,332,0,0" VerticalAlignment="Top" Width="178" RenderTransformOrigin="0.494,0.56" Grid.Column="1">
+                <Label Content="Label"/>
+            </CheckBox>
 
             <Button x:Name="AddContactButton"  HorizontalAlignment="Left" Margin="340,372,0,0" VerticalAlignment="Top" Height="26" Width="90" Click="AddContact_Button" Grid.Column="1" Style="{StaticResource Button}">
                 <Viewbox>
@@ -110,19 +112,20 @@
                 </Viewbox>
             </Button>
 
-            <Label Content="First Name" HorizontalAlignment="Left" Margin="247,78,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
-            <Label Content="Last Name" HorizontalAlignment="Left" Margin="252,114,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
-            <Label Content="Nickame" HorizontalAlignment="Left" Margin="252,154,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
-            <Label Content="Birthdate" HorizontalAlignment="Left" Margin="252,197,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
-            <Label Content="Salutation" HorizontalAlignment="Left" Margin="247,239,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
+            <Label Content="First Name*" HorizontalAlignment="Left" Margin="247,78,0,0" VerticalAlignment="Top" Height="24" Width="73" Grid.Column="1"/>
+            <Label Content="Last Name*" HorizontalAlignment="Left" Margin="247,114,0,0" VerticalAlignment="Top" Height="24" Width="73" Grid.Column="1"/>
+            <Label Content="Nickname" HorizontalAlignment="Left" Margin="259,154,0,0" VerticalAlignment="Top" Height="24" Width="61" Grid.Column="1"/>
+            <Label Content="Birthdate*" HorizontalAlignment="Left" Margin="252,197,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
+            <Label Content="Salutation" HorizontalAlignment="Left" Margin="259,239,0,0" VerticalAlignment="Top" Height="24" Width="61" Grid.Column="1"/>
             <TextBox x:Name="Note" HorizontalAlignment="Left" MaxLength="280" Margin="325,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-            <Label Content="Note" HorizontalAlignment="Left" Margin="252,278,0,0" VerticalAlignment="Top" Height="24" Width="68" Grid.Column="1"/>
+            <Label Content="Note" HorizontalAlignment="Left" Margin="286,278,0,0" VerticalAlignment="Top" Height="24" Width="34" Grid.Column="1"/>
 
             <Label HorizontalAlignment="Left" Margin="0,22,0,0" VerticalAlignment="Top" Height="59" Width="289" Grid.Column="1">
                 <Viewbox>
                     <Label Content="New Contact" Style="{StaticResource Title}"/>
                 </Viewbox>
             </Label>
+            <Label Grid.Column="1" Content="*" HorizontalAlignment="Left" Margin="304,328,0,0" VerticalAlignment="Top"/>
 
 
         </Grid>

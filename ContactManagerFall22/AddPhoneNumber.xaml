@@ -76,13 +76,14 @@
             </Viewbox>
         </Button>
 
-        <Label Content="Phone Number" HorizontalAlignment="Left" Margin="210,213,0,0" VerticalAlignment="Top" Height="24" Width="103"/>
+        <Label Content="Phone Number*" HorizontalAlignment="Left" Margin="221,213,0,0" VerticalAlignment="Top" Height="24" Width="92"/>
 
         <Label HorizontalAlignment="Left" Margin="18,20,0,0" VerticalAlignment="Top" Height="59" Width="290">
             <Viewbox>
                 <Label Content="New Phone Number" Style="{StaticResource Title}"/>
             </Viewbox>
         </Label>
+        <Label Content="*" HorizontalAlignment="Left" Margin="154,279,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

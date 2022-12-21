@@ -60,13 +60,14 @@
             </Viewbox>
         </Button>
 
-        <Label Content="Email" HorizontalAlignment="Left" Margin="256,196,0,0" VerticalAlignment="Top" Height="24" Width="103"/>
+        <Label Content="Email*" HorizontalAlignment="Left" Margin="276,196,0,0" VerticalAlignment="Top" Height="24" Width="44"/>
 
         <Label HorizontalAlignment="Left" Margin="18,20,0,0" VerticalAlignment="Top" Height="59" Width="290">
             <Viewbox>
                 <Label Content="New Email" Style="{StaticResource Title}"/>
             </Viewbox>
         </Label>
+        <Label Content="*" HorizontalAlignment="Left" Margin="154,279,0,0" VerticalAlignment="Top"/>
 
 
     </Grid>
