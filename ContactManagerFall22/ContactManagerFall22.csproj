@@ -73,6 +73,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DB\Entities\ProfilePicture.cs" />
+    <Compile Include="EditContact.xaml.cs">
+      <DependentUpon>EditContact.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SelectingImagePage.xaml.cs">
       <DependentUpon>SelectingImagePage.xaml</DependentUpon>
     </Compile>
@@ -102,6 +105,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EditAddress.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditContact.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

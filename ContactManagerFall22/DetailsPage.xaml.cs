@@ -21,8 +21,32 @@ namespace ContactManagerFall22
             Window_Loaded(id);
         }
 
+        private void Edit_Contact_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Contact inputedContact = dbManager.GetContact(Id);
 
+            EditContact editpage = new EditContact(inputedContact.Id);
 
+            editpage.FName.Text = inputedContact.FirstName;
+            editpage.LName.Text = inputedContact.LastName;
+            editpage.Salutation.Text = inputedContact.Salutation;
+            editpage.Note.Text = inputedContact.Note;
+            editpage.BirthDate.Text = inputedContact.Birthday.ToShortDateString();
+            editpage.Nickname.Text = inputedContact.Nickname;
+            if (inputedContact.Favourite == true)
+            {
+                editpage.favourite.IsChecked = true;
+            }
+            else if (inputedContact.Favourite == false)
+            {
+                editpage.favourite.IsChecked = false;
+            }
+
+            editpage.Show();
+
+            Window_Loaded(Id);
+
+        }
         private void Window_Loaded(int id)
         {
             List<Address> Addresses = dbManager.GetAdresses(Id);
@@ -151,7 +175,7 @@ namespace ContactManagerFall22
             {
                 dbManager = new DBManager();
                 dbManager.DeleteContact(Id);
-                Window_Loaded(Id);
+                this.Close();
             }
 
 

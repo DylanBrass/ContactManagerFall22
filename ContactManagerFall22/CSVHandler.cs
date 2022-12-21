@@ -52,7 +52,7 @@ namespace ContactManagerFall22
             }
             catch
             {
-                MessageBoxResult result = MessageBox.Show("File is used by another program !", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("File is used by another program !", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
 
             }
         }
@@ -90,7 +90,7 @@ namespace ContactManagerFall22
             }
             catch
             {
-                MessageBoxResult result = MessageBox.Show("File is used by another program !", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("File is used by another program !", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
 
             }
         }
@@ -129,7 +129,7 @@ namespace ContactManagerFall22
             }
             catch
             {
-                MessageBoxResult result = MessageBox.Show("File is used by another program !", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("File is used by another program !", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
 
             }
         }
@@ -169,7 +169,7 @@ namespace ContactManagerFall22
             }
             catch
             {
-                MessageBoxResult result = MessageBox.Show("File is used by another program !", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("File is used by another program !", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
 
             }
         }
@@ -200,7 +200,7 @@ namespace ContactManagerFall22
             }
             catch
             {
-                MessageBoxResult result = MessageBox.Show("File is used by another program !", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("File is used by another program !", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
 
             }
         }
