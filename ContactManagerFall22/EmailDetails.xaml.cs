@@ -1,62 +1,74 @@
-﻿using ContactManagerFall22.DB.Entities;
-using ContactManagerFall22.DB;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ContactManagerFall22.DB;
+using ContactManagerFall22.DB.Entities;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ContactManagerFall22
 {
     /// <summary>
     /// Interaction logic for EmailDetails.xaml
     /// </summary>
-    public partial class EmailDetails : Window { 
-
-    readonly int Id;
-    readonly DBManager dbManager3 = new DBManager();
-
-    public EmailDetails(int id)
+    public partial class EmailDetails : Window
     {
-        Id = id;
-        InitializeComponent();
-        Window_Loaded();
-    }
 
-    private void Window_Loaded()
-    {
-        Email email = dbManager3.GetEmail(Id);
+        readonly int Id;
+        readonly DBManager dbManager3 = new DBManager();
 
-        Email.Content = "Email: " + email.EmailAddress;
-        Type.Content = "Type: " + email.Type;
-        DateCreated.Content = "DateAdded: " + email.DateCreated.ToShortDateString();
-        LastUpdated.Content = "DateUpdated: " + email.LastUpdated.ToShortDateString();
-
-    }
-
-    private void Delete_Click(object sender, RoutedEventArgs e)
-    {
-        MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this Address?", "Confirmation", MessageBoxButton.YesNo);
-        if (result == MessageBoxResult.Yes)
+        public EmailDetails(int id)
         {
-            dbManager3.DeleteEmail(Id);
-            this.Close();
+            Id = id;
+            InitializeComponent();
+            Window_Loaded();
         }
 
-
-    }
-
-    private void Edit_Email_btn_Click(object sender, RoutedEventArgs e)
+        private void Window_Loaded()
         {
+            Email email = dbManager3.GetEmail(Id);
 
+            Email.Content = "Email: " + email.EmailAddress;
+            Type.Content = "Type: " + email.Type;
+            DateCreated.Content = "DateAdded: " + email.DateCreated.ToShortDateString();
+            LastUpdated.Content = "DateUpdated: " + email.LastUpdated.ToShortDateString();
+
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this Email?", "Confirmation", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                dbManager3.DeleteEmail(Id);
+                this.Close();
+            }
+
+
+        }
+
+        private void Edit_Email_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Email inputedPEmail = dbManager3.GetEmail(Id);
+
+            EditEmail editpage = new EditEmail(Id);
+
+
+            editpage.Email.Text = inputedPEmail.EmailAddress;
+
+            if (inputedPEmail.Type == 'H')
+            {
+                editpage.Home.IsChecked = true;
+            }
+            else if (inputedPEmail.Type == 'B')
+            {
+                editpage.Work.IsChecked = true;
+
+            }
+            else
+            {
+                editpage.Other.IsChecked = true;
+
+            }
+            editpage.ShowDialog();
+
+            Window_Loaded();
         }
     }
 }

@@ -103,7 +103,7 @@
         </Button>
 
         <Label x:Name="PhoneNumber" Content="Phone Number" HorizontalAlignment="Left" Margin="14,90,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Type" Content="Street" HorizontalAlignment="Left" Margin="14,120,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Type" Content="Type" HorizontalAlignment="Left" Margin="14,120,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Description" Content="ApartementNum" HorizontalAlignment="Left" Margin="14,150,0,0" VerticalAlignment="Top"/>
         <Label x:Name="DateCreated" Content="Date Created" HorizontalAlignment="Left" Margin="14,180,0,0" VerticalAlignment="Top"/>
         <Label x:Name="LastUpdated" Content="Last Updated" HorizontalAlignment="Left" Margin="14,210,0,0" VerticalAlignment="Top"/>

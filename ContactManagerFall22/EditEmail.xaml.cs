@@ -9,50 +9,48 @@ using RadioButton = System.Windows.Controls.RadioButton;
 namespace ContactManagerFall22
 {
     /// <summary>
-    /// Interaction logic for EditPhone.xaml
+    /// Interaction logic for EditEmail.xaml
     /// </summary>
-    public partial class EditPhone : Window
+    public partial class EditEmail : Window
     {
         string radioCheck;
         readonly DBManager dB = new DBManager();
         readonly int Id;
-        public EditPhone(int id)
+        public EditEmail(int id)
         {
             InitializeComponent();
             Id = id;
         }
 
-        private void AddPhoneButton_Click(object sender, RoutedEventArgs e)
+        private void AddEmailButton_Click(object sender, RoutedEventArgs e)
         {
+            if (IsValidEmail(Email.Text))
+            {
+                Email addingEmail = new Email
+                {
+                    Contact_Id = Id,
 
-            Phone addingPhone = new Phone
-            {
-                Contact_Id = Id
-            };
-            if (IsValidPhone(PhoneNumber.Text))
-            {
-                addingPhone.PhoneNumber = PhoneNumber.Text;
+                    EmailAddress = Email.Text
+                };
 
                 switch (radioCheck)
                 {
                     case "Work":
-                        addingPhone.Type = 'B';
+                        addingEmail.Type = 'B';
                         break;
                     case "Home":
-                        addingPhone.Type = 'H';
+                        addingEmail.Type = 'H';
                         break;
                     default:
-                        addingPhone.Type = 'O';
+                        addingEmail.Type = 'O';
                         break;
                 }
-
-                dB.UpdatePhone(addingPhone, Id);
+                dB.CreateEmail(addingEmail);
                 this.Close();
             }
             else
-            {
-                MessageBox.Show("Improper Format", "Phone number does not follow the correct Format !", (MessageBoxButtons)MessageBoxButton.OK, MessageBoxIcon.Warning);
-            }
+                MessageBox.Show("Improper Format", "Email does not follow the correct Format !", (MessageBoxButtons)MessageBoxButton.OK, MessageBoxIcon.Warning);
+
         }
 
 
@@ -64,14 +62,12 @@ namespace ContactManagerFall22
         }
 
 
-        public bool IsValidPhone(string str)
+        private bool IsValidEmail(string str)
         {
 
-
-            string regex = @"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$";
+            string regex = @"^[^@\s]+@[^@\s]+\.(com|net|org|gov|ca|edu)$";
 
             return Regex.IsMatch(str, regex, RegexOptions.IgnoreCase);
-
 
         }
         private void Cancel(object sender, RoutedEventArgs e)

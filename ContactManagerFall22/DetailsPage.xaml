@@ -93,6 +93,7 @@
             <ColumnDefinition Width="25*"/>
             <ColumnDefinition Width="52*"/>
         </Grid.ColumnDefinitions>
+        <Image x:Name="pfp" Width="100" Height="100" Margin="387,65,173,491"></Image>
 
         <Label x:Name="FName" Content="First Name" HorizontalAlignment="Left" Margin="14,90,0,0" VerticalAlignment="Top"/>
         <Label x:Name="LName" Content="Last Name" HorizontalAlignment="Left" Margin="14,120,0,0" VerticalAlignment="Top"/>
@@ -143,7 +144,7 @@
             </Viewbox>
         </Button>
 
-        <ListView Name="EmailQuickView" Margin="110,296,10,10" Grid.Column="1">
+        <ListView Name="EmailQuickView" Margin="110,296,10,10" Grid.Column="1" MouseDoubleClick="EmailDetailsPage_MouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn x:Name="Email" Header="Email" Width="100" DisplayMemberBinding="{Binding EmailAddress}" />
@@ -154,6 +155,11 @@
         <Button  HorizontalAlignment="Left" Margin="228,134,0,0" VerticalAlignment="Top" Click="Delete_Contact" Style="{StaticResource Button}" Height="20" Width="80" Grid.ColumnSpan="2">
             <Viewbox>
                 <Label Content="Delete" />
+            </Viewbox>
+        </Button>
+        <Button  HorizontalAlignment="Left" Margin="228,182,0,0" VerticalAlignment="Top" Click="Add_Image" Style="{StaticResource Button}" Height="20" Width="80" Grid.ColumnSpan="2">
+            <Viewbox>
+                <Label Content="Add Image" />
             </Viewbox>
         </Button>
 

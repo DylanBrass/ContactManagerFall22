@@ -32,7 +32,7 @@ namespace ContactManagerFall22
 
         private void Delete_Phone(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this Address?", "Confirmation", MessageBoxButton.YesNo);
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this phone number?", "Confirmation", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
                 dbManager3.DeletePhone(Id);
@@ -46,19 +46,16 @@ namespace ContactManagerFall22
         {
             Phone inputedPhone = dbManager3.GetPhone(Id);
 
-            EditAddress editpage = new EditAddress(inputedAddress.Contact_Id);
+            EditPhone editpage = new EditPhone(Id);
 
-            editpage = inputedPhone.City.ToString();
-            editpage.Country.Text = inputedPhone.Country.ToString();
-            editpage.ZipCode.Text = inputedPhone.ZipCode.ToString();
-            editpage.Street.Text = inputedPhone.Street.ToString();
-            editpage.AddressNumber.Text = inputedPhone.AddressNumber.ToString();
-            editpage.AppartementNum.Text = inputedPhone.ApartementNum.ToString();
-            if (inputedAddress.Type == 'H')
+
+            editpage.PhoneNumber.Text = inputedPhone.PhoneNumber;
+
+            if (inputedPhone.Type == 'H')
             {
                 editpage.Home.IsChecked = true;
             }
-            else if (inputedAddress.Type == 'B')
+            else if (inputedPhone.Type == 'B')
             {
                 editpage.Work.IsChecked = true;
 

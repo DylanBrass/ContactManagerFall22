@@ -13,7 +13,7 @@ namespace ContactManagerFall22
     {
         readonly int Id;
         DBManager dbManager = new DBManager();
-        CSVHandler csv = new CSVHandler();
+        readonly CSVHandler csv = new CSVHandler();
         public DetailsPage(int id)
         {
             Id = id;
@@ -25,7 +25,7 @@ namespace ContactManagerFall22
 
         private void Window_Loaded(int id)
         {
-            dbManager = new DBManager();
+
 
             List<Address> Addresses = dbManager.GetAdresses(Id);
             AddressQuickView.ItemsSource = Addresses;
@@ -41,6 +41,10 @@ namespace ContactManagerFall22
             EmailQuickView.ItemsSource = emails;
             Contact contact = dbManager.GetContact(id);
 
+            Image image = dbManager.GetImage(contact.Id);
+            Pfp.Source = image.Source;
+
+            dbManager = new DBManager();
             Nickname.Content = "Nickname: " + contact.Nickname;
             LName.Content = "Last Name: " + contact.LastName;
             FName.Content = "First Name: " + contact.FirstName;
@@ -53,10 +57,7 @@ namespace ContactManagerFall22
 
         }
 
-        private void AddressListItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
-        }
 
         private void AddressDetails_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -74,6 +75,20 @@ namespace ContactManagerFall22
 
 
 
+        }
+        private void EmailDetailsPage_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Email selectedEmail = (Email)EmailQuickView.SelectedItem;
+
+            if (selectedEmail != null)
+            {
+                EmailDetails newWindow = new EmailDetails(selectedEmail.Id);
+                newWindow.ShowDialog();
+                dbManager = new DBManager();
+
+                List<Email> emails = dbManager.GetEmails(Id);
+                PhoneQuickView.ItemsSource = emails;
+            }
         }
 
         private void PhoneDetails_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -200,6 +215,13 @@ namespace ContactManagerFall22
 
             Window_Loaded(Id);
 
+        }
+
+        private void Add_Image(object sender, RoutedEventArgs e)
+        {
+            SelectingImagePage sp = new SelectingImagePage(Id);
+            sp.Show();
+            Window_Loaded(Id);
         }
     }
 }

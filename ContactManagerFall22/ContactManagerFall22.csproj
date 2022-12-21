@@ -72,6 +72,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DB\Entities\ProfilePicture.cs" />
+    <Compile Include="SelectingImagePage.xaml.cs">
+      <DependentUpon>SelectingImagePage.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddAdressPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -100,9 +104,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditPhone.xaml">
+    <Page Include="EditEmail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditPhone.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="EmailDetails.xaml">
       <SubType>Designer</SubType>
@@ -137,7 +145,6 @@
     <Compile Include="DB\Entities\Contact.cs" />
     <Content Include="DB\SQL\database_create.sql" />
     <Compile Include="DB\Entities\Email.cs" />
-    <Compile Include="DB\Entities\Images.cs" />
     <Compile Include="DB\Entities\Phone.cs" />
     <Compile Include="DB\Entities\TypeOf.cs" />
     <Compile Include="DetailsPage.xaml.cs">
@@ -145,6 +152,9 @@
     </Compile>
     <Compile Include="EditAddress.xaml.cs">
       <DependentUpon>EditAddress.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditEmail.xaml.cs">
+      <DependentUpon>EditEmail.xaml</DependentUpon>
     </Compile>
     <Compile Include="EditPhone.xaml.cs">
       <DependentUpon>EditPhone.xaml</DependentUpon>
@@ -157,6 +167,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PhoneDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SelectingImagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.IO;
+using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace ContactManagerFall22.DB
 {
@@ -245,8 +248,7 @@ namespace ContactManagerFall22.DB
 
         public Email GetEmail(int id)
         {
-            Email emails = new Email();
-            Email email;
+            Email email = new Email(); ;
             using (connect = new SqlConnection(ConString))
             {
                 connect.Open();
@@ -269,7 +271,7 @@ namespace ContactManagerFall22.DB
                 }
                 sdr.Close();
 
-                return emails;
+                return email;
             }
         }
 
@@ -483,14 +485,14 @@ namespace ContactManagerFall22.DB
         }
 
 
-        public void UpdatePhone(Phone ph)
+        public void UpdatePhone(Phone ph, int id)
         {
             using (connect = new SqlConnection(ConString))
             {
                 connect.Open();
-                SqlCommand cm = new SqlCommand("UPDATE  Phone SET Phone_Number = @Phone_Number,Type_Code = @Type_Code WHERE Contact_Id = @Contact_Id;", connect);
+                SqlCommand cm = new SqlCommand("UPDATE  Phone SET Phone_Number = @Phone_Number,Type_Code = @Type_Code WHERE Id = @Id;", connect);
 
-                cm.Parameters.AddWithValue("@Contact_Id", ph.Contact_Id);
+                cm.Parameters.AddWithValue("@Id", id);
                 cm.Parameters.AddWithValue("@Phone_Number", ph.PhoneNumber);
                 cm.Parameters.AddWithValue("@Type_Code", ph.Type);
                 cm.ExecuteNonQuery();
@@ -503,12 +505,13 @@ namespace ContactManagerFall22.DB
             using (connect = new SqlConnection(ConString))
             {
                 connect.Open();
-                SqlCommand cm = new SqlCommand("UPDATE  Phone SET Email = @Email,Type_Code = @Type_Code WHERE Contact_Id = @Contact_Id;", connect);
+                SqlCommand cm = new SqlCommand("UPDATE Phone SET Email = @Email,Type_Code = @Type_Code WHERE Contact_Id = @Contact_Id;", connect);
 
                 cm.Parameters.AddWithValue("@Contact_Id", em.Contact_Id);
                 cm.Parameters.AddWithValue("@Email", em.EmailAddress);
                 cm.Parameters.AddWithValue("@Type_Code", em.Type);
                 cm.ExecuteNonQuery();
+
 
             }
         }
@@ -516,42 +519,44 @@ namespace ContactManagerFall22.DB
 
         //Testing Image with database
 
-        public void CreateImage(Images image)
+        public void CreateImage(ProfilePicture image)
         {
 
             using (connect = new SqlConnection(ConString))
             {
                 connect.Open();
-                SqlCommand cm = new SqlCommand("INSERT INTO Image (Contact_Id,Image) VALUES (@Contact_Id,@Image);", connect);
-
+                SqlCommand cm = new SqlCommand("DELETE FROM Image WHERE Id = @Contact_Id;", connect);
                 cm.Parameters.AddWithValue("@Contact_Id", image.Contact_Id);
+                cm.ExecuteNonQuery();
+
+                cm = new SqlCommand("INSERT INTO Image(Id,Image) VALUES (@Id,@Image)", connect);
+                cm.Parameters.AddWithValue("@Id", image.Contact_Id);
                 cm.Parameters.AddWithValue("@Image", image.Image);
                 cm.ExecuteNonQuery();
             }
         }
 
-        public Images GetImage(int id)
+        public Image GetImage(int image_id)
         {
-            Images image = new Images();
-
-            using (connect = new SqlConnection(ConString))
+            using (SqlConnection con = new SqlConnection(ConString))
             {
-                Address address = new Address();
-                connect.Open();
-                SqlCommand cm = new SqlCommand("SELECT * FROM Image WHERE Contact_Id = @Contact_Id;", connect);
-
-                cm.Parameters.AddWithValue("@Contact_Id", id);
-
-                SqlDataReader sdr = cm.ExecuteReader();
-
+                Image img = new Image();
+                con.Open();
+                SqlCommand command = new SqlCommand("SELECT * FROM Image  WHERE Id=@Image_Id", con);
+                command.Parameters.AddWithValue("@Image_Id", image_id);
+                SqlDataReader sdr = command.ExecuteReader();
                 while (sdr.Read())
                 {
-                    image = new Images((byte[])sdr["Image"],
-                   Convert.ToInt32(sdr["Contact_Id"]));
+                    MemoryStream ms = new MemoryStream((byte[])sdr["Image"]);
+                    BitmapImage imageSource = new BitmapImage();
+                    imageSource.BeginInit();
+                    imageSource.StreamSource = ms;
+                    imageSource.EndInit();
+                    img.Source = imageSource;
                 }
+                sdr.Close();
+                return img;
             }
-            return image;
-
         }
     }
 }
