@@ -132,13 +132,13 @@
             </ListView.View>
         </ListView>
 
-        <Button HorizontalAlignment="Left" Margin="110,134,0,0" VerticalAlignment="Top" Click="New_Phone_Click" Style="{StaticResource Button}" Height="20" Width="47" Grid.Column="1" >
+        <Button HorizontalAlignment="Left" Margin="110,134,0,0" VerticalAlignment="Top" Click="New_Phone_Click" Style="{StaticResource Button}" Height="20" Width="65" Grid.Column="1" >
             <Viewbox>
                 <Label Content="New Phone" />
             </Viewbox>
         </Button>
 
-        <Button  HorizontalAlignment="Center" Click="New_Email_Click" Margin="0,270,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="46" Grid.Column="1">
+        <Button  HorizontalAlignment="Left" Click="New_Email_Click" Margin="110,268,0,0" VerticalAlignment="Top" Style="{StaticResource Button}" Height="20" Width="65" Grid.Column="1">
             <Viewbox>
                 <Label Content="New Email" />
             </Viewbox>
