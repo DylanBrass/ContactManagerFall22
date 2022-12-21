@@ -76,6 +76,7 @@
     <Compile Include="SelectingImagePage.xaml.cs">
       <DependentUpon>SelectingImagePage.xaml</DependentUpon>
     </Compile>
+    <Content Include="DB\SQL\Table_Without_Data.sql" />
     <Page Include="AddAdressPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

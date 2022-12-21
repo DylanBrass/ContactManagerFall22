@@ -25,8 +25,6 @@ namespace ContactManagerFall22
 
         private void Window_Loaded(int id)
         {
-
-
             List<Address> Addresses = dbManager.GetAdresses(Id);
             AddressQuickView.ItemsSource = Addresses;
 
