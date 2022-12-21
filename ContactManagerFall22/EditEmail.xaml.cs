@@ -45,7 +45,7 @@ namespace ContactManagerFall22
                         addingEmail.Type = 'O';
                         break;
                 }
-                dB.CreateEmail(addingEmail);
+                dB.UpdateEmail(addingEmail);
                 this.Close();
             }
             else
