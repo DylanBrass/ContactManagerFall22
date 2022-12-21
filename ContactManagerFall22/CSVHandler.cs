@@ -174,36 +174,6 @@ namespace ContactManagerFall22
             }
         }
 
-        public void ImportCSV()
-        {
-            try
-            {
-                string currentfile;
-                OpenFileDialog openFileDialog = new OpenFileDialog
-                {
-                    Multiselect = true,
-                    Filter = "CSV Files (*.csv)|*.csv",
-                    InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
-                };
-                if (openFileDialog.ShowDialog() == true)
-                {
-                    foreach (string fileName in openFileDialog.FileNames)
-                    {
-                        currentfile = Path.GetFileName(fileName);
-
-
-                        lines = File.ReadAllLines(fileName);
-                        ImportContact();
-
-                    }
-                }
-            }
-            catch
-            {
-                MessageBox.Show("File is used by another program !", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-
-            }
-        }
         public void ImportContact()
         {
             try
@@ -239,7 +209,7 @@ namespace ContactManagerFall22
             }
             catch
             {
-                MessageBoxResult result = MessageBox.Show("File is used by another program !", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBoxResult result = MessageBox.Show("File is used by another program ! or Is in an improper format !", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
 
             }
 
@@ -278,7 +248,7 @@ namespace ContactManagerFall22
             }
             catch
             {
-                MessageBoxResult result = MessageBox.Show("File is used by another program !", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBoxResult result = MessageBox.Show("File is used by another program ! or Is in an improper format !", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
 
             }
 
@@ -321,7 +291,7 @@ namespace ContactManagerFall22
             }
             catch
             {
-                MessageBoxResult result = MessageBox.Show("File is used by another program !", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBoxResult result = MessageBox.Show("File is used by another program ! or Is in an improper format !", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
 
             }
         }
@@ -363,7 +333,7 @@ namespace ContactManagerFall22
             }
             catch
             {
-                MessageBoxResult result = MessageBox.Show("File is used by another program !", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBoxResult result = MessageBox.Show("File is used by another program ! or Is in an improper format !", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
 
             }
 
