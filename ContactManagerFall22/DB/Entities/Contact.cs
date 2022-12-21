@@ -24,7 +24,7 @@ namespace ContactManagerFall22.DB.Entities
             bool active,
             string salutation,
             string nickname,
-            string birthday,
+            DateTime birthday,
             string note) : this(id, firstName, lastName)
         {
             DateAdded = dateAdded;
