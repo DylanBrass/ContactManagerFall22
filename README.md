@@ -99,7 +99,11 @@ You will need to change ProjectOwner higlighted here to a login that exists on y
     
 ![image](https://github.com/DylanBrass/ContactManagerFall22/assets/71225455/90dd8b06-5245-4437-8f2c-aea17c340bff)
 
-11. Then you can simply run the project and look around :)
+11. You then need to insert the Type codes with this : 
+![image](https://github.com/DylanBrass/ContactManagerFall22/assets/71225455/92e6a5f7-23d3-4774-a3a9-2d4d9acfdac9)
+
+
+12. Then you can simply run the project and look around :)
     
 ![image](https://github.com/DylanBrass/ContactManagerFall22/assets/71225455/578f04e8-a527-4fbe-bfcd-1aa4428487d5)
 
