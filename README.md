@@ -106,10 +106,10 @@ You will need to change ProjectOwner higlighted here to a login that exists on y
 
 
 ## Usage
+![image](https://github.com/DylanBrass/ContactManagerFall22/assets/71225455/63cc60a1-1669-4c88-9a64-aa7ab3bf1650)
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+![image](https://github.com/DylanBrass/ContactManagerFall22/assets/71225455/94d521d8-200b-4393-b6d3-944eae31de47)
 
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 ### Challenges
 
