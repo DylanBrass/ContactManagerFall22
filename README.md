@@ -2,16 +2,6 @@
 
   <p align="center">
     A simple app to manage your contacts and their addresses.
-    <br/>
-    <br/>
-    <a href="https://github.com/DylanBrass/ContactManagerFall22"><strong>Explore the docs »</strong></a>
-    <br/>
-    <br/>
-    <a href="https://github.com/DylanBrass/ContactManagerFall22">View Demo</a>
-    .
-    <a href="https://github.com/DylanBrass/ContactManagerFall22/issues">Report Bug</a>
-    .
-    <a href="https://github.com/DylanBrass/ContactManagerFall22/issues">Request Feature</a>
   </p>
 </p>
 
@@ -80,7 +70,41 @@ This project is harder to install because of SQL Server management is a relativl
 
 ### Installation
 
-1. Clone the project with :
+1. Clone the project with : https://github.com/DylanBrass/ContactManagerFall22.git
+2. You open it with Visual Studio
+3. Next you have to open SQL Server
+4. You will create a new table called FinalProjectDB:
+![image](https://github.com/DylanBrass/ContactManagerFall22/assets/71225455/45a0c394-d05e-4432-a355-c4a3e691a4de)
+
+![image](https://github.com/DylanBrass/ContactManagerFall22/assets/71225455/b169c185-ec75-4ef6-899b-d3df7c91d1fd)
+
+![image](https://github.com/DylanBrass/ContactManagerFall22/assets/71225455/1cf0bdb2-824e-4fd7-9fb7-9941b33acf6c)
+
+6. You go locate the TSQL Script found here :
+![image](https://github.com/DylanBrass/ContactManagerFall22/assets/71225455/29819f1d-ac83-4b1e-8ded-6e72a90a6b5f)
+
+7. You copy the whole script
+   
+8. You open a new Querry in SQL Server and paste the script
+
+![image](https://github.com/DylanBrass/ContactManagerFall22/assets/71225455/335ac794-eeb4-41bd-b8b3-c04d5c32f667)
+
+You will need to change ProjectOwner higlighted here to a login that exists on your SQL Server
+
+![image](https://github.com/DylanBrass/ContactManagerFall22/assets/71225455/765071ea-0106-4a58-a34b-500ac14d8dce)
+
+9. Then run the script
+    
+10. For me most of the time I had to restart my SQL Server to see the tables like so :
+    
+![image](https://github.com/DylanBrass/ContactManagerFall22/assets/71225455/90dd8b06-5245-4437-8f2c-aea17c340bff)
+
+11. Then you can simply run the project and look around :)
+    
+![image](https://github.com/DylanBrass/ContactManagerFall22/assets/71225455/578f04e8-a527-4fbe-bfcd-1aa4428487d5)
+
+
+
 ## Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
