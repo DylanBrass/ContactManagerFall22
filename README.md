@@ -111,26 +111,81 @@ Use this space to show useful examples of how a project can be used. Additional 
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
-## Contributing
+### Challenges
+
+#### CSV Handling
+```c#
+public void ExportContact()
+{
+    try
+    {
+        StringBuilder csv = new StringBuilder();
+        StringBuilder csvFileContact = new StringBuilder();
+        SaveFileDialog saveFileDialog = new SaveFileDialog
+        {
+            InitialDirectory = "c:\\",
+            Filter = "CSV Files (*.csv)|*.csv"
+        };
+
+        if (saveFileDialog.ShowDialog() == true)
+        {
 
 
+            List<Contact> contacts = db.GetContacts();
 
-### Creating A Pull Request
+            foreach (Contact con in contacts)
+            {
+                PropertyInfo[] fullcon = con.GetType().GetProperties();
+                foreach (PropertyInfo property in fullcon)
+                {
+                    csv.Append("," + property.GetValue(con, null).ToString());
+                }
+                csv.Remove(0, 1);
+                csvFileContact.AppendLine(csv.ToString());
+                csv.Clear();
+            }
+            File.WriteAllText(saveFileDialog.FileName, csvFileContact.ToString());
+        }
+    }
+    catch
+    {
+        MessageBox.Show("File is used by another program !", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+    }
+}
+```
+This code is what makes this button work.
+
+![image](https://github.com/DylanBrass/ContactManagerFall22/assets/71225455/33d82518-2e9c-45bc-b075-a31e2ffa4e92)
+
+This is very simple code that allows you to get all the contacts you have saved and transfer them to a .csv file. This feature allows for easy transport of contacts from one computer to another. But since this was my first time doing this I had to create this logic and understand it.
+
+#### retriving images 
+```c#
+ Image img = new Image();
+ con.Open();
+ SqlCommand command = new SqlCommand("SELECT * FROM Image  WHERE Id=@Image_Id", con);
+ command.Parameters.AddWithValue("@Image_Id", image_id);
+ SqlDataReader sdr = command.ExecuteReader();
+ while (sdr.Read())
+ {
+     MemoryStream ms = new MemoryStream((byte[])sdr["Image"]);
+     BitmapImage imageSource = new BitmapImage();
+     imageSource.BeginInit();
+     imageSource.StreamSource = ms;
+     imageSource.EndInit();
+     img.Source = imageSource;
+ }
+ sdr.Close();
+ return img;
+```
+
+This was really fun to do ! I found out how to store the image by turning it into a byte array by using ReadAll Bytes which is made extremely easy by C#. And to be fair even reading from the database was made easy with StreamSource, what was hard was connecting everything together since it's a relativly big project espicially for me in my second year of coding.
+
+
 
 ## Authors
 
 * **DylanBrass** - *Comp Sci Student* - [DylanBrass](https://github.com/DylanBrass) - *Made the backend*
 * ** KarinaSofia** - *Comp Sci Student* - [ KarinaSofia](https://github.com/KarinaSofia) - *Made most of the front end*
 * **HennaCH** - *Comp Sci Student* - [HennaCH](https://github.com/HennaCH) - *Made small changes to front end*
-
-## Acknowledgements
-
-* [ShaanCoding](https://github.com/ShaanCoding/)
-* [Othneil Drew](https://github.com/othneildrew/Best-README-Template)
-* [ImgShields](https://shields.io/)
