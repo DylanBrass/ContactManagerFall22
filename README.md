@@ -5,7 +5,7 @@
   </p>
 </p>
 
-![Downloads](https://img.shields.io/github/downloads/DylanBrass/ContactManagerFall22/total) ![Contributors](https://img.shields.io/github/contributors/DylanBrass/ContactManagerFall22?color=dark-green) ![Forks](https://img.shields.io/github/forks/DylanBrass/ContactManagerFall22?style=social) ![Stargazers](https://img.shields.io/github/stars/DylanBrass/ContactManagerFall22?style=social) ![Issues](https://img.shields.io/github/issues/DylanBrass/ContactManagerFall22) 
+![Contributors](https://img.shields.io/github/contributors/DylanBrass/ContactManagerFall22?color=dark-green) ![Forks](https://img.shields.io/github/forks/DylanBrass/ContactManagerFall22?style=social) ![Stargazers](https://img.shields.io/github/stars/DylanBrass/ContactManagerFall22?style=social) ![Issues](https://img.shields.io/github/issues/DylanBrass/ContactManagerFall22) 
 
 ## Table Of Contents
 
