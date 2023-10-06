@@ -80,12 +80,13 @@ This project is harder to install because of SQL Server management is a relativl
 
 ![image](https://github.com/DylanBrass/ContactManagerFall22/assets/71225455/1cf0bdb2-824e-4fd7-9fb7-9941b33acf6c)
 
-6. You go locate the TSQL Script found here :
+5. You go locate the TSQL Script found here :
+   
 ![image](https://github.com/DylanBrass/ContactManagerFall22/assets/71225455/29819f1d-ac83-4b1e-8ded-6e72a90a6b5f)
 
-7. You copy the whole script
+6. You copy the whole script
    
-8. You open a new Querry in SQL Server and paste the script
+7. You open a new Querry in SQL Server and paste the script
 
 ![image](https://github.com/DylanBrass/ContactManagerFall22/assets/71225455/335ac794-eeb4-41bd-b8b3-c04d5c32f667)
 
@@ -93,17 +94,17 @@ You will need to change ProjectOwner higlighted here to a login that exists on y
 
 ![image](https://github.com/DylanBrass/ContactManagerFall22/assets/71225455/765071ea-0106-4a58-a34b-500ac14d8dce)
 
-9. Then run the script
+8. Then run the script
     
-10. For me most of the time I had to restart my SQL Server to see the tables like so :
+9. For me most of the time I had to restart my SQL Server to see the tables like so :
     
 ![image](https://github.com/DylanBrass/ContactManagerFall22/assets/71225455/90dd8b06-5245-4437-8f2c-aea17c340bff)
 
-11. You then need to insert the Type codes with this : 
+10. You then need to insert the Type codes with this : 
 ![image](https://github.com/DylanBrass/ContactManagerFall22/assets/71225455/92e6a5f7-23d3-4774-a3a9-2d4d9acfdac9)
 
 
-12. Then you can simply run the project and look around :)
+11. Then you can simply run the project and look around :)
     
 ![image](https://github.com/DylanBrass/ContactManagerFall22/assets/71225455/578f04e8-a527-4fbe-bfcd-1aa4428487d5)
 
