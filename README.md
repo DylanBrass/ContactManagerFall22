@@ -21,8 +21,6 @@
 
 ## About The Project
 
-![Screen Shot](images/screenshot.png)
-
 This project is a simple contact manager that was assigned to use by our teacher for our .NET class where we learned C# and WPF as well as being introduced to the Microsoft and C# ecosystem.
 
 
